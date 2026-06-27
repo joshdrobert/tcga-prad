@@ -1,0 +1,24 @@
+{
+  "predictors": [
+    "age_at_diagnosis_years",
+    "pathologic_t",
+    "pathologic_n",
+    "gleason_score_numeric",
+    "psa_value_numeric",
+    "expr_BRCA1",
+    "expr_SPOP",
+    "expr_FOXA1",
+    "expr_MYC",
+    "expr_BRCA2",
+    "expr_TP53",
+    "expr_KLK3",
+    "expr_ATM",
+    "expr_ERG",
+    "expr_NKX3-1",
+    "expr_AR",
+    "expr_PTEN",
+    "expr_CHEK2"
+  ],
+  "outcome": "outcome_recurrence_or_progression",
+  "scaling_factor": 0.17186084888747385
+}

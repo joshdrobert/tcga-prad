@@ -1,0 +1,4 @@
+group,horizon_days,n,events_by_horizon,naive_event_fraction
+overall,365,63,29,0.4603174603174603
+overall,730,63,39,0.6190476190476191
+overall,1095,63,51,0.8095238095238095

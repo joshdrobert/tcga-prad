@@ -1,0 +1,4018 @@
+{
+  "data": {
+    "hits": [
+      {
+        "id": "1bc21d56-299d-40bc-b9c8-c74db990611e",
+        "case_id": "1bc21d56-299d-40bc-b9c8-c74db990611e",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-XK-AAK1"
+      },
+      {
+        "id": "a608bf0e-a932-4541-8439-2ffb9f6294b0",
+        "case_id": "a608bf0e-a932-4541-8439-2ffb9f6294b0",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-EJ-A46E"
+      },
+      {
+        "id": "f6040682-4999-4d71-abc2-354b473c6980",
+        "case_id": "f6040682-4999-4d71-abc2-354b473c6980",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-HC-7748"
+      },
+      {
+        "id": "5a92ec4c-36ee-4588-aca2-e3303f29c7ad",
+        "case_id": "5a92ec4c-36ee-4588-aca2-e3303f29c7ad",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-EJ-5542"
+      },
+      {
+        "id": "06c9eb11-6018-4015-9fbe-b46886b2c3e0",
+        "case_id": "06c9eb11-6018-4015-9fbe-b46886b2c3e0",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-XK-AAJ3"
+      },
+      {
+        "id": "cec1d2ff-36e6-497e-892c-b329724b4722",
+        "case_id": "cec1d2ff-36e6-497e-892c-b329724b4722",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-EJ-A46H"
+      },
+      {
+        "id": "231a45e7-ad33-4789-a9fc-74ce7a18fcc3",
+        "case_id": "231a45e7-ad33-4789-a9fc-74ce7a18fcc3",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-HC-7741"
+      },
+      {
+        "id": "00dda860-53c3-4ab2-8294-73e291adf9d2",
+        "case_id": "00dda860-53c3-4ab2-8294-73e291adf9d2",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-EJ-7312"
+      },
+      {
+        "id": "f8d8b417-5945-42a5-850a-fbc04b4f0e61",
+        "case_id": "f8d8b417-5945-42a5-850a-fbc04b4f0e61",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-G9-6364"
+      },
+      {
+        "id": "928c48a0-68ee-4e28-ae83-9832e52850ca",
+        "case_id": "928c48a0-68ee-4e28-ae83-9832e52850ca",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-CH-5753"
+      },
+      {
+        "id": "4fe004e5-49f9-4336-a690-6ebad512c813",
+        "case_id": "4fe004e5-49f9-4336-a690-6ebad512c813",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-EJ-7791"
+      },
+      {
+        "id": "9519be01-d78d-462c-8a95-34149538afeb",
+        "case_id": "9519be01-d78d-462c-8a95-34149538afeb",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-EJ-7123"
+      },
+      {
+        "id": "ed73f136-42e8-4100-b432-d10370d07e8b",
+        "case_id": "ed73f136-42e8-4100-b432-d10370d07e8b",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-CH-5764"
+      },
+      {
+        "id": "9b015929-99eb-4e74-8fbf-6b2e6d7f08e4",
+        "case_id": "9b015929-99eb-4e74-8fbf-6b2e6d7f08e4",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-J4-A6G3"
+      },
+      {
+        "id": "929837f9-297a-47c0-ac9a-a142eef620d3",
+        "case_id": "929837f9-297a-47c0-ac9a-a142eef620d3",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-HC-7821"
+      },
+      {
+        "id": "2b5ef82d-e137-43f6-bfef-b202f20ee187",
+        "case_id": "2b5ef82d-e137-43f6-bfef-b202f20ee187",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-CH-5790"
+      },
+      {
+        "id": "1170f449-dfb5-417a-a89b-b2229a2785db",
+        "case_id": "1170f449-dfb5-417a-a89b-b2229a2785db",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-EJ-A46B"
+      },
+      {
+        "id": "18e79a01-07a2-4cd5-b700-71d41724e041",
+        "case_id": "18e79a01-07a2-4cd5-b700-71d41724e041",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-CH-5763"
+      },
+      {
+        "id": "5089a8d2-a353-4150-8a6b-6478c5bb29bb",
+        "case_id": "5089a8d2-a353-4150-8a6b-6478c5bb29bb",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-KC-A4BL"
+      },
+      {
+        "id": "b47791ba-85fd-41d0-ac1f-b6fa06f18e96",
+        "case_id": "b47791ba-85fd-41d0-ac1f-b6fa06f18e96",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-XQ-A8TA"
+      },
+      {
+        "id": "07ccb4e9-a2a9-4bfd-97bd-13873b01977a",
+        "case_id": "07ccb4e9-a2a9-4bfd-97bd-13873b01977a",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-HC-8259"
+      },
+      {
+        "id": "ecf9f8be-7830-4626-8617-694c68ef4074",
+        "case_id": "ecf9f8be-7830-4626-8617-694c68ef4074",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-CH-5772"
+      },
+      {
+        "id": "829bed0c-c40d-44fd-aee8-6c7589db60f9",
+        "case_id": "829bed0c-c40d-44fd-aee8-6c7589db60f9",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-CH-5791"
+      },
+      {
+        "id": "71d14304-ccb0-4a4c-b935-8c014ca75fd0",
+        "case_id": "71d14304-ccb0-4a4c-b935-8c014ca75fd0",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-G9-6361"
+      },
+      {
+        "id": "f5319fd5-beae-4ca8-8f42-45fca5e6a2d2",
+        "case_id": "f5319fd5-beae-4ca8-8f42-45fca5e6a2d2",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-2A-A8W1"
+      },
+      {
+        "id": "93cf60a7-1d61-4c1c-8dce-221289800b0c",
+        "case_id": "93cf60a7-1d61-4c1c-8dce-221289800b0c",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-ZG-A9L6"
+      },
+      {
+        "id": "5d66ac77-1543-488b-a68f-665811bec67a",
+        "case_id": "5d66ac77-1543-488b-a68f-665811bec67a",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-XK-AAJT"
+      },
+      {
+        "id": "4434864a-8a0d-488e-b9a7-6749719663e5",
+        "case_id": "4434864a-8a0d-488e-b9a7-6749719663e5",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-KK-A8IM"
+      },
+      {
+        "id": "554a7381-46fd-4301-b91b-5af7f173c350",
+        "case_id": "554a7381-46fd-4301-b91b-5af7f173c350",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-EJ-5525"
+      },
+      {
+        "id": "acd5ceef-c5cf-4e95-9394-c50fdbc70c8d",
+        "case_id": "acd5ceef-c5cf-4e95-9394-c50fdbc70c8d",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-G9-6499"
+      },
+      {
+        "id": "53c43d14-2310-41e9-ac43-3cc298404338",
+        "case_id": "53c43d14-2310-41e9-ac43-3cc298404338",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-HC-8213"
+      },
+      {
+        "id": "afa7d9a2-3998-4182-bf63-54895ed2de37",
+        "case_id": "afa7d9a2-3998-4182-bf63-54895ed2de37",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-ZG-A9LS"
+      },
+      {
+        "id": "e0dfc37a-4a2e-4353-9673-241b100b3467",
+        "case_id": "e0dfc37a-4a2e-4353-9673-241b100b3467",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-V1-A9O5"
+      },
+      {
+        "id": "3e290dc6-aba3-4135-b844-3e8c4cc8a25f",
+        "case_id": "3e290dc6-aba3-4135-b844-3e8c4cc8a25f",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-HC-8265"
+      },
+      {
+        "id": "c024c4b6-0143-4071-9175-7435f1eaac58",
+        "case_id": "c024c4b6-0143-4071-9175-7435f1eaac58",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-J4-A83N"
+      },
+      {
+        "id": "21a29827-7896-436d-ab52-e7edfc91e7d0",
+        "case_id": "21a29827-7896-436d-ab52-e7edfc91e7d0",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-YL-A8SB"
+      },
+      {
+        "id": "e457eb5d-120e-41f4-8455-2ed8d534ff02",
+        "case_id": "e457eb5d-120e-41f4-8455-2ed8d534ff02",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-HC-A632"
+      },
+      {
+        "id": "d6974db6-2bd3-4082-b48e-9c60f7fe3a1f",
+        "case_id": "d6974db6-2bd3-4082-b48e-9c60f7fe3a1f",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-J4-A83M"
+      },
+      {
+        "id": "aa8b99fd-973f-465d-ae24-3421fe784687",
+        "case_id": "aa8b99fd-973f-465d-ae24-3421fe784687",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-EJ-A7NM"
+      },
+      {
+        "id": "bea84d33-3286-44e2-9595-893c34a01f58",
+        "case_id": "bea84d33-3286-44e2-9595-893c34a01f58",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-V1-A8WS"
+      },
+      {
+        "id": "8df0c1e8-966c-4f46-ad15-fae9e745a32e",
+        "case_id": "8df0c1e8-966c-4f46-ad15-fae9e745a32e",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-EJ-5501"
+      },
+      {
+        "id": "74c7dd37-7ff5-47ac-aeb7-14202871b6f1",
+        "case_id": "74c7dd37-7ff5-47ac-aeb7-14202871b6f1",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-VN-A88P"
+      },
+      {
+        "id": "d4ffafdc-ee83-43df-aa3b-7326503c6438",
+        "case_id": "d4ffafdc-ee83-43df-aa3b-7326503c6438",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-CH-5762"
+      },
+      {
+        "id": "804ee985-18dd-4f2d-a562-61b454601cdd",
+        "case_id": "804ee985-18dd-4f2d-a562-61b454601cdd",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-EJ-7321"
+      },
+      {
+        "id": "5a468990-d76d-4c67-8437-62689b593ae2",
+        "case_id": "5a468990-d76d-4c67-8437-62689b593ae2",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-KC-A4BN"
+      },
+      {
+        "id": "897a2af4-55af-4245-8629-1a71b622c17e",
+        "case_id": "897a2af4-55af-4245-8629-1a71b622c17e",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-J4-8200"
+      },
+      {
+        "id": "256f5bcf-10a9-47be-b265-cfa707d24097",
+        "case_id": "256f5bcf-10a9-47be-b265-cfa707d24097",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-J4-A83K"
+      },
+      {
+        "id": "f6743ff8-542e-4fde-8ff2-4878fcabffda",
+        "case_id": "f6743ff8-542e-4fde-8ff2-4878fcabffda",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-EJ-A7NJ"
+      },
+      {
+        "id": "a8d81122-3f2a-43f4-bdc1-479cab37a19d",
+        "case_id": "a8d81122-3f2a-43f4-bdc1-479cab37a19d",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-FC-7961"
+      },
+      {
+        "id": "13a63fd0-6c8c-4707-9135-8052f454d1ac",
+        "case_id": "13a63fd0-6c8c-4707-9135-8052f454d1ac",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-HC-7749"
+      },
+      {
+        "id": "2648c3c9-9884-4a0c-96aa-61130cd289ea",
+        "case_id": "2648c3c9-9884-4a0c-96aa-61130cd289ea",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-SU-A7E7"
+      },
+      {
+        "id": "aa405b5f-f75d-486a-96f3-1df7add18193",
+        "case_id": "aa405b5f-f75d-486a-96f3-1df7add18193",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-VP-A87D"
+      },
+      {
+        "id": "40ebeb10-7390-44fc-9ef2-80d40d251018",
+        "case_id": "40ebeb10-7390-44fc-9ef2-80d40d251018",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-V1-A9O7"
+      },
+      {
+        "id": "aaeb1d59-d6ce-4422-9639-f1e83c002d84",
+        "case_id": "aaeb1d59-d6ce-4422-9639-f1e83c002d84",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-KK-A7B3"
+      },
+      {
+        "id": "ab378ad0-1881-403f-9e85-d6f97e7b7c81",
+        "case_id": "ab378ad0-1881-403f-9e85-d6f97e7b7c81",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-EJ-8472"
+      },
+      {
+        "id": "38a2b705-d8a4-45ca-8bcd-96dbf93d8e4d",
+        "case_id": "38a2b705-d8a4-45ca-8bcd-96dbf93d8e4d",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-KK-A6E3"
+      },
+      {
+        "id": "abeb0894-862f-4035-a6d9-fe0ba61630a9",
+        "case_id": "abeb0894-862f-4035-a6d9-fe0ba61630a9",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-WW-A8ZI"
+      },
+      {
+        "id": "6b3f53ab-00f4-4c45-9bb5-5c8adbc66084",
+        "case_id": "6b3f53ab-00f4-4c45-9bb5-5c8adbc66084",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-HC-A6AS"
+      },
+      {
+        "id": "adbf5bda-e2dc-4b25-8fb9-96d89093f77d",
+        "case_id": "adbf5bda-e2dc-4b25-8fb9-96d89093f77d",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-ZG-A9KY"
+      },
+      {
+        "id": "ead15a1b-726a-46aa-9005-a22f4b89d011",
+        "case_id": "ead15a1b-726a-46aa-9005-a22f4b89d011",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-HC-A6AP"
+      },
+      {
+        "id": "ae3a0c92-148d-4f1c-8563-06ac1050f53e",
+        "case_id": "ae3a0c92-148d-4f1c-8563-06ac1050f53e",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-EJ-5532"
+      },
+      {
+        "id": "24e5d323-f3d4-4add-9a29-79e77ced357c",
+        "case_id": "24e5d323-f3d4-4add-9a29-79e77ced357c",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-YL-A8SQ"
+      },
+      {
+        "id": "aeec3005-25d7-45fc-a9ff-014d57960216",
+        "case_id": "aeec3005-25d7-45fc-a9ff-014d57960216",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-EJ-7794"
+      },
+      {
+        "id": "00b16434-0b3a-4194-8714-74dccbebe06c",
+        "case_id": "00b16434-0b3a-4194-8714-74dccbebe06c",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-EJ-8468"
+      },
+      {
+        "id": "b182bda9-3d9f-4958-96eb-bd6cc441830c",
+        "case_id": "b182bda9-3d9f-4958-96eb-bd6cc441830c",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-HC-7231"
+      },
+      {
+        "id": "00e41e6a-9fe7-44f9-978b-7b05b179506a",
+        "case_id": "00e41e6a-9fe7-44f9-978b-7b05b179506a",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-G9-6342"
+      },
+      {
+        "id": "b2bcc97f-03a6-409a-8b91-78221cb10d7f",
+        "case_id": "b2bcc97f-03a6-409a-8b91-78221cb10d7f",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-YL-A9WK"
+      },
+      {
+        "id": "b3bf57d4-e31a-4740-b438-fa826fb79550",
+        "case_id": "b3bf57d4-e31a-4740-b438-fa826fb79550",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-CH-5741"
+      },
+      {
+        "id": "03c15d06-b81e-433c-9de4-906cba91539f",
+        "case_id": "03c15d06-b81e-433c-9de4-906cba91539f",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-ZG-A9NI"
+      },
+      {
+        "id": "b424b73a-2dfa-473f-ab56-ab382cd1cdef",
+        "case_id": "b424b73a-2dfa-473f-ab56-ab382cd1cdef",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-EJ-7331"
+      },
+      {
+        "id": "b5b3871c-078c-46a7-ac50-ef916d4a6781",
+        "case_id": "b5b3871c-078c-46a7-ac50-ef916d4a6781",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-G9-6363"
+      },
+      {
+        "id": "083cc988-19a5-49b4-97c0-4e7bcc5d5c08",
+        "case_id": "083cc988-19a5-49b4-97c0-4e7bcc5d5c08",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-ZG-A9L1"
+      },
+      {
+        "id": "b7b61392-c085-4e28-892f-e9b6fe6ece41",
+        "case_id": "b7b61392-c085-4e28-892f-e9b6fe6ece41",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-EJ-AB27"
+      },
+      {
+        "id": "0885eb03-de9f-46ba-9c53-fb69c67ab9f0",
+        "case_id": "0885eb03-de9f-46ba-9c53-fb69c67ab9f0",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-V1-A9Z9"
+      },
+      {
+        "id": "b8fbfe87-e92c-4d54-a620-17b2dcde6d53",
+        "case_id": "b8fbfe87-e92c-4d54-a620-17b2dcde6d53",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-G9-6498"
+      },
+      {
+        "id": "0aad0abd-750a-400d-a34f-491da996d46c",
+        "case_id": "0aad0abd-750a-400d-a34f-491da996d46c",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-CH-5754"
+      },
+      {
+        "id": "0af98331-9305-41e9-af55-30390016d65e",
+        "case_id": "0af98331-9305-41e9-af55-30390016d65e",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-CH-5748"
+      },
+      {
+        "id": "bd18dd01-d894-4bdd-9ce2-e25705a52a57",
+        "case_id": "bd18dd01-d894-4bdd-9ce2-e25705a52a57",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-EJ-5508"
+      },
+      {
+        "id": "0b5ed938-6ab8-4e76-8558-1d86f3a90dfa",
+        "case_id": "0b5ed938-6ab8-4e76-8558-1d86f3a90dfa",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-YL-A9WJ"
+      },
+      {
+        "id": "be5411dc-3caa-4b25-9b94-ce463e8e52b4",
+        "case_id": "be5411dc-3caa-4b25-9b94-ce463e8e52b4",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-CH-5789"
+      },
+      {
+        "id": "bf428d43-2da6-43fc-bd62-7cbff84e95ec",
+        "case_id": "bf428d43-2da6-43fc-bd62-7cbff84e95ec",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-XJ-A83G"
+      },
+      {
+        "id": "0e747c7e-3621-4d88-847c-86811655d908",
+        "case_id": "0e747c7e-3621-4d88-847c-86811655d908",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-XK-AAIV"
+      },
+      {
+        "id": "bfb973eb-d42d-4900-a606-a381d2317555",
+        "case_id": "bfb973eb-d42d-4900-a606-a381d2317555",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-YL-A8SH"
+      },
+      {
+        "id": "10271d9c-9b9c-4b5f-a845-a0f1bd03af51",
+        "case_id": "10271d9c-9b9c-4b5f-a845-a0f1bd03af51",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-V1-A9OQ"
+      },
+      {
+        "id": "c039014f-821c-43d6-9d3c-914f9c8d98fa",
+        "case_id": "c039014f-821c-43d6-9d3c-914f9c8d98fa",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-CH-5788"
+      },
+      {
+        "id": "108dee1e-b27d-4056-a167-261725f548c1",
+        "case_id": "108dee1e-b27d-4056-a167-261725f548c1",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-KK-A8I7"
+      },
+      {
+        "id": "1122fa92-0073-4f59-9880-3f1a34620758",
+        "case_id": "1122fa92-0073-4f59-9880-3f1a34620758",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-J9-A8CL"
+      },
+      {
+        "id": "c362f6f9-4ce6-4659-8c36-4cd45c72fb03",
+        "case_id": "c362f6f9-4ce6-4659-8c36-4cd45c72fb03",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-EJ-A7NK"
+      },
+      {
+        "id": "11fb5853-8eeb-4ad8-825d-3eaaf3fa08d6",
+        "case_id": "11fb5853-8eeb-4ad8-825d-3eaaf3fa08d6",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-HI-7169"
+      },
+      {
+        "id": "c3fd52fe-bdc2-4cca-91c7-590a192f80ed",
+        "case_id": "c3fd52fe-bdc2-4cca-91c7-590a192f80ed",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-VN-A88I"
+      },
+      {
+        "id": "12f225d0-cbff-44eb-9183-bacc7f33b090",
+        "case_id": "12f225d0-cbff-44eb-9183-bacc7f33b090",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-G9-6378"
+      },
+      {
+        "id": "c4c1b5be-a0e7-4968-92de-7f34c71207fb",
+        "case_id": "c4c1b5be-a0e7-4968-92de-7f34c71207fb",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-J4-A67K"
+      },
+      {
+        "id": "c4ebb2eb-e1f0-4490-80f3-5cf0c40a3091",
+        "case_id": "c4ebb2eb-e1f0-4490-80f3-5cf0c40a3091",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-Y6-A9XI"
+      },
+      {
+        "id": "14c2819b-9afc-4c89-849f-530e289d55bf",
+        "case_id": "14c2819b-9afc-4c89-849f-530e289d55bf",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-V1-A9OX"
+      },
+      {
+        "id": "c51ccff8-2502-40e1-b130-fe655c119169",
+        "case_id": "c51ccff8-2502-40e1-b130-fe655c119169",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-HC-A9TE"
+      },
+      {
+        "id": "159b47b2-dc7d-4856-9a00-454e27301e23",
+        "case_id": "159b47b2-dc7d-4856-9a00-454e27301e23",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-YL-A8SK"
+      },
+      {
+        "id": "c606918f-e8c0-4019-ad6f-47d5cd7615c4",
+        "case_id": "c606918f-e8c0-4019-ad6f-47d5cd7615c4",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-EJ-7115"
+      },
+      {
+        "id": "c75bee57-d6da-4083-9be8-17c970b77fc7",
+        "case_id": "c75bee57-d6da-4083-9be8-17c970b77fc7",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-ZG-A9L4"
+      },
+      {
+        "id": "c7912ca7-11e1-4cb8-902a-9d6cb23fd344",
+        "case_id": "c7912ca7-11e1-4cb8-902a-9d6cb23fd344",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-ZG-A9L9"
+      },
+      {
+        "id": "186d7f36-4e93-4ab2-bc23-95d5cd296656",
+        "case_id": "186d7f36-4e93-4ab2-bc23-95d5cd296656",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-J9-A8CN"
+      },
+      {
+        "id": "ca076cfd-c628-4af2-837c-37617429adb9",
+        "case_id": "ca076cfd-c628-4af2-837c-37617429adb9",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-ZG-A9LZ"
+      },
+      {
+        "id": "1940166e-aedc-4dc5-90a5-609871f9f7da",
+        "case_id": "1940166e-aedc-4dc5-90a5-609871f9f7da",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-J9-A52C"
+      },
+      {
+        "id": "cd113dc4-915a-47d2-bce0-9dba915a9d29",
+        "case_id": "cd113dc4-915a-47d2-bce0-9dba915a9d29",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-CH-5740"
+      },
+      {
+        "id": "1a8a887e-b9f0-42f5-8dce-4e58cb13844b",
+        "case_id": "1a8a887e-b9f0-42f5-8dce-4e58cb13844b",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-EJ-8470"
+      },
+      {
+        "id": "ce3585d3-7388-4d05-84c8-64e0883003b3",
+        "case_id": "ce3585d3-7388-4d05-84c8-64e0883003b3",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-HC-7232"
+      },
+      {
+        "id": "1cbaa137-c3b0-46a2-9b23-208682c2a438",
+        "case_id": "1cbaa137-c3b0-46a2-9b23-208682c2a438",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-J4-A67Q"
+      },
+      {
+        "id": "cf70909e-5143-47ae-b8ca-c3ae6ace7be2",
+        "case_id": "cf70909e-5143-47ae-b8ca-c3ae6ace7be2",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-G9-7521"
+      },
+      {
+        "id": "1d7ffbe7-6139-412b-8739-8082a63a2b33",
+        "case_id": "1d7ffbe7-6139-412b-8739-8082a63a2b33",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-G9-6356"
+      },
+      {
+        "id": "d07d20f4-dd65-4ffc-add4-01f350ca7b65",
+        "case_id": "d07d20f4-dd65-4ffc-add4-01f350ca7b65",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-QU-A6IN"
+      },
+      {
+        "id": "d112136d-34fa-426e-b432-4d1e4286adf8",
+        "case_id": "d112136d-34fa-426e-b432-4d1e4286adf8",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-KK-A6E0"
+      },
+      {
+        "id": "d17b1955-0565-46c1-a5a7-ecd41ac0286a",
+        "case_id": "d17b1955-0565-46c1-a5a7-ecd41ac0286a",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-XK-AAJA"
+      },
+      {
+        "id": "1f4ff2c7-3fbb-46a1-99cf-68d2c33c5175",
+        "case_id": "1f4ff2c7-3fbb-46a1-99cf-68d2c33c5175",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-EJ-7789"
+      },
+      {
+        "id": "d1fd7be0-6daa-4f1f-a198-3dca7a797e49",
+        "case_id": "d1fd7be0-6daa-4f1f-a198-3dca7a797e49",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-HC-7819"
+      },
+      {
+        "id": "d33074f0-5f88-4995-9439-76068a9f4836",
+        "case_id": "d33074f0-5f88-4995-9439-76068a9f4836",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-G9-6379"
+      },
+      {
+        "id": "208a75b3-407c-4c5a-8938-3691547b6887",
+        "case_id": "208a75b3-407c-4c5a-8938-3691547b6887",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-FC-7708"
+      },
+      {
+        "id": "d44d4bcb-beb1-4464-acd2-9972751f5018",
+        "case_id": "d44d4bcb-beb1-4464-acd2-9972751f5018",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-EJ-5521"
+      },
+      {
+        "id": "2270d09e-a8be-4b7d-9520-a4bb1cd053c0",
+        "case_id": "2270d09e-a8be-4b7d-9520-a4bb1cd053c0",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-XK-AAIW"
+      },
+      {
+        "id": "23e56e08-e11d-4e83-88a8-1254675b3af8",
+        "case_id": "23e56e08-e11d-4e83-88a8-1254675b3af8",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-EJ-A8FU"
+      },
+      {
+        "id": "d4ff9f1a-1d35-4ad6-9a36-059547081c7e",
+        "case_id": "d4ff9f1a-1d35-4ad6-9a36-059547081c7e",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-EJ-A65M"
+      },
+      {
+        "id": "24d7d4d8-f5c1-4d71-80e0-72a429fc9dbd",
+        "case_id": "24d7d4d8-f5c1-4d71-80e0-72a429fc9dbd",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-VP-A87K"
+      },
+      {
+        "id": "d5c43a14-21ab-4178-ae33-2d8b7baa256f",
+        "case_id": "d5c43a14-21ab-4178-ae33-2d8b7baa256f",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-G9-6371"
+      },
+      {
+        "id": "25d70934-01a5-45a2-9960-68d3058b6965",
+        "case_id": "25d70934-01a5-45a2-9960-68d3058b6965",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-HI-7168"
+      },
+      {
+        "id": "261c3d74-706e-4751-bd15-8f3c1a402ff0",
+        "case_id": "261c3d74-706e-4751-bd15-8f3c1a402ff0",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-KK-A8I9"
+      },
+      {
+        "id": "26eefaa1-1666-4ce1-8cf4-f6fabff81fd2",
+        "case_id": "26eefaa1-1666-4ce1-8cf4-f6fabff81fd2",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-HC-7213"
+      },
+      {
+        "id": "d843996c-0f17-4482-8466-9f6144981b8a",
+        "case_id": "d843996c-0f17-4482-8466-9f6144981b8a",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-V1-A8WW"
+      },
+      {
+        "id": "28689d40-03e5-4e17-aba1-f2d571535eed",
+        "case_id": "28689d40-03e5-4e17-aba1-f2d571535eed",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-EJ-7792"
+      },
+      {
+        "id": "da07da37-bde6-480a-a302-98683ae3931a",
+        "case_id": "da07da37-bde6-480a-a302-98683ae3931a",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-EJ-7793"
+      },
+      {
+        "id": "29bd2c05-254b-4bb2-ae32-5b328f772441",
+        "case_id": "29bd2c05-254b-4bb2-ae32-5b328f772441",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-J4-A67L"
+      },
+      {
+        "id": "da5b0169-e4f4-4674-b348-220af03ff4b5",
+        "case_id": "da5b0169-e4f4-4674-b348-220af03ff4b5",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-HC-8258"
+      },
+      {
+        "id": "2b35c119-cdc1-49e2-8229-ca5cde9e63d0",
+        "case_id": "2b35c119-cdc1-49e2-8229-ca5cde9e63d0",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-EJ-5518"
+      },
+      {
+        "id": "db2779f6-8fe2-48c3-988b-81db1815a678",
+        "case_id": "db2779f6-8fe2-48c3-988b-81db1815a678",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-J4-A67R"
+      },
+      {
+        "id": "2c7ec330-261e-49c7-9424-6d83641dba6d",
+        "case_id": "2c7ec330-261e-49c7-9424-6d83641dba6d",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-EJ-7315"
+      },
+      {
+        "id": "dc16f348-a49f-4958-a3ff-bc40e18df2bd",
+        "case_id": "dc16f348-a49f-4958-a3ff-bc40e18df2bd",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-V1-A8WN"
+      },
+      {
+        "id": "2d70eacc-d0c3-4121-bd1a-a47d68ecede5",
+        "case_id": "2d70eacc-d0c3-4121-bd1a-a47d68ecede5",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-YL-A9WI"
+      },
+      {
+        "id": "dc40cf49-b208-4f59-b5f0-cfbdd02970b2",
+        "case_id": "dc40cf49-b208-4f59-b5f0-cfbdd02970b2",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-CH-5750"
+      },
+      {
+        "id": "2def2a53-d2e8-46f0-8b07-f32dbf1833a4",
+        "case_id": "2def2a53-d2e8-46f0-8b07-f32dbf1833a4",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-EJ-7785"
+      },
+      {
+        "id": "deb57bd8-545f-477a-9a86-6bc6db257270",
+        "case_id": "deb57bd8-545f-477a-9a86-6bc6db257270",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-KK-A6E1"
+      },
+      {
+        "id": "dec99f86-622b-477f-a26a-98c954fb1f17",
+        "case_id": "dec99f86-622b-477f-a26a-98c954fb1f17",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-V1-A9ZG"
+      },
+      {
+        "id": "301c4c32-bc66-4328-8dcf-fe3dd66fbde2",
+        "case_id": "301c4c32-bc66-4328-8dcf-fe3dd66fbde2",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-V1-A8MG"
+      },
+      {
+        "id": "30aba886-5152-4e25-b36f-6ce7009d419e",
+        "case_id": "30aba886-5152-4e25-b36f-6ce7009d419e",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-J9-A52E"
+      },
+      {
+        "id": "df3abb97-c790-4ff6-a726-6645b3058d72",
+        "case_id": "df3abb97-c790-4ff6-a726-6645b3058d72",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-G9-6366"
+      },
+      {
+        "id": "33283111-9a2f-4d5e-92a5-3435846404f7",
+        "case_id": "33283111-9a2f-4d5e-92a5-3435846404f7",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-EJ-7781"
+      },
+      {
+        "id": "df7bbd9c-0b35-4855-acde-46f4956f4df1",
+        "case_id": "df7bbd9c-0b35-4855-acde-46f4956f4df1",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-KK-A59Z"
+      },
+      {
+        "id": "341940fc-dd2a-485c-a359-d5e5edb22312",
+        "case_id": "341940fc-dd2a-485c-a359-d5e5edb22312",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-HC-A8D1"
+      },
+      {
+        "id": "e0ff90e5-e6c3-4fb5-9512-6f09a891378b",
+        "case_id": "e0ff90e5-e6c3-4fb5-9512-6f09a891378b",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-G9-6369"
+      },
+      {
+        "id": "e1c3d1bd-cf8f-4fa4-ac8e-bf9e54f7aad4",
+        "case_id": "e1c3d1bd-cf8f-4fa4-ac8e-bf9e54f7aad4",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-EJ-5504"
+      },
+      {
+        "id": "355e84e7-0d50-4bc2-a481-dfece2f8c687",
+        "case_id": "355e84e7-0d50-4bc2-a481-dfece2f8c687",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-ZG-A9L0"
+      },
+      {
+        "id": "e27c50e2-2a41-4f8c-9ef8-2bc51fb0c23e",
+        "case_id": "e27c50e2-2a41-4f8c-9ef8-2bc51fb0c23e",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-EJ-5494"
+      },
+      {
+        "id": "37ec45fd-1c85-49cb-835e-fa7b2b8ce16f",
+        "case_id": "37ec45fd-1c85-49cb-835e-fa7b2b8ce16f",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-EJ-A65E"
+      },
+      {
+        "id": "39303e7c-5baf-479d-a112-d8f03a18c621",
+        "case_id": "39303e7c-5baf-479d-a112-d8f03a18c621",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-KK-A7AU"
+      },
+      {
+        "id": "e35336e1-e358-493f-9beb-276b5fc6685a",
+        "case_id": "e35336e1-e358-493f-9beb-276b5fc6685a",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-EJ-7788"
+      },
+      {
+        "id": "e4a755e3-4938-4321-b5a9-27a445036791",
+        "case_id": "e4a755e3-4938-4321-b5a9-27a445036791",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-EJ-5530"
+      },
+      {
+        "id": "3acd8328-76f7-4f43-9660-394b95748c3d",
+        "case_id": "3acd8328-76f7-4f43-9660-394b95748c3d",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-CH-5771"
+      },
+      {
+        "id": "3d6abc44-d094-4250-8dfc-347ae9c741f2",
+        "case_id": "3d6abc44-d094-4250-8dfc-347ae9c741f2",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-HC-A6HY"
+      },
+      {
+        "id": "e6cbf99d-4a10-4c11-9ac2-eb26ef57331f",
+        "case_id": "e6cbf99d-4a10-4c11-9ac2-eb26ef57331f",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-HC-A6AL"
+      },
+      {
+        "id": "e82a04cf-e81e-43c6-9cd9-0e29fa0f00ae",
+        "case_id": "e82a04cf-e81e-43c6-9cd9-0e29fa0f00ae",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-G9-6385"
+      },
+      {
+        "id": "e833ad67-2cb3-414c-b15e-28f49479e2ef",
+        "case_id": "e833ad67-2cb3-414c-b15e-28f49479e2ef",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-VP-A875"
+      },
+      {
+        "id": "3de1a86b-aaeb-4f0d-9f32-1fda924198d7",
+        "case_id": "3de1a86b-aaeb-4f0d-9f32-1fda924198d7",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-ZG-A9LY"
+      },
+      {
+        "id": "3e71fa1c-855c-475a-9dd0-a314a3ecd48d",
+        "case_id": "3e71fa1c-855c-475a-9dd0-a314a3ecd48d",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-KC-A4BR"
+      },
+      {
+        "id": "e90ab72a-4bbb-4c37-b48a-8a1a85d79d04",
+        "case_id": "e90ab72a-4bbb-4c37-b48a-8a1a85d79d04",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-EJ-7327"
+      },
+      {
+        "id": "3f5270a2-3284-4523-bd81-54fc98c2b933",
+        "case_id": "3f5270a2-3284-4523-bd81-54fc98c2b933",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-KK-A8IF"
+      },
+      {
+        "id": "ea770d22-2cba-465c-9555-e0877dcecb9f",
+        "case_id": "ea770d22-2cba-465c-9555-e0877dcecb9f",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-EJ-A8FN"
+      },
+      {
+        "id": "3fa83688-1724-42cb-a600-472e4c500e89",
+        "case_id": "3fa83688-1724-42cb-a600-472e4c500e89",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-HC-A6AQ"
+      },
+      {
+        "id": "eb715348-7c5c-4e95-bac8-05604bdda2da",
+        "case_id": "eb715348-7c5c-4e95-bac8-05604bdda2da",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-VN-A88O"
+      },
+      {
+        "id": "3fc9e3b4-8bc5-4bf8-bff6-dd90346b83a1",
+        "case_id": "3fc9e3b4-8bc5-4bf8-bff6-dd90346b83a1",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-J4-A67O"
+      },
+      {
+        "id": "ebe711e4-45af-4082-bdf6-b0f7ac899b3e",
+        "case_id": "ebe711e4-45af-4082-bdf6-b0f7ac899b3e",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-HC-7818"
+      },
+      {
+        "id": "ec3870c9-4930-4af7-b2eb-1e16c9ec9f14",
+        "case_id": "ec3870c9-4930-4af7-b2eb-1e16c9ec9f14",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-HC-7211"
+      },
+      {
+        "id": "42b7d14f-09e5-4d91-bb98-5fe35907a6a9",
+        "case_id": "42b7d14f-09e5-4d91-bb98-5fe35907a6a9",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-EJ-7328"
+      },
+      {
+        "id": "432f15ba-7401-4827-83a5-3eaafaaa4bea",
+        "case_id": "432f15ba-7401-4827-83a5-3eaafaaa4bea",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-J4-A67T"
+      },
+      {
+        "id": "ef974c39-8bac-486b-a395-9d1283e08028",
+        "case_id": "ef974c39-8bac-486b-a395-9d1283e08028",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-ZG-A9LB"
+      },
+      {
+        "id": "436b242c-ad5f-432e-a684-27bba4c1c8a2",
+        "case_id": "436b242c-ad5f-432e-a684-27bba4c1c8a2",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-KK-A5A1"
+      },
+      {
+        "id": "f00b4a22-c327-4fbb-a9a3-4418c13e2a48",
+        "case_id": "f00b4a22-c327-4fbb-a9a3-4418c13e2a48",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-J4-A6M7"
+      },
+      {
+        "id": "45a04209-8fac-4181-bba3-1437c8fd7f09",
+        "case_id": "45a04209-8fac-4181-bba3-1437c8fd7f09",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-EJ-7325"
+      },
+      {
+        "id": "f0f637b5-de40-4853-b54b-08468d45b195",
+        "case_id": "f0f637b5-de40-4853-b54b-08468d45b195",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-J4-AAU2"
+      },
+      {
+        "id": "486d225f-eca6-499b-a142-dd86137b22e4",
+        "case_id": "486d225f-eca6-499b-a142-dd86137b22e4",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-VP-A87J"
+      },
+      {
+        "id": "48e83a4c-c602-494a-80cd-e2f4b4dd701e",
+        "case_id": "48e83a4c-c602-494a-80cd-e2f4b4dd701e",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-EJ-5502"
+      },
+      {
+        "id": "f211f7a9-cf3b-432c-9ea0-1172cce14e9d",
+        "case_id": "f211f7a9-cf3b-432c-9ea0-1172cce14e9d",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-G9-7510"
+      },
+      {
+        "id": "490e84ed-3c02-4593-990e-ade5c109df44",
+        "case_id": "490e84ed-3c02-4593-990e-ade5c109df44",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-2A-AAYF"
+      },
+      {
+        "id": "49197847-cc83-4ce1-8397-d09cea4c4928",
+        "case_id": "49197847-cc83-4ce1-8397-d09cea4c4928",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-2A-A8VL"
+      },
+      {
+        "id": "f25bae1a-8627-46a8-87af-07f82773c68a",
+        "case_id": "f25bae1a-8627-46a8-87af-07f82773c68a",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-HC-7747"
+      },
+      {
+        "id": "4a3d9efe-f24e-4135-8a70-e202651e7a81",
+        "case_id": "4a3d9efe-f24e-4135-8a70-e202651e7a81",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-EJ-5510"
+      },
+      {
+        "id": "f3e93819-a8f5-4d15-a416-3edd42aa52d1",
+        "case_id": "f3e93819-a8f5-4d15-a416-3edd42aa52d1",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-HC-A6HX"
+      },
+      {
+        "id": "4b9aa301-d2e3-47f3-b724-a34f420b2b6b",
+        "case_id": "4b9aa301-d2e3-47f3-b724-a34f420b2b6b",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-EJ-5517"
+      },
+      {
+        "id": "f4478172-7727-4680-9934-da755ab1825c",
+        "case_id": "f4478172-7727-4680-9934-da755ab1825c",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-EJ-A7NF"
+      },
+      {
+        "id": "4bc71292-60bb-4b63-86c1-0fe021083804",
+        "case_id": "4bc71292-60bb-4b63-86c1-0fe021083804",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-EJ-7784"
+      },
+      {
+        "id": "f4e17ba1-f14f-480e-8fe3-415909fc320a",
+        "case_id": "f4e17ba1-f14f-480e-8fe3-415909fc320a",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-G9-7525"
+      },
+      {
+        "id": "f4e9a9f9-263c-4ced-a8fb-6cb0fb088983",
+        "case_id": "f4e9a9f9-263c-4ced-a8fb-6cb0fb088983",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-KK-A7AP"
+      },
+      {
+        "id": "4db62b98-abd4-4a7c-9fce-8bbda2aec8a3",
+        "case_id": "4db62b98-abd4-4a7c-9fce-8bbda2aec8a3",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-V1-A9Z7"
+      },
+      {
+        "id": "f59b9c65-46e8-4cc3-aa71-8844f6c2273c",
+        "case_id": "f59b9c65-46e8-4cc3-aa71-8844f6c2273c",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-G9-6351"
+      },
+      {
+        "id": "f6381367-142c-45d0-92b3-c1727d1813ce",
+        "case_id": "f6381367-142c-45d0-92b3-c1727d1813ce",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-HC-7744"
+      },
+      {
+        "id": "f6935f67-5c62-4774-8346-711f36f3b547",
+        "case_id": "f6935f67-5c62-4774-8346-711f36f3b547",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-V1-A9O9"
+      },
+      {
+        "id": "f6c61a22-a711-416d-9e65-6a1b957e5b2e",
+        "case_id": "f6c61a22-a711-416d-9e65-6a1b957e5b2e",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-CH-5768"
+      },
+      {
+        "id": "4fdc9f5a-7ba1-4f80-b3db-2b7cbe505217",
+        "case_id": "4fdc9f5a-7ba1-4f80-b3db-2b7cbe505217",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-TK-A8OK"
+      },
+      {
+        "id": "f7fc3f2e-c70e-460d-b34d-bb2ea423a0ae",
+        "case_id": "f7fc3f2e-c70e-460d-b34d-bb2ea423a0ae",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-V1-A8WL"
+      },
+      {
+        "id": "5313a055-c2d7-4cbd-a8c1-57ac85912d89",
+        "case_id": "5313a055-c2d7-4cbd-a8c1-57ac85912d89",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-EJ-5519"
+      },
+      {
+        "id": "f8a42feb-fbc9-4a13-bad5-1dcefca2a9bf",
+        "case_id": "f8a42feb-fbc9-4a13-bad5-1dcefca2a9bf",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-EJ-5511"
+      },
+      {
+        "id": "56353d9c-9578-4d62-9dcd-92d800efdea0",
+        "case_id": "56353d9c-9578-4d62-9dcd-92d800efdea0",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-X4-A8KQ"
+      },
+      {
+        "id": "f947b0bc-bdac-44e8-b5b9-ffae4147740a",
+        "case_id": "f947b0bc-bdac-44e8-b5b9-ffae4147740a",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-G9-6370"
+      },
+      {
+        "id": "56c88739-c076-42cc-a2cb-fd613ab567b5",
+        "case_id": "56c88739-c076-42cc-a2cb-fd613ab567b5",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-KK-A6E2"
+      },
+      {
+        "id": "f98366df-9616-41c0-a6b8-ec92dca7177a",
+        "case_id": "f98366df-9616-41c0-a6b8-ec92dca7177a",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-EJ-7797"
+      },
+      {
+        "id": "570ddfb3-2721-42b6-9604-2de6b6090031",
+        "case_id": "570ddfb3-2721-42b6-9604-2de6b6090031",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-QU-A6IO"
+      },
+      {
+        "id": "57284c88-b9aa-4455-a07f-7009e1732cfb",
+        "case_id": "57284c88-b9aa-4455-a07f-7009e1732cfb",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-HC-8212"
+      },
+      {
+        "id": "5828401b-0901-4a73-9d0c-1e85d3431475",
+        "case_id": "5828401b-0901-4a73-9d0c-1e85d3431475",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-CH-5738"
+      },
+      {
+        "id": "fb7e9935-32a2-422b-8004-88b827a686c2",
+        "case_id": "fb7e9935-32a2-422b-8004-88b827a686c2",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-HC-8262"
+      },
+      {
+        "id": "fc823ab7-9390-4c57-9883-3e32ee17e794",
+        "case_id": "fc823ab7-9390-4c57-9883-3e32ee17e794",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-KC-A7F6"
+      },
+      {
+        "id": "59207bcd-f127-481f-b576-8716da7d7d97",
+        "case_id": "59207bcd-f127-481f-b576-8716da7d7d97",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-G9-6336"
+      },
+      {
+        "id": "fcbd7b29-12da-44c8-b241-1388d1b15684",
+        "case_id": "fcbd7b29-12da-44c8-b241-1388d1b15684",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-V1-A9OL"
+      },
+      {
+        "id": "5a790086-4887-4d2b-9c28-0fdd5dd1f1fb",
+        "case_id": "5a790086-4887-4d2b-9c28-0fdd5dd1f1fb",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-2A-A8W3"
+      },
+      {
+        "id": "fd1aa612-df86-4d48-892d-2acebd76ea96",
+        "case_id": "fd1aa612-df86-4d48-892d-2acebd76ea96",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-EJ-5499"
+      },
+      {
+        "id": "5dc7e186-7e01-4a54-8ae8-350dace2297b",
+        "case_id": "5dc7e186-7e01-4a54-8ae8-350dace2297b",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-J4-A83I"
+      },
+      {
+        "id": "fe7b283c-9cf4-4be2-8a3a-251a81a8d78f",
+        "case_id": "fe7b283c-9cf4-4be2-8a3a-251a81a8d78f",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-YL-A8SF"
+      },
+      {
+        "id": "5e15dcc7-932e-4d9a-a765-bd5ff1cd7aea",
+        "case_id": "5e15dcc7-932e-4d9a-a765-bd5ff1cd7aea",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-XA-A8JR"
+      },
+      {
+        "id": "ff52fa2f-bd12-4de0-9f5c-cd330ffb5fb3",
+        "case_id": "ff52fa2f-bd12-4de0-9f5c-cd330ffb5fb3",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-YL-A8HL"
+      },
+      {
+        "id": "dee02265-d8dd-4379-ae08-72d72b03a570",
+        "case_id": "dee02265-d8dd-4379-ae08-72d72b03a570",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-EJ-5497"
+      },
+      {
+        "id": "aa1a3a43-2f9c-456c-ba74-81c29b9801cb",
+        "case_id": "aa1a3a43-2f9c-456c-ba74-81c29b9801cb",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-2A-AAYU"
+      },
+      {
+        "id": "aa252f78-ebf3-42f9-86af-bb6e57345706",
+        "case_id": "aa252f78-ebf3-42f9-86af-bb6e57345706",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-EJ-5503"
+      },
+      {
+        "id": "91c0d161-2b59-4b7a-8c19-6d26dea31849",
+        "case_id": "91c0d161-2b59-4b7a-8c19-6d26dea31849",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-2A-A8VO"
+      },
+      {
+        "id": "69fc0351-6496-46b5-be22-25b80c1dc4cc",
+        "case_id": "69fc0351-6496-46b5-be22-25b80c1dc4cc",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-V1-A9OY"
+      },
+      {
+        "id": "aae0fca8-99e9-4fde-a2e9-b0ea500737f8",
+        "case_id": "aae0fca8-99e9-4fde-a2e9-b0ea500737f8",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-EJ-A6RC"
+      },
+      {
+        "id": "17916c4e-febe-48c6-b475-ad29397425e8",
+        "case_id": "17916c4e-febe-48c6-b475-ad29397425e8",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-KK-A8IA"
+      },
+      {
+        "id": "3ba3d23d-67e2-4f38-9951-f5cfa1131f9f",
+        "case_id": "3ba3d23d-67e2-4f38-9951-f5cfa1131f9f",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-H9-A6BX"
+      },
+      {
+        "id": "e377f873-c0d1-4810-9f3d-e551723858e1",
+        "case_id": "e377f873-c0d1-4810-9f3d-e551723858e1",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-KK-A6E6"
+      },
+      {
+        "id": "ab540819-9531-4e99-868a-751649f25e6a",
+        "case_id": "ab540819-9531-4e99-868a-751649f25e6a",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-VN-A88Q"
+      },
+      {
+        "id": "0f01ec33-00a8-4188-a8f0-e90d46ad9bc7",
+        "case_id": "0f01ec33-00a8-4188-a8f0-e90d46ad9bc7",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-G9-7519"
+      },
+      {
+        "id": "ac67d0df-7dc0-4a1a-8b47-beec9b94de86",
+        "case_id": "ac67d0df-7dc0-4a1a-8b47-beec9b94de86",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-CH-5745"
+      },
+      {
+        "id": "aca312ab-6dbd-4183-8b22-8f37834f3426",
+        "case_id": "aca312ab-6dbd-4183-8b22-8f37834f3426",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-EJ-7125"
+      },
+      {
+        "id": "3971a2f0-7263-4cda-aa01-9a2ebb2c2ff2",
+        "case_id": "3971a2f0-7263-4cda-aa01-9a2ebb2c2ff2",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-HC-8260"
+      },
+      {
+        "id": "adf3c2f7-d5f9-41c3-bd8c-7f9f1f22ff73",
+        "case_id": "adf3c2f7-d5f9-41c3-bd8c-7f9f1f22ff73",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-EJ-5531"
+      },
+      {
+        "id": "b751083d-be6d-45da-be97-a6d41d8ebe97",
+        "case_id": "b751083d-be6d-45da-be97-a6d41d8ebe97",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-EJ-A8FO"
+      },
+      {
+        "id": "ae739a4a-e319-4d87-8330-14f2fbc8839d",
+        "case_id": "ae739a4a-e319-4d87-8330-14f2fbc8839d",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-ZG-A8QX"
+      },
+      {
+        "id": "000d566c-96c7-4f1c-b36e-fa2222467983",
+        "case_id": "000d566c-96c7-4f1c-b36e-fa2222467983",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-KK-A7B2"
+      },
+      {
+        "id": "007f9081-5093-4323-b4f8-cd510bf20705",
+        "case_id": "007f9081-5093-4323-b4f8-cd510bf20705",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-G9-6377"
+      },
+      {
+        "id": "b0669eec-6a1a-4618-ae23-ae0f9e9c266c",
+        "case_id": "b0669eec-6a1a-4618-ae23-ae0f9e9c266c",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-YL-A8S9"
+      },
+      {
+        "id": "b1bdaf2d-7d84-4409-9427-5390150bb96d",
+        "case_id": "b1bdaf2d-7d84-4409-9427-5390150bb96d",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-KK-A6DY"
+      },
+      {
+        "id": "00f0f7dd-71de-4e4f-b4b5-df860324f2e8",
+        "case_id": "00f0f7dd-71de-4e4f-b4b5-df860324f2e8",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-EJ-A8FP"
+      },
+      {
+        "id": "00f7f9d3-7a34-4a5b-9d19-38810dcabbba",
+        "case_id": "00f7f9d3-7a34-4a5b-9d19-38810dcabbba",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-J4-A67N"
+      },
+      {
+        "id": "03c66cf8-bc68-4ee1-a322-689a29b72262",
+        "case_id": "03c66cf8-bc68-4ee1-a322-689a29b72262",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-HC-7230"
+      },
+      {
+        "id": "b5268f49-2710-4d17-a78b-4a05412e8375",
+        "case_id": "b5268f49-2710-4d17-a78b-4a05412e8375",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-G9-6347"
+      },
+      {
+        "id": "0730216b-c201-443c-9092-81e23fd13c6c",
+        "case_id": "0730216b-c201-443c-9092-81e23fd13c6c",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-HC-7742"
+      },
+      {
+        "id": "b6f54bdc-9b1b-4465-a6e3-f0524885e10e",
+        "case_id": "b6f54bdc-9b1b-4465-a6e3-f0524885e10e",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-HC-A8CY"
+      },
+      {
+        "id": "084ac674-f4cf-4a4a-a6a2-687c05c272ea",
+        "case_id": "084ac674-f4cf-4a4a-a6a2-687c05c272ea",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-G9-A9S0"
+      },
+      {
+        "id": "b7c8ca4c-8d9c-4c5b-99ee-2fcebe4f70e6",
+        "case_id": "b7c8ca4c-8d9c-4c5b-99ee-2fcebe4f70e6",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-YL-A8HO"
+      },
+      {
+        "id": "08f11bdd-d665-45ab-b1a2-5485d91922c2",
+        "case_id": "08f11bdd-d665-45ab-b1a2-5485d91922c2",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-EJ-A46F"
+      },
+      {
+        "id": "ba0c9096-5f35-4f0a-ae98-ee1a695b55f0",
+        "case_id": "ba0c9096-5f35-4f0a-ae98-ee1a695b55f0",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-EJ-5527"
+      },
+      {
+        "id": "bb8e6886-edc7-4127-a85b-c4f3769b6681",
+        "case_id": "bb8e6886-edc7-4127-a85b-c4f3769b6681",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-HC-A4ZV"
+      },
+      {
+        "id": "bcc94953-ce79-428e-99c1-632e42c1b9bc",
+        "case_id": "bcc94953-ce79-428e-99c1-632e42c1b9bc",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-G9-6353"
+      },
+      {
+        "id": "0afa0e02-daae-47e6-9ccb-9de8e4feb73c",
+        "case_id": "0afa0e02-daae-47e6-9ccb-9de8e4feb73c",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-HC-A8D0"
+      },
+      {
+        "id": "bdd4fefa-512a-4720-9f9e-11eb3892fe3c",
+        "case_id": "bdd4fefa-512a-4720-9f9e-11eb3892fe3c",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-XJ-A83F"
+      },
+      {
+        "id": "0c459149-0dfe-4206-b50b-db79180ebb57",
+        "case_id": "0c459149-0dfe-4206-b50b-db79180ebb57",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-G9-6494"
+      },
+      {
+        "id": "0d498226-e22a-44a4-9ef8-1da8e83fa55b",
+        "case_id": "0d498226-e22a-44a4-9ef8-1da8e83fa55b",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-EJ-A7NH"
+      },
+      {
+        "id": "bf462e14-f9e8-4531-905d-1fb59d9088cb",
+        "case_id": "bf462e14-f9e8-4531-905d-1fb59d9088cb",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-KK-A7AV"
+      },
+      {
+        "id": "0fb599ce-5e10-4571-8160-4f5160791a3f",
+        "case_id": "0fb599ce-5e10-4571-8160-4f5160791a3f",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-KK-A6E5"
+      },
+      {
+        "id": "105e12bf-4f39-4d7a-870f-fbc329ee210a",
+        "case_id": "105e12bf-4f39-4d7a-870f-fbc329ee210a",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-HC-A76X"
+      },
+      {
+        "id": "c03ae0f2-dde3-47e8-a046-ce85c86dd77d",
+        "case_id": "c03ae0f2-dde3-47e8-a046-ce85c86dd77d",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-J9-A52D"
+      },
+      {
+        "id": "10fbe481-f111-4f88-ae45-4d67cb265567",
+        "case_id": "10fbe481-f111-4f88-ae45-4d67cb265567",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-HC-7079"
+      },
+      {
+        "id": "c28f931f-5ab2-4899-9fe9-54024f082d92",
+        "case_id": "c28f931f-5ab2-4899-9fe9-54024f082d92",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-EJ-5512"
+      },
+      {
+        "id": "11882dac-3ba3-40fa-8af4-174cba77881a",
+        "case_id": "11882dac-3ba3-40fa-8af4-174cba77881a",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-VP-A879"
+      },
+      {
+        "id": "c3a509c6-35a6-4d17-a9fd-0aa8884b33a0",
+        "case_id": "c3a509c6-35a6-4d17-a9fd-0aa8884b33a0",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-G9-6373"
+      },
+      {
+        "id": "12d2b93e-a033-4b36-ae81-c15879eb40bd",
+        "case_id": "12d2b93e-a033-4b36-ae81-c15879eb40bd",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-XK-AAIR"
+      },
+      {
+        "id": "c46022f8-b122-4367-836b-ec1ae641a87d",
+        "case_id": "c46022f8-b122-4367-836b-ec1ae641a87d",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-G9-6332"
+      },
+      {
+        "id": "13ce70a8-785c-4b59-b073-41922cb201f9",
+        "case_id": "13ce70a8-785c-4b59-b073-41922cb201f9",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-EJ-5509"
+      },
+      {
+        "id": "1426b4bf-f4a5-477c-bbbb-e0e656549764",
+        "case_id": "1426b4bf-f4a5-477c-bbbb-e0e656549764",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-EJ-7782"
+      },
+      {
+        "id": "c506fae4-7c0a-4705-8e80-5bcc122a8a32",
+        "case_id": "c506fae4-7c0a-4705-8e80-5bcc122a8a32",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-YL-A8SP"
+      },
+      {
+        "id": "1583aea0-5d69-4165-9bef-d5bfdddf3a65",
+        "case_id": "1583aea0-5d69-4165-9bef-d5bfdddf3a65",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-M7-A71Y"
+      },
+      {
+        "id": "c5f8c89c-ef69-42f4-9b37-5b552fccdf4b",
+        "case_id": "c5f8c89c-ef69-42f4-9b37-5b552fccdf4b",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-YL-A8SI"
+      },
+      {
+        "id": "17c0ce0f-8227-4119-9b39-ea8db18f5f4b",
+        "case_id": "17c0ce0f-8227-4119-9b39-ea8db18f5f4b",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-VP-A87B"
+      },
+      {
+        "id": "181c6d37-9d8d-4ffa-827b-e3785450ff88",
+        "case_id": "181c6d37-9d8d-4ffa-827b-e3785450ff88",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-EJ-7783"
+      },
+      {
+        "id": "c8fab4a7-fd7e-4d5e-a330-18c7e148b9d0",
+        "case_id": "c8fab4a7-fd7e-4d5e-a330-18c7e148b9d0",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-EJ-A7NN"
+      },
+      {
+        "id": "18b8ad7f-0f39-4853-ae13-5b13aa5e6f7d",
+        "case_id": "18b8ad7f-0f39-4853-ae13-5b13aa5e6f7d",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-V1-A9OT"
+      },
+      {
+        "id": "cccdd4a2-ebf0-482d-b71c-9fe44414eec6",
+        "case_id": "cccdd4a2-ebf0-482d-b71c-9fe44414eec6",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-YL-A8SR"
+      },
+      {
+        "id": "19cf56b2-a85b-43e7-971f-5680b9b1a67a",
+        "case_id": "19cf56b2-a85b-43e7-971f-5680b9b1a67a",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-EJ-5515"
+      },
+      {
+        "id": "ce2b7e17-424e-4954-8a68-19d7f98d2e7e",
+        "case_id": "ce2b7e17-424e-4954-8a68-19d7f98d2e7e",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-G9-6496"
+      },
+      {
+        "id": "1bcb1132-a9fc-4f03-bbed-abaf80c7a24a",
+        "case_id": "1bcb1132-a9fc-4f03-bbed-abaf80c7a24a",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-YL-A9WH"
+      },
+      {
+        "id": "cecf4ee9-7610-4f47-a825-7fde8233b75d",
+        "case_id": "cecf4ee9-7610-4f47-a825-7fde8233b75d",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-KK-A7AQ"
+      },
+      {
+        "id": "1d2c5f72-cdca-4cc8-8a96-2abe10207356",
+        "case_id": "1d2c5f72-cdca-4cc8-8a96-2abe10207356",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-ZG-A9LN"
+      },
+      {
+        "id": "cfcf057a-00fe-4603-a720-586712b75803",
+        "case_id": "cfcf057a-00fe-4603-a720-586712b75803",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-YL-A9WL"
+      },
+      {
+        "id": "d05681cc-dffa-44d0-b6a1-0a99a4ce3be5",
+        "case_id": "d05681cc-dffa-44d0-b6a1-0a99a4ce3be5",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-KK-A8II"
+      },
+      {
+        "id": "1e3c1d8f-b3c9-47be-89e4-22e6b16ed2ae",
+        "case_id": "1e3c1d8f-b3c9-47be-89e4-22e6b16ed2ae",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-KK-A8IG"
+      },
+      {
+        "id": "1ea3b879-5451-49fb-b930-16e9b5627f18",
+        "case_id": "1ea3b879-5451-49fb-b930-16e9b5627f18",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-EJ-5505"
+      },
+      {
+        "id": "d1b31524-8034-4fce-b14e-1cef33c26ca5",
+        "case_id": "d1b31524-8034-4fce-b14e-1cef33c26ca5",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-QU-A6IM"
+      },
+      {
+        "id": "1fd06207-54e0-4aba-819c-c7f671871f39",
+        "case_id": "1fd06207-54e0-4aba-819c-c7f671871f39",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-EJ-5516"
+      },
+      {
+        "id": "d39d1a49-fcc0-4f2c-9338-df904e7f6a09",
+        "case_id": "d39d1a49-fcc0-4f2c-9338-df904e7f6a09",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-G9-6339"
+      },
+      {
+        "id": "214884ef-a932-4fc3-b6ff-16ce5164da3e",
+        "case_id": "214884ef-a932-4fc3-b6ff-16ce5164da3e",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-EJ-5522"
+      },
+      {
+        "id": "d4dc7c5c-45b3-4741-b0c1-fee477da2ef4",
+        "case_id": "d4dc7c5c-45b3-4741-b0c1-fee477da2ef4",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-V1-A9OF"
+      },
+      {
+        "id": "d4f4ddc1-cfd7-4c57-ade6-4f32cb7ffd85",
+        "case_id": "d4f4ddc1-cfd7-4c57-ade6-4f32cb7ffd85",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-KK-A8IK"
+      },
+      {
+        "id": "23ebc73d-be3b-42f8-9390-bf18a21afc5c",
+        "case_id": "23ebc73d-be3b-42f8-9390-bf18a21afc5c",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-YL-A8SL"
+      },
+      {
+        "id": "d57d3254-d8f3-4ca2-8b31-790d3ac9a63d",
+        "case_id": "d57d3254-d8f3-4ca2-8b31-790d3ac9a63d",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-EJ-8474"
+      },
+      {
+        "id": "25c669b3-4d4a-4142-a403-677be8522875",
+        "case_id": "25c669b3-4d4a-4142-a403-677be8522875",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-KK-A6E7"
+      },
+      {
+        "id": "d7763066-fb06-4519-9188-5de7dd12fdb7",
+        "case_id": "d7763066-fb06-4519-9188-5de7dd12fdb7",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-EJ-7218"
+      },
+      {
+        "id": "d7e22af5-88aa-4a83-985c-1d346dff652d",
+        "case_id": "d7e22af5-88aa-4a83-985c-1d346dff652d",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-YL-A9WY"
+      },
+      {
+        "id": "270447ca-19ee-45a2-982e-032325dab05f",
+        "case_id": "270447ca-19ee-45a2-982e-032325dab05f",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-HC-8257"
+      },
+      {
+        "id": "27953774-e97b-48e7-b966-1ec1e9c830b4",
+        "case_id": "27953774-e97b-48e7-b966-1ec1e9c830b4",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-G9-A9S7"
+      },
+      {
+        "id": "d8f56d75-51ab-4a86-a502-c86e1dcd1eff",
+        "case_id": "d8f56d75-51ab-4a86-a502-c86e1dcd1eff",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-CH-5752"
+      },
+      {
+        "id": "2919afa2-3fee-43bd-ae68-e70718e73608",
+        "case_id": "2919afa2-3fee-43bd-ae68-e70718e73608",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-YL-A8SA"
+      },
+      {
+        "id": "2a51e1c2-8a8f-4df3-bcc6-7df94a47d94d",
+        "case_id": "2a51e1c2-8a8f-4df3-bcc6-7df94a47d94d",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-KK-A8IL"
+      },
+      {
+        "id": "daa9292e-8012-4aa2-8221-ad65fb1c7b78",
+        "case_id": "daa9292e-8012-4aa2-8221-ad65fb1c7b78",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-ZG-A8QZ"
+      },
+      {
+        "id": "2c48b1bf-4e49-4869-874b-f08787fa04b5",
+        "case_id": "2c48b1bf-4e49-4869-874b-f08787fa04b5",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-G9-6338"
+      },
+      {
+        "id": "db4793dc-cd45-4b81-93ce-8322031c2aa3",
+        "case_id": "db4793dc-cd45-4b81-93ce-8322031c2aa3",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-HC-A631"
+      },
+      {
+        "id": "2d350c73-2a0b-4a3c-8d30-c6fcf6c3ffba",
+        "case_id": "2d350c73-2a0b-4a3c-8d30-c6fcf6c3ffba",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-HC-7750"
+      },
+      {
+        "id": "dc20ecf0-2807-4675-a7fd-8ead1cee7ea0",
+        "case_id": "dc20ecf0-2807-4675-a7fd-8ead1cee7ea0",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-VP-A87E"
+      },
+      {
+        "id": "2dee4bd8-b00e-4f8a-bfea-5d8d1a068202",
+        "case_id": "2dee4bd8-b00e-4f8a-bfea-5d8d1a068202",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-CH-5743"
+      },
+      {
+        "id": "dcf383d5-b25a-4ea9-a3f4-4d7ea5ddd9ef",
+        "case_id": "dcf383d5-b25a-4ea9-a3f4-4d7ea5ddd9ef",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-KK-A6E4"
+      },
+      {
+        "id": "2eccaabe-0783-4596-b674-d59846373a1d",
+        "case_id": "2eccaabe-0783-4596-b674-d59846373a1d",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-J9-A52B"
+      },
+      {
+        "id": "2f231b79-84bc-4256-bf26-7ce64083d438",
+        "case_id": "2f231b79-84bc-4256-bf26-7ce64083d438",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-KK-A7AW"
+      },
+      {
+        "id": "deceb7df-6edc-41f0-99aa-c4ac7e764074",
+        "case_id": "deceb7df-6edc-41f0-99aa-c4ac7e764074",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-J9-A8CM"
+      },
+      {
+        "id": "305b0b57-5952-43c7-9063-7bcd954eb44d",
+        "case_id": "305b0b57-5952-43c7-9063-7bcd954eb44d",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-ZG-A9N3"
+      },
+      {
+        "id": "df3362cb-0f6b-412e-8af4-c5606526be17",
+        "case_id": "df3362cb-0f6b-412e-8af4-c5606526be17",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-EJ-A65B"
+      },
+      {
+        "id": "30f623a3-dae7-41da-ab10-8786d094209e",
+        "case_id": "30f623a3-dae7-41da-ab10-8786d094209e",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-FC-A4JI"
+      },
+      {
+        "id": "30fa311b-05a2-43e4-9edc-02b327898132",
+        "case_id": "30fa311b-05a2-43e4-9edc-02b327898132",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-KK-A8I8"
+      },
+      {
+        "id": "df4a7caa-6289-4157-8cb4-6ce8784e7506",
+        "case_id": "df4a7caa-6289-4157-8cb4-6ce8784e7506",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-EJ-8469"
+      },
+      {
+        "id": "338fe754-fc4a-4294-ba15-42d4c7c9ac10",
+        "case_id": "338fe754-fc4a-4294-ba15-42d4c7c9ac10",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-V1-A9ZR"
+      },
+      {
+        "id": "dffc3917-bf06-4c3d-b03a-ca54fe5c2e79",
+        "case_id": "dffc3917-bf06-4c3d-b03a-ca54fe5c2e79",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-QU-A6IL"
+      },
+      {
+        "id": "348c2bf3-2146-4990-9adf-fa6968b4f072",
+        "case_id": "348c2bf3-2146-4990-9adf-fa6968b4f072",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-ZG-A9ND"
+      },
+      {
+        "id": "351239db-52d3-4ab5-bd4f-8feaa6701ba1",
+        "case_id": "351239db-52d3-4ab5-bd4f-8feaa6701ba1",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-YL-A8HK"
+      },
+      {
+        "id": "35243518-b086-4d76-a336-8c61a14f9ded",
+        "case_id": "35243518-b086-4d76-a336-8c61a14f9ded",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-VN-A88M"
+      },
+      {
+        "id": "e27bc39b-54f1-47b5-ac8f-3245dce690f4",
+        "case_id": "e27bc39b-54f1-47b5-ac8f-3245dce690f4",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-M7-A723"
+      },
+      {
+        "id": "36b87d12-9f96-460f-a3b5-a4c08cbf5b07",
+        "case_id": "36b87d12-9f96-460f-a3b5-a4c08cbf5b07",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-G9-6343"
+      },
+      {
+        "id": "e2b33861-2247-413f-b2e5-9be3b604666c",
+        "case_id": "e2b33861-2247-413f-b2e5-9be3b604666c",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-HC-7233"
+      },
+      {
+        "id": "39a5aebe-acad-4141-aa5a-66228c4049f8",
+        "case_id": "39a5aebe-acad-4141-aa5a-66228c4049f8",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-XJ-A9DI"
+      },
+      {
+        "id": "3a6e0fd1-6e06-4002-9d1a-88edf7944567",
+        "case_id": "3a6e0fd1-6e06-4002-9d1a-88edf7944567",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-KC-A7F5"
+      },
+      {
+        "id": "e5e4d3b6-8e58-4dcf-8f67-a00e656a8e27",
+        "case_id": "e5e4d3b6-8e58-4dcf-8f67-a00e656a8e27",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-EJ-5506"
+      },
+      {
+        "id": "3d92b872-a76a-49cd-9fd5-7993e78d2fb0",
+        "case_id": "3d92b872-a76a-49cd-9fd5-7993e78d2fb0",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-V1-A9ZI"
+      },
+      {
+        "id": "3da2e90e-6450-4286-8c74-08dbecbfd788",
+        "case_id": "3da2e90e-6450-4286-8c74-08dbecbfd788",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-HC-7081"
+      },
+      {
+        "id": "e8f39c9e-0f1a-401c-9055-762b52bc77c7",
+        "case_id": "e8f39c9e-0f1a-401c-9055-762b52bc77c7",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-ZG-A9L5"
+      },
+      {
+        "id": "3f3128c9-1072-443c-b6ae-8b63166fa9a4",
+        "case_id": "3f3128c9-1072-443c-b6ae-8b63166fa9a4",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-KC-A7FA"
+      },
+      {
+        "id": "e9a4c770-665f-454b-81f7-b8ae3f1e154e",
+        "case_id": "e9a4c770-665f-454b-81f7-b8ae3f1e154e",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-VN-A88N"
+      },
+      {
+        "id": "3fa3cffe-40f1-4853-9cbb-54a99ffd6108",
+        "case_id": "3fa3cffe-40f1-4853-9cbb-54a99ffd6108",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-M7-A722"
+      },
+      {
+        "id": "ea953ce5-7082-41ff-8e38-760fe4100414",
+        "case_id": "ea953ce5-7082-41ff-8e38-760fe4100414",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-VP-AA1N"
+      },
+      {
+        "id": "3fae5b76-9e22-4eab-a7fc-13139b2b97c4",
+        "case_id": "3fae5b76-9e22-4eab-a7fc-13139b2b97c4",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-HC-A6AN"
+      },
+      {
+        "id": "eb80244a-5f20-49a8-8f73-e92c14395895",
+        "case_id": "eb80244a-5f20-49a8-8f73-e92c14395895",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-J9-A8CK"
+      },
+      {
+        "id": "4045f40b-d42a-4598-9ee2-0d371a776d3f",
+        "case_id": "4045f40b-d42a-4598-9ee2-0d371a776d3f",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-HC-A6AO"
+      },
+      {
+        "id": "4048c139-1329-4e6a-8d2f-c0aa104a68ee",
+        "case_id": "4048c139-1329-4e6a-8d2f-c0aa104a68ee",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-EJ-5524"
+      },
+      {
+        "id": "ecade538-f882-4f29-a363-7acb89fd0576",
+        "case_id": "ecade538-f882-4f29-a363-7acb89fd0576",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-H9-7775"
+      },
+      {
+        "id": "ed7084f8-060c-4780-8b35-a03a5eab9684",
+        "case_id": "ed7084f8-060c-4780-8b35-a03a5eab9684",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-XK-AAJU"
+      },
+      {
+        "id": "42fa9774-9471-4707-8f6f-8041b34c49e4",
+        "case_id": "42fa9774-9471-4707-8f6f-8041b34c49e4",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-YL-A8SC"
+      },
+      {
+        "id": "eec48399-5660-4b25-8d34-191b54315c72",
+        "case_id": "eec48399-5660-4b25-8d34-191b54315c72",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-EJ-5526"
+      },
+      {
+        "id": "433d1441-6d5b-4455-a731-65f172bb016d",
+        "case_id": "433d1441-6d5b-4455-a731-65f172bb016d",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-HC-A9TH"
+      },
+      {
+        "id": "eff14fed-8a21-41c5-8ed3-75346a06e44e",
+        "case_id": "eff14fed-8a21-41c5-8ed3-75346a06e44e",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-YL-A8HM"
+      },
+      {
+        "id": "444e78f7-1221-4882-ade2-7e45d828ea2a",
+        "case_id": "444e78f7-1221-4882-ade2-7e45d828ea2a",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-M7-A720"
+      },
+      {
+        "id": "f06c1ef4-bedd-4025-abf8-06f5e9c0821a",
+        "case_id": "f06c1ef4-bedd-4025-abf8-06f5e9c0821a",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-ZG-A8QW"
+      },
+      {
+        "id": "47abcd03-c6ff-4777-ac26-f880474092ff",
+        "case_id": "47abcd03-c6ff-4777-ac26-f880474092ff",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-4L-AA1F"
+      },
+      {
+        "id": "f16ce517-d51d-499a-a4c4-a6844fefa52c",
+        "case_id": "f16ce517-d51d-499a-a4c4-a6844fefa52c",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-HC-8261"
+      },
+      {
+        "id": "48f36fbe-356a-40af-b81f-8ea0b1369bab",
+        "case_id": "48f36fbe-356a-40af-b81f-8ea0b1369bab",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-VP-A878"
+      },
+      {
+        "id": "f228ef91-ecfb-4d1e-8e6a-b43d2185270e",
+        "case_id": "f228ef91-ecfb-4d1e-8e6a-b43d2185270e",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-G9-6362"
+      },
+      {
+        "id": "494a8495-8d10-4a8f-8664-f68ac339c889",
+        "case_id": "494a8495-8d10-4a8f-8664-f68ac339c889",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-YL-A8S8"
+      },
+      {
+        "id": "f3aa40b9-7b4d-465a-b7c9-591aebdb56c2",
+        "case_id": "f3aa40b9-7b4d-465a-b7c9-591aebdb56c2",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-HC-7817"
+      },
+      {
+        "id": "f3ec5bf3-97ae-4033-91a6-084a1aa152a4",
+        "case_id": "f3ec5bf3-97ae-4033-91a6-084a1aa152a4",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-YL-A8SJ"
+      },
+      {
+        "id": "f4aebd64-a356-4c05-b847-6dd28cf26339",
+        "case_id": "f4aebd64-a356-4c05-b847-6dd28cf26339",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-KK-A7AY"
+      },
+      {
+        "id": "4c197d76-daf6-474d-b561-ded42905f52a",
+        "case_id": "4c197d76-daf6-474d-b561-ded42905f52a",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-KK-A59Y"
+      },
+      {
+        "id": "4d5d61c4-2e64-422e-aba6-ec098f40eeec",
+        "case_id": "4d5d61c4-2e64-422e-aba6-ec098f40eeec",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-M7-A71Z"
+      },
+      {
+        "id": "f4f81316-c99a-4a88-aa6c-e66fc5d60c53",
+        "case_id": "f4f81316-c99a-4a88-aa6c-e66fc5d60c53",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-V1-A8MJ"
+      },
+      {
+        "id": "4e76de8e-cb0d-4b83-8ab4-53bc67a7a9d3",
+        "case_id": "4e76de8e-cb0d-4b83-8ab4-53bc67a7a9d3",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-CH-5744"
+      },
+      {
+        "id": "4ef24cca-976b-4c2f-8810-4339967da570",
+        "case_id": "4ef24cca-976b-4c2f-8810-4339967da570",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-EJ-A6RA"
+      },
+      {
+        "id": "4f9f1fce-d96e-407b-a873-56129985aece",
+        "case_id": "4f9f1fce-d96e-407b-a873-56129985aece",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-CH-5737"
+      },
+      {
+        "id": "f7238e82-a394-4a7c-8514-6241d0aa17e3",
+        "case_id": "f7238e82-a394-4a7c-8514-6241d0aa17e3",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-FC-A5OB"
+      },
+      {
+        "id": "5277f041-f9fb-47c2-83f3-65ad230dd40a",
+        "case_id": "5277f041-f9fb-47c2-83f3-65ad230dd40a",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-XQ-A8TB"
+      },
+      {
+        "id": "f82d53b1-3df8-4249-a615-464c9f4e0a32",
+        "case_id": "f82d53b1-3df8-4249-a615-464c9f4e0a32",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-EJ-5514"
+      },
+      {
+        "id": "5447a0e0-80ca-40fb-8233-504fde51f22c",
+        "case_id": "5447a0e0-80ca-40fb-8233-504fde51f22c",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-KK-A7B4"
+      },
+      {
+        "id": "f8b98552-ae2a-4609-9929-7864485b3c51",
+        "case_id": "f8b98552-ae2a-4609-9929-7864485b3c51",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-M7-A724"
+      },
+      {
+        "id": "56829c8d-7bb7-4aac-999f-b1353db4915d",
+        "case_id": "56829c8d-7bb7-4aac-999f-b1353db4915d",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-X4-A8KS"
+      },
+      {
+        "id": "f97fed28-fdf3-4c82-8b6d-1015848b80dc",
+        "case_id": "f97fed28-fdf3-4c82-8b6d-1015848b80dc",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-FC-A6HD"
+      },
+      {
+        "id": "56df9de6-613d-44ce-8827-9213cc6c8b56",
+        "case_id": "56df9de6-613d-44ce-8827-9213cc6c8b56",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-V1-A8MF"
+      },
+      {
+        "id": "f9f136a5-3ccb-42b3-ba60-c667fbb0846d",
+        "case_id": "f9f136a5-3ccb-42b3-ba60-c667fbb0846d",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-J4-A6G1"
+      },
+      {
+        "id": "fadd80e3-8087-4494-a8f0-1caa92acbb67",
+        "case_id": "fadd80e3-8087-4494-a8f0-1caa92acbb67",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-J4-AATV"
+      },
+      {
+        "id": "fb447e0f-7cf0-49bf-8b15-aae932f8094d",
+        "case_id": "fb447e0f-7cf0-49bf-8b15-aae932f8094d",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-HC-8266"
+      },
+      {
+        "id": "582d1177-73b0-4a9c-8505-70d6b402bd01",
+        "case_id": "582d1177-73b0-4a9c-8505-70d6b402bd01",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-HC-7209"
+      },
+      {
+        "id": "58c27028-f37c-4cf1-b134-bd9aec9bf170",
+        "case_id": "58c27028-f37c-4cf1-b134-bd9aec9bf170",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-XJ-A83H"
+      },
+      {
+        "id": "fca0331b-8096-40e8-b292-d438370c37c9",
+        "case_id": "fca0331b-8096-40e8-b292-d438370c37c9",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-M7-A725"
+      },
+      {
+        "id": "5a4d8694-947d-45e9-9a21-6de0f63837f0",
+        "case_id": "5a4d8694-947d-45e9-9a21-6de0f63837f0",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-XJ-A9DK"
+      },
+      {
+        "id": "fcf64b55-5c4f-4d82-ac6a-4713d01143cb",
+        "case_id": "fcf64b55-5c4f-4d82-ac6a-4713d01143cb",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-VN-A88R"
+      },
+      {
+        "id": "5b12458b-f5d7-41de-a4e1-26d39dca9b17",
+        "case_id": "5b12458b-f5d7-41de-a4e1-26d39dca9b17",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-J9-A8CP"
+      },
+      {
+        "id": "5d8c9b90-8d40-4cdd-900d-03681bc2d2a6",
+        "case_id": "5d8c9b90-8d40-4cdd-900d-03681bc2d2a6",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-XJ-A9DQ"
+      },
+      {
+        "id": "fd50ff41-ec9d-4db1-a673-36ba0ca1eac8",
+        "case_id": "fd50ff41-ec9d-4db1-a673-36ba0ca1eac8",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-HC-7080"
+      },
+      {
+        "id": "5dd69c3e-9a3d-450c-9f10-10b4d6daeeba",
+        "case_id": "5dd69c3e-9a3d-450c-9f10-10b4d6daeeba",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-HC-7075"
+      },
+      {
+        "id": "ff49e0f9-4007-4761-845e-b676b0fc9646",
+        "case_id": "ff49e0f9-4007-4761-845e-b676b0fc9646",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-HC-A48F"
+      },
+      {
+        "id": "5e2ff1e6-87bc-4b91-a959-f0f553af4e27",
+        "case_id": "5e2ff1e6-87bc-4b91-a959-f0f553af4e27",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-EJ-7318"
+      },
+      {
+        "id": "5e3d0e50-afb4-4d2d-b4d9-5f320c573ba3",
+        "case_id": "5e3d0e50-afb4-4d2d-b4d9-5f320c573ba3",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-YL-A8SO"
+      },
+      {
+        "id": "5e7a7629-800a-45c4-b4cb-314a853a1bec",
+        "case_id": "5e7a7629-800a-45c4-b4cb-314a853a1bec",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-ZG-A9L2"
+      },
+      {
+        "id": "5f69ca7d-f8e0-4f5b-9987-1e5c234eb759",
+        "case_id": "5f69ca7d-f8e0-4f5b-9987-1e5c234eb759",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-HC-A76W"
+      },
+      {
+        "id": "607200f5-df80-4f5d-90fb-fdc455a7415b",
+        "case_id": "607200f5-df80-4f5d-90fb-fdc455a7415b",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-EJ-5507"
+      },
+      {
+        "id": "607fd22b-f281-431b-848e-ae01e69567e2",
+        "case_id": "607fd22b-f281-431b-848e-ae01e69567e2",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-EJ-A7NG"
+      },
+      {
+        "id": "666d8b0c-593f-4ec3-b16a-2dadbead8c32",
+        "case_id": "666d8b0c-593f-4ec3-b16a-2dadbead8c32",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-YL-A8HJ"
+      },
+      {
+        "id": "6755c231-355f-4cc3-85f1-6306c7f5d44b",
+        "case_id": "6755c231-355f-4cc3-85f1-6306c7f5d44b",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-EJ-5496"
+      },
+      {
+        "id": "67cd72e2-a4cf-48e4-943e-406c252f056a",
+        "case_id": "67cd72e2-a4cf-48e4-943e-406c252f056a",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-J4-A67M"
+      },
+      {
+        "id": "6845076e-e940-4437-8618-81db4a447544",
+        "case_id": "6845076e-e940-4437-8618-81db4a447544",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-G9-6365"
+      },
+      {
+        "id": "68fc3693-0910-4ee8-8997-99c6333b65f4",
+        "case_id": "68fc3693-0910-4ee8-8997-99c6333b65f4",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-EJ-7317"
+      },
+      {
+        "id": "69174712-af41-422d-952a-d8d0d16d7182",
+        "case_id": "69174712-af41-422d-952a-d8d0d16d7182",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-V1-A8ML"
+      },
+      {
+        "id": "698ce9a9-6512-4fb8-a574-a26ee259414c",
+        "case_id": "698ce9a9-6512-4fb8-a574-a26ee259414c",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-HC-7738"
+      },
+      {
+        "id": "6a5af80e-07ad-4cd3-aaab-5db1090835d9",
+        "case_id": "6a5af80e-07ad-4cd3-aaab-5db1090835d9",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-HC-7210"
+      },
+      {
+        "id": "6bbbe263-3632-4567-912c-95bc9940a1dd",
+        "case_id": "6bbbe263-3632-4567-912c-95bc9940a1dd",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-G9-6354"
+      },
+      {
+        "id": "6e3154d4-2ef6-403d-9de1-7b6233c4d505",
+        "case_id": "6e3154d4-2ef6-403d-9de1-7b6233c4d505",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-KK-A8I6"
+      },
+      {
+        "id": "6ef0fc2d-f274-4253-bec5-6dbd55953d76",
+        "case_id": "6ef0fc2d-f274-4253-bec5-6dbd55953d76",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-V1-A9OH"
+      },
+      {
+        "id": "6f4c1006-519d-4b16-8c96-690c63bea0b6",
+        "case_id": "6f4c1006-519d-4b16-8c96-690c63bea0b6",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-TP-A8TV"
+      },
+      {
+        "id": "701991da-6deb-41df-b9cc-e5049a886b5b",
+        "case_id": "701991da-6deb-41df-b9cc-e5049a886b5b",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-H9-A6BY"
+      },
+      {
+        "id": "70c6c3a0-b422-4541-a60f-355356a9a340",
+        "case_id": "70c6c3a0-b422-4541-a60f-355356a9a340",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-KK-A8IC"
+      },
+      {
+        "id": "716eb429-d7af-4d4f-bd8d-afcff1a323ee",
+        "case_id": "716eb429-d7af-4d4f-bd8d-afcff1a323ee",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-CH-5765"
+      },
+      {
+        "id": "717c0fd3-527b-4d5e-a9ab-0f141fcc84e8",
+        "case_id": "717c0fd3-527b-4d5e-a9ab-0f141fcc84e8",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-KK-A8ID"
+      },
+      {
+        "id": "720d77bc-58e3-42ee-aae7-5de586c2ac41",
+        "case_id": "720d77bc-58e3-42ee-aae7-5de586c2ac41",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-XK-AAJP"
+      },
+      {
+        "id": "721e76d0-4b1d-4e78-adb8-1344b8030062",
+        "case_id": "721e76d0-4b1d-4e78-adb8-1344b8030062",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-CH-5751"
+      },
+      {
+        "id": "7315bb0a-96a1-45ab-a704-b084d237cf5c",
+        "case_id": "7315bb0a-96a1-45ab-a704-b084d237cf5c",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-KK-A7B1"
+      },
+      {
+        "id": "73b7d4bc-6b56-4ae8-be7f-074745563bee",
+        "case_id": "73b7d4bc-6b56-4ae8-be7f-074745563bee",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-J4-AATZ"
+      },
+      {
+        "id": "73d4e806-2c15-4c9e-a978-106fb9494e82",
+        "case_id": "73d4e806-2c15-4c9e-a978-106fb9494e82",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-KK-A7B0"
+      },
+      {
+        "id": "73f875cb-bcfc-43ba-ab97-4e94caf836d4",
+        "case_id": "73f875cb-bcfc-43ba-ab97-4e94caf836d4",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-HC-7737"
+      },
+      {
+        "id": "743ffc51-d613-407f-b040-e99969c31802",
+        "case_id": "743ffc51-d613-407f-b040-e99969c31802",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-EJ-AB20"
+      },
+      {
+        "id": "74602e83-3ee3-4ee7-b05a-135fbdddcc5c",
+        "case_id": "74602e83-3ee3-4ee7-b05a-135fbdddcc5c",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-VN-A88L"
+      },
+      {
+        "id": "7466d120-6a6e-40a0-96d3-4979816d6278",
+        "case_id": "7466d120-6a6e-40a0-96d3-4979816d6278",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-FC-A66V"
+      },
+      {
+        "id": "74de01bd-30d9-45fc-841d-ed1c0d7446ba",
+        "case_id": "74de01bd-30d9-45fc-841d-ed1c0d7446ba",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-YJ-A8SW"
+      },
+      {
+        "id": "75a7afb5-66d5-47e3-8a8a-3e3a1e749a96",
+        "case_id": "75a7afb5-66d5-47e3-8a8a-3e3a1e749a96",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-2A-A8VV"
+      },
+      {
+        "id": "75d22d59-dec8-4f59-86c8-36b5e9f4fb0d",
+        "case_id": "75d22d59-dec8-4f59-86c8-36b5e9f4fb0d",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-VP-A876"
+      },
+      {
+        "id": "79601d90-b198-4b94-b60f-4cff329c7a10",
+        "case_id": "79601d90-b198-4b94-b60f-4cff329c7a10",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-CH-5739"
+      },
+      {
+        "id": "79ec7468-9aaf-4bb0-94c7-72be4f497868",
+        "case_id": "79ec7468-9aaf-4bb0-94c7-72be4f497868",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-EJ-5498"
+      },
+      {
+        "id": "7bc369b7-007b-4b10-bd92-5d326dabf675",
+        "case_id": "7bc369b7-007b-4b10-bd92-5d326dabf675",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-EJ-7330"
+      },
+      {
+        "id": "7c398299-d789-4185-adfa-194817877947",
+        "case_id": "7c398299-d789-4185-adfa-194817877947",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-VP-A87C"
+      },
+      {
+        "id": "7c40c747-5000-4f66-aab5-c53fb96337cb",
+        "case_id": "7c40c747-5000-4f66-aab5-c53fb96337cb",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-KC-A7FE"
+      },
+      {
+        "id": "7ce45134-5b1f-4ea7-ace9-7e463b034a43",
+        "case_id": "7ce45134-5b1f-4ea7-ace9-7e463b034a43",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-KK-A8I5"
+      },
+      {
+        "id": "7d0c6960-710f-42c7-889e-c3a7d4a30b3c",
+        "case_id": "7d0c6960-710f-42c7-889e-c3a7d4a30b3c",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-G9-7509"
+      },
+      {
+        "id": "7d931c19-1fce-4409-8a9c-9c65631ccbac",
+        "case_id": "7d931c19-1fce-4409-8a9c-9c65631ccbac",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-KK-A7AZ"
+      },
+      {
+        "id": "7dc62c0f-b82d-417f-89a7-4cb984a9d304",
+        "case_id": "7dc62c0f-b82d-417f-89a7-4cb984a9d304",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-V1-A9ZK"
+      },
+      {
+        "id": "7eea6fd7-733c-44eb-b4b7-50bb3a2628a0",
+        "case_id": "7eea6fd7-733c-44eb-b4b7-50bb3a2628a0",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-FC-A8O0"
+      },
+      {
+        "id": "7efc26b2-eff9-4f1e-9f4b-f26af072c84a",
+        "case_id": "7efc26b2-eff9-4f1e-9f4b-f26af072c84a",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-ZG-A9MC"
+      },
+      {
+        "id": "7fc65e49-0401-4a36-8800-fd87b7927fc1",
+        "case_id": "7fc65e49-0401-4a36-8800-fd87b7927fc1",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-VP-A872"
+      },
+      {
+        "id": "827caf2c-a94b-4eee-86b3-1155a16daf4a",
+        "case_id": "827caf2c-a94b-4eee-86b3-1155a16daf4a",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-KC-A7F3"
+      },
+      {
+        "id": "84a5d5fc-7350-4846-a1bc-8bfadbcff8dc",
+        "case_id": "84a5d5fc-7350-4846-a1bc-8bfadbcff8dc",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-XJ-A9DX"
+      },
+      {
+        "id": "854a481b-71a2-4f23-80aa-e91e9f4069b1",
+        "case_id": "854a481b-71a2-4f23-80aa-e91e9f4069b1",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-CH-5761"
+      },
+      {
+        "id": "8631bb5e-6d08-4c20-a85e-cb84f5dac290",
+        "case_id": "8631bb5e-6d08-4c20-a85e-cb84f5dac290",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-EJ-A65F"
+      },
+      {
+        "id": "86b82965-b19b-4285-b1a5-51a5d5267103",
+        "case_id": "86b82965-b19b-4285-b1a5-51a5d5267103",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-V1-A8X3"
+      },
+      {
+        "id": "8740555d-8bf0-40ba-b868-99eef27662a4",
+        "case_id": "8740555d-8bf0-40ba-b868-99eef27662a4",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-HC-8264"
+      },
+      {
+        "id": "87959988-bb25-47ee-afc1-9af92592bbe7",
+        "case_id": "87959988-bb25-47ee-afc1-9af92592bbe7",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-G9-7522"
+      },
+      {
+        "id": "88658b66-f293-4aff-9e33-05abfafd3b43",
+        "case_id": "88658b66-f293-4aff-9e33-05abfafd3b43",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-KC-A7FD"
+      },
+      {
+        "id": "88705b03-aa27-45c5-bef0-bb697799f9df",
+        "case_id": "88705b03-aa27-45c5-bef0-bb697799f9df",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-KK-A8IB"
+      },
+      {
+        "id": "88c87cce-4361-499c-9e3a-e9d9040af2db",
+        "case_id": "88c87cce-4361-499c-9e3a-e9d9040af2db",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-EJ-7314"
+      },
+      {
+        "id": "8990ce28-c671-4487-8dda-864f0675bbb3",
+        "case_id": "8990ce28-c671-4487-8dda-864f0675bbb3",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-KK-A6E8"
+      },
+      {
+        "id": "89a297be-ebb5-4b9f-8eda-0e548d14ad91",
+        "case_id": "89a297be-ebb5-4b9f-8eda-0e548d14ad91",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-HC-8256"
+      },
+      {
+        "id": "89afdebe-456e-4128-8902-1001876a2106",
+        "case_id": "89afdebe-456e-4128-8902-1001876a2106",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-HC-8216"
+      },
+      {
+        "id": "89b995ba-d13a-461b-ade4-d791844c1a0c",
+        "case_id": "89b995ba-d13a-461b-ade4-d791844c1a0c",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-KK-A8IH"
+      },
+      {
+        "id": "89c150cf-f60c-4f11-8f3e-384b0e0902f9",
+        "case_id": "89c150cf-f60c-4f11-8f3e-384b0e0902f9",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-EJ-A65J"
+      },
+      {
+        "id": "8a5f2d7f-835c-4726-b238-f82d6a7f25bd",
+        "case_id": "8a5f2d7f-835c-4726-b238-f82d6a7f25bd",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-CH-5792"
+      },
+      {
+        "id": "8ad78c4f-c84c-4f9e-88c9-42a05eb65498",
+        "case_id": "8ad78c4f-c84c-4f9e-88c9-42a05eb65498",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-G9-6348"
+      },
+      {
+        "id": "8bfac5b9-fa2b-4b6e-9537-e9d8a2f0d1dc",
+        "case_id": "8bfac5b9-fa2b-4b6e-9537-e9d8a2f0d1dc",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-EJ-A65G"
+      },
+      {
+        "id": "8c0d361f-eaab-4768-90f2-b7a610e2bbb1",
+        "case_id": "8c0d361f-eaab-4768-90f2-b7a610e2bbb1",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-2A-AAYO"
+      },
+      {
+        "id": "8cc7679d-b963-4b45-b3f8-dcf80ea6cc71",
+        "case_id": "8cc7679d-b963-4b45-b3f8-dcf80ea6cc71",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-J4-A83L"
+      },
+      {
+        "id": "8dc53431-44ab-485e-b4e6-c3d06509506d",
+        "case_id": "8dc53431-44ab-485e-b4e6-c3d06509506d",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-CH-5767"
+      },
+      {
+        "id": "8e1ff72b-f1db-4bf9-a8d3-f422e25a65e1",
+        "case_id": "8e1ff72b-f1db-4bf9-a8d3-f422e25a65e1",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-EJ-A65D"
+      },
+      {
+        "id": "8e5b1d47-7d92-4d28-8186-4176ada96672",
+        "case_id": "8e5b1d47-7d92-4d28-8186-4176ada96672",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-V1-A8WV"
+      },
+      {
+        "id": "9044098b-415d-4893-a682-3636f6b2b2db",
+        "case_id": "9044098b-415d-4893-a682-3636f6b2b2db",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-EJ-A8FS"
+      },
+      {
+        "id": "907b64d6-a26a-4092-a247-ac9af444d1c7",
+        "case_id": "907b64d6-a26a-4092-a247-ac9af444d1c7",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-HC-7212"
+      },
+      {
+        "id": "91e249a6-b0b0-487e-9fad-0e9f5798dcae",
+        "case_id": "91e249a6-b0b0-487e-9fad-0e9f5798dcae",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-HC-7740"
+      },
+      {
+        "id": "92252560-5984-41f6-a4b5-a3aa8654c0c8",
+        "case_id": "92252560-5984-41f6-a4b5-a3aa8654c0c8",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-HC-7077"
+      },
+      {
+        "id": "922e5166-85f5-4365-9c09-f8bdc1722da6",
+        "case_id": "922e5166-85f5-4365-9c09-f8bdc1722da6",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-HC-7736"
+      },
+      {
+        "id": "92f45022-ee76-418d-8f9e-c3509efda0c0",
+        "case_id": "92f45022-ee76-418d-8f9e-c3509efda0c0",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-VN-A943"
+      },
+      {
+        "id": "931b549f-b9f2-4e8d-83ed-ff663671883c",
+        "case_id": "931b549f-b9f2-4e8d-83ed-ff663671883c",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-2A-A8VT"
+      },
+      {
+        "id": "931feb14-3f69-41c1-8435-5fd4fb775bdf",
+        "case_id": "931feb14-3f69-41c1-8435-5fd4fb775bdf",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-HI-7171"
+      },
+      {
+        "id": "9357e8eb-1ce5-4c0f-a668-e5e7f3031d6c",
+        "case_id": "9357e8eb-1ce5-4c0f-a668-e5e7f3031d6c",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-ZG-A9LM"
+      },
+      {
+        "id": "93d10d8b-5f98-4d2c-8af3-11471385d4d4",
+        "case_id": "93d10d8b-5f98-4d2c-8af3-11471385d4d4",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-EJ-A46D"
+      },
+      {
+        "id": "93e78f4c-e74b-4675-8d2c-d641fa25d8f2",
+        "case_id": "93e78f4c-e74b-4675-8d2c-d641fa25d8f2",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-G9-7523"
+      },
+      {
+        "id": "942f1788-d977-4ac0-a177-659f9d4cd077",
+        "case_id": "942f1788-d977-4ac0-a177-659f9d4cd077",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-2A-A8VX"
+      },
+      {
+        "id": "94d6675e-27ae-4f34-9d53-6e19238eb01d",
+        "case_id": "94d6675e-27ae-4f34-9d53-6e19238eb01d",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-V1-A8MM"
+      },
+      {
+        "id": "962dd3d5-8501-4658-8cb9-2424b476124c",
+        "case_id": "962dd3d5-8501-4658-8cb9-2424b476124c",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-EJ-5495"
+      },
+      {
+        "id": "969399cd-47b6-4c0f-8939-3860be3014f9",
+        "case_id": "969399cd-47b6-4c0f-8939-3860be3014f9",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-EJ-A46G"
+      },
+      {
+        "id": "98240f19-bca7-4001-8aa2-4d790c7c4c53",
+        "case_id": "98240f19-bca7-4001-8aa2-4d790c7c4c53",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-J4-A83J"
+      },
+      {
+        "id": "98a9ce0e-4f02-4819-bc0c-c1a8d34e3db6",
+        "case_id": "98a9ce0e-4f02-4819-bc0c-c1a8d34e3db6",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-KK-A8IJ"
+      },
+      {
+        "id": "9938c4ad-748c-4086-9081-fac0aefad440",
+        "case_id": "9938c4ad-748c-4086-9081-fac0aefad440",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-V1-A8MK"
+      },
+      {
+        "id": "9a05aa6d-6215-4584-90fc-09a0371a19ed",
+        "case_id": "9a05aa6d-6215-4584-90fc-09a0371a19ed",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-KC-A4BO"
+      },
+      {
+        "id": "9a8caef5-6543-4391-8a55-4999035693c5",
+        "case_id": "9a8caef5-6543-4391-8a55-4999035693c5",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-KK-A8I4"
+      },
+      {
+        "id": "9a8e27c9-614b-491f-913d-429dfc4e2c4d",
+        "case_id": "9a8e27c9-614b-491f-913d-429dfc4e2c4d",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-QU-A6IP"
+      },
+      {
+        "id": "9b59ed95-e97f-4356-b976-e3fa0e9eee02",
+        "case_id": "9b59ed95-e97f-4356-b976-e3fa0e9eee02",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-EJ-A46I"
+      },
+      {
+        "id": "9b5d36b2-8b46-48a4-afa7-0e1936f2d315",
+        "case_id": "9b5d36b2-8b46-48a4-afa7-0e1936f2d315",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-ZG-A9M4"
+      },
+      {
+        "id": "9b84601b-ee05-4c15-afe3-7bfa7ca5ffac",
+        "case_id": "9b84601b-ee05-4c15-afe3-7bfa7ca5ffac",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-HC-7752"
+      },
+      {
+        "id": "9bf4e7bb-6aa9-4be8-a7c3-e630ecff4dce",
+        "case_id": "9bf4e7bb-6aa9-4be8-a7c3-e630ecff4dce",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-V1-A9Z8"
+      },
+      {
+        "id": "9c8447ac-5b26-4558-8bfd-f0e7046c1fb9",
+        "case_id": "9c8447ac-5b26-4558-8bfd-f0e7046c1fb9",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-MG-AAMC"
+      },
+      {
+        "id": "9d499039-37ca-4300-ae95-04bbe007c0d2",
+        "case_id": "9d499039-37ca-4300-ae95-04bbe007c0d2",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-EJ-7786"
+      },
+      {
+        "id": "9e48644f-d498-42b0-871b-d11f676241e2",
+        "case_id": "9e48644f-d498-42b0-871b-d11f676241e2",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-KK-A59V"
+      },
+      {
+        "id": "9f751c9d-ad41-4f02-b7f8-12423857d418",
+        "case_id": "9f751c9d-ad41-4f02-b7f8-12423857d418",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-G9-6367"
+      },
+      {
+        "id": "9f802576-1e98-496c-bda4-4b1dd2e411c8",
+        "case_id": "9f802576-1e98-496c-bda4-4b1dd2e411c8",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-HC-7078"
+      },
+      {
+        "id": "9fe9cbae-37b9-4030-a204-4502760f5dab",
+        "case_id": "9fe9cbae-37b9-4030-a204-4502760f5dab",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-J4-A67S"
+      },
+      {
+        "id": "a08fd0a6-a89a-4adb-b641-d4c1238abb71",
+        "case_id": "a08fd0a6-a89a-4adb-b641-d4c1238abb71",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-G9-6329"
+      },
+      {
+        "id": "a13a7252-de84-4950-9307-80fc8a6a668d",
+        "case_id": "a13a7252-de84-4950-9307-80fc8a6a668d",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-TP-A8TT"
+      },
+      {
+        "id": "a186c956-6756-4339-9793-494fe9b80c94",
+        "case_id": "a186c956-6756-4339-9793-494fe9b80c94",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-VN-A88K"
+      },
+      {
+        "id": "a1e64294-1264-498d-b18b-c9b4c729c2f2",
+        "case_id": "a1e64294-1264-498d-b18b-c9b4c729c2f2",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-J4-8198"
+      },
+      {
+        "id": "a279d5aa-51f7-4e75-9e14-b206b97ec4bd",
+        "case_id": "a279d5aa-51f7-4e75-9e14-b206b97ec4bd",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-G9-6384"
+      },
+      {
+        "id": "a3a4a518-2dac-4846-9476-1aa7e0c1fb5e",
+        "case_id": "a3a4a518-2dac-4846-9476-1aa7e0c1fb5e",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-XK-AAJR"
+      },
+      {
+        "id": "a3cd3599-7c18-491d-be09-6fc7e526c9b1",
+        "case_id": "a3cd3599-7c18-491d-be09-6fc7e526c9b1",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-HC-7820"
+      },
+      {
+        "id": "a468353e-0a96-4a4d-8aef-5140bf1bf952",
+        "case_id": "a468353e-0a96-4a4d-8aef-5140bf1bf952",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-YL-A9WX"
+      },
+      {
+        "id": "a5c77ab6-6e98-4a3d-81c8-f3d5fabd31d2",
+        "case_id": "a5c77ab6-6e98-4a3d-81c8-f3d5fabd31d2",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-CH-5766"
+      },
+      {
+        "id": "a6d467cf-6783-4885-8de5-95d32e922500",
+        "case_id": "a6d467cf-6783-4885-8de5-95d32e922500",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-ZG-A8QY"
+      },
+      {
+        "id": "a7045324-cb44-4b37-bbaf-641642c1d903",
+        "case_id": "a7045324-cb44-4b37-bbaf-641642c1d903",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-Y6-A8TL"
+      },
+      {
+        "id": "a76bcd1f-e47f-4dc5-a97a-4c4f00032191",
+        "case_id": "a76bcd1f-e47f-4dc5-a97a-4c4f00032191",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-V1-A8MU"
+      },
+      {
+        "id": "a7b76662-8380-4f35-9307-99c0acacb904",
+        "case_id": "a7b76662-8380-4f35-9307-99c0acacb904",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-CH-5769"
+      },
+      {
+        "id": "a80d3ee7-60dd-49bb-b049-9335afc035f5",
+        "case_id": "a80d3ee7-60dd-49bb-b049-9335afc035f5",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-CH-5794"
+      },
+      {
+        "id": "a8396f6d-53e2-4664-a3e2-df061d022108",
+        "case_id": "a8396f6d-53e2-4664-a3e2-df061d022108",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-V1-A9OA"
+      },
+      {
+        "id": "a8573f49-9fed-4c85-9e1d-40abab7f86ec",
+        "case_id": "a8573f49-9fed-4c85-9e1d-40abab7f86ec",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-G9-A9S4"
+      },
+      {
+        "id": "a8c954b7-3077-4ff1-b311-d4b4bfa49786",
+        "case_id": "a8c954b7-3077-4ff1-b311-d4b4bfa49786",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-KC-A4BV"
+      },
+      {
+        "id": "610603d0-43fb-4a4e-b368-d143e6c61802",
+        "case_id": "610603d0-43fb-4a4e-b368-d143e6c61802",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-ZG-A9LU"
+      },
+      {
+        "id": "618272c0-c2ed-4bfb-bb4b-404f0987f822",
+        "case_id": "618272c0-c2ed-4bfb-bb4b-404f0987f822",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-CH-5746"
+      },
+      {
+        "id": "629855ea-551e-456c-b421-83b9a4eb3269",
+        "case_id": "629855ea-551e-456c-b421-83b9a4eb3269",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-KK-A59X"
+      },
+      {
+        "id": "6394e00a-1f6f-4ea2-b885-373bbb59def9",
+        "case_id": "6394e00a-1f6f-4ea2-b885-373bbb59def9",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-HI-7170"
+      },
+      {
+        "id": "6433f001-db5c-476b-83c7-23f4c5397ae9",
+        "case_id": "6433f001-db5c-476b-83c7-23f4c5397ae9",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-M7-A721"
+      },
+      {
+        "id": "64bf32c9-9466-404a-a147-e7a0b9e91e34",
+        "case_id": "64bf32c9-9466-404a-a147-e7a0b9e91e34",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-G9-6333"
+      },
+      {
+        "id": "661dc657-d2b3-44fa-b859-2c4ee42b0046",
+        "case_id": "661dc657-d2b3-44fa-b859-2c4ee42b0046",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-VP-A87H"
+      },
+      {
+        "id": "6641a298-1dbd-445d-a4ab-95ceb98e1427",
+        "case_id": "6641a298-1dbd-445d-a4ab-95ceb98e1427",
+        "project": {
+          "project_id": "TCGA-PRAD"
+        },
+        "submitter_id": "TCGA-HC-7745"
+      }
+    ],
+    "pagination": {
+      "count": 500,
+      "total": 500,
+      "size": 5000,
+      "from": 0,
+      "sort": "",
+      "page": 1,
+      "pages": 1
+    }
+  },
+  "warnings": {
+    "fields": "unrecognized values: [exposures, demographic, samples, follow_ups, diagnoses]"
+  }
+}
