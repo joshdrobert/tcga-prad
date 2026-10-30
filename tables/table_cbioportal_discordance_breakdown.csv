@@ -1,0 +1,5 @@
+category,count,fraction
+Concordant Non-Events,200,0.7434944237918215
+Concordant Events (Both Positive),38,0.1412639405204461
+"Discordant (Local NTE/Progression only, cBio BCR negative)",31,0.11524163568773234
+"Discordant (cBio BCR positive, Local negative)",0,0.0

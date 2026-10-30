@@ -1,0 +1,9 @@
+evidence_id,domain,item,source_artifact,measured_value,threshold_required,compliance_status
+EV-OS-01,Eligibility,Theranostic Target Modality,TCGA-PRAD manifests,0 PET/CT or RLT records,Must contain theranostic tracer or therapy,FAIL
+EV-OS-02,Eligibility,Tracer Pharmacokinetics,GDC molecular files,None (bulk RNA/DNA only),PSMA or radioligand uptake,FAIL
+EV-OS-03,Cohort Size,Clinical Surgical Cohort,data_processed/tcga_prad_analysis_cohort.csv,314 patients,Adequate power,PASS
+EV-OS-04,Data Integrity,RNA Molecular Coverage,tables/table_rna_seq_download_status.csv,228 / 314 (72.6%),100% paired complete cases or explicit masking,FAIL (86 missing)
+EV-OS-05,Endpoint,cBioPortal Concordance,tables/table_cbioportal_endpoint_crosscheck.csv,88.48% (238/269 agreement),Consistent definitions,PROVISIONAL (31 discordances audited)
+EV-OS-06,Compute Feasibility,TCIA PSMA-PET Storage,df -h / OS filesystem,22 GB free,>= 250 GB for 117 GB raw + derivatives,FAIL
+EV-OS-07,Deadline Feasibility,Time to Nov 1 2026,System clock,48 hours,>= 3 weeks for full 3D cross-validation,FAIL
+EV-OS-08,Decision,Final Conference Recommendation,conference/osaka/GO_NO_GO.md,NO-GO,Unanimous scientific pass,REJECT SUBMISSION

@@ -1,3 +1,6 @@
-outcome,n
-0,242
-1,72
+endpoint,events,total
+Composite Recurrence/Progression,72,314
+Biochemical Recurrence (BCR),38,314
+New Tumor Event (NTE),64,314
+Post-HT Progression,13,314
+Evaluable RFS (with timing),71,312

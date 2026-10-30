@@ -33,7 +33,7 @@
 \textbf{Background:} Mortality is sparse in TCGA-PRAD open clinical supplements, limiting death-event prediction. Recurrence and progression fields provide a more appropriate endpoint for baseline prostate cancer risk-score benchmarking, but definitions can vary between parsed GDC files and public portal representations.
 \textbf{Objective:} To construct and audit an endpoint-harmonized recurrence/progression baseline in TCGA-PRAD clinical data, cross-checking concordance against cBioPortal's representation.
 \textbf{Methods:} Retrospective cohort study. GDC clinical XML files for 314 patients were parsed. Predictors included age, pathologic T and N categories, numeric PSA, numeric Gleason score, and a prespecified gene expression panel. Primary validation used Stratified five-fold cross-validation; out-of-fold predictions were evaluated using AUROC, AUPRC, Brier score, and calibration metrics.
-\textbf{Results:} The cohort included 314 patients with 72 recurrence/progression events. In five-fold out-of-fold validation, the clinical-only model achieved AUROC 0.689 (95\% bootstrap CI 0.620--0.756), AUPRC 0.367, and Brier score 0.163, with calibration slope 0.777. Adding the RNA-seq expression panel degraded out-of-fold performance (AUROC 0.681) and caused severe overfitting (calibration slope 0.547). Concordance check against cBioPortal's biochemical recurrence (BCR) indicator showed 88.5\% agreement among 269 matched patients. Discordance auditing revealed that all 34 local-only events were due to the local composite capturing documented clinical new tumor events that were not recorded as BCR events.
+\textbf{Results:} The cohort included 314 patients with 72 recurrence/progression events. In five-fold out-of-fold validation, the clinical-only model achieved AUROC 0.689 (95\% bootstrap CI 0.620--0.756), AUPRC 0.367, and Brier score 0.163, with calibration slope 0.777. Adding the RNA-seq expression panel degraded out-of-fold performance (AUROC 0.681) and caused severe overfitting (calibration slope 0.547). Concordance check against cBioPortal's biochemical recurrence (BCR) indicator showed 88.5\% agreement among 269 matched patients. Discordance auditing revealed that all 31 local-only events among 269 evaluable matched records were due to the local composite capturing documented clinical new tumor events that were not recorded as BCR events.
 \textbf{Conclusions:} Recurrence/progression is a more appropriate endpoint than mortality in TCGA-PRAD, but model instability and endpoint definition mismatches require transparent reporting.
 \end{abstract}
 
@@ -42,7 +42,7 @@ TCGA-PRAD, prostate cancer, endpoint harmonization, biochemical recurrence, base
 
 \section*{Key Points}
 \textbf{Question:} Can open TCGA-PRAD clinical supplements support a reproducible recurrence/progression baseline, and how does the endpoint align with cBioPortal?\\
-\textbf{Findings:} Seventy-two of 314 patients met the composite endpoint. The clinical-only model achieved out-of-fold AUROC 0.689. Comparing the composite endpoint with cBioPortal BCR showed 88.5\% agreement, with 34 discordant cases representing clinical new tumor events.\\
+\textbf{Findings:} Seventy-two of 314 patients met the composite endpoint. The clinical-only model achieved out-of-fold AUROC 0.689. Comparing the composite endpoint with cBioPortal BCR showed 88.5\% agreement among 269 matched patients, with 31 discordant cases representing clinical new tumor events.\\
 \textbf{Meaning:} Establishing clear endpoint definitions is critical; inclusion of clinical progression events significantly alters the event rate and model behavior compared to biochemical recurrence alone.
 
 \section{Introduction}
@@ -105,22 +105,26 @@ Tumor Progression Post-Treatment & 13 (4.1\%) \\
 \end{table}
 
 \subsection{cBioPortal Discordance Audit}
-Concordance auditing against cBioPortal's representation (Table~2) showed 88.5\% agreement among 269 matched patients. Importantly, there were 34 local-only events where the patient was marked as having an event in the local composite but 0 in cBioPortal BCR. Discordance auditing revealed that all 34 local-only events were driven by the inclusion of "new tumor event after initial treatment" in the local composite. These cases represent clinically documented tumor recurrence or progression that was not captured by cBioPortal's biochemical (PSA-only) recurrence indicator, illustrating how minor variation in endpoint definition alters the event rate.
+Concordance auditing against cBioPortal's representation (Table~2) demonstrated 88.48\% agreement among 269 matched patients with evaluable biochemical recurrence records. Of the 314 patients in the local cohort, 45 patients lacked corresponding cBioPortal biochemical recurrence indicators. Among the 269 evaluable matched patients, there were exactly 31 local-only events where the patient was marked positive in the local composite endpoint but negative (0) in cBioPortal BCR. Detailed auditing revealed that all 31 discordances were driven by the inclusion of clinical new tumor events or distant post-treatment progression in the local composite that were not cataloged under cBioPortal's PSA-elevation biochemical recurrence definition. No patients exhibited cBioPortal BCR without meeting the local composite definition.
 
 \begin{table}[H]
 \centering
-\caption{cBioPortal endpoint agreement and discordance audit.}
-\resizebox{\textwidth}{!}{\begin{tabular}{lrrr}
+\caption{cBioPortal endpoint agreement and discordance audit among 269 evaluable matched patients.}
+\begin{tabular}{lrrr}
 \toprule
-Local Composite Endpoint & cBioPortal BCR = 0 & cBioPortal BCR = 1 & All \\
+Local Composite Endpoint & cBioPortal BCR = 0 & cBioPortal BCR = 1 & Matched Evaluable \\
 \midrule
-Event = 0 & 242 (Concordant Nonevent) & 0 (cBioPortal-Only) & 242 \\
-Event = 1 & 34 (Local-Only Event)* & 38 (Concordant Event) & 72 \\
-All & 276 & 38 & 314 \\
+Non-Event (0) & 200 (Concordant Non-Event) & 0 (cBioPortal-Only Event) & 200 \\
+Recurrence Event (1) & 31 (Local-Only Event)* & 38 (Concordant Event) & 69 \\
+\midrule
+Total Evaluable & 231 & 38 & 269 \\
 \bottomrule
+\multicolumn{4}{l}{\footnotesize *Note: 45 patients in the 314-patient cohort lacked cBioPortal BCR annotations.}
+\end{tabular}
+\end{table}
 \end{tabular}}
 \begin{tablenotes}[flushleft]\footnotesize
-\item *All 34 local-only events are due to the inclusion of new tumor events in the local composite.
+\item *All 31 local-only events among 269 evaluable matched records are due to the inclusion of new tumor events in the local composite.
 \end{tablenotes}
 \end{table}
 
@@ -170,7 +174,7 @@ Overall & 1095 days (3 years) & 63 & 51 & 80.9\% \\
 This study audits and internally validates a recurrence/progression baseline in TCGA-PRAD. The clinical-only model achieved moderate out-of-fold discrimination (AUROC 0.689), while adding expression features degraded performance (AUROC 0.681) and caused severe overfitting (calibration slope 0.547). Our audit exposed a major discrepancy between GDC-parsed data and cBioPortal BCR (88.5\% agreement), showing that local composites capture clinical new tumor events missed by simple BCR indicators.
 
 \subsection{Endpoint Heterogeneity and Adjudication}
-The discrepancy of 34 cases highlights why prostate cancer endpoint definitions must be transparent. Modeling "biochemical recurrence" alone ignores clinical progression and local/metastatic recurrences recorded in new tumor event fields, while combining them without manual adjudication creates clinical heterogeneity. Future studies must specify which exact components are being modeled.
+The discrepancy of 31 evaluable cases (out of 269 matched patients) highlights why prostate cancer endpoint definitions must be transparent. Modeling "biochemical recurrence" alone ignores clinical progression and local/metastatic recurrences recorded in new tumor event fields, while combining them without manual adjudication creates clinical heterogeneity. Future studies must specify which exact components are being modeled.
 
 \subsection{Expression Panel Noise and Overfitting}
 The poor out-of-fold performance of the expression-enriched model (AUROC 0.681, calibration slope 0.547) underscores a common pitfall: adding small panels of molecular features without shrinkage or feature selection in limited cohorts simply manufactures overfitting, even if a single train-test split makes it appear favorable.
