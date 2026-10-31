@@ -5,4 +5,4 @@ Undated Recurrence Events (Excluded from exact time),6,314
 Biochemical Recurrence (BCR),38,314
 New Tumor Event (NTE),64,314
 Post-HT Progression,13,314
-Evaluable RFS (with valid timing),66,308
+"Evaluable RFS (with valid timing, excluding indeterminate)",66,303

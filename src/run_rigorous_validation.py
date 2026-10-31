@@ -183,13 +183,13 @@ def main() -> None:
     paired_table.to_csv(tables_dir / "table_prad_paired_complete_case_validation.csv", index=False)
 
     # 4. Longitudinal Survival Analysis (Primary Defensible Population)
-    # Valid continuous-time cases: 66 dated recurrence events + 242 censored non-events (total n=308)
+    # Valid continuous-time cases: 66 dated recurrence events + 237 censored non-events (total n=303, excluding 5 indeterminate)
     surv_df = recurrence[recurrence["survival_duration_days"].notna() & (recurrence["survival_duration_days"] > 0)].copy()
     surv_duration = surv_df["survival_duration_days"].values
     surv_event = surv_df["survival_event_indicator"].astype(int).values
 
     kmf = KaplanMeierFitter()
-    kmf.fit(surv_duration, surv_event, label="Recurrence-Free Survival (Dated Events, n=308)")
+    kmf.fit(surv_duration, surv_event, label=f"Recurrence-Free Survival (Dated Events, n={len(surv_df)})")
 
     rfs_1yr = float(kmf.predict(365.25))
     rfs_3yr = float(kmf.predict(365.25 * 3))

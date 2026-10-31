@@ -76,10 +76,12 @@ def test_processed_cohort_invariants():
     undated_count = int(df["undated_recurrence_flag"].sum())
     assert undated_count == 6, f"Expected exactly 6 undated recurrence cases, got {undated_count}"
 
-    # Continuous-time evaluable cohort must be 308
+    # Continuous-time evaluable cohort must be 303 (excluding 6 undated events and 5 indeterminate cases)
     evaluable = df[df["survival_duration_days"].notna() & (df["survival_duration_days"] > 0)]
-    assert len(evaluable) == 308, f"Expected 308 evaluable survival cases, got {len(evaluable)}"
+    assert len(evaluable) == 303, f"Expected 303 evaluable survival cases, got {len(evaluable)}"
     assert int(evaluable["survival_event_indicator"].sum()) == 66, "Expected 66 dated recurrence events"
+    assert (df["composite_status_detail"] == "INDETERMINATE_ALL_MISSING").sum() == 5, "Expected exactly 5 indeterminate cases"
+    assert (df["composite_status_detail"] == "DOCUMENTED_NON_RECURRENCE").sum() == 191, "Expected exactly 191 double-negative cases"
 
 
 def test_cbioportal_concordance_invariants():
@@ -108,6 +110,7 @@ def test_metrics_json_integrity():
     assert data["cohort"]["undated_recurrence_events"] == 6
     assert data["cohort"]["rna_seq_profiles_available"] == 228
     assert data["cohort"]["rna_seq_missing_count"] == 86
-    assert data["survival"]["evaluable_cases"] if "evaluable_cases" in data["survival"] else data["cohort"]["evaluable_survival_cases"] == 308
+    evaluable_n = data["survival"]["evaluable_cases"] if "evaluable_cases" in data["survival"] else data["cohort"]["evaluable_survival_cases"]
+    assert evaluable_n == 303, f"Expected 303 evaluable survival cases, got {evaluable_n}"
     assert data["survival"]["cox_apparent_concordance_index"] > 0.65
     assert data["survival"]["cox_cv_concordance_index"] > 0.65

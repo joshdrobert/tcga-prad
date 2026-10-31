@@ -1,11 +1,12 @@
 step,count
 Total TCGA-PRAD Radical Prostatectomy Patients,314
-Documented Recurrence Events (Composite),72
+Documented Recurrence/Progression Events (Composite),72
   - Dated Recurrence Events (Exact Timing Available),66
   - Undated Recurrence Events (Timing Missing in XML),6
-Documented Recurrence-Free (Non-Events),242
-  - High Confidence (BCR=NO & NTE=NO),191
-"  - Asymmetric Negative (BCR=NO, NTE missing)",9
-"  - Asymmetric Negative (NTE=NO, BCR missing)",37
-  - Indeterminate (BCR missing & NTE missing),5
-Evaluable Continuous-Time Survival Cohort (Dated events + Follow-up),308
+Documented Recurrence-Free (Both BCR=NO & NTE=NO),191
+Asymmetric Outcome Information (One Indicator Missing),46
+"  - Asymmetric: BCR=NO, NTE missing",9
+"  - Asymmetric: NTE=NO, BCR missing",37
+Fully Indeterminate Records (BCR missing & NTE missing),5
+Evaluable Continuous-Time Survival Cohort (Dated events + Verified follow-up),303
+High-Confidence Definitive Cohort (Definitive Positive or Double Negative),263
