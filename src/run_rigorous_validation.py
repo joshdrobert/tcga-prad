@@ -93,13 +93,12 @@ def compute_paired_difference(
 
     delta_aurocs = np.array(delta_aurocs)
     delta_briers = np.array(delta_briers)
-    p_val_auc = float(2.0 * min(np.mean(delta_aurocs <= 0), np.mean(delta_aurocs >= 0)))
 
     return {
         "delta_auroc": delta_auroc_point,
         "delta_auroc_ci_low": float(np.quantile(delta_aurocs, 0.025)),
         "delta_auroc_ci_high": float(np.quantile(delta_aurocs, 0.975)),
-        "delta_auroc_p_value": p_val_auc,
+        "delta_auroc_p_value": None,
         "delta_brier": delta_brier_point,
         "delta_brier_ci_low": float(np.quantile(delta_briers, 0.025)),
         "delta_brier_ci_high": float(np.quantile(delta_briers, 0.975)),
@@ -406,6 +405,7 @@ def main() -> None:
     strict_r3 = float(kmf_strict.predict(365.25 * 3))
     strict_r5 = float(kmf_strict.predict(365.25 * 5))
     strict_median = float(kmf_strict.median_survival_time_) if pd.notna(kmf_strict.median_survival_time_) else np.nan
+    strict_median_val = None if (np.isinf(strict_median) or pd.isna(strict_median)) else float(strict_median)
 
     # PURE BASELINE COVARIATES ONLY (NO POSTOPERATIVE PSA!)
     baseline_cox_covs = ["age_at_diagnosis_years", "gleason_score_numeric"]
@@ -426,6 +426,7 @@ def main() -> None:
     exp_r3 = float(kmf_exp.predict(365.25 * 3))
     exp_r5 = float(kmf_exp.predict(365.25 * 5))
     exp_median = float(kmf_exp.median_survival_time_) if pd.notna(kmf_exp.median_survival_time_) else np.nan
+    exp_median_val = None if (np.isinf(exp_median) or pd.isna(exp_median)) else float(exp_median)
 
     exp_app_c, exp_cv_c, exp_cox_summary, exp_ph_test = evaluate_cv_cox_model(
         exp_surv_df, "survival_duration_days", "survival_event_indicator", baseline_cox_covs
@@ -436,6 +437,7 @@ def main() -> None:
             {
                 "analysis_definition": "Strict Sensitivity Cohort (Double-Negatives Only)",
                 "time_origin": "Days from Initial Pathologic Diagnosis",
+                "prediction_landmark": "Post-Radical Prostatectomy Resection (Unmeasured Biopsy-to-Surgery Offset)",
                 "evaluable_n": len(strict_surv_df),
                 "dated_events": int(strict_surv_df["survival_event_indicator"].sum()),
                 "censored_non_events": int((strict_surv_df["survival_event_indicator"] == 0).sum()),
@@ -446,7 +448,8 @@ def main() -> None:
                 "rfs_1yr": strict_r1,
                 "rfs_3yr": strict_r3,
                 "rfs_5yr": strict_r5,
-                "median_rfs_days": strict_median,
+                "median_rfs_days": np.nan if strict_median_val is None else strict_median_val,
+                "median_rfs_status": "not_reached" if strict_median_val is None else "reached",
                 "cox_apparent_c_index": strict_app_c,
                 "cox_cv_c_index": strict_cv_c,
                 "schoenfeld_ph_p_age": strict_ph_test.get("age_at_diagnosis_years", np.nan),
@@ -456,6 +459,7 @@ def main() -> None:
             {
                 "analysis_definition": "Exploratory Survival Cohort (Admitting Asymmetric Surveillance)",
                 "time_origin": "Days from Initial Pathologic Diagnosis",
+                "prediction_landmark": "Post-Radical Prostatectomy Resection (Unmeasured Biopsy-to-Surgery Offset)",
                 "evaluable_n": len(exp_surv_df),
                 "dated_events": int(exp_surv_df["survival_event_indicator"].sum()),
                 "censored_non_events": int((exp_surv_df["survival_event_indicator"] == 0).sum()),
@@ -466,7 +470,8 @@ def main() -> None:
                 "rfs_1yr": exp_r1,
                 "rfs_3yr": exp_r3,
                 "rfs_5yr": exp_r5,
-                "median_rfs_days": exp_median,
+                "median_rfs_days": np.nan if exp_median_val is None else exp_median_val,
+                "median_rfs_status": "not_reached" if exp_median_val is None else "reached",
                 "cox_apparent_c_index": exp_app_c,
                 "cox_cv_c_index": exp_cv_c,
                 "schoenfeld_ph_p_age": exp_ph_test.get("age_at_diagnosis_years", np.nan),
@@ -516,7 +521,7 @@ def main() -> None:
     kmf_exp.plot_survival_function(ax=ax, color="#d97706", linestyle="--", ci_show=True, label=f"Exploratory Cohort (n={len(exp_surv_df)}, {int(exp_surv_df['survival_event_indicator'].sum())} events)")
     ax.set_xlabel("Days from Initial Pathologic Diagnosis", fontsize=9)
     ax.set_ylabel("Recurrence-Free Survival Probability", fontsize=9)
-    ax.set_title("Kaplan-Meier Recurrence-Free Survival from Initial Diagnosis", fontsize=10)
+    ax.set_title("Kaplan-Meier Recurrence-Free Survival from Initial Diagnosis\n(Prediction Landmark: Post-Resection; Median Not Reached)", fontsize=9.5)
     ax.grid(alpha=0.25)
     ax.legend(fontsize=7, loc="lower left")
     fig.tight_layout()
@@ -588,14 +593,18 @@ def main() -> None:
         },
         "survival": {
             "time_origin": "Days from Initial Pathologic Diagnosis",
+            "prediction_landmark": "Post-Radical Prostatectomy Resection (Unmeasured Biopsy-to-Surgery Offset)",
             "evaluable_cases": len(exp_surv_df),
-            "median_rfs_days": exp_median,
+            "median_rfs_days": exp_median_val,
+            "median_rfs_status": "not_reached" if exp_median_val is None else "reached",
             "rfs_1yr": exp_r1,
             "rfs_3yr": exp_r3,
             "rfs_5yr": exp_r5,
             "cox_apparent_concordance_index": exp_app_c,
             "cox_cv_concordance_index": exp_cv_c,
             "strict_evaluable_cases": len(strict_surv_df),
+            "strict_median_rfs_days": strict_median_val,
+            "strict_median_rfs_status": "not_reached" if strict_median_val is None else "reached",
             "strict_cox_apparent_concordance_index": strict_app_c,
             "strict_cox_cv_concordance_index": strict_cv_c,
             "schoenfeld_ph_interpretation": "No statistically significant violation detected (p > 0.05)",
@@ -625,19 +634,36 @@ def main() -> None:
         "paired_molecular_comparisons": paired_molecular_table.to_dict(orient="records"),
     }
 
+    def sanitize_for_strict_json(obj):
+        if isinstance(obj, (float, np.floating)):
+            if np.isnan(obj) or np.isinf(obj):
+                return None
+            return float(obj)
+        elif isinstance(obj, (int, np.integer)):
+            return int(obj)
+        elif isinstance(obj, (bool, np.bool_)):
+            return bool(obj)
+        elif isinstance(obj, dict):
+            return {k: sanitize_for_strict_json(v) for k, v in obj.items()}
+        elif isinstance(obj, list):
+            return [sanitize_for_strict_json(v) for v in obj]
+        return obj
+
+    clean_metrics = sanitize_for_strict_json(metrics_export)
+
     with open(artifacts_dir / "tcga_prad_metrics.json", "w") as f:
-        json.dump(metrics_export, f, indent=2)
+        json.dump(clean_metrics, f, indent=2, allow_nan=False)
 
     # Mirror to web directories and research v3
     with open(RESEARCH_V3_DIR / "tcga_prad_metrics.json", "w") as f:
-        json.dump(metrics_export, f, indent=2)
+        json.dump(clean_metrics, f, indent=2, allow_nan=False)
     with open(RESEARCH_V2_DIR / "tcga_prad_metrics.json", "w") as f:
-        json.dump(metrics_export, f, indent=2)
+        json.dump(clean_metrics, f, indent=2, allow_nan=False)
 
     for dest_dir in [PROJECT_ROOT / "web" / "static" / "research", PROJECT_ROOT / "web" / "research" / "artifacts"]:
         dest_dir.mkdir(parents=True, exist_ok=True)
         with open(dest_dir / "tcga_prad_metrics.json", "w") as f:
-            json.dump(metrics_export, f, indent=2)
+            json.dump(clean_metrics, f, indent=2, allow_nan=False)
 
     for dest_fig in [PROJECT_ROOT / "web" / "static" / "figures", PROJECT_ROOT / "web" / "research" / "figures"]:
         dest_fig.mkdir(parents=True, exist_ok=True)
@@ -650,9 +676,12 @@ def main() -> None:
     print(f"Paired Definitive Molecular Cohort: N={len(y_def_p)} (44 Events, 143 Non-Events)")
     print(f"  Pure Clinical Baseline AUROC: {res_def_paired_clin['auroc']:.4f}")
     print(f"  Clinical + 13-Gene RNA AUROC: {res_def_paired_mol['auroc']:.4f}")
-    print(f"  Paired ΔAUROC: {paired_diff_pure['delta_auroc']:+.4f} (95% CI: [{paired_diff_pure['delta_auroc_ci_low']:+.4f}, {paired_diff_pure['delta_auroc_ci_high']:+.4f}], p={paired_diff_pure['delta_auroc_p_value']:.4f})")
-    print(f"Strict Survival Analysis (N={len(strict_surv_df)}): 1-yr RFS={strict_r1:.3f}, 3-yr RFS={strict_r3:.3f}, 5-yr RFS={strict_r5:.3f}")
+    print(f"  Paired ΔAUROC: {paired_diff_pure['delta_auroc']:+.4f} (95% CI: [{paired_diff_pure['delta_auroc_ci_low']:+.4f}, {paired_diff_pure['delta_auroc_ci_high']:+.4f}])")
+    print(f"  Paired ΔBrier: {paired_diff_pure['delta_brier']:+.4f} (95% CI: [{paired_diff_pure['delta_brier_ci_low']:+.4f}, {paired_diff_pure['delta_brier_ci_high']:+.4f}])")
+    print(f"Strict Survival Analysis (N={len(strict_surv_df)}): Median RFS={'Not Reached' if strict_median_val is None else f'{strict_median_val:.1f}d'}, 1-yr RFS={strict_r1:.3f}, 3-yr RFS={strict_r3:.3f}, 5-yr RFS={strict_r5:.3f}")
     print(f"  Strict Cox PH (Age + Gleason): Apparent C={strict_app_c:.3f}, 5-Fold CV C={strict_cv_c:.3f}")
+    print(f"Exploratory Survival Analysis (N={len(exp_surv_df)}): Median RFS={'Not Reached' if exp_median_val is None else f'{exp_median_val:.1f}d'}, 1-yr RFS={exp_r1:.3f}, 3-yr RFS={exp_r3:.3f}, 5-yr RFS={exp_r5:.3f}")
+    print(f"  Exploratory Cox PH (Age + Gleason): Apparent C={exp_app_c:.3f}, 5-Fold CV C={exp_cv_c:.3f}")
     print(f"Exploratory Survival Analysis (N={len(exp_surv_df)}): 1-yr RFS={exp_r1:.3f}, 3-yr RFS={exp_r3:.3f}, 5-yr RFS={exp_r5:.3f}")
     print(f"  Exploratory Cox PH (Age + Gleason): Apparent C={exp_app_c:.3f}, 5-Fold CV C={exp_cv_c:.3f}")
 

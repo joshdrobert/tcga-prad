@@ -75,15 +75,32 @@ def test_auroc_and_discrimination_consistency():
     assert abs(def_row["delta_auroc"] - (-0.007629)) < 1e-4
     assert abs(metrics["primary_definitive_cohort"]["paired_delta_auroc"] - (-0.007629)) < 1e-4
 
-    # Delta p-value: not statistically significant (p > 0.05)
-    assert def_row["delta_auroc_p_value"] > 0.05
+    # Paired Delta Brier: -0.0001
+    assert abs(def_row["delta_brier"] - (-0.000125)) < 1e-4
+    assert def_row["delta_brier_95ci_low"] < 0.0 < def_row["delta_brier_95ci_high"]
+
+    # Delta bootstrap CI spans zero (no statistically significant difference)
     assert def_row["delta_auroc_95ci_low"] < 0.0 < def_row["delta_auroc_95ci_high"]
+    if "delta_auroc_p_value" in def_row and pd.notna(def_row["delta_auroc_p_value"]):
+        assert def_row["delta_auroc_p_value"] > 0.05
+
+    # Cross-verify with rigorous validation table
+    rigorous_tbl = pd.read_csv(REPO_ROOT / "tables" / "table_prad_rigorous_validation.csv")
+    rig_clin = rigorous_tbl[(rigorous_tbl["cohort"] == "Paired Definitive Molecular (n=187)") & (rigorous_tbl["model"].str.startswith("Pure Baseline Clinical ("))].iloc[0]
+    rig_mol = rigorous_tbl[(rigorous_tbl["cohort"] == "Paired Definitive Molecular (n=187)") & (rigorous_tbl["model"].str.contains("13-Gene Expression Panel"))].iloc[0]
+
+    assert abs(rig_clin["auroc"] - def_row["baseline_auroc"]) < 1e-6
+    assert abs(rig_mol["auroc"] - def_row["augmented_auroc"]) < 1e-6
+    assert abs(rig_clin["brier"] - def_row["baseline_brier"]) < 1e-6
+    assert abs(rig_mol["brier"] - def_row["augmented_brier"]) < 1e-6
 
     # Verify abstract text matches within 0.001
     abstract_text = (REPO_ROOT / "conference" / "oncology" / "V2_ABSTRACT.md").read_text()
-    assert "0.710" in abstract_text
-    assert "0.703" in abstract_text
-    assert "-0.008" in abstract_text
+    assert f"{def_row['baseline_auroc']:.3f}" in abstract_text
+    assert f"{def_row['augmented_auroc']:.3f}" in abstract_text
+    assert f"{def_row['delta_auroc']:+.3f}" in abstract_text or f"{def_row['delta_auroc']:.3f}" in abstract_text
+    assert "0.1673" in abstract_text
+    assert "0.1672" in abstract_text
 
 
 def test_unsupported_significance_wording():
@@ -131,5 +148,5 @@ def test_predictor_timing_integrity():
     """Verify that XML psa_value is classified as post-operative surveillance rather than baseline."""
     timing_tbl = pd.read_csv(REPO_ROOT / "research" / "v3" / "PREDICTOR_TIMING_AUDIT.csv")
     psa_row = timing_tbl[timing_tbl["predictor"] == "psa_value_numeric"].iloc[0]
-    assert psa_row["clinical_phase"] == "Post-operative Surveillance"
-    assert psa_row["timing_relative_to_initial_diagnosis_days"] > 100.0  # Median 511 days
+    assert "post-operative surveillance" in psa_row["clinical_phase"].lower()
+    assert "511 days" in psa_row["reference_origin_days"].lower()

@@ -44,6 +44,17 @@ def parse_numeric_tokens_all(val: object) -> list[float]:
     return nums
 
 
+def parse_string_tokens(val: object) -> list[str]:
+    """Extract clean non-empty string tokens from a pipe-separated string."""
+    if pd.isna(val):
+        return []
+    return [
+        t.strip()
+        for t in str(val).split("|")
+        if t.strip() and t.strip().lower() not in {"nan", "[not available]", "[not applicable]", "[unknown]"}
+    ]
+
+
 def categorize_bcr_status(val: object) -> str:
     """Classify Biochemical Recurrence status into explicit clinical categories."""
     if pd.isna(val):
@@ -103,6 +114,110 @@ def categorize_ht_progression(val: object) -> str:
     if has_neg:
         return "DOCUMENTED_NEGATIVE"
     return "NOT_APPLICABLE_OR_UNRECORDED"
+
+
+def extract_event_level_provenance(flat: pd.DataFrame) -> pd.DataFrame:
+    """
+    Reconstruct unrolled event-level clinical provenance records pairing each event
+    type with its specific event date, source form, and encounter category.
+    Guarantees that event dates are never decoupled from event types.
+    """
+    event_records = []
+
+    for _, row in flat.iterrows():
+        sid = row["submitter_id"]
+        src = row.get("source_file", "unknown")
+
+        # 1. Biochemical Recurrence tokens
+        bcr_statuses = parse_string_tokens(row.get("biochemical_recurrence"))
+        bcr_days = parse_numeric_tokens_all(row.get("days_to_first_biochemical_recurrence"))
+        has_bcr_pos = any(s.upper() in {"YES", "TRUE", "1", "BIOCHEMICAL"} for s in bcr_statuses)
+
+        if has_bcr_pos or bcr_days:
+            dates = bcr_days if bcr_days else [np.nan]
+            for d in dates:
+                event_records.append(
+                    {
+                        "submitter_id": sid,
+                        "source_file": src,
+                        "event_category": "BIOCHEMICAL_RECURRENCE",
+                        "event_type": "Biochemical Recurrence (BCR=YES)",
+                        "event_days_from_diagnosis": d,
+                        "prostate_specific": True,
+                        "adjudication_class": "PROSTATE_RECURRENCE",
+                        "adjudication_rationale": "Biochemical recurrence documented in XML follow-up",
+                    }
+                )
+
+        # 2. New Tumor Event tokens
+        nte_types = parse_string_tokens(row.get("new_neoplasm_event_type"))
+        nte_days = parse_numeric_tokens_all(row.get("days_to_new_tumor_event_after_initial_treatment"))
+        nte_statuses = parse_string_tokens(row.get("new_tumor_event_after_initial_treatment"))
+        has_nte_pos = any(s.upper() in {"YES", "TRUE", "1"} for s in nte_statuses) or bool(nte_types)
+
+        if has_nte_pos or nte_days:
+            t_full = "|".join(nte_types) if nte_types else "New Tumor Event"
+            is_second_prim = ("New Primary" in t_full) and not any(
+                k in t_full for k in ["Biochemical", "Locoregional", "Distant"]
+            )
+
+            if nte_days:
+                for i, d in enumerate(nte_days):
+                    t = nte_types[i] if i < len(nte_types) else (nte_types[0] if nte_types else "New Tumor Event")
+                    cur_sec = ("New Primary" in t) and not any(
+                        k in t for k in ["Biochemical", "Locoregional", "Distant"]
+                    )
+                    event_records.append(
+                        {
+                            "submitter_id": sid,
+                            "source_file": src,
+                            "event_category": "NEW_TUMOR_EVENT",
+                            "event_type": t,
+                            "event_days_from_diagnosis": d,
+                            "prostate_specific": not cur_sec,
+                            "adjudication_class": "SECOND_PRIMARY_MALIGNANCY" if cur_sec else "PROSTATE_RECURRENCE",
+                            "adjudication_rationale": (
+                                "Second non-prostatic primary malignancy"
+                                if cur_sec
+                                else f"Prostate-specific new tumor event ({t})"
+                            ),
+                        }
+                    )
+            else:
+                event_records.append(
+                    {
+                        "submitter_id": sid,
+                        "source_file": src,
+                        "event_category": "NEW_TUMOR_EVENT",
+                        "event_type": t_full,
+                        "event_days_from_diagnosis": np.nan,
+                        "prostate_specific": not is_second_prim,
+                        "adjudication_class": "SECOND_PRIMARY_MALIGNANCY" if is_second_prim else "PROSTATE_RECURRENCE",
+                        "adjudication_rationale": (
+                            "Second non-prostatic primary malignancy (undated)"
+                            if is_second_prim
+                            else f"Prostate-specific new tumor event ({t_full}; undated in XML)"
+                        ),
+                    }
+                )
+
+        # 3. Post-Hormone Therapy progression
+        ht_statuses = parse_string_tokens(row.get("tumor_progression_post_ht"))
+        if any(k in s.upper() for s in ht_statuses for k in ["YES", "TRUE", "1", "PROGRESSION"]):
+            event_records.append(
+                {
+                    "submitter_id": sid,
+                    "source_file": src,
+                    "event_category": "POST_HT_PROGRESSION",
+                    "event_type": "Post-HT Tumor Progression",
+                    "event_days_from_diagnosis": np.nan,
+                    "prostate_specific": True,
+                    "adjudication_class": "PROSTATE_RECURRENCE",
+                    "adjudication_rationale": "Tumor progression after hormone therapy documented in XML",
+                }
+            )
+
+    return pd.DataFrame(event_records)
 
 
 def aggregate_clinical_xml_records(flat: pd.DataFrame) -> pd.DataFrame:
@@ -168,6 +283,11 @@ def main() -> None:
     RESEARCH_V3_DIR.mkdir(parents=True, exist_ok=True)
     base = pd.read_csv(PROJECT_ROOT / "data_processed" / "tcga_prad_analysis_cohort.csv")
     flat = pd.read_csv(PROJECT_ROOT / "data_processed" / "tcga_prad_clinical_xml_flat.csv")
+
+    # Generate Unrolled Event-Level Provenance Table
+    event_provenance = extract_event_level_provenance(flat)
+    event_provenance.to_csv(RESEARCH_V3_DIR / "EVENT_LEVEL_PROVENANCE.csv", index=False)
+    event_provenance.to_csv(RESEARCH_V2_DIR / "EVENT_LEVEL_PROVENANCE.csv", index=False)
 
     # Aggregate longitudinal XML records without discarding secondary records
     clinical_agg = aggregate_clinical_xml_records(flat)
@@ -279,26 +399,47 @@ def main() -> None:
     cohort["gleason_score_numeric"] = pd.to_numeric(gleason_source, errors="coerce")
 
     # Longitudinal Event Timing Construction
-    # TIME ORIGIN: INITIAL PATHOLOGIC DIAGNOSIS (CORE NEEDLE BIOPSY AT DAY 0)
-    # EXCLUDE SECOND PRIMARIES AND FULLY INDETERMINATE RECORDS FROM PROSTATE SURVIVAL
+    # TIME ORIGIN: INITIAL PATHOLOGIC DIAGNOSIS (CORE NEEDLE BIOPSY AT DAY 0 FOR 98.1% PATIENTS)
+    # CONDITIONED ON PROSTATECTOMY (EXACT RESECTION DATE UNRECORDED IN GDC XML)
+    # PAIRED EVENT PROVENANCE DATES: DERIVED STRICTLY FROM PROSTATE-SPECIFIC EVENT RECORDS
     exact_event_times = []
     exact_censoring_times = []
     survival_analysis_times = []
     survival_event_flags = []
     undated_recurrence_flags = []
+    earliest_event_types = []
+    earliest_event_sources = []
 
     for _, row in cohort.iterrows():
+        sid = row["submitter_id"]
         status = row["composite_status_detail"]
         is_prostate_event = (status == "DOCUMENTED_PROSTATE_RECURRENCE")
         is_second_primary = (status == "SECOND_PRIMARY_MALIGNANCY")
         is_indeterminate = (status == "INDETERMINATE_ALL_MISSING")
 
-        t_event_candidates = []
-        if pd.notna(row["days_to_bcr_clean"]) and row["days_to_bcr_clean"] > 0:
-            t_event_candidates.append(row["days_to_bcr_clean"])
-        if row["nte_type_category"] != "SECOND_PRIMARY_ONLY":
-            if pd.notna(row["days_to_nte_clean"]) and row["days_to_nte_clean"] > 0:
-                t_event_candidates.append(row["days_to_nte_clean"])
+        # Query unrolled event records for this patient
+        p_events = event_provenance[event_provenance["submitter_id"] == sid]
+        pros_events = p_events[p_events["prostate_specific"] & (p_events["adjudication_class"] == "PROSTATE_RECURRENCE")]
+        dated_pros = pros_events[pros_events["event_days_from_diagnosis"].notna() & (pros_events["event_days_from_diagnosis"] > 0)]
+
+        t_event = np.nan
+        e_type = "None"
+        e_src = "None"
+
+        if is_prostate_event:
+            if len(dated_pros) > 0:
+                earliest = dated_pros.sort_values("event_days_from_diagnosis").iloc[0]
+                t_event = float(earliest["event_days_from_diagnosis"])
+                e_type = str(earliest["event_type"])
+                e_src = str(earliest["source_file"])
+            elif len(pros_events) > 0:
+                e_type = str(pros_events.iloc[0]["event_type"])
+                e_src = str(pros_events.iloc[0]["source_file"])
+        elif is_second_primary:
+            sec_events = p_events[~p_events["prostate_specific"]]
+            if len(sec_events) > 0:
+                e_type = str(sec_events.iloc[0]["event_type"])
+                e_src = str(sec_events.iloc[0]["source_file"])
 
         t_censor_candidates = []
         if pd.notna(row["days_to_last_followup_clean"]) and row["days_to_last_followup_clean"] > 0:
@@ -306,36 +447,31 @@ def main() -> None:
         elif pd.notna(row["days_to_death_clean"]) and row["days_to_death_clean"] > 0:
             t_censor_candidates.append(row["days_to_death_clean"])
 
-        t_event = min(t_event_candidates) if t_event_candidates else np.nan
         t_censor = max(t_censor_candidates) if t_censor_candidates else np.nan
 
         exact_event_times.append(t_event)
         exact_censoring_times.append(t_censor)
+        earliest_event_types.append(e_type)
+        earliest_event_sources.append(e_src)
 
         if is_prostate_event:
             if pd.notna(t_event):
-                # Valid dated prostate recurrence event
                 survival_analysis_times.append(t_event)
                 survival_event_flags.append(1.0)
                 undated_recurrence_flags.append(0)
             else:
-                # Documented prostate recurrence without exact event day
                 survival_analysis_times.append(np.nan)
                 survival_event_flags.append(np.nan)
                 undated_recurrence_flags.append(1)
         elif is_second_primary:
-            # Second non-prostatic primary cancer:
-            # Excluded from prostate-specific recurrence survival analysis
             survival_analysis_times.append(np.nan)
             survival_event_flags.append(np.nan)
             undated_recurrence_flags.append(0)
         elif is_indeterminate:
-            # Fully indeterminate missing record:
             survival_analysis_times.append(np.nan)
             survival_event_flags.append(np.nan)
             undated_recurrence_flags.append(0)
         else:
-            # Non-event with verified clinical follow-up
             if pd.notna(t_censor):
                 survival_analysis_times.append(t_censor)
                 survival_event_flags.append(0.0)
@@ -347,6 +483,8 @@ def main() -> None:
 
     cohort["days_to_recurrence_exact"] = exact_event_times
     cohort["days_to_censoring_exact"] = exact_censoring_times
+    cohort["earliest_prostate_recurrence_type"] = earliest_event_types
+    cohort["earliest_prostate_recurrence_source"] = earliest_event_sources
     cohort["survival_duration_days"] = survival_analysis_times
     cohort["duration_days_from_diagnosis"] = survival_analysis_times
     cohort["survival_event_indicator"] = survival_event_flags
@@ -355,20 +493,16 @@ def main() -> None:
 
     # Adjudication rationale text per patient
     def assign_rationale(row: pd.Series) -> str:
-        sid = row["submitter_id"]
         status = row["composite_status_detail"]
         if status == "DOCUMENTED_PROSTATE_RECURRENCE":
-            details = []
-            if row["flag_bcr_positive"] == 1:
-                details.append("Biochemical Recurrence (BCR=YES)")
-            if row["flag_nte_positive"] == 1 and row["nte_type_category"] != "SECOND_PRIMARY_ONLY":
-                details.append(f"Prostate NTE ({row.get('new_neoplasm_event_type', 'NTE')})")
-            if row["flag_ht_progression_positive"] == 1:
-                details.append("Post-HT Tumor Progression")
-            timing_str = f"dated Day {row['days_to_recurrence_exact']:.0f}" if pd.notna(row["days_to_recurrence_exact"]) else "undated recurrence in XML"
-            return f"Prostate cancer recurrence/progression: {'; '.join(details)} ({timing_str} from initial diagnosis)."
+            timing_str = (
+                f"dated Day {row['days_to_recurrence_exact']:.0f} (Type: {row['earliest_prostate_recurrence_type']}; Source: {row['earliest_prostate_recurrence_source']})"
+                if pd.notna(row["days_to_recurrence_exact"])
+                else f"undated in XML (Type: {row['earliest_prostate_recurrence_type']})"
+            )
+            return f"Prostate cancer recurrence/progression: {timing_str} from initial diagnostic biopsy."
         if status == "SECOND_PRIMARY_MALIGNANCY":
-            return f"Second non-prostatic primary malignancy (NTE type: {row.get('new_neoplasm_event_type')}); BCR=NO; adjudicated as non-prostatic cancer and excluded from prostate recurrence."
+            return f"Second non-prostatic primary malignancy (NTE type: {row.get('new_neoplasm_event_type')}; Source: {row['earliest_prostate_recurrence_source']}); BCR=NO; adjudicated as non-prostatic cancer and excluded from prostate recurrence."
         if status == "DOCUMENTED_NON_RECURRENCE":
             return f"Documented recurrence-free: BCR=NO and NTE=NO; verified clinical follow-up through Day {row['days_to_censoring_exact']:.0f}."
         if status in {"NEGATIVE_BCR_MISSING_NTE", "MISSING_BCR_NEGATIVE_NTE"}:
@@ -403,6 +537,8 @@ def main() -> None:
         "days_to_death_clean",
         "days_to_recurrence_exact",
         "days_to_censoring_exact",
+        "earliest_prostate_recurrence_type",
+        "earliest_prostate_recurrence_source",
         "survival_duration_days",
         "duration_days_from_diagnosis",
         "survival_event_indicator",
@@ -480,57 +616,51 @@ def main() -> None:
     flat[avail_prov_cols].to_csv(RESEARCH_V3_DIR / "LONG_FORM_PROVENANCE.csv", index=False)
     flat[avail_prov_cols].to_csv(RESEARCH_V2_DIR / "LONG_FORM_PROVENANCE.csv", index=False)
 
-    # Predictor Timing Audit
+    # Refined Predictor Timing & Clinical Landmark Audit
     psa_days = pd.to_numeric(flat["days_to_psa"], errors="coerce")
     timing_audit = pd.DataFrame(
         [
             {
                 "predictor": "age_at_diagnosis_years",
-                "clinical_phase": "Baseline / Initial Diagnosis",
-                "timing_relative_to_initial_diagnosis_days": 0.0,
-                "timing_relative_to_surgery_days": 0.0,
-                "timing_interpretation": "Patient age at initial pathologic diagnosis (biopsy Day 0)",
-                "immortal_time_risk": "None (strictly baseline)",
+                "clinical_phase": "Pre-treatment / Diagnostic Biopsy",
+                "reference_origin_days": "0.0 (Core Needle Biopsy Day 0 in 98.1% of patients)",
+                "prediction_landmark": "Available at initial diagnosis (Biopsy Day 0)",
+                "immortal_time_and_landmark_risk": "None (strictly baseline demographic measured at initial diagnosis).",
             },
             {
                 "predictor": "pathologic_t",
-                "clinical_phase": "Peri-operative / Surgical Pathology",
-                "timing_relative_to_initial_diagnosis_days": 0.0,
-                "timing_relative_to_surgery_days": 0.0,
-                "timing_interpretation": "Pathologic T stage determined by surgical pathologist at radical prostatectomy",
-                "immortal_time_risk": "None (strictly baseline)",
+                "clinical_phase": "Post-resection / Surgical Pathology",
+                "reference_origin_days": "Unmeasured post-biopsy surgical offset (conditioned on prostatectomy)",
+                "prediction_landmark": "Post-Radical Prostatectomy Staging Landmark (Exact surgery date omitted from GDC XML)",
+                "immortal_time_and_landmark_risk": "Post-resection landmark. Core needle biopsy established Day 0 for 305/314 patients, while surgery date is unrecorded. Models using pT condition on resection while follow-up is measured from initial diagnostic biopsy.",
             },
             {
                 "predictor": "pathologic_n",
-                "clinical_phase": "Peri-operative / Surgical Pathology",
-                "timing_relative_to_initial_diagnosis_days": 0.0,
-                "timing_relative_to_surgery_days": 0.0,
-                "timing_interpretation": "Lymph node staging determined at surgical lymphadenectomy",
-                "immortal_time_risk": "None (strictly baseline)",
+                "clinical_phase": "Post-resection / Surgical Pathology",
+                "reference_origin_days": "Unmeasured post-biopsy surgical offset (conditioned on lymphadenectomy)",
+                "prediction_landmark": "Post-Radical Prostatectomy Staging Landmark (Exact surgery date omitted from GDC XML)",
+                "immortal_time_and_landmark_risk": "Post-resection landmark. Lymph node staging occurs at prostatectomy; exact interval from biopsy is unrecorded in registry.",
             },
             {
                 "predictor": "gleason_score_numeric",
-                "clinical_phase": "Peri-operative / Surgical Pathology",
-                "timing_relative_to_initial_diagnosis_days": 0.0,
-                "timing_relative_to_surgery_days": 0.0,
-                "timing_interpretation": "Primary and secondary Gleason score on biopsy / resected prostate specimen",
-                "immortal_time_risk": "None (strictly baseline)",
+                "clinical_phase": "Post-resection / Surgical Pathology",
+                "reference_origin_days": "Unmeasured post-biopsy surgical offset (conditioned on prostatectomy specimen)",
+                "prediction_landmark": "Post-Radical Prostatectomy Staging Landmark (Exact surgery date omitted from GDC XML)",
+                "immortal_time_and_landmark_risk": "Post-resection landmark. Primary and secondary Gleason grade on resected specimen; conditioned on surgery while follow-up is indexed from biopsy.",
             },
             {
                 "predictor": "RNA expression panel (13 genes)",
-                "clinical_phase": "Peri-operative / Resected Tissue",
-                "timing_relative_to_initial_diagnosis_days": 0.0,
-                "timing_relative_to_surgery_days": 0.0,
-                "timing_interpretation": "High-throughput RNA sequencing of resected primary tumor tissue",
-                "immortal_time_risk": "None (strictly baseline)",
+                "clinical_phase": "Post-resection / Resected Tissue Sequencing",
+                "reference_origin_days": "Unmeasured post-biopsy surgical offset (conditioned on prostatectomy specimen)",
+                "prediction_landmark": "Post-Radical Prostatectomy Staging Landmark (Exact surgery date omitted from GDC XML)",
+                "immortal_time_and_landmark_risk": "Post-resection landmark. High-throughput RNA-seq performed on frozen resected primary tumor tissue; conditioned on resection while follow-up is indexed from biopsy.",
             },
             {
                 "predictor": "psa_value_numeric",
-                "clinical_phase": "Post-operative Surveillance",
-                "timing_relative_to_initial_diagnosis_days": float(psa_days.median()) if psa_days.notna().any() else np.nan,
-                "timing_relative_to_surgery_days": float(psa_days.median()) if psa_days.notna().any() else np.nan,
-                "timing_interpretation": f"Follow-up surveillance PSA (median {psa_days.median():.0f} days post-diagnosis, 271 of 276 values >0 days); strictly excluded from baseline Cox models",
-                "immortal_time_risk": "High if treated as pre-operative baseline; evaluated separately in sensitivity analysis",
+                "clinical_phase": "Post-operative Surveillance Monitoring",
+                "reference_origin_days": f"Median {psa_days.median():.0f} days post-biopsy (IQR: 191–909)",
+                "prediction_landmark": "Surveillance monitoring (271 of 276 values recorded >0 days post-biopsy)",
+                "immortal_time_and_landmark_risk": "Severe immortal time / lead time bias if treated as baseline. Strictly excluded from baseline Cox and binary prognostic models; evaluated only in dedicated surveillance sensitivity analysis.",
             },
         ]
     )
@@ -607,7 +737,7 @@ def main() -> None:
     )
     counts.to_csv(PROJECT_ROOT / "tables" / "table_recurrence_outcome_counts.csv", index=False)
 
-    print("=== TCGA-PRAD V3 CLINICAL VALIDITY ENDPOINT RECONSTRUCTION COMPLETE ===")
+    print("=== TCGA-PRAD V3.1 CLINICAL VALIDITY ENDPOINT RECONSTRUCTION COMPLETE ===")
     print(flow.to_string(index=False))
 
 

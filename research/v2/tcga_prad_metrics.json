@@ -17,7 +17,7 @@
       -0.0734597967785361,
       0.05594298234536399
     ],
-    "paired_delta_auroc_p_value": 0.809
+    "paired_delta_auroc_p_value": null
   },
   "exploratory_composite_cohort": {
     "total_evaluable_patients": 307,
@@ -32,7 +32,7 @@
       -0.09769348239142256,
       0.026173211561512384
     ],
-    "paired_delta_auroc_p_value": 0.291
+    "paired_delta_auroc_p_value": null
   },
   "cohort": {
     "total_patients": 314,
@@ -47,14 +47,18 @@
   },
   "survival": {
     "time_origin": "Days from Initial Pathologic Diagnosis",
+    "prediction_landmark": "Post-Radical Prostatectomy Resection (Unmeasured Biopsy-to-Surgery Offset)",
     "evaluable_cases": 301,
-    "median_rfs_days": Infinity,
+    "median_rfs_days": null,
+    "median_rfs_status": "not_reached",
     "rfs_1yr": 0.8862567403326665,
     "rfs_3yr": 0.7573479838587016,
     "rfs_5yr": 0.653018659760935,
     "cox_apparent_concordance_index": 0.6877465271823014,
     "cox_cv_concordance_index": 0.6461584633853541,
     "strict_evaluable_cases": 255,
+    "strict_median_rfs_days": null,
+    "strict_median_rfs_status": "not_reached",
     "strict_cox_apparent_concordance_index": 0.6860196418255343,
     "strict_cox_cv_concordance_index": 0.6488060851145773,
     "schoenfeld_ph_interpretation": "No statistically significant violation detected (p > 0.05)"
@@ -360,7 +364,7 @@
       "delta_auroc": -0.0076287349014620975,
       "delta_auroc_95ci_low": -0.0734597967785361,
       "delta_auroc_95ci_high": 0.05594298234536399,
-      "delta_auroc_p_value": 0.809,
+      "delta_auroc_p_value": null,
       "baseline_brier": 0.16732902106926492,
       "augmented_brier": 0.16720420806660186,
       "delta_brier": -0.0001248130026630656,
@@ -380,7 +384,7 @@
       "delta_auroc": -0.012237762237762295,
       "delta_auroc_95ci_low": -0.07946838993786565,
       "delta_auroc_95ci_high": 0.05456143951833594,
-      "delta_auroc_p_value": 0.719,
+      "delta_auroc_p_value": null,
       "baseline_brier": 0.1708724825223031,
       "augmented_brier": 0.17093204993721067,
       "delta_brier": 5.956741490756312e-05,
@@ -400,7 +404,7 @@
       "delta_auroc": -0.03345250255362631,
       "delta_auroc_95ci_low": -0.09769348239142256,
       "delta_auroc_95ci_high": 0.026173211561512384,
-      "delta_auroc_p_value": 0.291,
+      "delta_auroc_p_value": null,
       "baseline_brier": 0.1446794108712888,
       "augmented_brier": 0.1526876962061367,
       "delta_brier": 0.008008285334847903,
@@ -420,7 +424,7 @@
       "delta_auroc": -0.013463438735177857,
       "delta_auroc_95ci_low": -0.08716807350297628,
       "delta_auroc_95ci_high": 0.0628976539172285,
-      "delta_auroc_p_value": 0.735,
+      "delta_auroc_p_value": null,
       "baseline_brier": 0.14337547979107798,
       "augmented_brier": 0.1457948560308702,
       "delta_brier": 0.0024193762397922147,

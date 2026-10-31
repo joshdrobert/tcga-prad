@@ -25,8 +25,8 @@ def test_no_postoperative_psa_in_baseline_models():
     assert timing_file.exists()
     timing_df = pd.read_csv(timing_file)
     psa_row = timing_df[timing_df["predictor"] == "psa_value_numeric"].iloc[0]
-    assert psa_row["clinical_phase"] == "Post-operative Surveillance"
-    assert "strictly excluded from baseline cox models" in psa_row["timing_interpretation"].lower()
+    assert "post-operative surveillance" in psa_row["clinical_phase"].lower()
+    assert "strictly excluded from baseline cox" in psa_row["immortal_time_and_landmark_risk"].lower()
 
 
 def test_time_origin_indexed_to_initial_pathologic_diagnosis():
@@ -100,3 +100,78 @@ def test_no_overclaiming_proportional_hazards_or_molecular_significance():
         assert "statistically significant improvement from rna" not in content
         assert "expression panel significantly improved" not in content
         assert "superior molecular discrimination" not in content
+
+
+def test_strict_json_rfc8259_compliance():
+    """Verify metrics JSON strictly adheres to RFC 8259 (no Infinity or NaN)."""
+    metrics_file = REPO_ROOT / "research" / "artifacts" / "tcga_prad_metrics.json"
+    assert metrics_file.exists(), "Metrics JSON artifact must exist"
+    raw_text = metrics_file.read_text()
+
+    assert "Infinity" not in raw_text, "Strict RFC 8259 JSON cannot contain 'Infinity'"
+    assert "NaN" not in raw_text, "Strict RFC 8259 JSON cannot contain 'NaN'"
+
+    def fail_on_nonstandard(x):
+        raise ValueError(f"Nonstandard JSON token detected: {x}")
+
+    metrics = json.loads(raw_text, parse_constant=fail_on_nonstandard)
+    assert metrics["survival"]["median_rfs_days"] is None, "Median RFS days must be null (None)"
+    assert metrics["survival"]["median_rfs_status"] == "not_reached", "Median RFS status must be 'not_reached'"
+    assert metrics["survival"]["strict_median_rfs_days"] is None
+    assert metrics["survival"]["strict_median_rfs_status"] == "not_reached"
+
+
+def test_event_level_provenance_pairing():
+    """Verify EVENT_LEVEL_PROVENANCE.csv unrolls and pairs event types, dates, and sources without decoupling."""
+    prov_file = REPO_ROOT / "research" / "v3" / "EVENT_LEVEL_PROVENANCE.csv"
+    assert prov_file.exists(), "EVENT_LEVEL_PROVENANCE.csv must exist in research/v3"
+    prov_df = pd.read_csv(prov_file)
+
+    required_cols = [
+        "submitter_id",
+        "source_file",
+        "event_category",
+        "event_type",
+        "event_days_from_diagnosis",
+        "prostate_specific",
+        "adjudication_class",
+        "adjudication_rationale",
+    ]
+    for col in required_cols:
+        assert col in prov_df.columns, f"Column '{col}' must be in provenance table"
+
+    # Verify second primaries are non-prostate specific
+    sec_primaries = prov_df[prov_df["submitter_id"].isin(["TCGA-CH-5791", "TCGA-HC-7080"])]
+    assert len(sec_primaries) >= 2
+    for _, row in sec_primaries.iterrows():
+        assert str(row["prostate_specific"]).lower() == "false"
+
+    # Verify cohort earliest prostate recurrence matches a prostate_specific == True event in provenance
+    rec_file = REPO_ROOT / "data_processed" / "tcga_prad_recurrence_cohort.csv"
+    rec_df = pd.read_csv(rec_file)
+    prostate_events = rec_df[rec_df["outcome_prostate_specific_recurrence"] == 1.0]
+
+    for _, p_row in prostate_events.iterrows():
+        pid = p_row["submitter_id"]
+        pt_prov = prov_df[(prov_df["submitter_id"] == pid) & (prov_df["prostate_specific"].astype(str).str.lower() == "true")]
+        assert len(pt_prov) > 0, f"Patient {pid} with positive prostate recurrence must have at least one prostate-specific provenance event"
+
+
+def test_predictor_timing_audit_landmark():
+    """Verify PREDICTOR_TIMING_AUDIT.csv correctly states landmark and avoids false surgery offsets."""
+    timing_file = REPO_ROOT / "research" / "v3" / "PREDICTOR_TIMING_AUDIT.csv"
+    assert timing_file.exists()
+    timing_df = pd.read_csv(timing_file)
+
+    # Ensure no false 'timing_relative_to_surgery_days = 0.0'
+    assert "timing_relative_to_surgery_days" not in timing_df.columns, (
+        "PREDICTOR_TIMING_AUDIT.csv must not declare timing_relative_to_surgery_days=0.0 when surgery date is unmeasured"
+    )
+
+    # Verify initial diagnosis day is 0.0 for baseline staging
+    age_row = timing_df[timing_df["predictor"] == "age_at_diagnosis_years"].iloc[0]
+    assert "0.0" in str(age_row["reference_origin_days"])
+
+    gleason_row = timing_df[timing_df["predictor"] == "gleason_score_numeric"].iloc[0]
+    assert "post-resection" in gleason_row["immortal_time_and_landmark_risk"].lower()
+    assert "unmeasured" in gleason_row["reference_origin_days"].lower()
