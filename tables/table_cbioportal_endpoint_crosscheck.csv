@@ -1,2 +1,2 @@
 comparison_definition,local_patients,cbioportal_matched_records,evaluable_matched,agreement_fraction,concordant_non_events,concordant_events,discordant_cases,local_only_events,cbio_only_events,local_events_in_comparable,cbio_events_in_comparable,cbio_bcr_events
-Historical Benchmark (Local Composite vs cBio BCR),314,314,269,0.8847583643122676,200,38,31,31,0,69,38,38
+Historical Benchmark (Local Composite vs cBio BCR),314,314,269,0.8921933085501859,202,38,29,29,0,67,38,38

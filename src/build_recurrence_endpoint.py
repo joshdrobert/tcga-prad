@@ -9,6 +9,7 @@ import pandas as pd
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 RESEARCH_V2_DIR = PROJECT_ROOT / "research" / "v2"
+RESEARCH_V3_DIR = PROJECT_ROOT / "research" / "v3"
 
 
 def parse_numeric_tokens(val: object, reducer: Callable[[list[float]], float] = max) -> float:
@@ -77,6 +78,18 @@ def categorize_nte_status(val: object) -> str:
     return "UNKNOWN_MISSING"
 
 
+def categorize_nte_type(val: object) -> str:
+    """Classify the anatomic/clinical type of new tumor event from XML."""
+    if pd.isna(val):
+        return "UNSPECIFIED"
+    text = str(val).strip()
+    if "New Primary" in text and not any(k in text for k in ["Biochemical", "Locoregional", "Distant"]):
+        return "SECOND_PRIMARY_ONLY"
+    if any(k in text for k in ["Biochemical", "Locoregional", "Distant"]):
+        return "PROSTATE_SPECIFIC"
+    return "OTHER"
+
+
 def categorize_ht_progression(val: object) -> str:
     """Classify Post-Hormone Therapy progression status."""
     if pd.isna(val):
@@ -105,7 +118,12 @@ def aggregate_clinical_xml_records(flat: pd.DataFrame) -> pd.DataFrame:
         record = {"submitter_id": sid}
 
         # Status strings: combine unique non-empty tokens across all encounters
-        for col in ["biochemical_recurrence", "new_tumor_event_after_initial_treatment", "tumor_progression_post_ht"]:
+        for col in [
+            "biochemical_recurrence",
+            "new_tumor_event_after_initial_treatment",
+            "new_neoplasm_event_type",
+            "tumor_progression_post_ht",
+        ]:
             if col in group.columns:
                 vals = [str(v).strip() for v in group[col].dropna() if str(v).strip() not in {"", "nan"}]
                 record[col] = "|".join(dict.fromkeys(vals)) if vals else np.nan
@@ -147,6 +165,7 @@ def aggregate_clinical_xml_records(flat: pd.DataFrame) -> pd.DataFrame:
 
 def main() -> None:
     RESEARCH_V2_DIR.mkdir(parents=True, exist_ok=True)
+    RESEARCH_V3_DIR.mkdir(parents=True, exist_ok=True)
     base = pd.read_csv(PROJECT_ROOT / "data_processed" / "tcga_prad_analysis_cohort.csv")
     flat = pd.read_csv(PROJECT_ROOT / "data_processed" / "tcga_prad_clinical_xml_flat.csv")
 
@@ -154,7 +173,7 @@ def main() -> None:
     clinical_agg = aggregate_clinical_xml_records(flat)
     cohort = base.merge(clinical_agg, on="submitter_id", how="left")
 
-    # Clean longitudinal follow-up and event days
+    # Clean longitudinal follow-up and event days (Days from Initial Pathologic Diagnosis)
     cohort["days_to_last_followup_clean"] = cohort["days_to_last_followup_y"].fillna(
         cohort["days_to_last_followup_x"].apply(lambda v: parse_numeric_tokens(v, max))
     )
@@ -167,48 +186,76 @@ def main() -> None:
     # Explicit clinical status adjudication
     cohort["bcr_status"] = cohort["biochemical_recurrence"].apply(categorize_bcr_status)
     cohort["nte_status"] = cohort["new_tumor_event_after_initial_treatment"].apply(categorize_nte_status)
+    cohort["nte_type_category"] = cohort["new_neoplasm_event_type"].apply(categorize_nte_type)
     cohort["ht_progression_status"] = cohort["tumor_progression_post_ht"].apply(categorize_ht_progression)
 
     cohort["flag_bcr_positive"] = cohort["bcr_status"].eq("DOCUMENTED_POSITIVE").astype(int)
     cohort["flag_nte_positive"] = cohort["nte_status"].isin(["DOCUMENTED_POSITIVE", "DOCUMENTED_POSITIVE_MULTI_ENCOUNTER"]).astype(int)
     cohort["flag_ht_progression_positive"] = cohort["ht_progression_status"].eq("DOCUMENTED_POSITIVE").astype(int)
 
-    # 4-State Composite Recurrence Categorization
+    # Adjudicate Composite Status (Accounting for Second Primaries vs Prostate Recurrences)
     def adjudicate_composite(row: pd.Series) -> str:
-        if row["flag_bcr_positive"] == 1 or row["flag_nte_positive"] == 1 or row["flag_ht_progression_positive"] == 1:
-            return "DOCUMENTED_RECURRENCE"
+        # 1. Genuine prostate-specific recurrence / progression:
+        is_prostate_nte = (row["flag_nte_positive"] == 1) and (row["nte_type_category"] != "SECOND_PRIMARY_ONLY")
+        if row["flag_bcr_positive"] == 1 or is_prostate_nte or row["flag_ht_progression_positive"] == 1:
+            return "DOCUMENTED_PROSTATE_RECURRENCE"
+
+        # 2. Non-prostatic second primary malignancy (TCGA-CH-5791, TCGA-HC-7080):
+        if row["nte_type_category"] == "SECOND_PRIMARY_ONLY":
+            return "SECOND_PRIMARY_MALIGNANCY"
+
+        # 3. Fully Indeterminate:
         if row["bcr_status"] == "UNKNOWN_MISSING" and row["nte_status"] == "UNKNOWN_MISSING":
             return "INDETERMINATE_ALL_MISSING"
+
+        # 4. Documented double negative:
         if row["bcr_status"] == "DOCUMENTED_NEGATIVE" and row["nte_status"] == "DOCUMENTED_NEGATIVE":
             return "DOCUMENTED_NON_RECURRENCE"
+
+        # 5. Asymmetric surveillance:
         if row["bcr_status"] == "DOCUMENTED_NEGATIVE" and row["nte_status"] == "UNKNOWN_MISSING":
             return "NEGATIVE_BCR_MISSING_NTE"
         if row["bcr_status"] == "UNKNOWN_MISSING" and row["nte_status"] == "DOCUMENTED_NEGATIVE":
             return "MISSING_BCR_NEGATIVE_NTE"
+
         return "INDETERMINATE_OTHER"
 
     cohort["composite_status_detail"] = cohort.apply(adjudicate_composite, axis=1)
 
     # Categorical Outcome Variables:
-    # 1. outcome_definitive_recurrence:
-    #    1: Documented recurrence/progression (n=72)
-    #    0: Documented recurrence-free with BOTH indicators negative (n=191)
-    #    NaN: Asymmetric (n=46) or Fully Indeterminate (n=5)
-    def assign_definitive(status: str) -> float:
-        if status == "DOCUMENTED_RECURRENCE":
+    # 1. outcome_prostate_specific_recurrence:
+    #    1.0: Documented prostate-specific recurrence/progression (n=70)
+    #    0.0: Documented recurrence-free double-negative (n=191)
+    #    NaN: Second primary (n=2), Asymmetric (n=46), or Fully Indeterminate (n=5)
+    def assign_prostate_specific(status: str) -> float:
+        if status == "DOCUMENTED_PROSTATE_RECURRENCE":
             return 1.0
         if status == "DOCUMENTED_NON_RECURRENCE":
             return 0.0
         return np.nan
 
-    cohort["outcome_definitive_recurrence"] = cohort["composite_status_detail"].apply(assign_definitive)
+    cohort["outcome_prostate_specific_recurrence"] = cohort["composite_status_detail"].apply(assign_prostate_specific)
 
-    # 2. outcome_exploratory_composite:
-    #    1: Documented recurrence/progression (n=72)
-    #    0: Documented recurrence-free (n=191) or asymmetric negative (n=46) -> n=237
-    #    NaN: Fully Indeterminate All Missing (n=5) -> EXCLUDED from non-events!
+    # 2. outcome_definitive_recurrence:
+    #    Primary definitive cohort: alias to outcome_prostate_specific_recurrence (n=261: 70 positive, 191 negative)
+    cohort["outcome_definitive_recurrence"] = cohort["outcome_prostate_specific_recurrence"]
+
+    # 3. outcome_composite_all_cancers (Sensitivity comparison including non-prostatic second primaries: n=263)
+    def assign_all_cancers(status: str) -> float:
+        if status in {"DOCUMENTED_PROSTATE_RECURRENCE", "SECOND_PRIMARY_MALIGNANCY"}:
+            return 1.0
+        if status == "DOCUMENTED_NON_RECURRENCE":
+            return 0.0
+        return np.nan
+
+    cohort["outcome_composite_all_cancers"] = cohort["composite_status_detail"].apply(assign_all_cancers)
+
+    # 4. outcome_exploratory_composite:
+    #    1.0: Documented prostate recurrence (n=70)
+    #    0.0: Documented recurrence-free (n=191) or asymmetric negative (n=46) -> n=237
+    #    NaN: Second primary (n=2) or Fully Indeterminate (n=5) -> EXCLUDED!
     def assign_exploratory(status: str) -> float:
-        if status == "DOCUMENTED_RECURRENCE":
+        if status == "DOCUMENTED_PROSTATE_RECURRENCE":
             return 1.0
         if status in {"DOCUMENTED_NON_RECURRENCE", "NEGATIVE_BCR_MISSING_NTE", "MISSING_BCR_NEGATIVE_NTE"}:
             return 0.0
@@ -217,13 +264,13 @@ def main() -> None:
     cohort["outcome_exploratory_composite"] = cohort["composite_status_detail"].apply(assign_exploratory)
 
     # Backward compatibility primary binary column:
-    # 1: Documented recurrence (n=72)
-    # 0: Nonpositive (n=242), with sensitivity tracking for indeterminate cases
-    cohort["outcome_recurrence_or_progression"] = cohort["composite_status_detail"].eq("DOCUMENTED_RECURRENCE").astype(int)
+    # 1: Documented prostate recurrence (n=70)
+    # 0: Nonpositive (n=244)
+    cohort["outcome_recurrence_or_progression"] = cohort["composite_status_detail"].eq("DOCUMENTED_PROSTATE_RECURRENCE").astype(int)
 
-    # High confidence outcome flag (documented positive OR documented double negative = 263 patients)
+    # High confidence outcome flag (documented prostate positive OR documented double negative = 261 patients)
     cohort["high_confidence_outcome_flag"] = cohort["composite_status_detail"].isin(
-        ["DOCUMENTED_RECURRENCE", "DOCUMENTED_NON_RECURRENCE"]
+        ["DOCUMENTED_PROSTATE_RECURRENCE", "DOCUMENTED_NON_RECURRENCE"]
     ).astype(int)
 
     # Numeric clinical predictors
@@ -232,8 +279,8 @@ def main() -> None:
     cohort["gleason_score_numeric"] = pd.to_numeric(gleason_source, errors="coerce")
 
     # Longitudinal Event Timing Construction
-    # NO FALLBACK TO LAST FOLLOWUP TIME FOR POSITIVE EVENTS WITHOUT DOCUMENTED DATES
-    # EXCLUDE FULLY INDETERMINATE RECORDS FROM SURVIVAL ANALYSIS CENSORING
+    # TIME ORIGIN: INITIAL PATHOLOGIC DIAGNOSIS (CORE NEEDLE BIOPSY AT DAY 0)
+    # EXCLUDE SECOND PRIMARIES AND FULLY INDETERMINATE RECORDS FROM PROSTATE SURVIVAL
     exact_event_times = []
     exact_censoring_times = []
     survival_analysis_times = []
@@ -242,14 +289,16 @@ def main() -> None:
 
     for _, row in cohort.iterrows():
         status = row["composite_status_detail"]
-        is_event = status == "DOCUMENTED_RECURRENCE"
-        is_indeterminate = status == "INDETERMINATE_ALL_MISSING"
+        is_prostate_event = (status == "DOCUMENTED_PROSTATE_RECURRENCE")
+        is_second_primary = (status == "SECOND_PRIMARY_MALIGNANCY")
+        is_indeterminate = (status == "INDETERMINATE_ALL_MISSING")
 
         t_event_candidates = []
         if pd.notna(row["days_to_bcr_clean"]) and row["days_to_bcr_clean"] > 0:
             t_event_candidates.append(row["days_to_bcr_clean"])
-        if pd.notna(row["days_to_nte_clean"]) and row["days_to_nte_clean"] > 0:
-            t_event_candidates.append(row["days_to_nte_clean"])
+        if row["nte_type_category"] != "SECOND_PRIMARY_ONLY":
+            if pd.notna(row["days_to_nte_clean"]) and row["days_to_nte_clean"] > 0:
+                t_event_candidates.append(row["days_to_nte_clean"])
 
         t_censor_candidates = []
         if pd.notna(row["days_to_last_followup_clean"]) and row["days_to_last_followup_clean"] > 0:
@@ -263,21 +312,25 @@ def main() -> None:
         exact_event_times.append(t_event)
         exact_censoring_times.append(t_censor)
 
-        if is_event:
+        if is_prostate_event:
             if pd.notna(t_event):
-                # Valid dated recurrence event
+                # Valid dated prostate recurrence event
                 survival_analysis_times.append(t_event)
                 survival_event_flags.append(1.0)
                 undated_recurrence_flags.append(0)
             else:
-                # Documented recurrence without exact event day:
-                # Excluded from exact-time continuous survival analysis
+                # Documented prostate recurrence without exact event day
                 survival_analysis_times.append(np.nan)
                 survival_event_flags.append(np.nan)
                 undated_recurrence_flags.append(1)
+        elif is_second_primary:
+            # Second non-prostatic primary cancer:
+            # Excluded from prostate-specific recurrence survival analysis
+            survival_analysis_times.append(np.nan)
+            survival_event_flags.append(np.nan)
+            undated_recurrence_flags.append(0)
         elif is_indeterminate:
             # Fully indeterminate missing record:
-            # EXCLUDE from survival analysis (do not naively censor as recurrence-free non-event!)
             survival_analysis_times.append(np.nan)
             survival_event_flags.append(np.nan)
             undated_recurrence_flags.append(0)
@@ -295,23 +348,54 @@ def main() -> None:
     cohort["days_to_recurrence_exact"] = exact_event_times
     cohort["days_to_censoring_exact"] = exact_censoring_times
     cohort["survival_duration_days"] = survival_analysis_times
+    cohort["duration_days_from_diagnosis"] = survival_analysis_times
     cohort["survival_event_indicator"] = survival_event_flags
     cohort["undated_recurrence_flag"] = undated_recurrence_flags
     cohort["time_to_recurrence_days"] = cohort["survival_duration_days"]
+
+    # Adjudication rationale text per patient
+    def assign_rationale(row: pd.Series) -> str:
+        sid = row["submitter_id"]
+        status = row["composite_status_detail"]
+        if status == "DOCUMENTED_PROSTATE_RECURRENCE":
+            details = []
+            if row["flag_bcr_positive"] == 1:
+                details.append("Biochemical Recurrence (BCR=YES)")
+            if row["flag_nte_positive"] == 1 and row["nte_type_category"] != "SECOND_PRIMARY_ONLY":
+                details.append(f"Prostate NTE ({row.get('new_neoplasm_event_type', 'NTE')})")
+            if row["flag_ht_progression_positive"] == 1:
+                details.append("Post-HT Tumor Progression")
+            timing_str = f"dated Day {row['days_to_recurrence_exact']:.0f}" if pd.notna(row["days_to_recurrence_exact"]) else "undated recurrence in XML"
+            return f"Prostate cancer recurrence/progression: {'; '.join(details)} ({timing_str} from initial diagnosis)."
+        if status == "SECOND_PRIMARY_MALIGNANCY":
+            return f"Second non-prostatic primary malignancy (NTE type: {row.get('new_neoplasm_event_type')}); BCR=NO; adjudicated as non-prostatic cancer and excluded from prostate recurrence."
+        if status == "DOCUMENTED_NON_RECURRENCE":
+            return f"Documented recurrence-free: BCR=NO and NTE=NO; verified clinical follow-up through Day {row['days_to_censoring_exact']:.0f}."
+        if status in {"NEGATIVE_BCR_MISSING_NTE", "MISSING_BCR_NEGATIVE_NTE"}:
+            return f"Asymmetric surveillance: single negative indicator with complementary indicator missing; censored at Day {row['days_to_censoring_exact']:.0f}."
+        if status == "INDETERMINATE_ALL_MISSING":
+            return "Fully indeterminate: missing all longitudinal follow-up, BCR, and NTE data; excluded from definitive and survival non-events."
+        return "Other clinical status."
+
+    cohort["adjudication_rationale"] = cohort.apply(assign_rationale, axis=1)
 
     # Save processed recurrence cohort
     out = PROJECT_ROOT / "data_processed" / "tcga_prad_recurrence_cohort.csv"
     cohort.to_csv(out, index=False)
 
-    # Save V2 Longitudinal Event Audit CSV
-    audit_cols = [
+    # Save Comprehensive Event Adjudication Ledger
+    ledger_cols = [
         "submitter_id",
         "composite_status_detail",
+        "outcome_prostate_specific_recurrence",
         "outcome_definitive_recurrence",
         "outcome_exploratory_composite",
+        "outcome_composite_all_cancers",
         "outcome_recurrence_or_progression",
         "bcr_status",
         "nte_status",
+        "new_neoplasm_event_type",
+        "nte_type_category",
         "ht_progression_status",
         "days_to_bcr_clean",
         "days_to_nte_clean",
@@ -320,41 +404,56 @@ def main() -> None:
         "days_to_recurrence_exact",
         "days_to_censoring_exact",
         "survival_duration_days",
+        "duration_days_from_diagnosis",
         "survival_event_indicator",
         "undated_recurrence_flag",
+        "adjudication_rationale",
     ]
-    cohort[audit_cols].to_csv(RESEARCH_V2_DIR / "LONGITUDINAL_EVENT_AUDIT.csv", index=False)
+    cohort[ledger_cols].to_csv(RESEARCH_V3_DIR / "EVENT_ADJUDICATION_LEDGER.csv", index=False)
+    cohort[ledger_cols].to_csv(RESEARCH_V2_DIR / "EVENT_ADJUDICATION_LEDGER.csv", index=False)
+    cohort[ledger_cols].to_csv(RESEARCH_V2_DIR / "LONGITUDINAL_EVENT_AUDIT.csv", index=False)
 
     # Document the 6 undated recurrence cases specifically
-    undated = cohort[cohort["undated_recurrence_flag"] == 1][audit_cols]
+    undated = cohort[cohort["undated_recurrence_flag"] == 1][ledger_cols]
+    undated.to_csv(RESEARCH_V3_DIR / "UNDATED_RECURRENCE_CASES.csv", index=False)
     undated.to_csv(RESEARCH_V2_DIR / "UNDATED_RECURRENCE_CASES.csv", index=False)
 
+    # Document the 2 second primary cases specifically
+    second_prim = cohort[cohort["composite_status_detail"] == "SECOND_PRIMARY_MALIGNANCY"][ledger_cols]
+    second_prim.to_csv(RESEARCH_V3_DIR / "SECOND_PRIMARY_CASES.csv", index=False)
+    second_prim.to_csv(RESEARCH_V2_DIR / "SECOND_PRIMARY_CASES.csv", index=False)
+
     # Document the 5 fully indeterminate cases specifically
-    indeterminate = cohort[cohort["composite_status_detail"] == "INDETERMINATE_ALL_MISSING"][audit_cols]
+    indeterminate = cohort[cohort["composite_status_detail"] == "INDETERMINATE_ALL_MISSING"][ledger_cols]
+    indeterminate.to_csv(RESEARCH_V3_DIR / "INDETERMINATE_OUTCOME_CASES.csv", index=False)
     indeterminate.to_csv(RESEARCH_V2_DIR / "INDETERMINATE_OUTCOME_CASES.csv", index=False)
 
-    # Save V2 Cohort Flow Breakdown
+    # Save Cohort Flow Breakdown
     flow = pd.DataFrame(
         [
             {"step": "Total TCGA-PRAD Radical Prostatectomy Patients", "count": len(cohort)},
-            {"step": "Primary Definitive Binary Cohort (Positives + Double Negatives)", "count": int(cohort["outcome_definitive_recurrence"].notna().sum())},
-            {"step": "  - Documented Recurrence / Progression (Definitive Positive)", "count": int((cohort["outcome_definitive_recurrence"] == 1.0).sum())},
+            {"step": "Primary Definitive Prostate-Specific Cohort (Positives + Double Negatives)", "count": int(cohort["outcome_definitive_recurrence"].notna().sum())},
+            {"step": "  - Documented Prostate Cancer Recurrence / Progression (Definitive Positive)", "count": int((cohort["outcome_definitive_recurrence"] == 1.0).sum())},
             {"step": "  - Documented Double-Negative (BCR=NO and NTE=NO)", "count": int((cohort["outcome_definitive_recurrence"] == 0.0).sum())},
+            {"step": "Second Non-Prostatic Primary Malignancy (TCGA-CH-5791, TCGA-HC-7080)", "count": int((cohort["composite_status_detail"] == "SECOND_PRIMARY_MALIGNANCY").sum())},
+            {"step": "Sensitivity All-Cancers Composite (Positives + Second Primaries + Double Neg)", "count": int(cohort["outcome_composite_all_cancers"].notna().sum())},
             {"step": "Exploratory Composite Binary Cohort (Positives + Double Neg + Asymmetric Neg)", "count": int(cohort["outcome_exploratory_composite"].notna().sum())},
             {"step": "  - Asymmetric Negative (Excluded from primary definitive)", "count": int(cohort["composite_status_detail"].isin(["NEGATIVE_BCR_MISSING_NTE", "MISSING_BCR_NEGATIVE_NTE"]).sum())},
             {"step": "    * Asymmetric: BCR=NO, NTE missing", "count": int((cohort["composite_status_detail"] == "NEGATIVE_BCR_MISSING_NTE").sum())},
             {"step": "    * Asymmetric: NTE=NO, BCR missing", "count": int((cohort["composite_status_detail"] == "MISSING_BCR_NEGATIVE_NTE").sum())},
             {"step": "Fully Indeterminate Cases (Excluded from all primary/exploratory non-events)", "count": int((cohort["composite_status_detail"] == "INDETERMINATE_ALL_MISSING").sum())},
             {"step": "Continuous-Time Survival: Strict Sensitivity Cohort (Dated events + Double Negatives)", "count": int(((cohort["survival_event_indicator"] == 1.0) | (cohort["composite_status_detail"] == "DOCUMENTED_NON_RECURRENCE")).sum())},
-            {"step": "  - Strict Dated Recurrence Events", "count": int((cohort["survival_event_indicator"] == 1.0).sum())},
+            {"step": "  - Strict Dated Prostate Recurrence Events", "count": int((cohort["survival_event_indicator"] == 1.0).sum())},
             {"step": "  - Strict Double-Negative Censored Non-Events", "count": int(((cohort["survival_event_indicator"] == 0.0) & (cohort["composite_status_detail"] == "DOCUMENTED_NON_RECURRENCE")).sum())},
             {"step": "Continuous-Time Survival: Exploratory Cohort (Admitting 46 asymmetric records)", "count": int(cohort["survival_duration_days"].notna().sum())},
             {"step": "  - Exploratory Censored Non-Events (191 double-neg + 46 asymmetric)", "count": int((cohort["survival_event_indicator"] == 0.0).sum())},
             {"step": "Excluded from Exact Continuous Survival (Total)", "count": int(cohort["survival_duration_days"].isna().sum())},
-            {"step": "  - Undated Recurrence Events (Documented recurrence, timing missing in XML)", "count": int(cohort["undated_recurrence_flag"].sum())},
-            {"step": "  - Fully Indeterminate Records (Missing all follow-up & recurrence)", "count": int((cohort["composite_status_detail"] == "INDETERMINATE_ALL_MISSING").sum())},
+            {"step": "  - Undated Prostate Recurrence Events", "count": int(cohort["undated_recurrence_flag"].sum())},
+            {"step": "  - Second Non-Prostatic Primary Tumors", "count": int((cohort["composite_status_detail"] == "SECOND_PRIMARY_MALIGNANCY").sum())},
+            {"step": "  - Fully Indeterminate Records", "count": int((cohort["composite_status_detail"] == "INDETERMINATE_ALL_MISSING").sum())},
         ]
     )
+    flow.to_csv(RESEARCH_V3_DIR / "COHORT_FLOW.csv", index=False)
     flow.to_csv(RESEARCH_V2_DIR / "COHORT_FLOW.csv", index=False)
 
     # Long-Form Encounter Provenance Table (All 336 XML rows from 321 patients)
@@ -370,6 +469,7 @@ def main() -> None:
         "biochemical_recurrence",
         "days_to_first_biochemical_recurrence",
         "new_tumor_event_after_initial_treatment",
+        "new_neoplasm_event_type",
         "days_to_new_tumor_event_after_initial_treatment",
         "tumor_progression_post_ht",
         "psa_value",
@@ -377,6 +477,7 @@ def main() -> None:
         "gleason_score",
     ]
     avail_prov_cols = [c for c in prov_cols if c in flat.columns]
+    flat[avail_prov_cols].to_csv(RESEARCH_V3_DIR / "LONG_FORM_PROVENANCE.csv", index=False)
     flat[avail_prov_cols].to_csv(RESEARCH_V2_DIR / "LONG_FORM_PROVENANCE.csv", index=False)
 
     # Predictor Timing Audit
@@ -385,21 +486,24 @@ def main() -> None:
         [
             {
                 "predictor": "age_at_diagnosis_years",
-                "clinical_phase": "Baseline / Pre-operative",
+                "clinical_phase": "Baseline / Initial Diagnosis",
+                "timing_relative_to_initial_diagnosis_days": 0.0,
                 "timing_relative_to_surgery_days": 0.0,
-                "timing_interpretation": "Patient age at initial radical prostatectomy diagnosis",
+                "timing_interpretation": "Patient age at initial pathologic diagnosis (biopsy Day 0)",
                 "immortal_time_risk": "None (strictly baseline)",
             },
             {
                 "predictor": "pathologic_t",
                 "clinical_phase": "Peri-operative / Surgical Pathology",
+                "timing_relative_to_initial_diagnosis_days": 0.0,
                 "timing_relative_to_surgery_days": 0.0,
-                "timing_interpretation": "Pathologic T stage determined by surgical pathologist at resection",
+                "timing_interpretation": "Pathologic T stage determined by surgical pathologist at radical prostatectomy",
                 "immortal_time_risk": "None (strictly baseline)",
             },
             {
                 "predictor": "pathologic_n",
                 "clinical_phase": "Peri-operative / Surgical Pathology",
+                "timing_relative_to_initial_diagnosis_days": 0.0,
                 "timing_relative_to_surgery_days": 0.0,
                 "timing_interpretation": "Lymph node staging determined at surgical lymphadenectomy",
                 "immortal_time_risk": "None (strictly baseline)",
@@ -407,13 +511,15 @@ def main() -> None:
             {
                 "predictor": "gleason_score_numeric",
                 "clinical_phase": "Peri-operative / Surgical Pathology",
+                "timing_relative_to_initial_diagnosis_days": 0.0,
                 "timing_relative_to_surgery_days": 0.0,
-                "timing_interpretation": "Primary and secondary Gleason score on resected prostate specimen",
+                "timing_interpretation": "Primary and secondary Gleason score on biopsy / resected prostate specimen",
                 "immortal_time_risk": "None (strictly baseline)",
             },
             {
                 "predictor": "RNA expression panel (13 genes)",
                 "clinical_phase": "Peri-operative / Resected Tissue",
+                "timing_relative_to_initial_diagnosis_days": 0.0,
                 "timing_relative_to_surgery_days": 0.0,
                 "timing_interpretation": "High-throughput RNA sequencing of resected primary tumor tissue",
                 "immortal_time_risk": "None (strictly baseline)",
@@ -421,15 +527,17 @@ def main() -> None:
             {
                 "predictor": "psa_value_numeric",
                 "clinical_phase": "Post-operative Surveillance",
+                "timing_relative_to_initial_diagnosis_days": float(psa_days.median()) if psa_days.notna().any() else np.nan,
                 "timing_relative_to_surgery_days": float(psa_days.median()) if psa_days.notna().any() else np.nan,
-                "timing_interpretation": f"Follow-up surveillance PSA (median {psa_days.median():.0f} days post-op, 271 of 276 values >0 days post-surgery)",
+                "timing_interpretation": f"Follow-up surveillance PSA (median {psa_days.median():.0f} days post-diagnosis, 271 of 276 values >0 days); strictly excluded from baseline Cox models",
                 "immortal_time_risk": "High if treated as pre-operative baseline; evaluated separately in sensitivity analysis",
             },
         ]
     )
+    timing_audit.to_csv(RESEARCH_V3_DIR / "PREDICTOR_TIMING_AUDIT.csv", index=False)
     timing_audit.to_csv(RESEARCH_V2_DIR / "PREDICTOR_TIMING_AUDIT.csv", index=False)
 
-    # Selection Bias Audit: Comparing Excluded (n=11) vs Included (n=303) Survival Patients
+    # Selection Bias Audit: Comparing Excluded (n=13) vs Included (n=301) Survival Patients
     cohort["excluded_from_survival"] = cohort["survival_duration_days"].isna()
     inc = cohort[~cohort["excluded_from_survival"]]
     exc = cohort[cohort["excluded_from_survival"]]
@@ -438,36 +546,37 @@ def main() -> None:
         [
             {
                 "characteristic": "Cohort Size (N)",
-                "included_cohort_n303": len(inc),
-                "excluded_cohort_n11": len(exc),
-                "comparison_interpretation": "11 patients excluded: 6 undated recurrence events + 5 indeterminate",
+                "included_cohort_n301": len(inc),
+                "excluded_cohort_n13": len(exc),
+                "comparison_interpretation": "13 patients excluded: 6 undated prostate recurrence events + 2 second primary cancers + 5 indeterminate",
             },
             {
                 "characteristic": "Mean Age at Diagnosis (years)",
-                "included_cohort_n303": round(float(inc["age_at_diagnosis_years"].dropna().mean()), 2),
-                "excluded_cohort_n11": round(float(exc["age_at_diagnosis_years"].dropna().mean()), 2),
+                "included_cohort_n301": round(float(inc["age_at_diagnosis_years"].dropna().mean()), 2),
+                "excluded_cohort_n13": round(float(exc["age_at_diagnosis_years"].dropna().mean()), 2),
                 "comparison_interpretation": "Excluded patients slightly younger at diagnosis (57.8 vs 61.5 years)",
             },
             {
                 "characteristic": "Mean Gleason Score",
-                "included_cohort_n303": round(float(inc["gleason_score_numeric"].dropna().mean()), 2),
-                "excluded_cohort_n11": round(float(exc["gleason_score_numeric"].dropna().mean()), 2),
+                "included_cohort_n301": round(float(inc["gleason_score_numeric"].dropna().mean()), 2),
+                "excluded_cohort_n13": round(float(exc["gleason_score_numeric"].dropna().mean()), 2),
                 "comparison_interpretation": "Excluded cases have higher mean Gleason score (7.82 vs 7.59)",
             },
             {
                 "characteristic": "Advanced Pathologic Stage T3/T4 (%)",
-                "included_cohort_n303": round(float(inc["pathologic_t"].isin(["T3a", "T3b", "T4"]).mean() * 100), 1),
-                "excluded_cohort_n11": round(float(exc["pathologic_t"].isin(["T3a", "T3b", "T4"]).mean() * 100), 1),
+                "included_cohort_n301": round(float(inc["pathologic_t"].isin(["T3a", "T3b", "T4"]).mean() * 100), 1),
+                "excluded_cohort_n13": round(float(exc["pathologic_t"].isin(["T3a", "T3b", "T4"]).mean() * 100), 1),
                 "comparison_interpretation": "Excluded cases show 90.0% advanced T3/T4 stage vs 60.9% in included",
             },
             {
                 "characteristic": "True Recurrence Event Prevalence (%)",
-                "included_cohort_n303": round(float((inc["survival_event_indicator"] == 1.0).mean() * 100), 1),
-                "excluded_cohort_n11": round(float(exc["undated_recurrence_flag"].mean() * 100), 1),
-                "comparison_interpretation": "54.5% of excluded patients suffered documented recurrence (6/11), downwardly biasing event rates",
+                "included_cohort_n301": round(float((inc["survival_event_indicator"] == 1.0).mean() * 100), 1),
+                "excluded_cohort_n13": round(float(exc["undated_recurrence_flag"].mean() * 100), 1),
+                "comparison_interpretation": "46.2% of excluded patients suffered documented prostate recurrence (6/13), downwardly biasing observed continuous-time event rates",
             },
         ]
     )
+    bias_audit.to_csv(RESEARCH_V3_DIR / "SELECTION_BIAS_AUDIT.csv", index=False)
     bias_audit.to_csv(RESEARCH_V2_DIR / "SELECTION_BIAS_AUDIT.csv", index=False)
 
     # Missingness Table
@@ -478,16 +587,18 @@ def main() -> None:
             {"field": "biochemical_recurrence", "missing_count": int(cohort["biochemical_recurrence"].isna().sum()), "pct": float(cohort["biochemical_recurrence"].isna().mean() * 100)},
             {"field": "new_tumor_event", "missing_count": int(cohort["new_tumor_event_after_initial_treatment"].isna().sum()), "pct": float(cohort["new_tumor_event_after_initial_treatment"].isna().mean() * 100)},
             {"field": "days_to_last_followup", "missing_count": int(cohort["days_to_last_followup_clean"].isna().sum()), "pct": float(cohort["days_to_last_followup_clean"].isna().mean() * 100)},
-            {"field": "event_recurrence_exact_date", "missing_count": int(cohort[cohort['outcome_recurrence_or_progression'] == 1]['days_to_recurrence_exact'].isna().sum()), "pct": float(cohort[cohort['outcome_recurrence_or_progression'] == 1]['days_to_recurrence_exact'].isna().mean() * 100)},
+            {"field": "event_recurrence_exact_date", "missing_count": int(cohort[cohort['outcome_definitive_recurrence'] == 1]['days_to_recurrence_exact'].isna().sum()), "pct": float(cohort[cohort['outcome_definitive_recurrence'] == 1]['days_to_recurrence_exact'].isna().mean() * 100)},
         ]
     )
+    missing_tbl.to_csv(RESEARCH_V3_DIR / "MISSINGNESS_TABLE.csv", index=False)
     missing_tbl.to_csv(RESEARCH_V2_DIR / "MISSINGNESS_TABLE.csv", index=False)
 
     counts = pd.DataFrame(
         [
-            {"endpoint": "Composite Recurrence/Progression (Total)", "events": int(cohort["outcome_recurrence_or_progression"].sum()), "total": len(cohort)},
-            {"endpoint": "Dated Recurrence Events (Exact Timing)", "events": int((cohort["survival_event_indicator"] == 1.0).sum()), "total": len(cohort)},
-            {"endpoint": "Undated Recurrence Events (Excluded from exact time)", "events": int(cohort["undated_recurrence_flag"].sum()), "total": len(cohort)},
+            {"endpoint": "Prostate-Specific Recurrence (Definitive)", "events": int(cohort["outcome_definitive_recurrence"].eq(1.0).sum()), "total": len(cohort)},
+            {"endpoint": "Dated Prostate Recurrence Events (Exact Timing)", "events": int((cohort["survival_event_indicator"] == 1.0).sum()), "total": len(cohort)},
+            {"endpoint": "Undated Prostate Recurrence Events (Excluded from exact time)", "events": int(cohort["undated_recurrence_flag"].sum()), "total": len(cohort)},
+            {"endpoint": "Second Non-Prostatic Primary Malignancies", "events": int((cohort["composite_status_detail"] == "SECOND_PRIMARY_MALIGNANCY").sum()), "total": len(cohort)},
             {"endpoint": "Biochemical Recurrence (BCR)", "events": int(cohort["flag_bcr_positive"].sum()), "total": len(cohort)},
             {"endpoint": "New Tumor Event (NTE)", "events": int(cohort["flag_nte_positive"].sum()), "total": len(cohort)},
             {"endpoint": "Post-HT Progression", "events": int(cohort["flag_ht_progression_positive"].sum()), "total": len(cohort)},
@@ -496,7 +607,7 @@ def main() -> None:
     )
     counts.to_csv(PROJECT_ROOT / "tables" / "table_recurrence_outcome_counts.csv", index=False)
 
-    print(f"=== TCGA-PRAD V2 ENDPOINT RECONSTRUCTION COMPLETE ===")
+    print("=== TCGA-PRAD V3 CLINICAL VALIDITY ENDPOINT RECONSTRUCTION COMPLETE ===")
     print(flow.to_string(index=False))
 
 

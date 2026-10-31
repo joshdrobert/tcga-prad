@@ -1,0 +1,337 @@
+submitter_id,file_uuid,batch_number,source_file,bcr_followup_barcode,followup_case_report_form_submission_reason,days_to_last_followup,days_to_death,biochemical_recurrence,days_to_first_biochemical_recurrence,new_tumor_event_after_initial_treatment,new_neoplasm_event_type,days_to_new_tumor_event_after_initial_treatment,tumor_progression_post_ht,psa_value,days_to_psa,gleason_score
+TCGA-2A-A8VL,7E2ED8FD-7842-4722-A070-37896CF6ABD5,389.51.0,nationwidechildrens.org_clinical.TCGA-2A-A8VL.xml,TCGA-2A-A8VL-F71759,Scheduled Follow-up Submission,621,,NO,,NO,,,,0.05,585.0,6.0
+TCGA-2A-A8VT,89B056B9-2922-4AB0-A282-83A2D28DEE09,389.51.0,nationwidechildrens.org_clinical.TCGA-2A-A8VT.xml,TCGA-2A-A8VT-F71798,Scheduled Follow-up Submission,995|1373,,NO,,NO,,,,0.05,995.0,9.0
+TCGA-2A-A8VV,456E0D8B-3028-41AC-B751-075FA99E7A91,389.51.0,nationwidechildrens.org_clinical.TCGA-2A-A8VV.xml,TCGA-2A-A8VV-F71800,Scheduled Follow-up Submission,671,,NO,,NO,,,,0.05,560.0,6.0
+TCGA-2A-A8VX,04172A7C-2055-4D30-A222-7DBF32487EB6,389.51.0,nationwidechildrens.org_clinical.TCGA-2A-A8VX.xml,TCGA-2A-A8VX-F71804,Scheduled Follow-up Submission,1033|1378,,NO,,NO,,,,0.05,1033.0,8.0
+TCGA-2A-A8W1,FA6BCFE6-BB77-4097-B610-AF2F2494EAB8,389.51.0,nationwidechildrens.org_clinical.TCGA-2A-A8W1.xml,TCGA-2A-A8W1-F71808,Scheduled Follow-up Submission,112,,NO,,NO,,,,0.05,-122.0,7.0
+TCGA-2A-A8W3,9C2D1395-B78A-4290-91AA-0C6887C0172E,389.51.0,nationwidechildrens.org_clinical.TCGA-2A-A8W3.xml,TCGA-2A-A8W3-F71815,Scheduled Follow-up Submission,771|863,,YES,198,YES,Biochemical evidence of disease,198,,0.36,771.0,9.0
+TCGA-2A-AAYF,E7A83F64-D527-4BC2-ABF7-9435FFE54E3E,429.43.0,nationwidechildrens.org_clinical.TCGA-2A-AAYF.xml,TCGA-2A-AAYF-F71830,Scheduled Follow-up Submission,972|1364,,NO,,NO,,,,0.05,972.0,7.0
+TCGA-2A-AAYO,0581FFE4-B58F-4219-82A0-7A34D573E254,429.43.0,nationwidechildrens.org_clinical.TCGA-2A-AAYO.xml,TCGA-2A-AAYO-F71840,Scheduled Follow-up Submission,922|1272,,NO,,NO,,,,0.05,922.0,6.0
+TCGA-4L-AA1F,92B5D7DB-2B0F-452C-ACE5-0C1D7D009D46,429.43.0,nationwidechildrens.org_clinical.TCGA-4L-AA1F.xml,,,350,,NO,,NO,,,,3.5,350.0,8.0
+TCGA-CH-5737,0FE3727F-29E5-4498-B028-DF7525AB8259,91.78.0,nationwidechildrens.org_clinical.TCGA-CH-5737.xml,,,91,,NO,,,,,,14.69,,7.0
+TCGA-CH-5738,A8CEBDF0-643F-428E-8B0D-996D15FAD25D,91.78.0,nationwidechildrens.org_clinical.TCGA-CH-5738.xml,TCGA-CH-5738-F28982,Scheduled Follow-up Submission,212,,NO,,NO,,,,0.01,195.0,6.0
+TCGA-CH-5739,6C4F20AE-407F-489E-8680-5E46643FB777,91.78.0,nationwidechildrens.org_clinical.TCGA-CH-5739.xml,TCGA-CH-5739-F28977,Scheduled Follow-up Submission,671,,NO,,NO,,,,0.02,586.0,7.0
+TCGA-CH-5745,B5EADF40-6F5D-4B30-80CF-2775BC3FDD4B,91.78.0,nationwidechildrens.org_clinical.TCGA-CH-5745.xml,,,91,,NO,,,,,,4.3,84.0,7.0
+TCGA-CH-5746,7A49E2D9-0EE0-43AD-A0CA-838F02D536E9,91.78.0,nationwidechildrens.org_clinical.TCGA-CH-5746.xml,TCGA-CH-5746-F28996,Scheduled Follow-up Submission,731,,NO,,NO,,,,0.1,693.0,7.0
+TCGA-CH-5748,353E756A-54D5-4ADC-BD4C-F66EBB2F4E92,91.78.0,nationwidechildrens.org_clinical.TCGA-CH-5748.xml,,,31,,,,,,,,,,7.0
+TCGA-CH-5750,CAE0D4A3-44DE-4C6C-8AEE-56CB225D98B2,91.78.0,nationwidechildrens.org_clinical.TCGA-CH-5750.xml,TCGA-CH-5750-F29002,Scheduled Follow-up Submission,396,,NO,,NO,,,,0.02,337.0,7.0
+TCGA-CH-5751,C877133B-25FA-4BC1-8244-4C533FFEC1C5,91.78.0,nationwidechildrens.org_clinical.TCGA-CH-5751.xml,TCGA-CH-5751-F28978,Scheduled Follow-up Submission,1065,,NO,,YES,Distant Metastasis,365,YES,0.01,1004.0,10.0
+TCGA-CH-5752,F926AF4E-078C-47BE-B164-FDAEB75FA5A4,91.78.0,nationwidechildrens.org_clinical.TCGA-CH-5752.xml,TCGA-CH-5752-F28987,Scheduled Follow-up Submission,943,,NO,,NO,,,,0.02,868.0,8.0
+TCGA-CH-5762,5D306570-B39B-43A0-985D-DBE73B9EC095,91.78.0,nationwidechildrens.org_clinical.TCGA-CH-5762.xml,TCGA-CH-5762-F28975,Scheduled Follow-up Submission,1339,,NO,,NO,,,,0.01,1313.0,7.0
+TCGA-CH-5763,C39F0889-6590-4F8B-B741-506D1689CD49,91.78.0,nationwidechildrens.org_clinical.TCGA-CH-5763.xml,TCGA-CH-5763-F28974,Scheduled Follow-up Submission,365,,NO,,NO,,,,0.1,360.0,7.0
+TCGA-CH-5764,74160F0D-C476-4AB9-9CF9-72821ED1A18D,91.78.0,nationwidechildrens.org_clinical.TCGA-CH-5764.xml,,,31,,NO,,,,,,13.95,29.0,7.0
+TCGA-CH-5766,990F4717-1DD9-42E3-9C0E-53582306CD04,91.78.0,nationwidechildrens.org_clinical.TCGA-CH-5766.xml,,,31,,NO,,,,,,13.9,39.0,7.0
+TCGA-CH-5767,62B44FD0-AC8C-4A20-ACF3-D610C83155C8,108.76.0,nationwidechildrens.org_clinical.TCGA-CH-5767.xml,TCGA-CH-5767-F28999,Scheduled Follow-up Submission,458,,NO,,NO,,,,0.04,377.0,7.0
+TCGA-CH-5771,4F6C0DEF-4EDD-40A7-AFE1-E1CAC21FB4E5,91.78.0,nationwidechildrens.org_clinical.TCGA-CH-5771.xml,TCGA-CH-5771-F29003,Scheduled Follow-up Submission,396,,NO,,NO,,,,0.03,396.0,7.0
+TCGA-CH-5772,7FCC5752-87BC-4952-BCD4-19120631B1AB,91.78.0,nationwidechildrens.org_clinical.TCGA-CH-5772.xml,TCGA-CH-5772-F29004,Scheduled Follow-up Submission,486,,NO,,NO,,,,0.03,424.0,9.0
+TCGA-CH-5790,8A7E2CE1-5359-4092-8559-AC56474B6917,91.78.0,nationwidechildrens.org_clinical.TCGA-CH-5790.xml,TCGA-CH-5790-F28986,Scheduled Follow-up Submission,974,,NO,,NO,,,,0.1,914.0,7.0
+TCGA-CH-5791,A0068380-2987-4F2F-985D-45BD1E0732C3,91.78.0,nationwidechildrens.org_clinical.TCGA-CH-5791.xml,TCGA-CH-5791-F28985|TCGA-CH-5791-F28983,Scheduled Follow-up Submission|Additional New Tumor Event,1004,,NO,,YES,New Primary Tumor,396|974,,0.18,882.0,7.0
+TCGA-CH-5792,EC5ACBD9-1110-4898-83C3-E10317ED9F15,91.78.0,nationwidechildrens.org_clinical.TCGA-CH-5792.xml,,,91,,NO,,,,,,11.49,91.0,9.0
+TCGA-CH-5794,A4E4B3C9-1622-49EA-B7E3-4F5AF0B0CC9E,91.78.0,nationwidechildrens.org_clinical.TCGA-CH-5794.xml,TCGA-CH-5794-F28994,Scheduled Follow-up Submission,882,,NO,,NO,,,,0.01,821.0,7.0
+TCGA-EJ-5494,2CF48C9F-C247-47F1-9553-E40D538FF87A,91.78.0,nationwidechildrens.org_clinical.TCGA-EJ-5494.xml,TCGA-EJ-5494-F46196|TCGA-EJ-5494-F71910,Scheduled Follow-up Submission,378|826|1477,,NO,,NO,,,,,184.0,7.0
+TCGA-EJ-5495,793C267C-7319-405C-B81E-C2672D7FFC7F,91.78.0,nationwidechildrens.org_clinical.TCGA-EJ-5495.xml,TCGA-EJ-5495-F46197|TCGA-EJ-5495-F71913,Scheduled Follow-up Submission,606|1007|1760,,NO,,NO,,,,0.13,606.0,8.0
+TCGA-EJ-5498,A9918CDB-80EA-4025-84C4-0018666236C4,91.78.0,nationwidechildrens.org_clinical.TCGA-EJ-5498.xml,TCGA-EJ-5498-F46200|TCGA-EJ-5498-F71919,Scheduled Follow-up Submission,537|906|1720,,NO,,NO,,,,0.1,537.0,7.0
+TCGA-EJ-5499,56753EEA-2AA1-4742-A299-49E315BC3584,91.78.0,nationwidechildrens.org_clinical.TCGA-EJ-5499.xml,TCGA-EJ-5499-F46201|TCGA-EJ-5499-F60312,Scheduled Follow-up Submission,533|1415,,NO,,NO,,,,0.1,533.0,7.0
+TCGA-EJ-5503,B565F73C-B169-41A9-83BC-B6B56DC78127,91.78.0,nationwidechildrens.org_clinical.TCGA-EJ-5503.xml,TCGA-EJ-5503-F46204|TCGA-EJ-5503-F60037,Scheduled Follow-up Submission,530|716|1391,,NO,,NO,,,,0.1,530.0,8.0
+TCGA-EJ-5504,A828FB32-08EA-4738-87C0-1810723EE639,91.78.0,nationwidechildrens.org_clinical.TCGA-EJ-5504.xml,TCGA-EJ-5504-F46205|TCGA-EJ-5504-F71923,Scheduled Follow-up Submission,229|880|1427,,YES,77,YES|NO,Biochemical evidence of disease,,,1.0,77.0,7.0
+TCGA-EJ-5506,34D053EE-05E8-4A90-BD0F-54DEF598DDD7,91.78.0,nationwidechildrens.org_clinical.TCGA-EJ-5506.xml,TCGA-EJ-5506-F46207|TCGA-EJ-5506-F71924,Scheduled Follow-up Submission,356|827|1381,,NO,,NO,,,,0.1,356.0,8.0
+TCGA-EJ-5507,A5412427-7433-4D43-936C-97BD0692D9E1,91.78.0,nationwidechildrens.org_clinical.TCGA-EJ-5507.xml,TCGA-EJ-5507-F46208|TCGA-EJ-5507-F71926,Scheduled Follow-up Submission,182|727|1457,,NO,,NO,,,,0.1,182.0,9.0
+TCGA-EJ-5508,6F6B8E92-2C69-4623-8E99-C35B2CE0FF33,91.78.0,nationwidechildrens.org_clinical.TCGA-EJ-5508.xml,TCGA-EJ-5508-F46209|TCGA-EJ-5508-F71929,Scheduled Follow-up Submission,907|1184|1965,,NO,,NO,,,,0.1,907.0,7.0
+TCGA-EJ-5509,58E592FF-3F5F-4C41-9ED5-BABA68C685AF,91.78.0,nationwidechildrens.org_clinical.TCGA-EJ-5509.xml,TCGA-EJ-5509-F46210|TCGA-EJ-5509-F60376,Scheduled Follow-up Submission,1102|1464,,NO,,NO,,,,0.1,1102.0,7.0
+TCGA-EJ-5512,953552EB-AAC0-4F3C-941C-29EFF0FF0FDA,91.78.0,nationwidechildrens.org_clinical.TCGA-EJ-5512.xml,TCGA-EJ-5512-F46594|TCGA-EJ-5512-F71934,Scheduled Follow-up Submission,782|1172|1733,,NO,,NO,,,,0.0,782.0,7.0
+TCGA-EJ-5514,37EF54DD-2DB2-4620-8D84-4BE7B383BB42,91.78.0,nationwidechildrens.org_clinical.TCGA-EJ-5514.xml,TCGA-EJ-5514-F46598|TCGA-EJ-5514-F71935,Scheduled Follow-up Submission,724|1102|1829,,NO,,NO,,,,0.1,724.0,9.0
+TCGA-EJ-5516,4D4E81E4-A5BF-42D1-AEB4-525F258FD9E4,91.78.0,nationwidechildrens.org_clinical.TCGA-EJ-5516.xml,TCGA-EJ-5516-F46600|TCGA-EJ-5516-F71936,Scheduled Follow-up Submission,783|1416|1889,,NO,,NO,,,,0.12,730.0,7.0
+TCGA-EJ-5519,FA7742E4-27F5-4D45-8DAA-65BBC9008796,91.78.0,nationwidechildrens.org_clinical.TCGA-EJ-5519.xml,TCGA-EJ-5519-F46603|TCGA-EJ-5519-F60379,Scheduled Follow-up Submission,1153|1336|1962,,YES,84,NO,,,,0.2,1153.0,8.0
+TCGA-EJ-5524,024111F6-F940-4B48-BC30-2322B64CC75C,91.78.0,nationwidechildrens.org_clinical.TCGA-EJ-5524.xml,TCGA-EJ-5524-F46760|TCGA-EJ-5524-F71944,Scheduled Follow-up Submission,834|1310|1882,,NO,1155,YES|NO,Locoregional Recurrence,265,YES,0.1,811.0,9.0
+TCGA-EJ-5525,64CF3F01-0A13-42C8-9C6C-9CC35077AE83,91.78.0,nationwidechildrens.org_clinical.TCGA-EJ-5525.xml,TCGA-EJ-5525-F46762,Scheduled Follow-up Submission,790|1115,,YES,338,YES,Distant Metastasis,546,,3.0,521.0,9.0
+TCGA-EJ-5526,BC062BD3-7052-42B0-B559-9C6A9BCF4204,91.78.0,nationwidechildrens.org_clinical.TCGA-EJ-5526.xml,TCGA-EJ-5526-F46763|TCGA-EJ-5526-F71950,Scheduled Follow-up Submission,567|1179|1909,,NO,537,YES,Locoregional Recurrence|Biochemical evidence of disease,537|1909,,0.1,175.0,8.0
+TCGA-EJ-5531,8C470594-9449-4274-95EB-12D147972B40,91.78.0,nationwidechildrens.org_clinical.TCGA-EJ-5531.xml,TCGA-EJ-5531-F46781|TCGA-EJ-5531-F60382,Scheduled Follow-up Submission,724|921|1273,,NO,,NO,,,,0.1,724.0,7.0
+TCGA-EJ-5532,90259445-1E87-4F18-88F3-4F33CE6D210B,91.78.0,nationwidechildrens.org_clinical.TCGA-EJ-5532.xml,TCGA-EJ-5532-F48003|TCGA-EJ-5532-F71956,Scheduled Follow-up Submission,926|1456|1828,,NO,,NO,,,,0.1,926.0,7.0
+TCGA-EJ-7123,775A4A5C-660D-4692-B6B0-7427BA18EFA8,161.76.0,nationwidechildrens.org_clinical.TCGA-EJ-7123.xml,TCGA-EJ-7123-F64800|TCGA-EJ-7123-F71960,Scheduled Follow-up Submission,1491|2254|2572,,NO,,NO,,,,0.1,1491.0,7.0
+TCGA-EJ-7125,0081F74E-3F72-49A9-8727-0330AB65CD27,161.76.0,nationwidechildrens.org_clinical.TCGA-EJ-7125.xml,TCGA-EJ-7125-F64801,Scheduled Follow-up Submission,1860|2850,,NO,,NO,,,,0.1,1860.0,7.0
+TCGA-EJ-7218,057E7FD4-A6F0-4875-9067-240DC7B78397,331.61.0,nationwidechildrens.org_clinical.TCGA-EJ-7218.xml,TCGA-EJ-7218-F64802,Scheduled Follow-up Submission,2542,,NO,,NO,,,,0.1,1473.0,7.0
+TCGA-EJ-7312,3E794958-9F1F-4313-92C3-84FA42AB546D,331.61.0,nationwidechildrens.org_clinical.TCGA-EJ-7312.xml,TCGA-EJ-7312-F64805,Scheduled Follow-up Submission,663|1099,,NO,,NO,,,,0.1,376.0,7.0
+TCGA-EJ-7315,1EE5F146-C5F5-4D1F-8FD3-12DCBBA900B5,184.82.0,nationwidechildrens.org_clinical.TCGA-EJ-7315.xml,TCGA-EJ-7315-F64804,Scheduled Follow-up Submission,289|1008,,NO,,NO,,,,0.1,289.0,7.0
+TCGA-EJ-7318,0EDD0BEB-B408-4FDF-8080-D59864CA1395,331.61.0,nationwidechildrens.org_clinical.TCGA-EJ-7318.xml,TCGA-EJ-7318-F64810,Scheduled Follow-up Submission,510|1029,,YES,189,YES|NO,Locoregional Recurrence,380,,0.08,189.0,7.0
+TCGA-EJ-7325,095CDFE8-71E3-40DC-AB5C-16C59A8970DD,331.61.0,nationwidechildrens.org_clinical.TCGA-EJ-7325.xml,TCGA-EJ-7325-F64803,Scheduled Follow-up Submission,533|1070,,NO,,NO,,,,0.1,507.0,7.0
+TCGA-EJ-7327,1A5E997D-CE31-4748-B3D6-8B00CE660CF3,184.82.0,nationwidechildrens.org_clinical.TCGA-EJ-7327.xml,TCGA-EJ-7327-F64808,Scheduled Follow-up Submission,175|923,,NO,,NO,,,,0.1,175.0,7.0
+TCGA-EJ-7330,7E538E99-B0A3-4BCA-9CE1-EED2C1D31F57,184.82.0,nationwidechildrens.org_clinical.TCGA-EJ-7330.xml,,,191,,NO,,,,,,0.1,191.0,7.0
+TCGA-EJ-7331,8141E9A7-E156-4634-BB83-70304865084E,184.82.0,nationwidechildrens.org_clinical.TCGA-EJ-7331.xml,TCGA-EJ-7331-F64813,Scheduled Follow-up Submission,9|742,,YES,189,NO,,,,0.8,189.0,7.0
+TCGA-EJ-7781,4E6E42AD-9BBA-4576-ABB5-E65E1C50D1A3,184.82.0,nationwidechildrens.org_clinical.TCGA-EJ-7781.xml,TCGA-EJ-7781-F48880|TCGA-EJ-7781-F60365,Scheduled Follow-up Submission,169|539|1073,,NO,,NO,,,,0.1,169.0,7.0
+TCGA-EJ-7783,C8BE918C-E009-4B23-A4C8-F1C71D6C1F3B,184.82.0,nationwidechildrens.org_clinical.TCGA-EJ-7783.xml,TCGA-EJ-7783-F48948|TCGA-EJ-7783-F60370,Scheduled Follow-up Submission,172|425|787,,YES,81,NO,,,,0.7,172.0,7.0
+TCGA-EJ-7784,0B6504EC-AF23-4065-BAF6-B4049A1FA6CC,184.82.0,nationwidechildrens.org_clinical.TCGA-EJ-7784.xml,TCGA-EJ-7784-F48949|TCGA-EJ-7784-F60372,Scheduled Follow-up Submission,167|396|781,,NO,,NO,,,,0.1,167.0,7.0
+TCGA-EJ-7785,5A01499F-805A-4C21-B67D-3532172E9244,184.82.0,nationwidechildrens.org_clinical.TCGA-EJ-7785.xml,TCGA-EJ-7785-F48956|TCGA-EJ-7785-F71967,Scheduled Follow-up Submission,259|625|1177,,NO,,NO,,,,0.1,259.0,7.0
+TCGA-EJ-7786,50E9A3BD-EC6F-411A-9914-E7347ABACEBC,184.82.0,nationwidechildrens.org_clinical.TCGA-EJ-7786.xml,TCGA-EJ-7786-F48958|TCGA-EJ-7786-F71968,Scheduled Follow-up Submission,79|442|1096,,NO,,NO,,,,0.1,79.0,7.0
+TCGA-EJ-7792,3CCC56F4-E5A4-4D4A-820C-7C2606BAC208,184.82.0,nationwidechildrens.org_clinical.TCGA-EJ-7792.xml,TCGA-EJ-7792-F48847|TCGA-EJ-7792-F71965,Scheduled Follow-up Submission,526|901|1396,,NO,,NO,,,,0.13,526.0,7.0
+TCGA-EJ-7793,37FDFD19-F5B7-4A3A-A2CB-79D6AD11DD34,221.78.0,nationwidechildrens.org_clinical.TCGA-EJ-7793.xml,TCGA-EJ-7793-F48840|TCGA-EJ-7793-F60362,Scheduled Follow-up Submission,114,,NO,,NO,,,,0.1,114.0,7.0
+TCGA-EJ-8469,AA21A3D1-F46E-4078-A9DC-509644F21E2E,244.69.0,nationwidechildrens.org_clinical.TCGA-EJ-8469.xml,TCGA-EJ-8469-F64636,Scheduled Follow-up Submission,1946|2324,,YES,1925,YES,Biochemical evidence of disease|Locoregional Recurrence,1925,,3.1,1925.0,9.0
+TCGA-EJ-A46B,AD8B6C6D-C1D3-46EC-9EE4-CAC65683B0C1,268.67.0,nationwidechildrens.org_clinical.TCGA-EJ-A46B.xml,TCGA-EJ-A46B-F64641,Scheduled Follow-up Submission,162|657,,NO,,NO,,,,0.1,157.0,8.0
+TCGA-EJ-A46D,B4C09AB7-4280-4F82-B73A-19D09A12FA4D,268.67.0,nationwidechildrens.org_clinical.TCGA-EJ-A46D.xml,TCGA-EJ-A46D-F64643,Scheduled Follow-up Submission,129|626,,NO,,NO,,,,0.03,122.0,8.0
+TCGA-EJ-A46G,05A9CC69-34B6-4CAE-83C7-835457716E27,285.66.0,nationwidechildrens.org_clinical.TCGA-EJ-A46G.xml,TCGA-EJ-A46G-F64646,Scheduled Follow-up Submission,93|668,,NO,,NO,,,,0.1,93.0,8.0
+TCGA-EJ-A46H,1B9226AF-E59C-4CC7-B018-2B2992C02C79,285.66.0,nationwidechildrens.org_clinical.TCGA-EJ-A46H.xml,TCGA-EJ-A46H-F64713,Scheduled Follow-up Submission,229|724,,NO,,NO,,,,0.1,131.0,7.0
+TCGA-EJ-A65B,FC408FBF-7B38-4877-9A52-44A58B61108A,312.65.0,nationwidechildrens.org_clinical.TCGA-EJ-A65B.xml,TCGA-EJ-A65B-F64715,Scheduled Follow-up Submission,536|710,,NO,,NO,,,,0.01,536.0,9.0
+TCGA-EJ-A65D,7F624C97-A886-46E2-9EDE-8ADD7CB471D9,312.65.0,nationwidechildrens.org_clinical.TCGA-EJ-A65D.xml,TCGA-EJ-A65D-F64716,Scheduled Follow-up Submission,393,,NO,,NO,,,,0.1,393.0,8.0
+TCGA-EJ-A65E,6FF7777B-886F-4809-AF84-CC280AB21083,308.70.0,nationwidechildrens.org_clinical.TCGA-EJ-A65E.xml,TCGA-EJ-A65E-F64717,Scheduled Follow-up Submission,417,,NO,,NO,,,,0.1,254.0,7.0
+TCGA-EJ-A65M,1FE181E0-9900-4494-B194-DB6C7F3A9741,308.70.0,nationwidechildrens.org_clinical.TCGA-EJ-A65M.xml,TCGA-EJ-A65M-F64721,Scheduled Follow-up Submission,230,,NO,,NO,,,,0.1,230.0,6.0
+TCGA-EJ-A6RA,4A310F2B-0D24-492B-BECC-659FACDE4025,348.57.0,nationwidechildrens.org_clinical.TCGA-EJ-A6RA.xml,TCGA-EJ-A6RA-F64722,Scheduled Follow-up Submission,353,,YES,353,YES|NO,Locoregional Recurrence,353,,0.652,353.0,8.0
+TCGA-EJ-A6RC,D791A853-8E38-4576-8B77-7B0AF35EF290,331.61.0,nationwidechildrens.org_clinical.TCGA-EJ-A6RC.xml,TCGA-EJ-A6RC-F64723,Scheduled Follow-up Submission,693|873,,NO,,NO,,,,0.1,693.0,7.0
+TCGA-EJ-A7NG,CC704EBD-689D-4DD2-8D5B-5CFFF4BEBF7C,348.57.0,nationwidechildrens.org_clinical.TCGA-EJ-A7NG.xml,TCGA-EJ-A7NG-F64725,Scheduled Follow-up Submission,264|432,,NO,,NO,,,,0.1,264.0,7.0
+TCGA-EJ-A7NK,96A4FD93-5E87-41AD-B95B-880E374066BD,357.55.0,nationwidechildrens.org_clinical.TCGA-EJ-A7NK.xml,TCGA-EJ-A7NK-F64761,Scheduled Follow-up Submission,295|476,,NO,,NO,,,,0.1,295.0,7.0
+TCGA-EJ-A7NM,D0DBE117-4F61-4600-B2EF-EE0D86E79CDA,348.57.0,nationwidechildrens.org_clinical.TCGA-EJ-A7NM.xml,TCGA-EJ-A7NM-F64762,Scheduled Follow-up Submission,128,,NO,,NO,,,,0.1,128.0,9.0
+TCGA-EJ-A7NN,15DCF866-B283-4FCB-BE8D-89D80AF3F92A,348.57.0,nationwidechildrens.org_clinical.TCGA-EJ-A7NN.xml,TCGA-EJ-A7NN-F64763,Scheduled Follow-up Submission,197,,YES,197,YES|NO,Biochemical evidence of disease,197,,0.3,197.0,7.0
+TCGA-EJ-A8FN,A65476AB-D7E8-4CBF-AF4D-A32B7C13D9B7,357.55.0,nationwidechildrens.org_clinical.TCGA-EJ-A8FN.xml,TCGA-EJ-A8FN-F64780,Scheduled Follow-up Submission,203|329,,NO,,NO,,,,0.1,203.0,7.0
+TCGA-EJ-A8FU,62872E12-64CE-4B76-B03E-0AD897738538,370.53.0,nationwidechildrens.org_clinical.TCGA-EJ-A8FU.xml,TCGA-EJ-A8FU-F64788,Scheduled Follow-up Submission,82|138,,,,NO,,,,,,8.0
+TCGA-FC-7708,06AACC4D-16EC-4204-8B91-6A1B4D767A3C,184.82.0,nationwidechildrens.org_clinical.TCGA-FC-7708.xml,TCGA-FC-7708-F55508,Scheduled Follow-up Submission,32|864,,NO,,NO,,,,,,7.0
+TCGA-FC-7961,FD74A61D-861A-4F5A-BA6D-5A4B29860AE0,308.70.0,nationwidechildrens.org_clinical.TCGA-FC-7961.xml,TCGA-FC-7961-F33190,Scheduled Follow-up Submission,70|469,,,,NO,,,,,,9.0
+TCGA-FC-A4JI,308EEC50-AF2E-4CF9-AAB3-2F808DEE4AB7,268.67.0,nationwidechildrens.org_clinical.TCGA-FC-A4JI.xml,TCGA-FC-A4JI-F46430|TCGA-FC-A4JI-F68094,Scheduled Follow-up Submission,29|409|877,,,,NO,,,,,,8.0
+TCGA-FC-A5OB,83BE641D-33BA-481D-B13F-5078C8B74DD2,308.70.0,nationwidechildrens.org_clinical.TCGA-FC-A5OB.xml,TCGA-FC-A5OB-F61434,Scheduled Follow-up Submission,273|680,,NO,,NO,,,,5.22,110.0,9.0
+TCGA-FC-A66V,DA6AC762-E9A8-4E31-B1AB-72A1CF239C23,312.65.0,nationwidechildrens.org_clinical.TCGA-FC-A66V.xml,TCGA-FC-A66V-F52816,Scheduled Follow-up Submission,122|524,,NO,,NO,,,,10.8,-164.0,7.0
+TCGA-FC-A6HD,891002FA-53EC-4CBB-93FE-CE998572A935,320.62.0,nationwidechildrens.org_clinical.TCGA-FC-A6HD.xml,TCGA-FC-A6HD-F59729|TCGA-FC-A6HD-F71333,Scheduled Follow-up Submission,54|494|789,,,,NO,,,,,,7.0
+TCGA-FC-A8O0,68A350B2-A4DF-480D-A16F-F199FF58762C,389.51.0,nationwidechildrens.org_clinical.TCGA-FC-A8O0.xml,TCGA-FC-A8O0-F71394,Scheduled Follow-up Submission,54|616,,NO,,NO,,,,7.82,18.0,6.0
+TCGA-G9-6329,D24678A8-6851-4EEF-AB88-578B90CB1BA5,161.76.0,nationwidechildrens.org_clinical.TCGA-G9-6329.xml,TCGA-G9-6329-F40680,Scheduled Follow-up Submission,923|1266,,NO,,NO,,,,0.03,923.0,7.0
+TCGA-G9-6339,9D10077A-BF11-4769-8142-7C497AB87E2D,315.66.0,nationwidechildrens.org_clinical.TCGA-G9-6339.xml,TCGA-G9-6339-F65344|TCGA-G9-6339-F66665,Scheduled Follow-up Submission,2110|2362|2551,,NO,1634,YES|NO,Biochemical evidence of disease,1634,,0.03,2110.0,7.0
+TCGA-G9-6343,8E093351-D28D-4A71-86A1-322AB2A525D6,161.76.0,nationwidechildrens.org_clinical.TCGA-G9-6343.xml,TCGA-G9-6343-F40964|TCGA-G9-6343-F68582,Scheduled Follow-up Submission,554|2450,,NO,,,,,,0.03,554.0,7.0
+TCGA-G9-6347,BD38A53E-4F15-41E8-BE1F-92F968701982,320.62.0,nationwidechildrens.org_clinical.TCGA-G9-6347.xml,TCGA-G9-6347-F61289,Scheduled Follow-up Submission,1718|2089,,NO,,NO,,,,0.03,1718.0,6.0
+TCGA-G9-6348,008E503C-7F15-40D8-98A8-8832086D8442,108.76.0,nationwidechildrens.org_clinical.TCGA-G9-6348.xml,TCGA-G9-6348-F40648,Scheduled Follow-up Submission,1144|1515,,NO,,NO,,,,0.02,1136.0,7.0
+TCGA-G9-6353,79C97D58-7ED2-4742-9E66-F4A9DFC28DE7,161.76.0,nationwidechildrens.org_clinical.TCGA-G9-6353.xml,TCGA-G9-6353-F42753,Scheduled Follow-up Submission,848|1542,,NO,,NO,,,,0.1,590.0,7.0
+TCGA-G9-6361,03F2D100-6C08-4BF7-B2CB-B033C6B97F2B,161.76.0,nationwidechildrens.org_clinical.TCGA-G9-6361.xml,TCGA-G9-6361-F42767,Scheduled Follow-up Submission,1008|1415,,NO,,NO,,,,0.1,1002.0,7.0
+TCGA-G9-6362,F1A29113-96A2-4C3E-8B07-07769B4C5D81,108.76.0,nationwidechildrens.org_clinical.TCGA-G9-6362.xml,TCGA-G9-6362-F41012|TCGA-G9-6362-F44046,Scheduled Follow-up Submission,822|1101|1443,,NO,1443,NO|YES,Biochemical evidence of disease,,,0.07,815.0,7.0
+TCGA-G9-6363,FF97333F-EACC-435F-B3CE-43B3FA5DC966,108.76.0,nationwidechildrens.org_clinical.TCGA-G9-6363.xml,TCGA-G9-6363-F40645|TCGA-G9-6363-F44074,Scheduled Follow-up Submission,993|1175|1378,,NO,,NO,,,,0.03,993.0,7.0
+TCGA-G9-6365,315CFEF4-6113-4761-90F1-0F0D14EF291B,108.76.0,nationwidechildrens.org_clinical.TCGA-G9-6365.xml,TCGA-G9-6365-F42754,Scheduled Follow-up Submission,804|1363,,NO,,NO,,,,0.01,804.0,7.0
+TCGA-G9-6366,B85219FA-4B29-4E93-84F0-30D2D0831002,184.82.0,nationwidechildrens.org_clinical.TCGA-G9-6366.xml,TCGA-G9-6366-F40971|TCGA-G9-6366-F68583,Scheduled Follow-up Submission,101|1947,,NO,,,,,,0.1,101.0,7.0
+TCGA-G9-6367,F4124BE7-6627-4893-ACC3-54E3D9C81B48,108.76.0,nationwidechildrens.org_clinical.TCGA-G9-6367.xml,TCGA-G9-6367-F40631,Scheduled Follow-up Submission,875|1222,,,,NO,,,,0.42,836.0,9.0
+TCGA-G9-6369,44776578-84AC-4FD9-904C-3F3FA4EF0D4D,161.76.0,nationwidechildrens.org_clinical.TCGA-G9-6369.xml,TCGA-G9-6369-F40640,Scheduled Follow-up Submission,851|1215,,NO,,NO,,,,0.03,851.0,7.0
+TCGA-G9-6370,5BDE4E1E-49C1-4567-A440-632F236B80FD,108.76.0,nationwidechildrens.org_clinical.TCGA-G9-6370.xml,TCGA-G9-6370-F40638,Scheduled Follow-up Submission,806|1156,,NO,,NO,,,,0.03,806.0,7.0
+TCGA-G9-6371,DB596318-7F5C-4412-B8D0-1CD11299F5DD,108.76.0,nationwidechildrens.org_clinical.TCGA-G9-6371.xml,TCGA-G9-6371-F40637,Scheduled Follow-up Submission,846|1226,,NO,,NO,,,,0.03,846.0,6.0
+TCGA-G9-6377,FB520713-DA8E-409E-8CF6-EEF3096B1861,161.76.0,nationwidechildrens.org_clinical.TCGA-G9-6377.xml,TCGA-G9-6377-F40633,Scheduled Follow-up Submission,518|958,,NO,,NO,,,,0.03,518.0,7.0
+TCGA-G9-6378,8A48A5AF-07A0-4569-9B6F-8590D6A3EEAA,108.76.0,nationwidechildrens.org_clinical.TCGA-G9-6378.xml,TCGA-G9-6378-F40630,Scheduled Follow-up Submission,664|1155,,NO,,NO,,,,0.03,223.0,7.0
+TCGA-G9-6379,212B1477-EA6D-4568-B09F-9C91D6853C3E,320.62.0,nationwidechildrens.org_clinical.TCGA-G9-6379.xml,TCGA-G9-6379-F65354|TCGA-G9-6379-F66664,Scheduled Follow-up Submission,1393|1575|1778,,NO,,NO,,,,0.03,1393.0,7.0
+TCGA-G9-6384,E5837C94-ADB6-4714-B9C2-396C869493E3,108.76.0,nationwidechildrens.org_clinical.TCGA-G9-6384.xml,TCGA-G9-6384-F40625,Scheduled Follow-up Submission,390|765,,NO,,NO,,,,0.03,390.0,7.0
+TCGA-G9-6385,A20C96B8-1FB6-49DE-A6B5-81453D8735E5,108.76.0,nationwidechildrens.org_clinical.TCGA-G9-6385.xml,TCGA-G9-6385-F40620,Scheduled Follow-up Submission,356|830,,NO,,NO,,,,0.064,336.0,7.0
+TCGA-G9-6496,9C340E53-4089-45E1-BA11-84D31EA385CE,108.76.0,nationwidechildrens.org_clinical.TCGA-G9-6496.xml,TCGA-G9-6496-F41001,Scheduled Follow-up Submission,1014|1726,,NO,,NO,,,,0.03,703.0,7.0
+TCGA-G9-6498,A02821C7-6112-42C7-81DA-DEE751067F3F,315.66.0,nationwidechildrens.org_clinical.TCGA-G9-6498.xml,TCGA-G9-6498-F65343,Scheduled Follow-up Submission,1608|1952,,NO,1342,YES|NO,Biochemical evidence of disease,1342,,0.03,1608.0,7.0
+TCGA-G9-7509,4D1DFC4D-4279-4AC1-BA3D-B3489AD9449D,429.43.0,nationwidechildrens.org_clinical.TCGA-G9-7509.xml,TCGA-G9-7509-F65350,Scheduled Follow-up Submission,1164|1610,,NO,,NO,,,,0.03,352.0,6.0
+TCGA-G9-7510,83B4A8F0-2338-4995-9CCC-3B0696249A81,221.78.0,nationwidechildrens.org_clinical.TCGA-G9-7510.xml,TCGA-G9-7510-F48752,Scheduled Follow-up Submission,674|1185,,NO,,NO,,,,0.03,674.0,8.0
+TCGA-G9-7519,2F758D92-F705-4963-8D88-03CDF71B7F4A,221.78.0,nationwidechildrens.org_clinical.TCGA-G9-7519.xml,TCGA-G9-7519-F48751,Scheduled Follow-up Submission,457|849,,NO,,NO,,,,0.03,457.0,7.0
+TCGA-G9-7525,93A24AF5-9FD0-44B1-B85C-347E8740EFC0,221.78.0,nationwidechildrens.org_clinical.TCGA-G9-7525.xml,TCGA-G9-7525-F48745,Scheduled Follow-up Submission,512|994,,NO,,NO,,,,0.03,512.0,7.0
+TCGA-G9-A9S4,8FE6992E-E291-4728-AE74-0ED201FEA512,429.43.0,nationwidechildrens.org_clinical.TCGA-G9-A9S4.xml,TCGA-G9-A9S4-F66995,Scheduled Follow-up Submission,757|906,,NO,,NO,,,NO,0.03,753.0,8.0
+TCGA-H9-7775,0FB506FD-50D8-423E-8FFE-32471C5296F1,184.82.0,nationwidechildrens.org_clinical.TCGA-H9-7775.xml,TCGA-H9-7775-F37932,Scheduled Follow-up Submission,44|185,,NO,,NO,,,,0.04,73.0,7.0
+TCGA-HC-7075,876C8E68-0DF2-42E5-8155-76F2E58BBBE8,161.76.0,nationwidechildrens.org_clinical.TCGA-HC-7075.xml,TCGA-HC-7075-F45566,Scheduled Follow-up Submission,63|601,,,,NO,,,,0.01,96.0,6.0
+TCGA-HC-7078,94558DAE-9D68-4437-8617-60C1EFF1BDAA,184.82.0,nationwidechildrens.org_clinical.TCGA-HC-7078.xml,TCGA-HC-7078-F47785,Scheduled Follow-up Submission,162|1985,,,,NO,,,,0.01,1409.0,7.0
+TCGA-HC-7080,0F67E049-3B61-4662-B6FA-292DE7157916,161.76.0,nationwidechildrens.org_clinical.TCGA-HC-7080.xml,TCGA-HC-7080-F64334,Scheduled Follow-up Submission,104|1106,,NO,,YES,New Primary Tumor,894,,0.1,104.0,7.0
+TCGA-HC-7081,6250D12F-38E0-4BFA-A1FA-008940709ECB,161.76.0,nationwidechildrens.org_clinical.TCGA-HC-7081.xml,TCGA-HC-7081-F64330,Scheduled Follow-up Submission,72|1136,,,,NO,,,,,,9.0
+TCGA-HC-7210,FDFC3E59-3FD3-448D-ADDA-AF57D322B4C1,184.82.0,nationwidechildrens.org_clinical.TCGA-HC-7210.xml,TCGA-HC-7210-F64378,Scheduled Follow-up Submission,149|868,,,,NO,,,,0.1,149.0,7.0
+TCGA-HC-7211,436443DB-A36C-4AEF-AA5E-45AD10D6D5A0,184.82.0,nationwidechildrens.org_clinical.TCGA-HC-7211.xml,TCGA-HC-7211-F64373,Scheduled Follow-up Submission,24|1221,,,,NO,,,,10.9,-17.0,7.0
+TCGA-HC-7230,4B7575DE-87E0-48F8-9C59-03BFE863ADC9,184.82.0,nationwidechildrens.org_clinical.TCGA-HC-7230.xml,TCGA-HC-7230-F64379,Scheduled Follow-up Submission,51|1001,,,,NO,,,,3.0,,7.0
+TCGA-HC-7231,B78D8D95-E3BD-4555-A336-AB4EDA24B52C,184.82.0,nationwidechildrens.org_clinical.TCGA-HC-7231.xml,TCGA-HC-7231-F63153,Scheduled Follow-up Submission,72|939,,,,NO,,,,,,7.0
+TCGA-HC-7232,9935FB45-F6E8-49DB-9267-E0B877739312,184.82.0,nationwidechildrens.org_clinical.TCGA-HC-7232.xml,TCGA-HC-7232-F64391,Scheduled Follow-up Submission,89|1161,,,766,YES,Biochemical evidence of disease,766,,,,9.0
+TCGA-HC-7736,4DAD0FAC-60BE-4003-9192-C22BCACC3D4C,184.82.0,nationwidechildrens.org_clinical.TCGA-HC-7736.xml,TCGA-HC-7736-F60206,Scheduled Follow-up Submission,22|1103,,,,NO,,,,0.02,102.0,7.0
+TCGA-HC-7738,51C8B76B-37ED-4F0C-871B-442CE5ACA7DA,184.82.0,nationwidechildrens.org_clinical.TCGA-HC-7738.xml,TCGA-HC-7738-F63151,Scheduled Follow-up Submission,81|964,,,420,YES,Biochemical evidence of disease,420,NO,,,7.0
+TCGA-HC-7740,98BFC722-BE2E-442E-83B0-AB7982AF5BCC,184.82.0,nationwidechildrens.org_clinical.TCGA-HC-7740.xml,TCGA-HC-7740-F48772,Scheduled Follow-up Submission,53|717,,,,NO,,,,0.0,154.0,7.0
+TCGA-HC-7741,8962FB06-D5D0-4F7C-9ED6-F0DCCE0088AA,221.78.0,nationwidechildrens.org_clinical.TCGA-HC-7741.xml,TCGA-HC-7741-F66040,Scheduled Follow-up Submission,1752|2725,,NO,1969,NO|YES,Biochemical evidence of disease,,,0.1,146.0,7.0
+TCGA-HC-7742,E19BAA6D-F627-4BEC-BBE8-304B26ABF246,184.82.0,nationwidechildrens.org_clinical.TCGA-HC-7742.xml,TCGA-HC-7742-F66039,Scheduled Follow-up Submission,113|938,,NO,210,YES,Biochemical evidence of disease,,,0.1,113.0,7.0
+TCGA-HC-7744,6B203288-3CD3-4684-822D-EBEDED67452C,184.82.0,nationwidechildrens.org_clinical.TCGA-HC-7744.xml,TCGA-HC-7744-F46991,Scheduled Follow-up Submission,51|531,,NO,,NO,,,,0.04,282.0,7.0
+TCGA-HC-7745,EBF0148E-BF7E-4C08-B3FA-E72895D75CBF,184.82.0,nationwidechildrens.org_clinical.TCGA-HC-7745.xml,TCGA-HC-7745-F66044,Scheduled Follow-up Submission,63|721,,,,NO,,,,,,7.0
+TCGA-HC-7747,02529330-6082-4C33-A000-BC698AD26C83,184.82.0,nationwidechildrens.org_clinical.TCGA-HC-7747.xml,TCGA-HC-7747-F60208,Scheduled Follow-up Submission,57|748,,NO,,NO,,,,0.19,392.0,7.0
+TCGA-HC-7749,38B37207-BCA1-4A85-9F34-04B4CCDCFE82,184.82.0,nationwidechildrens.org_clinical.TCGA-HC-7749.xml,TCGA-HC-7749-F48773,Scheduled Follow-up Submission,60|724,,,,NO,,,,0.1,102.0,7.0
+TCGA-HC-7818,EECE758C-EBC7-4F96-8C16-EE0A751A341E,184.82.0,nationwidechildrens.org_clinical.TCGA-HC-7818.xml,TCGA-HC-7818-F64380,Scheduled Follow-up Submission,45|938,,,,NO,,,,0.01,99.0,7.0
+TCGA-HC-7820,DF93808D-A554-4F5C-9752-3C2272411D41,184.82.0,nationwidechildrens.org_clinical.TCGA-HC-7820.xml,TCGA-HC-7820-F57012,Scheduled Follow-up Submission,102|747,,,,NO,,,,,,7.0
+TCGA-HC-7821,C91CCE5C-9A46-4D44-83D0-0079CA2CF664,184.82.0,nationwidechildrens.org_clinical.TCGA-HC-7821.xml,TCGA-HC-7821-F66038,Scheduled Follow-up Submission,56|956,,NO,950,YES,Biochemical evidence of disease,,,0.01,236.0,8.0
+TCGA-HC-8212,A7D08698-194D-44F8-94BE-3F183683AB3E,221.78.0,nationwidechildrens.org_clinical.TCGA-HC-8212.xml,TCGA-HC-8212-F66042,Scheduled Follow-up Submission,1017|2179,,,,NO|YES,Biochemical evidence of disease,,,3.27,640.0,7.0
+TCGA-HC-8213,220684B3-BB2D-4294-B976-C38C03EA7286,308.70.0,nationwidechildrens.org_clinical.TCGA-HC-8213.xml,TCGA-HC-8213-F45567,Scheduled Follow-up Submission,1|589,,,,NO,,,,,,6.0
+TCGA-HC-8256,DA8F6AC3-730D-41F9-B177-0818F226ACF2,221.78.0,nationwidechildrens.org_clinical.TCGA-HC-8256.xml,TCGA-HC-8256-F64369,Scheduled Follow-up Submission,95|860,,,,NO,,,,,,7.0
+TCGA-HC-8257,94501789-3E84-481F-8376-1CBADB55D152,221.78.0,nationwidechildrens.org_clinical.TCGA-HC-8257.xml,TCGA-HC-8257-F57852,Scheduled Follow-up Submission,29|726,,NO,,NO,,,,0.1,726.0,7.0
+TCGA-HC-8258,4DE4F8D3-F7F9-49F9-9A76-21C55DC88876,221.78.0,nationwidechildrens.org_clinical.TCGA-HC-8258.xml,TCGA-HC-8258-F48771,Scheduled Follow-up Submission,66|847,,NO,,NO,,,,0.01,162.0,6.0
+TCGA-HC-8259,1F0E3CFC-2A8F-413E-A5E4-5225FC5CBFFE,221.78.0,nationwidechildrens.org_clinical.TCGA-HC-8259.xml,TCGA-HC-8259-F66035,Scheduled Follow-up Submission,123|924,,NO,,NO,,,,0.01,123.0,6.0
+TCGA-HC-8260,7442F5D8-1216-4425-86A1-DB94EDF3B6C9,221.78.0,nationwidechildrens.org_clinical.TCGA-HC-8260.xml,TCGA-HC-8260-F64387,Scheduled Follow-up Submission,106|686,,NO,,NO,,,,0.01,106.0,7.0
+TCGA-HC-8261,758A7634-412F-4DA9-A69A-DEE226DA1959,221.78.0,nationwidechildrens.org_clinical.TCGA-HC-8261.xml,TCGA-HC-8261-F57017,Scheduled Follow-up Submission,62|546,,,,NO,,,,,,7.0
+TCGA-HC-8264,4602FE76-0C44-46F3-B7C3-50D3FA1302C7,244.69.0,nationwidechildrens.org_clinical.TCGA-HC-8264.xml,,,48,,,,NO,,,,,,9.0
+TCGA-HC-8266,8AD63E96-6676-4D2A-9874-A8B7F347C45C,221.78.0,nationwidechildrens.org_clinical.TCGA-HC-8266.xml,TCGA-HC-8266-F66043,Scheduled Follow-up Submission,35|473,,,,NO,,,,,,8.0
+TCGA-HC-A48F,0C74EF1C-0EB4-43F7-AECA-F5F55D2FA78E,268.67.0,nationwidechildrens.org_clinical.TCGA-HC-A48F.xml,TCGA-HC-A48F-F64404,Scheduled Follow-up Submission,46|680,,,,NO,,,,,,8.0
+TCGA-HC-A4ZV,DFA2803C-2985-40AB-970D-81679E982165,285.66.0,nationwidechildrens.org_clinical.TCGA-HC-A4ZV.xml,,,23,,,,NO,,,,,,9.0
+TCGA-HC-A632,8919C6F3-C573-4AA4-B5E1-B71FC2EC2698,308.70.0,nationwidechildrens.org_clinical.TCGA-HC-A632.xml,,,61,,NO,,NO,,,,,,9.0
+TCGA-HC-A6AL,E5D08F93-1DE8-4901-AD3B-F72C319C3B9E,312.65.0,nationwidechildrens.org_clinical.TCGA-HC-A6AL.xml,,,67,,,,NO,,,,,,7.0
+TCGA-HC-A6AN,6E83BC30-0160-467D-B6CA-26BB7596B191,312.65.0,nationwidechildrens.org_clinical.TCGA-HC-A6AN.xml,,,49,,,,NO,,,,,,7.0
+TCGA-HC-A6AQ,5AA8377C-B63D-49A6-BDC8-FDEE27B0F16D,312.65.0,nationwidechildrens.org_clinical.TCGA-HC-A6AQ.xml,,,106,,,,NO,,,,,,7.0
+TCGA-HC-A6AS,A77FBFFE-AD4C-4C8C-9756-F2BC3E4117D8,312.65.0,nationwidechildrens.org_clinical.TCGA-HC-A6AS.xml,,,44,,,,NO,,,,,,7.0
+TCGA-HC-A6HX,D66A5E6B-D7A4-456A-8356-8CB55322C25C,320.62.0,nationwidechildrens.org_clinical.TCGA-HC-A6HX.xml,,,38,,,,NO,,,,,,7.0
+TCGA-HC-A6HY,B42FD217-7500-48B9-8770-F1770F31A5FD,320.62.0,nationwidechildrens.org_clinical.TCGA-HC-A6HY.xml,,,134,,,,NO,,,,,,7.0
+TCGA-HC-A8CY,8E510146-2CAB-4087-AE08-DF05BBFF42A1,370.53.0,nationwidechildrens.org_clinical.TCGA-HC-A8CY.xml,,,290,,,,,,,,0.9,290.0,9.0
+TCGA-HC-A8D0,102A429F-D34E-43BF-B169-A79A80C9EA93,370.53.0,nationwidechildrens.org_clinical.TCGA-HC-A8D0.xml,TCGA-HC-A8D0-F68682,Scheduled Follow-up Submission,110|775,,NO,,NO,,,,0.01,110.0,7.0
+TCGA-HC-A8D1,41322EC0-2430-40D7-8FE4-C3D781B1471F,370.53.0,nationwidechildrens.org_clinical.TCGA-HC-A8D1.xml,TCGA-HC-A8D1-F68683,Scheduled Follow-up Submission,168|573,,NO,,NO,,,,0.01,168.0,7.0
+TCGA-HI-7168,2A86ED4A-3E3B-4288-A1B9-DC4DB202BF10,184.82.0,nationwidechildrens.org_clinical.TCGA-HI-7168.xml,TCGA-HI-7168-F29017|TCGA-HI-7168-F66322,Additional New Tumor Event|Scheduled Follow-up Submission,2315|2391|3323,,YES,308,YES,Biochemical evidence of disease,2505,YES,0.3,2289.0,9.0
+TCGA-HI-7170,544E6B8C-C364-4A0B-A960-9D5B1DEEAF71,184.82.0,nationwidechildrens.org_clinical.TCGA-HI-7170.xml,TCGA-HI-7170-F29013,Scheduled Follow-up Submission,1780|2522,,NO,,NO,,,,0.1,1746.0,6.0
+TCGA-J4-8198,2B32D3AF-F848-4283-BDC5-E945A6944913,221.78.0,nationwidechildrens.org_clinical.TCGA-J4-8198.xml,TCGA-J4-8198-F55294,Scheduled Follow-up Submission,98|614,,NO,,NO,,,,0.1,76.0,7.0
+TCGA-J4-A67K,6E1A01A3-BADF-49B0-BB0F-3A7A8F57D512,312.65.0,nationwidechildrens.org_clinical.TCGA-J4-A67K.xml,TCGA-J4-A67K-F63849,Scheduled Follow-up Submission,662|1004,,NO,,NO,,,,0.1,557.0,7.0
+TCGA-J4-A67L,5441C951-CEFE-40CA-A4CE-7CD08629D791,312.65.0,nationwidechildrens.org_clinical.TCGA-J4-A67L.xml,TCGA-J4-A67L-F63850,Scheduled Follow-up Submission,518|770,,NO,,NO,,,,0.01,518.0,7.0
+TCGA-J4-A67M,2F876C9C-FB7B-4B39-A5FE-0360A003BB66,312.65.0,nationwidechildrens.org_clinical.TCGA-J4-A67M.xml,TCGA-J4-A67M-F63853,Scheduled Follow-up Submission,488|941,,NO,,NO,,,,0.1,482.0,7.0
+TCGA-J4-A67N,BFF4D90D-AAA8-48F9-BABD-9E3304614B4D,312.65.0,nationwidechildrens.org_clinical.TCGA-J4-A67N.xml,TCGA-J4-A67N-F59131,Scheduled Follow-up Submission,503|937,,YES,442,YES,Biochemical evidence of disease,442,,0.7,503.0,7.0
+TCGA-J4-A67O,9A486781-2160-4461-9DFE-CE8446E5C5A0,312.65.0,nationwidechildrens.org_clinical.TCGA-J4-A67O.xml,TCGA-J4-A67O-F63884,Scheduled Follow-up Submission,491|839,,NO,,NO,,,,0.1,490.0,7.0
+TCGA-J4-A67Q,A6A8BEDF-6ED3-4F19-B2D3-762B1016FEB8,312.65.0,nationwidechildrens.org_clinical.TCGA-J4-A67Q.xml,TCGA-J4-A67Q-F63912,Scheduled Follow-up Submission,624|975,,NO,,NO,,,,0.1,616.0,6.0
+TCGA-J4-A67R,DF24E0CB-BECE-49C1-84BC-A81DFB16159E,312.65.0,nationwidechildrens.org_clinical.TCGA-J4-A67R.xml,TCGA-J4-A67R-F63916,Scheduled Follow-up Submission,454|910,,NO,,NO,,,,0.1,454.0,7.0
+TCGA-J4-A67S,10BBF6E0-9FCE-488F-AB5B-1712744F112D,312.65.0,nationwidechildrens.org_clinical.TCGA-J4-A67S.xml,TCGA-J4-A67S-F63921,Scheduled Follow-up Submission,523|833,,NO,708,NO|YES,Biochemical evidence of disease,708,,0.1,522.0,7.0
+TCGA-J4-A67T,EF05D110-15C2-4E58-9302-7371AE54B241,315.66.0,nationwidechildrens.org_clinical.TCGA-J4-A67T.xml,TCGA-J4-A67T-F63922,Scheduled Follow-up Submission,183,,NO,,NO,,,,0.1,154.0,7.0
+TCGA-J4-A6G1,46A6E44D-D5F4-4478-B5F0-DD675E77AF70,315.66.0,nationwidechildrens.org_clinical.TCGA-J4-A6G1.xml,TCGA-J4-A6G1-F63926,Scheduled Follow-up Submission,405|769,,NO,,NO,,,,0.1,178.0,8.0
+TCGA-J4-A83I,4EA1EA9A-9C31-42CB-AF43-E30F5F813D78,370.53.0,nationwidechildrens.org_clinical.TCGA-J4-A83I.xml,TCGA-J4-A83I-F70492,Scheduled Follow-up Submission,279|685,,NO,,NO,,,,0.1,257.0,7.0
+TCGA-J4-A83J,4FB41AAB-FF53-47EB-AE32-C1EC6EE69FB8,370.53.0,nationwidechildrens.org_clinical.TCGA-J4-A83J.xml,TCGA-J4-A83J-F70133,Scheduled Follow-up Submission,310|696,,NO,,NO,,,,0.04,235.0,7.0
+TCGA-J4-A83K,26656B71-FDF3-4D83-BC7F-ACA81B353BDC,357.55.0,nationwidechildrens.org_clinical.TCGA-J4-A83K.xml,TCGA-J4-A83K-F63953,Scheduled Follow-up Submission,206|328,,NO,,NO,,,,0.1,205.0,6.0
+TCGA-J4-AATV,8C174AAB-F04D-45E6-A171-DB0937518773,429.43.0,nationwidechildrens.org_clinical.TCGA-J4-AATV.xml,TCGA-J4-AATV-F70902,Scheduled Follow-up Submission,358|553,,NO,,NO,,,,0.0,358.0,6.0
+TCGA-J9-A52B,4E59D4CA-964F-453F-8610-038DF8AE7C2F,285.66.0,nationwidechildrens.org_clinical.TCGA-J9-A52B.xml,,,422,,NO,85,YES,Biochemical evidence of disease,57,NO,0.01,414.0,9.0
+TCGA-J9-A52C,8D442291-5130-4AE2-97F8-C41E9AA59655,285.66.0,nationwidechildrens.org_clinical.TCGA-J9-A52C.xml,,,178,,NO,,NO,,,,0.03,178.0,9.0
+TCGA-J9-A52E,AF44754C-72AF-45AA-9079-1A983F9391D0,285.66.0,nationwidechildrens.org_clinical.TCGA-J9-A52E.xml,,,323,,NO,89,YES,Biochemical evidence of disease,,,0.01,393.0,9.0
+TCGA-J9-A8CK,B3B46C1C-7A5B-439D-974E-90585E96C885,357.55.0,nationwidechildrens.org_clinical.TCGA-J9-A8CK.xml,,,321,,NO,,NO,,,,0.01,321.0,9.0
+TCGA-J9-A8CM,71DDA7E9-7D15-48FD-B5A9-FBE347DF3E2A,357.55.0,nationwidechildrens.org_clinical.TCGA-J9-A8CM.xml,,,463,,YES,344,YES,Biochemical evidence of disease,344,,0.55,463.0,9.0
+TCGA-J9-A8CN,3F2D2A35-FA51-4262-ACF4-030CB3F7BD58,357.55.0,nationwidechildrens.org_clinical.TCGA-J9-A8CN.xml,,,1237,,NO,,NO,,,,0.03,963.0,6.0
+TCGA-J9-A8CP,27EF4263-E769-4255-965B-10B4D30B06D4,357.55.0,nationwidechildrens.org_clinical.TCGA-J9-A8CP.xml,,,386,,NO,,NO,,,,0.01,298.0,7.0
+TCGA-KC-A4BL,C9092A49-A893-4A3C-A693-F6F3CCE7655A,268.67.0,nationwidechildrens.org_clinical.TCGA-KC-A4BL.xml,,,934,,YES,193,YES,Biochemical evidence of disease,193,,3.15,206.0,7.0
+TCGA-KC-A4BO,9DEC6646-822C-4A21-A2D3-B8F80FE54010,268.67.0,nationwidechildrens.org_clinical.TCGA-KC-A4BO.xml,,,607,,NO,,NO,,,,0.04,478.0,7.0
+TCGA-KC-A4BR,57E54A91-BD0F-4858-A862-F850F17E26CB,268.67.0,nationwidechildrens.org_clinical.TCGA-KC-A4BR.xml,,,1349,,NO,1022,YES,Biochemical evidence of disease,1022,,0.0,1258.0,9.0
+TCGA-KC-A4BV,4FF98B00-E121-441D-8D66-2F96EF40631F,285.66.0,nationwidechildrens.org_clinical.TCGA-KC-A4BV.xml,,,1328,,YES,1328,YES,Biochemical evidence of disease,1328,,0.53,1328.0,9.0
+TCGA-KC-A7F5,15853727-E395-47F7-AAF3-F20D8EA6988B,348.57.0,nationwidechildrens.org_clinical.TCGA-KC-A7F5.xml,,,91,,NO,,NO,,,,0.0,91.0,7.0
+TCGA-KC-A7F6,A2DD56A7-4E4E-4990-BEE0-E68BA59F0217,348.57.0,nationwidechildrens.org_clinical.TCGA-KC-A7F6.xml,,,263,,NO,,NO,,,,0.0,193.0,7.0
+TCGA-KC-A7FE,0ECCE7CF-CAAD-4DD7-AF38-AE8108610449,348.57.0,nationwidechildrens.org_clinical.TCGA-KC-A7FE.xml,,,352,,NO,,NO,,,,0.0,185.0,7.0
+TCGA-KK-A59Y,ADCC76EA-BA02-4CCA-A93A-28356CFE0922,285.66.0,nationwidechildrens.org_clinical.TCGA-KK-A59Y.xml,TCGA-KK-A59Y-F70436,Scheduled Follow-up Submission,1359|1968,,NO,,NO,,,,0.1,1359.0,9.0
+TCGA-KK-A6DY,4A1FAA4E-AE5E-4EE6-8C4A-32130EA7F67C,315.66.0,nationwidechildrens.org_clinical.TCGA-KK-A6DY.xml,TCGA-KK-A6DY-F70446,Scheduled Follow-up Submission,3524|4295,,NO,,NO,,,,0.1,903.0,7.0
+TCGA-KK-A6E1,4E0B5B2E-443D-4B29-B2EA-6B5D8DF958FC,315.66.0,nationwidechildrens.org_clinical.TCGA-KK-A6E1.xml,TCGA-KK-A6E1-F70479,Scheduled Follow-up Submission,1659|2198,,NO,,NO,,,,0.1,356.0,9.0
+TCGA-KK-A6E3,A8928DD4-3313-49B6-A872-8A450649E4F7,312.65.0,nationwidechildrens.org_clinical.TCGA-KK-A6E3.xml,,,2056,,NO,,NO,,,,0.1,1065.0,7.0
+TCGA-KK-A6E4,1F0B3627-5FCF-4773-9E7E-95A1EF2A7CD6,312.65.0,nationwidechildrens.org_clinical.TCGA-KK-A6E4.xml,TCGA-KK-A6E4-F70483,Scheduled Follow-up Submission,2753,3502.0,NO,,NO,,,,0.1,890.0,7.0
+TCGA-KK-A6E5,E12B3481-66A9-40BC-910C-45CB4759ACE2,315.66.0,nationwidechildrens.org_clinical.TCGA-KK-A6E5.xml,TCGA-KK-A6E5-F70484,Scheduled Follow-up Submission,1498|2073,,NO,,NO,,,,0.1,1496.0,7.0
+TCGA-KK-A6E6,E65A19AC-FEFB-4F07-92CB-EFEF4A11FF55,315.66.0,nationwidechildrens.org_clinical.TCGA-KK-A6E6.xml,,,3447,,NO,,NO,,,,0.1,3447.0,9.0
+TCGA-KK-A6E7,3FAAC7AF-9FD0-496A-A7F9-9F094455B7D9,320.62.0,nationwidechildrens.org_clinical.TCGA-KK-A6E7.xml,TCGA-KK-A6E7-F70486,Scheduled Follow-up Submission,2040|2760,,NO,925,NO|YES,Biochemical evidence of disease,925,,0.1,1847.0,9.0
+TCGA-KK-A7AP,39A52D60-B11D-42CF-B568-77B976A78F46,348.57.0,nationwidechildrens.org_clinical.TCGA-KK-A7AP.xml,,,196,,,,,,,,,,9.0
+TCGA-KK-A7AU,751D10FC-4B25-4A9E-A093-B94109E06343,331.61.0,nationwidechildrens.org_clinical.TCGA-KK-A7AU.xml,TCGA-KK-A7AU-F70505,Scheduled Follow-up Submission,1621|1775,,NO,207,YES|NO,Biochemical evidence of disease,207,,0.0,1621.0,9.0
+TCGA-KK-A7AV,1D4381D2-B74D-48E7-A8A2-846F39D0D347,331.61.0,nationwidechildrens.org_clinical.TCGA-KK-A7AV.xml,TCGA-KK-A7AV-F70507,Scheduled Follow-up Submission,822,,NO,,NO,,,,0.1,822.0,7.0
+TCGA-KK-A7AW,340649FE-9CD4-4098-9625-8FA6180390DD,331.61.0,nationwidechildrens.org_clinical.TCGA-KK-A7AW.xml,,,1054,,YES,204,,,,,0.8,204.0,7.0
+TCGA-KK-A7AY,8A297B87-4DA0-4143-BA3F-04DC27C0FAD4,348.57.0,nationwidechildrens.org_clinical.TCGA-KK-A7AY.xml,TCGA-KK-A7AY-F70514,Scheduled Follow-up Submission,1572|1754,,NO,1124,YES|NO,Biochemical evidence of disease,1124,,0.2,1572.0,7.0
+TCGA-KK-A7AZ,905C4744-B8EB-4F81-A701-CB2FA5F56639,331.61.0,nationwidechildrens.org_clinical.TCGA-KK-A7AZ.xml,TCGA-KK-A7AZ-F70515,Scheduled Follow-up Submission,840|1519,,,,,,,,,,7.0
+TCGA-KK-A7B2,D0CF0307-0B1F-4488-B9B6-C0CF90230E1B,331.61.0,nationwidechildrens.org_clinical.TCGA-KK-A7B2.xml,TCGA-KK-A7B2-F70518,Scheduled Follow-up Submission,692|1099,,NO,692,NO|YES,Biochemical evidence of disease,692,,0.3,845.0,9.0
+TCGA-KK-A7B3,00C3A9E4-1A83-476B-95B8-77344DACE67F,348.57.0,nationwidechildrens.org_clinical.TCGA-KK-A7B3.xml,TCGA-KK-A7B3-F70519,Scheduled Follow-up Submission,637|899,,NO,294,NO|YES,Biochemical evidence of disease,294,,0.1,637.0,9.0
+TCGA-KK-A7B4,511F5D0A-6D0B-4AA6-A368-9919169F4043,331.61.0,nationwidechildrens.org_clinical.TCGA-KK-A7B4.xml,TCGA-KK-A7B4-F70523,Scheduled Follow-up Submission,637|987,,YES,637,YES,Biochemical evidence of disease|Locoregional Recurrence,637|963,YES,0.6,637.0,9.0
+TCGA-KK-A8I4,DA7131CA-1D3F-4534-93A5-31DCC9685C14,370.53.0,nationwidechildrens.org_clinical.TCGA-KK-A8I4.xml,TCGA-KK-A8I4-F70491,Scheduled Follow-up Submission,2068|2259,,NO,1155|2162,YES,Distant Metastasis|Biochemical evidence of disease,1162|2162,NO,0.2,1964.0,7.0
+TCGA-KK-A8I5,7BDD2FA0-9A2F-45A2-93CA-3D92F487EF16,370.53.0,nationwidechildrens.org_clinical.TCGA-KK-A8I5.xml,TCGA-KK-A8I5-F70513,Scheduled Follow-up Submission,2553|3096,,NO,,NO,,,,0.1,1979.0,7.0
+TCGA-KK-A8I6,02E300A8-75CB-4380-81BB-FC6B3DF446B4,370.53.0,nationwidechildrens.org_clinical.TCGA-KK-A8I6.xml,,,668,,NO,,NO,,,,0.2,668.0,7.0
+TCGA-KK-A8I7,1029F6CA-165A-4E85-8800-EF8179485187,370.53.0,nationwidechildrens.org_clinical.TCGA-KK-A8I7.xml,TCGA-KK-A8I7-F70524,Scheduled Follow-up Submission,1891|2002,,NO,1088,YES,Biochemical evidence of disease,1088|1756,YES,0.1,1877.0,9.0
+TCGA-KK-A8I8,46501048-D526-4FDE-B734-0D5A5E98BA9B,370.53.0,nationwidechildrens.org_clinical.TCGA-KK-A8I8.xml,TCGA-KK-A8I8-F70526,Scheduled Follow-up Submission,774|967,,NO,,NO,,,,0.1,757.0,9.0
+TCGA-KK-A8I9,DEE33EA4-01C9-4463-92FB-9169DF858335,370.53.0,nationwidechildrens.org_clinical.TCGA-KK-A8I9.xml,TCGA-KK-A8I9-F70527,Scheduled Follow-up Submission,721|1001,,NO,940,NO|YES,Biochemical evidence of disease,940,,0.1,721.0,8.0
+TCGA-KK-A8IA,0EFBAE9A-3AE0-4916-8ED2-2FDC0055D198,370.53.0,nationwidechildrens.org_clinical.TCGA-KK-A8IA.xml,TCGA-KK-A8IA-F70528,Scheduled Follow-up Submission,1439|1931,,NO,,NO,,,,0.1,1383.0,9.0
+TCGA-KK-A8IB,4515E4B4-B347-4F39-8AD4-28345CD98EC4,370.53.0,nationwidechildrens.org_clinical.TCGA-KK-A8IB.xml,,,83,,,,,,,,,,9.0
+TCGA-KK-A8IC,FD1667EF-E739-4EB9-BC99-96DCF67A40BC,370.53.0,nationwidechildrens.org_clinical.TCGA-KK-A8IC.xml,TCGA-KK-A8IC-F64008,Additional New Tumor Event,2051,,YES,1060,YES,Biochemical evidence of disease,1060,,0.9,2047.0,9.0
+TCGA-KK-A8ID,2ECF14AB-CE19-4457-AC11-575CBB10ACAD,370.53.0,nationwidechildrens.org_clinical.TCGA-KK-A8ID.xml,TCGA-KK-A8ID-F70529,Scheduled Follow-up Submission,1973|2107,,NO,,NO,,,,0.1,1924.0,9.0
+TCGA-KK-A8IF,76D502EE-897C-4BBC-8E28-5AD2E086A623,370.53.0,nationwidechildrens.org_clinical.TCGA-KK-A8IF.xml,,,804,,YES,648,YES,Biochemical evidence of disease,648,,0.7,788.0,7.0
+TCGA-KK-A8IL,154F976F-D765-4971-AB13-931100D7DC7C,370.53.0,nationwidechildrens.org_clinical.TCGA-KK-A8IL.xml,,,,628.0,NO,,,,,,0.1,144.0,9.0
+TCGA-M7-A720,ED53DDAE-22F8-49BE-A6AB-2CCC085EA71D,331.61.0,nationwidechildrens.org_clinical.TCGA-M7-A720.xml,TCGA-M7-A720-F70038,Scheduled Follow-up Submission,302|384,,NO,,NO,,,,,302.0,6.0
+TCGA-M7-A721,3D694E89-B0B3-4F5A-A855-BCD404BA2A34,331.61.0,nationwidechildrens.org_clinical.TCGA-M7-A721.xml,TCGA-M7-A721-F61812,Scheduled Follow-up Submission,204|400,,NO,,NO,,,,,162.0,7.0
+TCGA-M7-A722,920907FB-A826-4156-B34C-C231849169F5,370.53.0,nationwidechildrens.org_clinical.TCGA-M7-A722.xml,TCGA-M7-A722-F71084,Scheduled Follow-up Submission,717|1060,,YES,559,YES,Biochemical evidence of disease,559,,,559.0,8.0
+TCGA-M7-A723,158F7520-1E4A-4AA8-BF17-A96A98619661,331.61.0,nationwidechildrens.org_clinical.TCGA-M7-A723.xml,TCGA-M7-A723-F61813,Scheduled Follow-up Submission,62|763,,NO,,NO,,,,0.1,62.0,7.0
+TCGA-M7-A725,7191C1F5-B88B-4D54-889C-C2D93891B5FE,331.61.0,nationwidechildrens.org_clinical.TCGA-M7-A725.xml,TCGA-M7-A725-F61814,Scheduled Follow-up Submission,96|573,,NO,,NO,,,,,96.0,7.0
+TCGA-MG-AAMC,E310A2E8-582D-4FFF-B2B9-93F88399124C,429.43.0,nationwidechildrens.org_clinical.TCGA-MG-AAMC.xml,TCGA-MG-AAMC-F68686,Scheduled Follow-up Submission,173,,NO,,NO,,,,0.01,54.0,9.0
+TCGA-QU-A6IL,605A6728-7DFC-4F79-9F15-A05871B610A3,320.62.0,nationwidechildrens.org_clinical.TCGA-QU-A6IL.xml,TCGA-QU-A6IL-F66982,,97,,NO,,NO,,,,0.2,91.0,7.0
+TCGA-QU-A6IM,B65CBD0F-887D-45F6-B5C7-AEC403AFD61F,320.62.0,nationwidechildrens.org_clinical.TCGA-QU-A6IM.xml,TCGA-QU-A6IM-F66983,Scheduled Follow-up Submission,1247,,NO,,NO,,,,0.1,896.0,7.0
+TCGA-QU-A6IO,D41262AC-1BCD-4CED-AEED-2B1EE8EB31EA,320.62.0,nationwidechildrens.org_clinical.TCGA-QU-A6IO.xml,TCGA-QU-A6IO-F66985,Scheduled Follow-up Submission,1436|3716,,NO,,NO,,,,0.1,1436.0,6.0
+TCGA-QU-A6IP,62664700-E0CB-4217-91BC-B194313FD784,320.62.0,nationwidechildrens.org_clinical.TCGA-QU-A6IP.xml,TCGA-QU-A6IP-F66986,Scheduled Follow-up Submission,2620,,NO,,NO,,,,0.0,2620.0,6.0
+TCGA-SU-A7E7,D700DEF5-C976-4372-BD89-ADEF39A71C28,348.57.0,nationwidechildrens.org_clinical.TCGA-SU-A7E7.xml,TCGA-SU-A7E7-F64938,Scheduled Follow-up Submission,112|551,,NO,,NO,,,,0.01,426.0,8.0
+TCGA-TK-A8OK,82E0946B-6B6D-45E4-A2D1-6742843A06F8,370.53.0,nationwidechildrens.org_clinical.TCGA-TK-A8OK.xml,TCGA-TK-A8OK-F58472,Scheduled Follow-up Submission,27,,,,NO,,,,,,7.0
+TCGA-TP-A8TT,C67FAE58-B8A2-414C-B0E4-40912BD892E5,429.43.0,nationwidechildrens.org_clinical.TCGA-TP-A8TT.xml,TCGA-TP-A8TT-F60866,Scheduled Follow-up Submission,362|526,,NO,,NO,,,,0.024,237.0,7.0
+TCGA-TP-A8TV,92671F5F-37D6-41DC-B7C1-FB265ADD5C33,429.43.0,nationwidechildrens.org_clinical.TCGA-TP-A8TV.xml,TCGA-TP-A8TV-F64432|TCGA-TP-A8TV-F70511,Scheduled Follow-up Submission,249|405|610,,NO,,NO,,,,0.019,249.0,7.0
+TCGA-V1-A8MF,82F6AF41-A1E7-4FDC-8BDF-E813F324B65D,370.53.0,nationwidechildrens.org_clinical.TCGA-V1-A8MF.xml,TCGA-V1-A8MF-F69431,Scheduled Follow-up Submission,1254|1449,,NO,,NO,,,NO,0.14,1218.0,6.0
+TCGA-V1-A8MG,58EB6841-17D0-42E8-AC36-A6B214565D74,370.53.0,nationwidechildrens.org_clinical.TCGA-V1-A8MG.xml,TCGA-V1-A8MG-F69432,Scheduled Follow-up Submission,857,,NO,,NO,,,,0.03,583.0,7.0
+TCGA-V1-A8MK,06EC9AB6-C87B-4F9A-9178-E284ADEA8122,370.53.0,nationwidechildrens.org_clinical.TCGA-V1-A8MK.xml,TCGA-V1-A8MK-F69460,Scheduled Follow-up Submission,508,,YES,,NO,,,NO,0.83,-1.0,6.0
+TCGA-V1-A8ML,AEC912D7-8E23-423D-AA66-18E755B874D8,389.51.0,nationwidechildrens.org_clinical.TCGA-V1-A8ML.xml,TCGA-V1-A8ML-F69415,Scheduled Follow-up Submission,448,,NO,,NO,,,NO,0.01,448.0,7.0
+TCGA-V1-A8MU,3DE9A4BB-B191-415B-BC66-9F71813B80EA,389.51.0,nationwidechildrens.org_clinical.TCGA-V1-A8MU.xml,TCGA-V1-A8MU-F69444,Scheduled Follow-up Submission,1399|1876,,NO,192,NO|YES,Biochemical evidence of disease,,NO,0.015,1384.0,7.0
+TCGA-V1-A8WL,CB08122E-0CB1-4965-BFC6-D8D321D58A06,389.51.0,nationwidechildrens.org_clinical.TCGA-V1-A8WL.xml,TCGA-V1-A8WL-F69417,Scheduled Follow-up Submission,1375|1948,,NO,,NO,,,NO,0.015,1175.0,7.0
+TCGA-V1-A8WN,CA828071-5ACE-413C-9973-A6A1D8E38913,389.51.0,nationwidechildrens.org_clinical.TCGA-V1-A8WN.xml,TCGA-V1-A8WN-F69450,Scheduled Follow-up Submission,476|924,,NO,,NO,,,NO,0.02,463.0,6.0
+TCGA-V1-A8WS,C9DACFF6-0FC4-43BE-97F8-427DBB908880,389.51.0,nationwidechildrens.org_clinical.TCGA-V1-A8WS.xml,TCGA-V1-A8WS-F69434,Scheduled Follow-up Submission,474,,NO,,YES,Biochemical evidence of disease,,NO,0.09,474.0,6.0
+TCGA-V1-A8X3,E130F5EF-5466-4C42-B419-2860140899BE,389.51.0,nationwidechildrens.org_clinical.TCGA-V1-A8X3.xml,TCGA-V1-A8X3-F69469,Scheduled Follow-up Submission,202,,NO,,NO,,,NO,0.03,202.0,7.0
+TCGA-V1-A9O5,113938B9-4328-43C2-BBB6-EE3913EF3E1F,429.43.0,nationwidechildrens.org_clinical.TCGA-V1-A9O5.xml,TCGA-V1-A9O5-F69449,Scheduled Follow-up Submission,1776|1932,,YES,124,YES,Biochemical evidence of disease,124,,3.26,1776.0,9.0
+TCGA-V1-A9O9,F79A23AD-200F-455E-8DD0-F680B01FB34E,429.43.0,nationwidechildrens.org_clinical.TCGA-V1-A9O9.xml,TCGA-V1-A9O9-F69445,Scheduled Follow-up Submission,204|2870,,YES,,NO,,,NO,5.04,-53.0,8.0
+TCGA-V1-A9OA,812C6D4F-75F5-4578-8BF8-29E0BE59F3F4,429.43.0,nationwidechildrens.org_clinical.TCGA-V1-A9OA.xml,TCGA-V1-A9OA-F69441,Scheduled Follow-up Submission,636,,NO,,NO,,,NO,0.01,510.0,9.0
+TCGA-V1-A9OH,B2106A58-7028-4242-8EC3-2D71FF6E2427,429.43.0,nationwidechildrens.org_clinical.TCGA-V1-A9OH.xml,TCGA-V1-A9OH-F69402,Scheduled Follow-up Submission,1253|2403,,NO,,NO,,,NO,0.01,1253.0,8.0
+TCGA-V1-A9OQ,8BC50682-3591-4CC8-BD92-893D8AFFA2AF,429.43.0,nationwidechildrens.org_clinical.TCGA-V1-A9OQ.xml,TCGA-V1-A9OQ-F69411,Scheduled Follow-up Submission,371,,NO,,NO,,,NO,0.01,371.0,6.0
+TCGA-V1-A9OT,B9F990B3-FF34-41AB-8DD7-6B0655D68059,429.43.0,nationwidechildrens.org_clinical.TCGA-V1-A9OT.xml,TCGA-V1-A9OT-F69439,Scheduled Follow-up Submission,476,,YES,292,YES,Biochemical evidence of disease,292,NO,0.01,349.0,6.0
+TCGA-V1-A9OY,DB173B43-5599-46BB-839F-17E2234C1070,429.43.0,nationwidechildrens.org_clinical.TCGA-V1-A9OY.xml,TCGA-V1-A9OY-F69409,Scheduled Follow-up Submission,170|1067,,NO,,NO,,,NO,0.099,170.0,7.0
+TCGA-V1-A9Z9,5806479C-08B4-4B08-8C7A-D8C08EFAE883,429.43.0,nationwidechildrens.org_clinical.TCGA-V1-A9Z9.xml,TCGA-V1-A9Z9-F70270,Scheduled Follow-up Submission,295|540,,NO,,NO,,,NO,0.015,291.0,9.0
+TCGA-V1-A9ZG,2F038D13-0F84-48BF-8BDE-410209E2056D,429.43.0,nationwidechildrens.org_clinical.TCGA-V1-A9ZG.xml,TCGA-V1-A9ZG-F70257,Scheduled Follow-up Submission,1117|1517,,NO,,NO,,,NO,0.015,893.0,9.0
+TCGA-V1-A9ZI,B0D143B7-A24F-43AF-A4A6-4FD1ABDFB7F5,429.43.0,nationwidechildrens.org_clinical.TCGA-V1-A9ZI.xml,TCGA-V1-A9ZI-F70259,Scheduled Follow-up Submission,86|1640,,YES,86,YES,Biochemical evidence of disease,,,3.11,86.0,9.0
+TCGA-V1-A9ZR,B9C78916-2DD8-4D90-A538-5A53681C6AE4,429.43.0,nationwidechildrens.org_clinical.TCGA-V1-A9ZR.xml,TCGA-V1-A9ZR-F70265,Scheduled Follow-up Submission,177|1361,,YES,,YES,Biochemical evidence of disease,,NO,1.44,54.0,8.0
+TCGA-VN-A88K,C2C79C98-1A76-423F-9340-C82D39B045AC,357.55.0,nationwidechildrens.org_clinical.TCGA-VN-A88K.xml,TCGA-VN-A88K-F62590,Scheduled Follow-up Submission,776,,NO,,NO,,,,0.0,776.0,8.0
+TCGA-VN-A88L,03856F28-2661-48F5-80DC-2263900352BC,357.55.0,nationwidechildrens.org_clinical.TCGA-VN-A88L.xml,TCGA-VN-A88L-F65022,Scheduled Follow-up Submission,394|746,,NO,,NO,,,,0.0,394.0,7.0
+TCGA-VN-A88M,29BC986B-1696-4812-81E3-82274A0CECDF,357.55.0,nationwidechildrens.org_clinical.TCGA-VN-A88M.xml,TCGA-VN-A88M-F62591,Scheduled Follow-up Submission,183|189,,,,NO,,,,,,7.0
+TCGA-VN-A88N,00AD6D15-EF91-4783-BCE1-EC8C53D3B05F,370.53.0,nationwidechildrens.org_clinical.TCGA-VN-A88N.xml,TCGA-VN-A88N-F65020|TCGA-VN-A88N-F72543,Scheduled Follow-up Submission,176|472|766,,NO,,NO,,,,0.0,176.0,7.0
+TCGA-VN-A88O,D6DC37EB-15CD-4C61-981D-7E81A6712851,357.55.0,nationwidechildrens.org_clinical.TCGA-VN-A88O.xml,TCGA-VN-A88O-F72128,Scheduled Follow-up Submission,481,,NO,,NO,,,,0.0,376.0,7.0
+TCGA-VN-A88Q,25AA517F-CA7D-4519-BC28-61E4BEAB2844,357.55.0,nationwidechildrens.org_clinical.TCGA-VN-A88Q.xml,TCGA-VN-A88Q-F68875,Scheduled Follow-up Submission,1001|1366,,NO,,NO,,,,0.0,1000.0,8.0
+TCGA-VN-A943,4E60DD22-0D80-4AC7-B123-98D27120C7B7,429.43.0,nationwidechildrens.org_clinical.TCGA-VN-A943.xml,TCGA-VN-A943-F69100,Scheduled Follow-up Submission,132|496,,NO,,NO,,,,0.01,132.0,8.0
+TCGA-VP-A875,06334F50-18C4-46FB-A10F-062F889E03E2,357.55.0,nationwidechildrens.org_clinical.TCGA-VP-A875.xml,TCGA-VP-A875-F64433,Scheduled Follow-up Submission,805|2309,,NO,,NO,,,,0.01,867.0,7.0
+TCGA-VP-A876,F77C1E84-6E49-44F5-8A35-2B7CF11A9A47,357.55.0,nationwidechildrens.org_clinical.TCGA-VP-A876.xml,TCGA-VP-A876-F64436,Scheduled Follow-up Submission,2576|3333,,NO,,NO,,,,0.1,2576.0,8.0
+TCGA-VP-A878,9434552D-04CA-41EF-8E7F-AF3D927CCA20,357.55.0,nationwidechildrens.org_clinical.TCGA-VP-A878.xml,TCGA-VP-A878-F64439,Scheduled Follow-up Submission,2704|3130,,NO,98|1843,YES,Biochemical evidence of disease|Distant Metastasis,98|2354,NO,0.1,2704.0,9.0
+TCGA-VP-A87C,7B507D8E-9A57-4973-8BD2-87E8D8C341AD,357.55.0,nationwidechildrens.org_clinical.TCGA-VP-A87C.xml,TCGA-VP-A87C-F64470,Scheduled Follow-up Submission,1690,,NO,,NO,,,,0.5,1690.0,7.0
+TCGA-VP-A87D,24287E0B-273E-4C96-B7FD-87C042CDED56,357.55.0,nationwidechildrens.org_clinical.TCGA-VP-A87D.xml,TCGA-VP-A87D-F64469,Scheduled Follow-up Submission,1853,,YES,1194,YES|NO,Biochemical evidence of disease,1194,YES,0.2,1853.0,9.0
+TCGA-VP-A87H,F1AC6249-1DD2-4C17-8E37-00D2DF79F7DE,357.55.0,nationwidechildrens.org_clinical.TCGA-VP-A87H.xml,TCGA-VP-A87H-F64478,Scheduled Follow-up Submission,663,,NO,,NO,,,,0.01,663.0,9.0
+TCGA-VP-AA1N,66C09A60-5A15-4810-B14D-FC16AF773C6A,429.43.0,nationwidechildrens.org_clinical.TCGA-VP-AA1N.xml,TCGA-VP-AA1N-F64506,Scheduled Follow-up Submission,542|1365,,NO,,NO,,,,0.01,542.0,9.0
+TCGA-X4-A8KQ,948C310E-CFDA-4F5B-847B-3158AC4D6191,370.53.0,nationwidechildrens.org_clinical.TCGA-X4-A8KQ.xml,TCGA-X4-A8KQ-F67716,Scheduled Follow-up Submission,1131|1383,,NO,883,NO|YES,Biochemical evidence of disease,,,0.25,963.0,9.0
+TCGA-X4-A8KS,4F0DF459-B66B-4914-9325-A2EF5E77176E,370.53.0,nationwidechildrens.org_clinical.TCGA-X4-A8KS.xml,TCGA-X4-A8KS-F67714,Scheduled Follow-up Submission,846|979,,NO,,NO,,,,0.01,797.0,7.0
+TCGA-XA-A8JR,760C6351-8C18-46C8-85B1-308C394D2166,370.53.0,nationwidechildrens.org_clinical.TCGA-XA-A8JR.xml,TCGA-XA-A8JR-F69794,Scheduled Follow-up Submission,119|376,,NO,,NO,,,,0.0,69.0,7.0
+TCGA-XJ-A83G,D5FC2BCC-484D-428C-8629-BDBDC8C79D23,357.55.0,nationwidechildrens.org_clinical.TCGA-XJ-A83G.xml,TCGA-XJ-A83G-F56698,Scheduled Follow-up Submission,1157|1461,,NO,,NO,,,,0.01,1126.0,7.0
+TCGA-XK-AAJA,EE515866-0D52-47AE-9799-D8F84C80BB2B,429.43.0,nationwidechildrens.org_clinical.TCGA-XK-AAJA.xml,,,930,,NO,,NO,,,,0.09,712.0,7.0
+TCGA-XK-AAJU,CB810A73-4351-42C6-9A28-EF76C966C8FC,429.43.0,nationwidechildrens.org_clinical.TCGA-XK-AAJU.xml,TCGA-XK-AAJU-F66884,Scheduled Follow-up Submission,1206|1576,,NO,,NO,,,,0.09,1206.0,7.0
+TCGA-XK-AAK1,005E4377-8851-40AE-88E7-1110B63369A3,429.43.0,nationwidechildrens.org_clinical.TCGA-XK-AAK1.xml,TCGA-XK-AAK1-F68316,Scheduled Follow-up Submission,614|979,,NO,,NO,,,,0.09,614.0,7.0
+TCGA-XQ-A8TA,A681E330-3C1A-407A-B372-6B9EF0A0DE85,370.53.0,nationwidechildrens.org_clinical.TCGA-XQ-A8TA.xml,TCGA-XQ-A8TA-F69992,Scheduled Follow-up Submission,,146.0,YES,,NO,,,YES,323.0,62.0,10.0
+TCGA-XQ-A8TB,28D0A782-441D-4E5E-AC59-C89234CF01A5,370.53.0,nationwidechildrens.org_clinical.TCGA-XQ-A8TB.xml,TCGA-XQ-A8TB-F69995,,770,,NO,,NO,,,,0.0,674.0,9.0
+TCGA-Y6-A9XI,B66079A4-243D-48B1-B31D-A003701F0B89,429.43.0,nationwidechildrens.org_clinical.TCGA-Y6-A9XI.xml,TCGA-Y6-A9XI-F68012,Scheduled Follow-up Submission,526,,NO,,NO,,,,0.06,519.0,8.0
+TCGA-YJ-A8SW,1C19B356-50AE-4FBA-9FFD-98DDB60FC7D0,389.51.0,nationwidechildrens.org_clinical.TCGA-YJ-A8SW.xml,,,148,,YES,148,,,,,0.38,148.0,9.0
+TCGA-YL-A8HJ,664D7C6A-6AC5-4A81-BFC9-EFA1CAFE0D33,370.53.0,nationwidechildrens.org_clinical.TCGA-YL-A8HJ.xml,TCGA-YL-A8HJ-F67253,Scheduled Follow-up Submission,1611,,NO,,NO,,,NO,0.03,1589.0,9.0
+TCGA-YL-A8HK,B9B04636-D3B1-49C3-956A-53146A234B1C,370.53.0,nationwidechildrens.org_clinical.TCGA-YL-A8HK.xml,TCGA-YL-A8HK-F56601,Additional New Tumor Event,1491,,YES,1376,YES,Biochemical evidence of disease,1376,YES,1.0,1491.0,9.0
+TCGA-YL-A8HL,13A7EC57-4287-435F-BCC9-5E786DE9E882,370.53.0,nationwidechildrens.org_clinical.TCGA-YL-A8HL.xml,TCGA-YL-A8HL-F67258,Scheduled Follow-up Submission,1173|1565,,NO,,NO,,,,0.03,1173.0,9.0
+TCGA-YL-A8HM,455A92DA-F704-4AA0-8D5E-C75669965832,370.53.0,nationwidechildrens.org_clinical.TCGA-YL-A8HM.xml,TCGA-YL-A8HM-F67260,Additional New Tumor Event,1124|1482,,NO,1473,NO|YES,Biochemical evidence of disease,1473,YES,0.03,1124.0,9.0
+TCGA-YL-A8HO,341B61E3-AC0A-4FD0-9922-0B0EE5695E45,370.53.0,nationwidechildrens.org_clinical.TCGA-YL-A8HO.xml,TCGA-YL-A8HO-F57520|TCGA-YL-A8HO-F67262,Scheduled Follow-up Submission,2183|2304,,NO,1068,YES,Biochemical evidence of disease,1068,,0.01,2168.0,7.0
+TCGA-YL-A8S8,3E22977D-7DBA-4E18-B509-B9ADBC5B3F83,389.51.0,nationwidechildrens.org_clinical.TCGA-YL-A8S8.xml,TCGA-YL-A8S8-F58862,Additional New Tumor Event,1890,,YES,679,YES,Biochemical evidence of disease,679,,1.36,1890.0,9.0
+TCGA-YL-A8SA,FA65ABAC-D70B-4CDB-AF3A-5345301996F5,389.51.0,nationwidechildrens.org_clinical.TCGA-YL-A8SA.xml,TCGA-YL-A8SA-F67565,Scheduled Follow-up Submission,512,,NO,,NO,,,,0.06,467.0,8.0
+TCGA-YL-A8SC,DB8AB440-C031-4E87-B044-FBBE5EA1AB1D,389.51.0,nationwidechildrens.org_clinical.TCGA-YL-A8SC.xml,TCGA-YL-A8SC-F58906,Additional New Tumor Event,1261,,NO,152,NO|YES,Biochemical evidence of disease,152,YES,0.65,1261.0,9.0
+TCGA-YL-A8SL,5D7529C5-0068-48B8-8B25-1C00E5EE8A10,389.51.0,nationwidechildrens.org_clinical.TCGA-YL-A8SL.xml,TCGA-YL-A8SL-F67548,Scheduled Follow-up Submission,798|987,,NO,,NO,,,,0.0,623.0,8.0
+TCGA-YL-A8SO,46ABD9FF-D72D-40BD-B3C0-B8B0192DBAE4,389.51.0,nationwidechildrens.org_clinical.TCGA-YL-A8SO.xml,TCGA-YL-A8SO-F67275,Scheduled Follow-up Submission,3247|3479,,NO,,NO,,,,0.0,3247.0,9.0
+TCGA-YL-A8SP,C1D38E14-BE34-4365-A3BD-40CC251495D1,389.51.0,nationwidechildrens.org_clinical.TCGA-YL-A8SP.xml,TCGA-YL-A8SP-F59002|TCGA-YL-A8SP-F67706,Additional New Tumor Event|Scheduled Follow-up Submission,2170|2366,,NO,2036,NO|YES,Biochemical evidence of disease,2036,NO,0.38,2155.0,9.0
+TCGA-YL-A8SQ,88776DC3-F31C-49C0-822F-165DCB346274,389.51.0,nationwidechildrens.org_clinical.TCGA-YL-A8SQ.xml,TCGA-YL-A8SQ-F59021|TCGA-YL-A8SQ-F67567,Scheduled Follow-up Submission,1943|2083,,YES,329,YES,Biochemical evidence of disease,329,YES,1.1,1943.0,9.0
+TCGA-YL-A8SR,A37E7F50-74E5-4CA2-AFC8-65C6520DBC55,389.51.0,nationwidechildrens.org_clinical.TCGA-YL-A8SR.xml,TCGA-YL-A8SR-F67281,Scheduled Follow-up Submission,213|273,,NO,,NO,,,,0.06,222.0,9.0
+TCGA-YL-A9WJ,0CCC3907-824F-4A80-AC31-9CC5B3955D36,389.51.0,nationwidechildrens.org_clinical.TCGA-YL-A9WJ.xml,TCGA-YL-A9WJ-F58534,,,1855.0,YES,76,YES,Distant Metastasis,1476,,3.1,838.0,8.0
+TCGA-YL-A9WK,6AC02D03-A550-48F9-B0BA-C87D54BA5115,389.51.0,nationwidechildrens.org_clinical.TCGA-YL-A9WK.xml,TCGA-YL-A9WK-F58524|TCGA-YL-A9WK-F67283,Additional New Tumor Event|Scheduled Follow-up Submission,1897|2136,,YES,1009,YES,Biochemical evidence of disease,1009,YES,15.6,1871.0,9.0
+TCGA-YL-A9WY,EF86D339-F60F-4921-8167-A5F1D2A93DC9,429.43.0,nationwidechildrens.org_clinical.TCGA-YL-A9WY.xml,TCGA-YL-A9WY-F58520|TCGA-YL-A9WY-F67290,Scheduled Follow-up Submission,846|862|1098,,YES,765,YES,Biochemical evidence of disease|Distant Metastasis,765|975,YES,1.8,765.0,9.0
+TCGA-ZG-A8QW,674ABE2C-2955-43AF-8208-EB38350AD2A7,389.51.0,nationwidechildrens.org_clinical.TCGA-ZG-A8QW.xml,TCGA-ZG-A8QW-F67802,Scheduled Follow-up Submission,50|94,,,,NO,,,,,,9.0
+TCGA-ZG-A8QX,EDF0B88D-F858-4212-8F41-EAC06C975BFB,389.51.0,nationwidechildrens.org_clinical.TCGA-ZG-A8QX.xml,TCGA-ZG-A8QX-F67804,Scheduled Follow-up Submission,150|442,,,,NO,,,,,,6.0
+TCGA-ZG-A8QZ,B69785B3-51B2-43B6-99C6-FA5A0BF18AF3,389.51.0,nationwidechildrens.org_clinical.TCGA-ZG-A8QZ.xml,TCGA-ZG-A8QZ-F67807,Scheduled Follow-up Submission,308,,NO,,NO,,,,0.01,239.0,9.0
+TCGA-ZG-A9KY,76AC923A-2DA7-4231-AB39-4E22F8BF074D,429.43.0,nationwidechildrens.org_clinical.TCGA-ZG-A9KY.xml,TCGA-ZG-A9KY-F67809,Scheduled Follow-up Submission,34|130,,,,NO,,,,,,9.0
+TCGA-ZG-A9L0,9A1C9F24-9BFC-44D4-940E-6E294E55C19E,429.43.0,nationwidechildrens.org_clinical.TCGA-ZG-A9L0.xml,TCGA-ZG-A9L0-F67810,Scheduled Follow-up Submission,68|355,,,,NO,,,,,,9.0
+TCGA-ZG-A9L1,25389710-FAE9-4A15-B1BB-A19BA2AD8CA8,429.43.0,nationwidechildrens.org_clinical.TCGA-ZG-A9L1.xml,TCGA-ZG-A9L1-F67811,Scheduled Follow-up Submission,1147|1302,,NO,,NO,,,,0.07,1147.0,9.0
+TCGA-ZG-A9L2,D755A8E2-F0C7-4130-B034-AAF1F078F87F,429.43.0,nationwidechildrens.org_clinical.TCGA-ZG-A9L2.xml,TCGA-ZG-A9L2-F67812,Scheduled Follow-up Submission,986|1154,,YES,180,YES|NO,Biochemical evidence of disease,180,NO,0.01,1137.0,9.0
+TCGA-ZG-A9L5,AB32991E-95DA-4798-8BAE-2A089B2724FB,429.43.0,nationwidechildrens.org_clinical.TCGA-ZG-A9L5.xml,TCGA-ZG-A9L5-F67815,Scheduled Follow-up Submission,854|908,,NO,,NO,,,,,,9.0
+TCGA-ZG-A9L6,A12BBD6F-6FE2-4085-943A-6DB26386D11A,429.43.0,nationwidechildrens.org_clinical.TCGA-ZG-A9L6.xml,TCGA-ZG-A9L6-F67817,Scheduled Follow-up Submission,664|687,,YES,664,YES|NO,Biochemical evidence of disease,664,NO,0.36,664.0,9.0
+TCGA-ZG-A9LM,57D63B06-DE65-44DD-8C61-484CA1DF1DB4,429.43.0,nationwidechildrens.org_clinical.TCGA-ZG-A9LM.xml,TCGA-ZG-A9LM-F67938,Scheduled Follow-up Submission,121|378,,NO,,NO,,,,0.0,121.0,9.0
+TCGA-ZG-A9LN,A90EB1A7-EC78-4F3F-8306-E75058944FEF,429.43.0,nationwidechildrens.org_clinical.TCGA-ZG-A9LN.xml,TCGA-ZG-A9LN-F67937,Scheduled Follow-up Submission,115,,NO,,NO,,,,7.42,90.0,9.0
+TCGA-ZG-A9LS,973D7AA9-2B8E-4D82-B15B-E98F1EBE06F9,429.43.0,nationwidechildrens.org_clinical.TCGA-ZG-A9LS.xml,TCGA-ZG-A9LS-F67932,Scheduled Follow-up Submission,211|516,,NO,,NO,,,,0.03,147.0,9.0
+TCGA-ZG-A9LY,431B9776-A205-46B5-81CB-DC5D22B8D629,429.43.0,nationwidechildrens.org_clinical.TCGA-ZG-A9LY.xml,TCGA-ZG-A9LY-F67845,Scheduled Follow-up Submission,287|370,,NO,,NO,,,,0.01,288.0,9.0
+TCGA-ZG-A9LZ,CCE85841-CA1F-4927-B5B6-96D9A8C779FF,429.43.0,nationwidechildrens.org_clinical.TCGA-ZG-A9LZ.xml,TCGA-ZG-A9LZ-F67847,Scheduled Follow-up Submission,692,,YES,310,YES|NO,,,NO,2.19,692.0,9.0
+TCGA-ZG-A9M4,1DED19D0-544C-48DB-BAE5-9B9FB0FDEE59,429.43.0,nationwidechildrens.org_clinical.TCGA-ZG-A9M4.xml,TCGA-ZG-A9M4-F67945,Scheduled Follow-up Submission,223|547,,NO,,NO,,,,0.95,218.0,9.0
+TCGA-ZG-A9MC,B124AB8C-4617-4108-BB0F-B673E9F698A7,429.43.0,nationwidechildrens.org_clinical.TCGA-ZG-A9MC.xml,TCGA-ZG-A9MC-F67960,Scheduled Follow-up Submission,428|455,,NO,,NO,,,,31.85,427.0,9.0
+TCGA-ZG-A9N3,83CD82F7-237C-404F-B06D-6264C338B3C3,429.43.0,nationwidechildrens.org_clinical.TCGA-ZG-A9N3.xml,TCGA-ZG-A9N3-F68209,Scheduled Follow-up Submission,244|349,,NO,,NO,,,NO,0.1,244.0,9.0
+TCGA-ZG-A9ND,FBBCA3D3-C988-4141-9ABD-B77793D3B5BD,429.43.0,nationwidechildrens.org_clinical.TCGA-ZG-A9ND.xml,TCGA-ZG-A9ND-F68219,Scheduled Follow-up Submission,261|410,,NO,,NO,,,,0.08,184.0,9.0
+TCGA-ZG-A9NI,1E502349-3A6A-4AE6-BFAA-2BE2136DD5B0,429.43.0,nationwidechildrens.org_clinical.TCGA-ZG-A9NI.xml,TCGA-ZG-A9NI-F67955,Scheduled Follow-up Submission,132,,NO,,NO,,,,0.03,99.0,9.0
+TCGA-CH-5764,E92E5410-D4A8-4B58-9F24-86DDC5BE9814,91.78.0,nationwidechildrens.org_omf.TCGA-CH-5764.xml,,,,,,,,,,,,,
+TCGA-CH-5790,244F9E57-B1A7-41C9-85C3-641E9759B3D2,91.78.0,nationwidechildrens.org_omf.TCGA-CH-5790.xml,,,,,,,,,,,,,
+TCGA-CH-5791,2CFDC233-8C8C-45E0-AF2F-0173838746EC,91.78.0,nationwidechildrens.org_omf.TCGA-CH-5791.xml,,,,,,,,,,,,,
+TCGA-EJ-7123,60ECC394-91FA-4C9C-B096-51E65947F537,161.76.0,nationwidechildrens.org_omf.TCGA-EJ-7123.xml,,,,,,,,,,,,,
+TCGA-EJ-7312,F041AD9B-289A-4D29-AB70-1782698EC4D5,331.61.0,nationwidechildrens.org_omf.TCGA-EJ-7312.xml,,,,,,,,,,,,,
+TCGA-EJ-7791,1FA8DCDE-CBFC-4823-855D-B53DCC1AFBC9,184.82.0,nationwidechildrens.org_omf.TCGA-EJ-7791.xml,,,,,,,,,,,,,
+TCGA-EJ-A46B,304FCE6F-2E55-4592-AE1C-A76111FC17FE,268.67.0,nationwidechildrens.org_omf.TCGA-EJ-A46B.xml,,,,,,,,,,,,,
+TCGA-EJ-A46G,A950BEED-96EF-45D1-8C98-939BE66F569C,285.66.0,nationwidechildrens.org_omf.TCGA-EJ-A46G.xml,,,,,,,,,,,,,
+TCGA-EJ-A65J,427E8335-1CF8-44B9-94DA-33F4E672F773,315.66.0,nationwidechildrens.org_omf.TCGA-EJ-A65J.xml,,,,,,,,,,,,,
+TCGA-EJ-A6RC,F6A54EA0-50DD-4EBA-BECF-ABA5E96FEC5E,331.61.0,nationwidechildrens.org_omf.TCGA-EJ-A6RC.xml,,,,,,,,,,,,,
+TCGA-HC-7233,89FF5FAE-D6C4-4DBD-88CA-EDAD2FA6D7BD,184.82.0,nationwidechildrens.org_omf.TCGA-HC-7233.xml,,,,,,,,,,,,,
+TCGA-HC-7821,88B809B6-1A21-49B2-A623-5730599ECBFC,184.82.0,nationwidechildrens.org_omf.TCGA-HC-7821.xml,,,,,,,,,,,,,
+TCGA-HC-A6AQ,18EE27EB-4990-4DDC-B832-D6796E39E737,312.65.0,nationwidechildrens.org_omf.TCGA-HC-A6AQ.xml,,,,,,,,,,,,,
+TCGA-HC-A76W,FAF83DBF-9156-443E-A7BB-64833A791C1D,348.57.0,nationwidechildrens.org_omf.TCGA-HC-A76W.xml,,,,,,,,,,,,,
+TCGA-J4-A83N,99886AC5-0679-4E59-A25C-B3069416DD27,357.55.0,nationwidechildrens.org_omf.TCGA-J4-A83N.xml,,,,,,,,,,,,,
+TCGA-J9-A8CN,0C9B8733-0A07-4B92-A22B-3808F9A69F7A,357.55.0,nationwidechildrens.org_omf.TCGA-J9-A8CN.xml,,,,,,,,,,,,,
+TCGA-KC-A7FA,2B744FCB-736A-4C61-BD92-2BA1B3712220,348.57.0,nationwidechildrens.org_omf.TCGA-KC-A7FA.xml,,,,,,,,,,,,,
+TCGA-KK-A7AP,E5090612-DB62-4B03-A611-B64921E9D9E0,348.57.0,nationwidechildrens.org_omf.TCGA-KK-A7AP.xml,,,,,,,,,,,,,
+TCGA-KK-A7B3,1B21B8F0-5CDE-460C-967F-AB4A73D60FDC,348.57.0,nationwidechildrens.org_omf.TCGA-KK-A7B3.xml,,,,,,,,,,,,,
+TCGA-KK-A7B4,AA22255A-6AA6-4A57-8D77-A4AB57F72643,331.61.0,nationwidechildrens.org_omf.TCGA-KK-A7B4.xml,,,,,,,,,,,,,
+TCGA-QU-A6IM,47299277-FD95-45DE-9681-B0AC185311A3,320.62.0,nationwidechildrens.org_omf.TCGA-QU-A6IM.xml,,,,,,,,,,,,,
+TCGA-XK-AAJ3,CA97E5B5-AF40-4F94-8238-C5080196FDA9,429.43.0,nationwidechildrens.org_omf.TCGA-XK-AAJ3.xml,,,,,,,,,,,,,

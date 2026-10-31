@@ -12,7 +12,7 @@ REPO_ROOT = Path(__file__).resolve().parents[1]
 
 def test_cohort_denominator_consistency():
     """Verify that cohort denominators are consistent across all artifacts, tables, and web docs."""
-    flow = pd.read_csv(REPO_ROOT / "research" / "v2" / "COHORT_FLOW.csv")
+    flow = pd.read_csv(REPO_ROOT / "research" / "v3" / "COHORT_FLOW.csv")
     metrics_path = REPO_ROOT / "research" / "artifacts" / "tcga_prad_metrics.json"
     assert metrics_path.exists()
     with open(metrics_path) as f:
@@ -24,35 +24,35 @@ def test_cohort_denominator_consistency():
     assert metrics["cohort"]["total_patients"] == 314
 
     # 2. Primary Definitive Cohort
-    def_flow = int(flow.loc[flow["step"] == "Primary Definitive Binary Cohort (Positives + Double Negatives)", "count"].iloc[0])
-    assert def_flow == 263
-    assert metrics["primary_definitive_cohort"]["total_evaluable_patients"] == 263
-    assert metrics["primary_definitive_cohort"]["events_positive"] == 72
+    def_flow = int(flow.loc[flow["step"].str.contains("Primary Definitive Prostate-Specific Cohort"), "count"].iloc[0])
+    assert def_flow == 261
+    assert metrics["primary_definitive_cohort"]["total_evaluable_patients"] == 261
+    assert metrics["primary_definitive_cohort"]["events_positive"] == 70
     assert metrics["primary_definitive_cohort"]["non_events_double_negative"] == 191
 
     # 3. Paired Molecular Cohort
     paired_tbl = pd.read_csv(REPO_ROOT / "tables" / "table_prad_paired_complete_case_validation.csv")
     def_paired_row = paired_tbl[paired_tbl["analysis_tier"] == "PRIMARY_DEFINITIVE"].iloc[0]
-    assert def_paired_row["sample_size_n"] == 188
-    assert def_paired_row["events_n"] == 45
+    assert def_paired_row["sample_size_n"] == 187
+    assert def_paired_row["events_n"] == 44
     assert def_paired_row["non_events_n"] == 143
-    assert metrics["primary_definitive_cohort"]["paired_molecular_n"] == 188
+    assert metrics["primary_definitive_cohort"]["paired_molecular_n"] == 187
 
     # 4. Survival Cohorts
     surv_tbl = pd.read_csv(REPO_ROOT / "tables" / "table_prad_survival_analysis.csv")
     strict_row = surv_tbl[surv_tbl["analysis_definition"].str.contains("Strict")].iloc[0]
     exp_row = surv_tbl[surv_tbl["analysis_definition"].str.contains("Exploratory")].iloc[0]
-    assert strict_row["evaluable_n"] == 257
-    assert strict_row["dated_events"] == 66
+    assert strict_row["evaluable_n"] == 255
+    assert strict_row["dated_events"] == 64
     assert strict_row["censored_non_events"] == 191
-    assert exp_row["evaluable_n"] == 303
-    assert exp_row["dated_events"] == 66
+    assert exp_row["evaluable_n"] == 301
+    assert exp_row["dated_events"] == 64
     assert exp_row["censored_non_events"] == 237
 
-    # 5. Excluded Cases
-    bias_tbl = pd.read_csv(REPO_ROOT / "research" / "v2" / "SELECTION_BIAS_AUDIT.csv")
+    # 5. Excluded Cases (13 total: 6 undated prostate recurrence + 2 second primaries + 5 indeterminate)
+    bias_tbl = pd.read_csv(REPO_ROOT / "research" / "v3" / "SELECTION_BIAS_AUDIT.csv")
     size_row = bias_tbl[bias_tbl["characteristic"] == "Cohort Size (N)"].iloc[0]
-    assert size_row["excluded_cohort_n11"] == 11
+    assert size_row["excluded_cohort_n13"] == 13
 
 
 def test_auroc_and_discrimination_consistency():
@@ -63,17 +63,17 @@ def test_auroc_and_discrimination_consistency():
     with open(REPO_ROOT / "research" / "artifacts" / "tcga_prad_metrics.json") as f:
         metrics = json.load(f)
 
-    # Pure Clinical AUROC: 0.6931
-    assert abs(def_row["baseline_auroc"] - 0.693084) < 1e-4
-    assert abs(metrics["primary_definitive_cohort"]["clinical_only_auroc"] - 0.693084) < 1e-4
+    # Pure Clinical AUROC: 0.7104
+    assert abs(def_row["baseline_auroc"] - 0.710426) < 1e-4
+    assert abs(metrics["primary_definitive_cohort"]["clinical_only_auroc"] - 0.710426) < 1e-4
 
-    # Clin+RNA AUROC: 0.6476
-    assert abs(def_row["augmented_auroc"] - 0.647552) < 1e-4
-    assert abs(metrics["primary_definitive_cohort"]["clinical_plus_rna_auroc"] - 0.647552) < 1e-4
+    # Clin+RNA AUROC: 0.7028
+    assert abs(def_row["augmented_auroc"] - 0.702797) < 1e-4
+    assert abs(metrics["primary_definitive_cohort"]["clinical_plus_rna_auroc"] - 0.702797) < 1e-4
 
-    # Paired Delta AUROC: -0.0455
-    assert abs(def_row["delta_auroc"] - (-0.045532)) < 1e-4
-    assert abs(metrics["primary_definitive_cohort"]["paired_delta_auroc"] - (-0.045532)) < 1e-4
+    # Paired Delta AUROC: -0.0076
+    assert abs(def_row["delta_auroc"] - (-0.007629)) < 1e-4
+    assert abs(metrics["primary_definitive_cohort"]["paired_delta_auroc"] - (-0.007629)) < 1e-4
 
     # Delta p-value: not statistically significant (p > 0.05)
     assert def_row["delta_auroc_p_value"] > 0.05
@@ -81,9 +81,9 @@ def test_auroc_and_discrimination_consistency():
 
     # Verify abstract text matches within 0.001
     abstract_text = (REPO_ROOT / "conference" / "oncology" / "V2_ABSTRACT.md").read_text()
-    assert "0.693" in abstract_text
-    assert "0.648" in abstract_text
-    assert "-0.046" in abstract_text
+    assert "0.710" in abstract_text
+    assert "0.703" in abstract_text
+    assert "-0.008" in abstract_text
 
 
 def test_unsupported_significance_wording():
@@ -121,7 +121,7 @@ def test_cbioportal_crosscheck_consistency():
     assert bcr_row["agreement_fraction"] == 1.0
     assert bcr_row["discordant_cases"] == 0
 
-    assert abs(dfs_row["agreement_fraction"] - 0.923372) < 1e-4
+    assert abs(dfs_row["agreement_fraction"] - 0.922780) < 1e-4
     assert dfs_row["discordant_cases"] == 20
     assert dfs_row["local_only_events"] == 20
     assert dfs_row["cbio_only_events"] == 0
@@ -129,7 +129,7 @@ def test_cbioportal_crosscheck_consistency():
 
 def test_predictor_timing_integrity():
     """Verify that XML psa_value is classified as post-operative surveillance rather than baseline."""
-    timing_tbl = pd.read_csv(REPO_ROOT / "research" / "v2" / "PREDICTOR_TIMING_AUDIT.csv")
+    timing_tbl = pd.read_csv(REPO_ROOT / "research" / "v3" / "PREDICTOR_TIMING_AUDIT.csv")
     psa_row = timing_tbl[timing_tbl["predictor"] == "psa_value_numeric"].iloc[0]
     assert psa_row["clinical_phase"] == "Post-operative Surveillance"
-    assert psa_row["timing_relative_to_surgery_days"] > 100.0  # Median 511 days
+    assert psa_row["timing_relative_to_initial_diagnosis_days"] > 100.0  # Median 511 days

@@ -20,7 +20,7 @@ figures:
 	PYTHONPATH=. $(PYTHON) src/run_rigorous_validation.py
 
 test:
-	PYTHONPATH=. $(PYTEST) tests/test_pipeline.py -v
+	PYTHONPATH=. $(PYTEST) tests/ -v
 
 reproduce: data validate test
 	@echo "TCGA-PRAD full scientific pipeline reproduced successfully."
