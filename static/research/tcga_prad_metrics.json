@@ -2,20 +2,23 @@
   "study_title": "TCGA-PRAD Endpoint Harmonization & Molecular Prediction Benchmark",
   "cohort": {
     "total_patients": 314,
-    "recurrence_events": 72,
+    "composite_recurrence_events": 72,
+    "dated_recurrence_events": 66,
+    "undated_recurrence_events": 6,
     "bcr_events": 38,
     "nte_events": 64,
     "rna_seq_profiles_available": 228,
     "rna_seq_missing_count": 86,
     "rna_seq_missing_fraction": 0.27388535031847133,
-    "evaluable_survival_cases": 312
+    "evaluable_survival_cases": 308
   },
   "survival": {
-    "median_rfs_days": 2870.0,
-    "rfs_1yr": 0.8895975186166166,
-    "rfs_3yr": 0.7476806433328529,
-    "rfs_5yr": 0.640354263526885,
-    "cox_concordance_index": 0.7165678378617577
+    "median_rfs_days": Infinity,
+    "rfs_1yr": 0.8879941225094826,
+    "rfs_3yr": 0.7506504643494478,
+    "rfs_5yr": 0.6484867748758919,
+    "cox_apparent_concordance_index": 0.70275998492841,
+    "cox_cv_concordance_index": 0.687782592313489
   },
   "validation_models": [
     {
@@ -89,14 +92,52 @@
       "n": 228,
       "events": 45,
       "predictor_count": 18
+    },
+    {
+      "cohort": "High Confidence (n=263)",
+      "model": "clinical_only_high_conf",
+      "auroc": 0.699934554973822,
+      "auroc_ci_low": 0.6252373224168789,
+      "auroc_ci_high": 0.7657383056654191,
+      "auprc": 0.4256031068012117,
+      "auprc_ci_low": 0.33182499245928165,
+      "auprc_ci_high": 0.5456068525138047,
+      "brier": 0.18259686282060203,
+      "brier_ci_low": 0.15688687200694604,
+      "brier_ci_high": 0.21005514775929462,
+      "calibration_intercept": -0.3637263269767778,
+      "calibration_slope": 0.5900507186037999,
+      "n": 263,
+      "events": 72,
+      "predictor_count": 5
+    },
+    {
+      "cohort": "High Confidence (n=263)",
+      "model": "clinical_expression_high_conf",
+      "auroc": 0.6759016870273415,
+      "auroc_ci_low": 0.5990361074156725,
+      "auroc_ci_high": 0.7446124903090976,
+      "auprc": 0.42414925697444006,
+      "auprc_ci_low": 0.3291472877655851,
+      "auprc_ci_high": 0.5402878198927203,
+      "brier": 0.19139660526334426,
+      "brier_ci_low": 0.16346980462224933,
+      "brier_ci_high": 0.22150675127261074,
+      "calibration_intercept": -0.5221991909213647,
+      "calibration_slope": 0.4150565258606318,
+      "n": 263,
+      "events": 72,
+      "predictor_count": 18
     }
   ],
   "cbioportal_crosscheck": {
     "evaluable_matched": 269,
-    "agreement_fraction": 0.884758,
+    "agreement_fraction": 0.8847583643122676,
     "concordant_non_events": 200,
     "concordant_events": 38,
     "discordant_cases": 31,
+    "local_only_events": 31,
+    "cbio_only_events": 0,
     "discordance_reason": "Local composite captured documented clinical New Tumor Events / Distant Progression without recorded biochemical PSA elevation"
   }
 }
