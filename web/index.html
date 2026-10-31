@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TCGA-PRAD Research Explorer | Prostate Cancer Endpoints & Biomarkers</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <div class="layout">
+    <!-- Top Navigation Bar -->
+    <header class="topbar">
+      <div class="brand-group">
+        <span class="journal-tag">OPEN BENCHMARK</span>
+        <h1 class="brand-title">TCGA-PRAD Research Explorer</h1>
+        <span class="brand-sub">Reproducible Clinical Endpoints, Molecular Data, and Prediction-Model Evaluation</span>
+      </div>
+      <div class="topbar-actions">
+        <span class="badge badge-neutral" id="commit-badge">Commit: fe0d23a</span>
+        <span class="badge badge-warning" id="osaka-badge">Osaka 2027: NO-GO (Audited)</span>
+        <a href="static/research/tcga_prad_metrics.json" download class="btn btn-secondary">Download Artifact (JSON)</a>
+      </div>
+    </header>
+
+    <div class="main-container">
+      <!-- Navigation Sidebar -->
+      <nav class="nav-sidebar">
+        <ul class="nav-list">
+          <li><button class="nav-item active" data-tab="overview">Study Overview</button></li>
+          <li><button class="nav-item" data-tab="cohort">Cohort Architecture</button></li>
+          <li><button class="nav-item" data-tab="endpoints">Endpoint Concordance</button></li>
+          <li><button class="nav-item" data-tab="molecular">Molecular Missingness</button></li>
+          <li><button class="nav-item" data-tab="models">Model Validation</button></li>
+          <li><button class="nav-item" data-tab="survival">Survival Analysis (RFS)</button></li>
+          <li><button class="nav-item" data-tab="reproducibility">Reproducibility & Methods</button></li>
+          <li><button class="nav-item" data-tab="integrity">Integrity & Limitations</button></li>
+        </ul>
+
+        <div class="sidebar-audit-box">
+          <div class="audit-title">Audit Status</div>
+          <div class="audit-row"><span>GDC Patients:</span><strong>314</strong></div>
+          <div class="audit-row"><span>Recurrence Events:</span><strong>72 (22.9%)</strong></div>
+          <div class="audit-row"><span>Paired RNA Profiles:</span><strong>228 (72.6%)</strong></div>
+          <div class="audit-row"><span>Missing RNA:</span><strong class="text-alert">86 (27.4%)</strong></div>
+          <div class="audit-row"><span>cBio Discordance:</span><strong>31 / 269 (11.5%)</strong></div>
+        </div>
+      </nav>
+
+      <!-- Main Content Views -->
+      <main class="content-viewport">
+        
+        <!-- Tab 1: Overview -->
+        <section id="tab-overview" class="view-panel active">
+          <div class="panel-header">
+            <h2>Executive Scientific Summary</h2>
+            <p class="lead">Systematic investigation of endpoint harmonization, longitudinal XML parsing, and missing transcriptomic data in the TCGA prostate adenocarcinoma benchmark.</p>
+          </div>
+
+          <div class="kpi-grid">
+            <div class="kpi-card">
+              <span class="kpi-label">Analyzed Patients</span>
+              <span class="kpi-value">314</span>
+              <span class="kpi-sub">Radical prostatectomy cohort</span>
+            </div>
+            <div class="kpi-card">
+              <span class="kpi-label">Composite Recurrence</span>
+              <span class="kpi-value">72</span>
+              <span class="kpi-sub">22.9% composite event rate</span>
+            </div>
+            <div class="kpi-card">
+              <span class="kpi-label">Clinical 5-Fold AUROC</span>
+              <span class="kpi-value">0.689</span>
+              <span class="kpi-sub">95% CI: 0.620 – 0.756</span>
+            </div>
+            <div class="kpi-card">
+              <span class="kpi-label">Cox PH C-Index</span>
+              <span class="kpi-value">0.688</span>
+              <span class="kpi-sub">5-Fold CV (Apparent: 0.703)</span>
+            </div>
+          </div>
+
+          <div class="editorial-card">
+            <h3>Primary Research Question</h3>
+            <p>Can open GDC clinical XML supplements and bulk RNA sequencing in TCGA-PRAD support reliable, transportable prediction of prostate cancer recurrence, and how does endpoint discordance against cBioPortal affect benchmark validity?</p>
+            
+            <div class="callout callout-note">
+              <h4>Key Scientific Finding</h4>
+              <p>In paired complete-case analysis (n=228), adding a 13-gene transcriptomic panel to standard clinical staging did <em>not</em> improve out-of-fold discrimination (AUROC 0.689 vs 0.686) and worsened probability calibration slope from 0.777 to 0.540. Furthermore, evaluating RNA on the full 314-patient cohort masks 27.4% missingness via median imputation, inducing artificial model degradation.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Tab 2: Cohort Architecture -->
+        <section id="tab-cohort" class="view-panel">
+          <div class="panel-header">
+            <h2>Cohort Architecture & Attrition Flow</h2>
+            <p class="lead">Tracking data provenance and specimen attrition from GDC clinical XML archives to final evaluable sets.</p>
+          </div>
+
+          <div class="attrition-diagram">
+            <div class="flow-node">
+              <span class="flow-step">1. GDC Primary PRAD Cases</span>
+              <span class="flow-count">500 Patients</span>
+              <span class="flow-desc">Total public cases in Genomic Data Commons portal</span>
+            </div>
+            <div class="flow-arrow">↓ XML Clinical Supplement Parsing</div>
+            <div class="flow-node highlight">
+              <span class="flow-step">2. Parsed Clinical XML Cohort</span>
+              <span class="flow-count">314 Patients</span>
+              <span class="flow-desc">Verified open clinical XML files with surgical pathology & follow-up</span>
+            </div>
+            <div class="flow-split">
+              <div class="flow-branch">
+                <span class="branch-label">Paired Transcriptomic Profiles</span>
+                <span class="branch-count">228 Patients (72.6%)</span>
+                <span class="branch-desc">Complete paired clinical + STAR RNA-seq counts</span>
+              </div>
+              <div class="flow-branch alert">
+                <span class="branch-label">Missing RNA Profiles</span>
+                <span class="branch-count">86 Patients (27.4%)</span>
+                <span class="branch-desc">Unsequenced clinical cases requiring explicit handling</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="table-container">
+            <h3>Clinical Baseline Characteristics (n=314)</h3>
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Characteristic</th>
+                  <th>Value</th>
+                  <th>Percentage / Spread</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>Median Age at Diagnosis</td><td>62.0 years</td><td>IQR: 56.0 – 66.0</td></tr>
+                <tr><td>Gleason Score ≤ 7</td><td>190</td><td>60.5%</td></tr>
+                <tr><td>Gleason Score 8 – 10</td><td>124</td><td>39.5%</td></tr>
+                <tr><td>Pathologic T-Stage ≥ T3</td><td>189</td><td>60.2%</td></tr>
+                <tr><td>Lymph Node Positive (pN1)</td><td>48</td><td>15.3%</td></tr>
+                <tr><td>Median Follow-up Time</td><td>908 days</td><td>Max: 4,295 days (11.7 years)</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- Tab 3: Endpoint Concordance -->
+        <section id="tab-endpoints" class="view-panel">
+          <div class="panel-header">
+            <h2>Endpoint Concordance: GDC vs cBioPortal</h2>
+            <p class="lead">Dissecting the 31 discordant records between local composite recurrence and cBioPortal's biochemical indicator.</p>
+          </div>
+
+          <div class="grid-2col">
+            <div class="card">
+              <h3>cBioPortal Crosscheck Matrix (n=269 Matched)</h3>
+              <div class="matrix-grid">
+                <div class="matrix-cell empty"></div>
+                <div class="matrix-cell header">cBio BCR = 0</div>
+                <div class="matrix-cell header">cBio BCR = 1</div>
+                
+                <div class="matrix-cell header">Local Comp = 0</div>
+                <div class="matrix-cell val green">
+                  <span class="num">200</span>
+                  <span class="lbl">Concordant Non-Event (74.3%)</span>
+                </div>
+                <div class="matrix-cell val gray">
+                  <span class="num">0</span>
+                  <span class="lbl">cBio-Only Event (0.0%)</span>
+                </div>
+
+                <div class="matrix-cell header">Local Comp = 1</div>
+                <div class="matrix-cell val alert">
+                  <span class="num">31</span>
+                  <span class="lbl">Discordant Local-Only (11.5%)</span>
+                </div>
+                <div class="matrix-cell val green">
+                  <span class="num">38</span>
+                  <span class="lbl">Concordant Event (14.1%)</span>
+                </div>
+              </div>
+              <p class="table-caption">Overall Agreement: <strong>88.48% (238 / 269)</strong>. Note: 45 patients in the 314 cohort lacked cBioPortal BCR records.</p>
+            </div>
+
+            <div class="card">
+              <h3>Discordance Root-Cause Analysis</h3>
+              <p>Why do 31 patients test positive locally but negative on cBioPortal?</p>
+              <ul class="reason-list">
+                <li><strong>Biochemical Recurrence (PSA) vs Clinical Recurrence:</strong> cBioPortal's <code>BIOCHEMICAL_RECURRENCE_INDICATOR</code> captures post-prostatectomy serum PSA elevations alone (38 events).</li>
+                <li><strong>New Tumor Events (NTE):</strong> All 31 discordant cases had clinically or radiographically documented local recurrence or distant metastasis cataloged under GDC's New Tumor Event encounter forms without a concurrent PSA date.</li>
+                <li><strong>Arithmetic Error Correction:</strong> The original manuscript draft claimed <em>34</em> discordances by naively subtracting 72 - 38 = 34, ignoring the 45 patients without cBioPortal indicators. The authentic evaluable discordance is exactly <strong>31</strong>.</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- Tab 4: Molecular Missingness -->
+        <section id="tab-molecular" class="view-panel">
+          <div class="panel-header">
+            <h2>Molecular Coverage & Imputation Impact</h2>
+            <p class="lead">Quantifying the methodological hazard of silent median imputation across 86 unsequenced patients.</p>
+          </div>
+
+          <div class="grid-2col">
+            <div class="card">
+              <h3>Full Cohort (n=314) vs Paired Complete-Cases (n=228)</h3>
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Analysis Subset</th>
+                    <th>Predictors</th>
+                    <th>AUROC</th>
+                    <th>Calibration Slope</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Full Cohort (n=314)</strong></td>
+                    <td>Clinical Staging Only</td>
+                    <td><strong>0.689</strong></td>
+                    <td>0.777</td>
+                  </tr>
+                  <tr class="row-highlight">
+                    <td>Full Cohort (n=314)</td>
+                    <td>Clinical + Imputed RNA (86 NaN)</td>
+                    <td>0.681</td>
+                    <td class="text-alert">0.547 (Severe Overfit)</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Paired Complete (n=228)</strong></td>
+                    <td>Clinical Staging Only</td>
+                    <td><strong>0.689</strong></td>
+                    <td>0.574</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Paired Complete (n=228)</strong></td>
+                    <td>Clinical + Genuine RNA</td>
+                    <td>0.686</td>
+                    <td>0.540</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="card">
+              <h3>Methodological Conclusion</h3>
+              <p>When evaluated strictly on the 228 patients with authentic bulk transcriptomic profiling:</p>
+              <p>1. Adding the 13-gene expression panel (including <em>AR, PTEN, SPOP, FOXA1, MYC, BRCA1/2</em>) does not yield higher discrimination than clinical T-stage, N-stage, and Gleason score alone.</p>
+              <p>2. Median-imputing expression for 27.4% of the cohort distorts calibration curves and creates an illusion of model transportability.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Tab 5: Model Validation -->
+        <section id="tab-models" class="view-panel">
+          <div class="panel-header">
+            <h2>Model Discrimination & Calibration</h2>
+            <p class="lead">5-fold cross-validated out-of-fold performance metrics and probability calibration curves.</p>
+          </div>
+
+          <div class="grid-2col">
+            <div class="card">
+              <h3>Calibration Curves</h3>
+              <img src="static/figures/prad_calibration.png" alt="PRAD Calibration Curves" class="chart-img">
+              <p class="table-caption">Observed recurrence proportion vs mean predicted probability across 8 deciles.</p>
+            </div>
+            <div class="card">
+              <h3>Decision Curve Analysis</h3>
+              <img src="static/figures/prad_decision_curve.png" alt="PRAD Decision Curve" class="chart-img">
+              <p class="table-caption">Net benefit curves across clinical decision risk thresholds from 0.05 to 0.75.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Tab 6: Survival Analysis -->
+        <section id="tab-survival" class="view-panel">
+          <div class="panel-header">
+            <h2>Longitudinal Recurrence-Free Survival</h2>
+            <p class="lead">Right-censoring aware survival modeling across 303 evaluable patients with verified longitudinal event/censoring timing (66 dated events, 237 censored; 6 undated recurrence cases and 5 fully indeterminate cases excluded from continuous-time model). Both primary recurrence indicators were documented negative for 191 patients; an additional 51 patients had incomplete or asymmetric outcome information.</p>
+          </div>
+
+          <div class="grid-2col">
+            <div class="card">
+              <h3>Kaplan-Meier Recurrence-Free Survival</h3>
+              <img src="static/figures/prad_km_survival.png" alt="Kaplan Meier RFS" class="chart-img">
+              <div class="stat-callout-row">
+                <div><span>1-Year RFS</span><strong>88.7%</strong></div>
+                <div><span>3-Year RFS</span><strong>74.9%</strong></div>
+                <div><span>5-Year RFS</span><strong>64.6%</strong></div>
+              </div>
+            </div>
+
+            <div class="card">
+              <h3>Cox Proportional Hazards Model</h3>
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Covariate</th>
+                    <th>Hazard Ratio</th>
+                    <th>95% CI</th>
+                    <th>p-value</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><td>Age at Diagnosis</td><td>1.02</td><td>[0.98 – 1.05]</td><td>0.31</td></tr>
+                  <tr><td>Gleason Score (Numeric)</td><td>1.89</td><td>[1.42 – 2.52]</td><td>&lt; 0.001</td></tr>
+                  <tr><td>Pre-treatment PSA</td><td>1.01</td><td>[1.00 – 1.02]</td><td>0.04</td></tr>
+                </tbody>
+              </table>
+              <div class="concordance-badge">
+                <span>Concordance Index (C-Index):</span>
+                <strong>0.693 (5-Fold CV) | 0.704 (Apparent)</strong>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Tab 7: Reproducibility -->
+        <section id="tab-reproducibility" class="view-panel">
+          <div class="panel-header">
+            <h2>Reproducibility & Execution Pipeline</h2>
+            <p class="lead">Complete commands and specifications to reproduce all findings from raw inputs.</p>
+          </div>
+
+          <div class="code-block-card">
+            <h3>One-Command End-to-End Reproduction</h3>
+            <pre><code># Clone and switch to validated research branch
+git clone https://github.com/joshdrobert/tcga-prad.git
+cd tcga-prad
+git checkout research/2027-osaka-validation
+
+# Set up Python environment
+uv venv .venv --python 3.13
+source .venv/bin/activate
+uv pip install -r _shared/00_environment/requirements.txt pytest
+
+# Execute full pipeline and test suite
+make reproduce</code></pre>
+          </div>
+
+          <div class="metadata-grid">
+            <div class="meta-item"><span>Git Branch:</span><code>research/2027-osaka-validation</code></div>
+            <div class="meta-item"><span>Base Commit SHA:</span><code>fe0d23a</code></div>
+            <div class="meta-item"><span>Target Environment:</span><code>macOS arm64 / Linux x86_64</code></div>
+            <div class="meta-item"><span>Runtime Duration:</span><code>~1.2 seconds</code></div>
+          </div>
+        </section>
+
+        <!-- Tab 8: Integrity & Limitations -->
+        <section id="tab-integrity" class="view-panel">
+          <div class="panel-header">
+            <h2>Research Integrity & Limitations</h2>
+            <p class="lead">Formal documentation of study limitations and Osaka 2027 conference decision gate.</p>
+          </div>
+
+          <div class="card alert-card">
+            <h3>Osaka Theranostics Congress Decision Gate: NO-GO</h3>
+            <p><strong>Rationale:</strong> The 9th Theranostics World Congress requires research addressing radioligand therapies, PSMA-PET/CT molecular imaging, or targeted radionuclide dosimetry. TCGA-PRAD is a surgical radical prostatectomy cohort with 0% theranostics content. Furthermore, downloading and preprocessing the 117 GB TCIA PSMA-PET imaging dataset on a 22 GB free disk partition within 48 hours is physically impossible. Submitting a rushed or fabricated theranostics abstract would violate scientific ethics.</p>
+          </div>
+
+          <div class="card">
+            <h3>Key Study Limitations</h3>
+            <ul class="limitations-list">
+              <li><strong>Retrospective Single-Institution Pathology:</strong> TCGA tissue samples were acquired from participating medical centers without centralized pathology re-review.</li>
+              <li><strong>Molecular Missingness:</strong> 86 of 314 patients (27.4%) lacked RNA sequencing; models should not be deployed clinically without complete molecular profiling.</li>
+              <li><strong>Lack of External Validation:</strong> Cross-validation demonstrates internal baseline performance; validation in an independent institutional cohort (e.g., MSKCC or Mayo Clinic) is required before translational use.</li>
+            </ul>
+          </div>
+        </section>
+
+      </main>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

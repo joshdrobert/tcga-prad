@@ -10,15 +10,15 @@
     "rna_seq_profiles_available": 228,
     "rna_seq_missing_count": 86,
     "rna_seq_missing_fraction": 0.27388535031847133,
-    "evaluable_survival_cases": 308
+    "evaluable_survival_cases": 303
   },
   "survival": {
     "median_rfs_days": Infinity,
-    "rfs_1yr": 0.8879941225094826,
-    "rfs_3yr": 0.7506504643494478,
-    "rfs_5yr": 0.6484867748758919,
-    "cox_apparent_concordance_index": 0.70275998492841,
-    "cox_cv_concordance_index": 0.687782592313489
+    "rfs_1yr": 0.8870890631794072,
+    "rfs_3yr": 0.7488817315425074,
+    "rfs_5yr": 0.6457186855634061,
+    "cox_apparent_concordance_index": 0.7035586180857089,
+    "cox_cv_concordance_index": 0.6934585614498773
   },
   "validation_models": [
     {
