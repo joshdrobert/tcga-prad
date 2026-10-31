@@ -84,7 +84,7 @@
             <div class="kpi-card">
               <span class="kpi-label">Paired ΔAUROC (Clin+RNA)</span>
               <span class="kpi-value">-0.008</span>
-              <span class="kpi-sub">95% CI: [-0.073, +0.056], p=0.809</span>
+              <span class="kpi-sub">95% CI: [-0.073, +0.056]</span>
             </div>
           </div>
 
@@ -94,10 +94,10 @@
             
             <div class="callout callout-note">
               <h4>Key Scientific Findings</h4>
-              <p>1. <strong>Primary Paired Molecular Benchmark (n=187):</strong> On identical participants, pure baseline clinical staging achieved an AUROC of 0.710 (95% CI: 0.627–0.787), whereas adding the 13-gene expression panel yielded 0.703 (95% CI: 0.618–0.785; paired ΔAUROC: -0.008, 95% CI: [-0.073, +0.056], p=0.809). The molecular panel provided no statistically significant incremental discrimination.</p>
-              <p>2. <strong>Predictor Chronology & Zero Cox Leakage:</strong> The XML <code>psa_value</code> was measured at a median of 511.0 days post-initial diagnosis (271 of 276 values post-baseline), representing post-treatment surveillance monitoring rather than pre-operative baseline PSA. It was strictly excluded from baseline Cox survival models.</p>
+              <p>1. <strong>Primary Paired Molecular Benchmark (n=187):</strong> On identical participants, pure baseline clinical staging achieved an AUROC of 0.710 (95% CI: 0.621–0.791) and Brier score of 0.1673 (95% CI: 0.1366–0.2018), whereas adding the 13-gene expression panel yielded 0.703 (95% CI: 0.605–0.792) and Brier score of 0.1672 (95% CI: 0.1329–0.2057; paired ΔAUROC: -0.008, 95% CI: [-0.073, +0.056]; paired ΔBrier: -0.0001, 95% CI: [-0.0198, +0.0199]). The molecular panel provided no statistically significant incremental discrimination or calibration improvement.</p>
+              <p>2. <strong>Predictor Chronology & Landmark Setting:</strong> Follow-up is indexed from initial diagnostic biopsy (Day 0 for 98.1% of patients), while surgical pathology and RNA sequencing are landmarked post-radical prostatectomy with an unmeasured biopsy-to-surgery interval. The XML <code>psa_value</code> was measured at a median of 511.0 days post-initial diagnosis (271 of 276 values post-baseline), representing post-treatment surveillance monitoring rather than pre-operative baseline PSA, and was strictly excluded from baseline Cox survival models.</p>
               <p>3. <strong>Endpoint Concordance & Second Primary Separation:</strong> Biochemical recurrence agreed 100.0% (269/269) with cBioPortal, while disease-free survival agreed in 92.3% (239/259), uncovering 20 patients with XML-documented recurrence labeled DiseaseFree in cBioPortal. Two patients with non-prostatic new primary tumors (TCGA-CH-5791, TCGA-HC-7080) were adjudicated and separated from prostate recurrence.</p>
-              <p>4. <strong>Survival Analysis from Initial Diagnosis:</strong> Strict sensitivity analysis restricted to documented double-negatives (n=255, 64 dated events) showed an out-of-fold Cox concordance of 0.649 (apparent 0.686), compared with 0.646 when admitting 46 asymmetric records (n=301). Time origin is explicitly indexed to initial pathologic diagnosis.</p>
+              <p>4. <strong>Survival Analysis from Initial Diagnosis:</strong> In continuous-time survival analysis from initial diagnosis, median recurrence-free survival was not reached in either cohort. Strict sensitivity analysis restricted to documented double-negatives (n=255, 64 dated events) showed an out-of-fold Cox concordance of 0.649 (apparent 0.686), compared with 0.646 when admitting 46 asymmetric records (n=301). Time origin is explicitly indexed to initial pathologic diagnosis.</p>
             </div>
           </div>
         </section>
@@ -362,39 +362,39 @@
                   <tr>
                     <td><strong>Pure Baseline Clinical (Age, T, N, Gleason)</strong></td>
                     <td><strong>0.710</strong></td>
-                    <td>[0.627 – 0.787]</td>
-                    <td>0.168</td>
-                    <td>0.782</td>
+                    <td>[0.621 – 0.791]</td>
+                    <td>0.167</td>
+                    <td>0.756</td>
                   </tr>
                   <tr class="row-highlight">
                     <td><strong>Clinical + 13-Gene Expression Panel</strong></td>
                     <td>0.703</td>
-                    <td>[0.618 – 0.785]</td>
-                    <td>0.174</td>
-                    <td>0.712</td>
+                    <td>[0.605 – 0.792]</td>
+                    <td>0.167</td>
+                    <td>0.511</td>
                   </tr>
                   <tr>
-                    <td><strong>Paired Difference (ΔAUROC)</strong></td>
-                    <td colspan="4"><strong>-0.008</strong> (95% Bootstrap CI: [-0.073, +0.056], p = 0.809)</td>
+                    <td><strong>Paired Difference (ΔAUROC / ΔBrier)</strong></td>
+                    <td colspan="4"><strong>ΔAUROC = -0.008</strong> (95% CI: [-0.073, +0.056]) | <strong>ΔBrier = -0.0001</strong> (95% CI: [-0.0198, +0.0199])</td>
                   </tr>
                   <tr>
                     <td>Sensitivity: Clinical + Surveillance PSA</td>
-                    <td>0.700</td>
-                    <td>[0.615 – 0.784]</td>
+                    <td>0.696</td>
+                    <td>[0.609 – 0.784]</td>
                     <td>0.171</td>
-                    <td>0.730</td>
+                    <td>0.758</td>
                   </tr>
                   <tr>
                     <td>Sensitivity: Clinical + Surveillance PSA + RNA</td>
-                    <td>0.690</td>
-                    <td>[0.598 – 0.778]</td>
-                    <td>0.176</td>
-                    <td>0.680</td>
+                    <td>0.684</td>
+                    <td>[0.586 – 0.773]</td>
+                    <td>0.171</td>
+                    <td>0.472</td>
                   </tr>
                 </tbody>
               </table>
               <div class="callout callout-note" style="margin-top: 1rem;">
-                <p>Adding the transcriptomic panel resulted in a slight point estimate decrease of 0.008 in AUROC with confidence intervals spanning zero. There is no evidence that the 13-gene panel improves discrimination over standard surgical pathology.</p>
+                <p>Adding the transcriptomic panel resulted in a slight point estimate decrease of 0.008 in AUROC with paired bootstrap confidence intervals spanning zero. There is no evidence that the 13-gene panel improves discrimination or calibration over standard surgical pathology.</p>
               </div>
             </div>
 
