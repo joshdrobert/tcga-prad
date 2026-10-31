@@ -1,6 +1,8 @@
 endpoint,events,total
-Composite Recurrence/Progression,72,314
+Composite Recurrence/Progression (Total),72,314
+Dated Recurrence Events (Exact Timing),66,314
+Undated Recurrence Events (Excluded from exact time),6,314
 Biochemical Recurrence (BCR),38,314
 New Tumor Event (NTE),64,314
 Post-HT Progression,13,314
-Evaluable RFS (with timing),71,312
+Evaluable RFS (with valid timing),66,308

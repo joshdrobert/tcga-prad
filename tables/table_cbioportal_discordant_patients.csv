@@ -1,32 +1,32 @@
-submitter_id,local_event,cbio_bcr,biochemical_recurrence,new_tumor_event_after_initial_treatment,tumor_progression_post_ht,discordance_reason
-TCGA-CH-5751,1,0,NO,YES,YES,Local composite captured clinical New Tumor Event / Distant progression without reported BCR
-TCGA-CH-5791,1,0,NO,YES,,Local composite captured clinical New Tumor Event / Distant progression without reported BCR
-TCGA-EJ-5524,1,0,NO,YES|NO,YES,Local composite captured clinical New Tumor Event / Distant progression without reported BCR
-TCGA-EJ-5526,1,0,NO,YES,,Local composite captured clinical New Tumor Event / Distant progression without reported BCR
-TCGA-G9-6339,1,0,NO,YES|NO,,Local composite captured clinical New Tumor Event / Distant progression without reported BCR
-TCGA-G9-6362,1,0,NO,NO|YES,,Local composite captured clinical New Tumor Event / Distant progression without reported BCR
-TCGA-G9-6498,1,0,NO,YES|NO,,Local composite captured clinical New Tumor Event / Distant progression without reported BCR
-TCGA-HC-7080,1,0,NO,YES,,Local composite captured clinical New Tumor Event / Distant progression without reported BCR
-TCGA-HC-7741,1,0,NO,NO|YES,,Local composite captured clinical New Tumor Event / Distant progression without reported BCR
-TCGA-HC-7742,1,0,NO,YES,,Local composite captured clinical New Tumor Event / Distant progression without reported BCR
-TCGA-HC-7821,1,0,NO,YES,,Local composite captured clinical New Tumor Event / Distant progression without reported BCR
-TCGA-J4-A67S,1,0,NO,NO|YES,,Local composite captured clinical New Tumor Event / Distant progression without reported BCR
-TCGA-J9-A52B,1,0,NO,YES,NO,Local composite captured clinical New Tumor Event / Distant progression without reported BCR
-TCGA-J9-A52E,1,0,NO,YES,,Local composite captured clinical New Tumor Event / Distant progression without reported BCR
-TCGA-KC-A4BR,1,0,NO,YES,,Local composite captured clinical New Tumor Event / Distant progression without reported BCR
-TCGA-KK-A6E7,1,0,NO,NO|YES,,Local composite captured clinical New Tumor Event / Distant progression without reported BCR
-TCGA-KK-A7AU,1,0,NO,YES|NO,,Local composite captured clinical New Tumor Event / Distant progression without reported BCR
-TCGA-KK-A7AY,1,0,NO,YES|NO,,Local composite captured clinical New Tumor Event / Distant progression without reported BCR
-TCGA-KK-A7B2,1,0,NO,NO|YES,,Local composite captured clinical New Tumor Event / Distant progression without reported BCR
-TCGA-KK-A7B3,1,0,NO,NO|YES,,Local composite captured clinical New Tumor Event / Distant progression without reported BCR
-TCGA-KK-A8I4,1,0,NO,YES,NO,Local composite captured clinical New Tumor Event / Distant progression without reported BCR
-TCGA-KK-A8I7,1,0,NO,YES,YES,Local composite captured clinical New Tumor Event / Distant progression without reported BCR
-TCGA-KK-A8I9,1,0,NO,NO|YES,,Local composite captured clinical New Tumor Event / Distant progression without reported BCR
-TCGA-V1-A8MU,1,0,NO,NO|YES,NO,Local composite captured clinical New Tumor Event / Distant progression without reported BCR
-TCGA-V1-A8WS,1,0,NO,YES,NO,Local composite captured clinical New Tumor Event / Distant progression without reported BCR
-TCGA-VP-A878,1,0,NO,YES,NO,Local composite captured clinical New Tumor Event / Distant progression without reported BCR
-TCGA-X4-A8KQ,1,0,NO,NO|YES,,Local composite captured clinical New Tumor Event / Distant progression without reported BCR
-TCGA-YL-A8HM,1,0,NO,NO|YES,YES,Local composite captured clinical New Tumor Event / Distant progression without reported BCR
-TCGA-YL-A8HO,1,0,NO,YES,,Local composite captured clinical New Tumor Event / Distant progression without reported BCR
-TCGA-YL-A8SC,1,0,NO,NO|YES,YES,Local composite captured clinical New Tumor Event / Distant progression without reported BCR
-TCGA-YL-A8SP,1,0,NO,NO|YES,NO,Local composite captured clinical New Tumor Event / Distant progression without reported BCR
+submitter_id,local_composite_recurrence,bcr_status,nte_status,ht_progression_status,cbio_bcr_indicator,days_to_last_followup_clean,days_to_recurrence_exact
+TCGA-CH-5751,1,DOCUMENTED_NEGATIVE,DOCUMENTED_POSITIVE,DOCUMENTED_POSITIVE,NO,1065.0,365.0
+TCGA-CH-5791,1,DOCUMENTED_NEGATIVE,DOCUMENTED_POSITIVE,NOT_APPLICABLE_OR_UNRECORDED,NO,1004.0,396.0
+TCGA-EJ-5524,1,DOCUMENTED_NEGATIVE,DOCUMENTED_POSITIVE_MULTI_ENCOUNTER,DOCUMENTED_POSITIVE,NO,1882.0,265.0
+TCGA-EJ-5526,1,DOCUMENTED_NEGATIVE,DOCUMENTED_POSITIVE,NOT_APPLICABLE_OR_UNRECORDED,NO,1909.0,537.0
+TCGA-G9-6339,1,DOCUMENTED_NEGATIVE,DOCUMENTED_POSITIVE_MULTI_ENCOUNTER,NOT_APPLICABLE_OR_UNRECORDED,NO,2551.0,1634.0
+TCGA-G9-6362,1,DOCUMENTED_NEGATIVE,DOCUMENTED_POSITIVE_MULTI_ENCOUNTER,NOT_APPLICABLE_OR_UNRECORDED,NO,1443.0,1443.0
+TCGA-G9-6498,1,DOCUMENTED_NEGATIVE,DOCUMENTED_POSITIVE_MULTI_ENCOUNTER,NOT_APPLICABLE_OR_UNRECORDED,NO,1952.0,1342.0
+TCGA-HC-7080,1,DOCUMENTED_NEGATIVE,DOCUMENTED_POSITIVE,NOT_APPLICABLE_OR_UNRECORDED,NO,1106.0,894.0
+TCGA-HC-7741,1,DOCUMENTED_NEGATIVE,DOCUMENTED_POSITIVE_MULTI_ENCOUNTER,NOT_APPLICABLE_OR_UNRECORDED,NO,2725.0,1969.0
+TCGA-HC-7742,1,DOCUMENTED_NEGATIVE,DOCUMENTED_POSITIVE,NOT_APPLICABLE_OR_UNRECORDED,NO,938.0,210.0
+TCGA-HC-7821,1,DOCUMENTED_NEGATIVE,DOCUMENTED_POSITIVE,NOT_APPLICABLE_OR_UNRECORDED,NO,956.0,950.0
+TCGA-J4-A67S,1,DOCUMENTED_NEGATIVE,DOCUMENTED_POSITIVE_MULTI_ENCOUNTER,NOT_APPLICABLE_OR_UNRECORDED,NO,833.0,708.0
+TCGA-J9-A52B,1,DOCUMENTED_NEGATIVE,DOCUMENTED_POSITIVE,DOCUMENTED_NEGATIVE,NO,422.0,57.0
+TCGA-J9-A52E,1,DOCUMENTED_NEGATIVE,DOCUMENTED_POSITIVE,NOT_APPLICABLE_OR_UNRECORDED,NO,323.0,89.0
+TCGA-KC-A4BR,1,DOCUMENTED_NEGATIVE,DOCUMENTED_POSITIVE,NOT_APPLICABLE_OR_UNRECORDED,NO,1349.0,1022.0
+TCGA-KK-A6E7,1,DOCUMENTED_NEGATIVE,DOCUMENTED_POSITIVE_MULTI_ENCOUNTER,NOT_APPLICABLE_OR_UNRECORDED,NO,2760.0,925.0
+TCGA-KK-A7AU,1,DOCUMENTED_NEGATIVE,DOCUMENTED_POSITIVE_MULTI_ENCOUNTER,NOT_APPLICABLE_OR_UNRECORDED,NO,1775.0,207.0
+TCGA-KK-A7AY,1,DOCUMENTED_NEGATIVE,DOCUMENTED_POSITIVE_MULTI_ENCOUNTER,NOT_APPLICABLE_OR_UNRECORDED,NO,1754.0,1124.0
+TCGA-KK-A7B2,1,DOCUMENTED_NEGATIVE,DOCUMENTED_POSITIVE_MULTI_ENCOUNTER,NOT_APPLICABLE_OR_UNRECORDED,NO,1099.0,692.0
+TCGA-KK-A7B3,1,DOCUMENTED_NEGATIVE,DOCUMENTED_POSITIVE_MULTI_ENCOUNTER,NOT_APPLICABLE_OR_UNRECORDED,NO,899.0,294.0
+TCGA-KK-A8I4,1,DOCUMENTED_NEGATIVE,DOCUMENTED_POSITIVE,DOCUMENTED_NEGATIVE,NO,2259.0,1155.0
+TCGA-KK-A8I7,1,DOCUMENTED_NEGATIVE,DOCUMENTED_POSITIVE,DOCUMENTED_POSITIVE,NO,2002.0,1088.0
+TCGA-KK-A8I9,1,DOCUMENTED_NEGATIVE,DOCUMENTED_POSITIVE_MULTI_ENCOUNTER,NOT_APPLICABLE_OR_UNRECORDED,NO,1001.0,940.0
+TCGA-V1-A8MU,1,DOCUMENTED_NEGATIVE,DOCUMENTED_POSITIVE_MULTI_ENCOUNTER,DOCUMENTED_NEGATIVE,NO,1876.0,192.0
+TCGA-V1-A8WS,1,DOCUMENTED_NEGATIVE,DOCUMENTED_POSITIVE,DOCUMENTED_NEGATIVE,NO,474.0,
+TCGA-VP-A878,1,DOCUMENTED_NEGATIVE,DOCUMENTED_POSITIVE,DOCUMENTED_NEGATIVE,NO,3130.0,98.0
+TCGA-X4-A8KQ,1,DOCUMENTED_NEGATIVE,DOCUMENTED_POSITIVE_MULTI_ENCOUNTER,NOT_APPLICABLE_OR_UNRECORDED,NO,1383.0,883.0
+TCGA-YL-A8HM,1,DOCUMENTED_NEGATIVE,DOCUMENTED_POSITIVE_MULTI_ENCOUNTER,DOCUMENTED_POSITIVE,NO,1482.0,1473.0
+TCGA-YL-A8HO,1,DOCUMENTED_NEGATIVE,DOCUMENTED_POSITIVE,NOT_APPLICABLE_OR_UNRECORDED,NO,2304.0,1068.0
+TCGA-YL-A8SC,1,DOCUMENTED_NEGATIVE,DOCUMENTED_POSITIVE_MULTI_ENCOUNTER,DOCUMENTED_POSITIVE,NO,1261.0,152.0
+TCGA-YL-A8SP,1,DOCUMENTED_NEGATIVE,DOCUMENTED_POSITIVE_MULTI_ENCOUNTER,DOCUMENTED_NEGATIVE,NO,2366.0,2036.0

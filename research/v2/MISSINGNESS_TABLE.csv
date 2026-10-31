@@ -1,0 +1,7 @@
+field,missing_count,pct
+psa_value,41,13.05732484076433
+gleason_score,0,0.0
+biochemical_recurrence,45,14.331210191082802
+new_tumor_event,16,5.095541401273886
+days_to_last_followup,3,0.9554140127388535
+event_recurrence_exact_date,6,8.333333333333332

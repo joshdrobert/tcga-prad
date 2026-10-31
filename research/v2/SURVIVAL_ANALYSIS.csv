@@ -1,0 +1,2 @@
+analysis,evaluable_n,dated_events,undated_events_excluded,censored_cases,rfs_1yr,rfs_3yr,rfs_5yr,median_rfs_days,cox_apparent_c_index,cox_cv_c_index
+Primary Defensible Survival (Dated Events Only),308,66,6,242,0.8879941225094826,0.7506504643494478,0.6484867748758919,inf,0.70275998492841,0.687782592313489
