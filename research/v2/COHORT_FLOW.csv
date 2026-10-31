@@ -1,12 +1,18 @@
 step,count
 Total TCGA-PRAD Radical Prostatectomy Patients,314
-Documented Recurrence/Progression Events (Composite),72
-  - Dated Recurrence Events (Exact Timing Available),66
-  - Undated Recurrence Events (Timing Missing in XML),6
-Documented Recurrence-Free (Both BCR=NO & NTE=NO),191
-Asymmetric Outcome Information (One Indicator Missing),46
-"  - Asymmetric: BCR=NO, NTE missing",9
-"  - Asymmetric: NTE=NO, BCR missing",37
-Fully Indeterminate Records (BCR missing & NTE missing),5
-Evaluable Continuous-Time Survival Cohort (Dated events + Verified follow-up),303
-High-Confidence Definitive Cohort (Definitive Positive or Double Negative),263
+Primary Definitive Binary Cohort (Positives + Double Negatives),263
+  - Documented Recurrence / Progression (Definitive Positive),72
+  - Documented Double-Negative (BCR=NO and NTE=NO),191
+Exploratory Composite Binary Cohort (Positives + Double Neg + Asymmetric Neg),309
+  - Asymmetric Negative (Excluded from primary definitive),46
+"    * Asymmetric: BCR=NO, NTE missing",9
+"    * Asymmetric: NTE=NO, BCR missing",37
+Fully Indeterminate Cases (Excluded from all primary/exploratory non-events),5
+Continuous-Time Survival: Strict Sensitivity Cohort (Dated events + Double Negatives),257
+  - Strict Dated Recurrence Events,66
+  - Strict Double-Negative Censored Non-Events,191
+Continuous-Time Survival: Exploratory Cohort (Admitting 46 asymmetric records),303
+  - Exploratory Censored Non-Events (191 double-neg + 46 asymmetric),237
+Excluded from Exact Continuous Survival (Total),11
+"  - Undated Recurrence Events (Documented recurrence, timing missing in XML)",6
+  - Fully Indeterminate Records (Missing all follow-up & recurrence),5

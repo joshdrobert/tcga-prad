@@ -1,2 +1,5 @@
-local_patients,cbioportal_matched_records,evaluable_matched,agreement_fraction,concordant_non_events,concordant_events,discordant_cases,local_only_events,cbio_only_events,local_events_in_comparable,cbio_bcr_events
-314,314,269,0.8847583643122676,200,38,31,31,0,69,38
+comparison_definition,local_patients,cbioportal_matched_records,evaluable_matched,agreement_fraction,concordant_non_events,concordant_events,discordant_cases,local_only_events,cbio_only_events,local_events_in_comparable,cbio_events_in_comparable,cbio_bcr_events
+BCR-to-BCR (Local BCR vs cBio BCR),314,314,269,1.0,231,38,0,0,0,38,38,38
+Primary Definitive Recurrence vs cBio DFS_STATUS,314,314,261,0.9233716475095786,190,51,20,20,0,71,51,51
+Exploratory Composite Recurrence vs cBio DFS_STATUS,314,314,306,0.934640522875817,235,51,20,20,0,71,51,51
+Historical Benchmark (Local Composite vs cBio BCR),314,314,269,0.8847583643122676,200,38,31,31,0,69,38,38

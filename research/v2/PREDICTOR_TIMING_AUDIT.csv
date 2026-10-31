@@ -1,0 +1,7 @@
+predictor,clinical_phase,timing_relative_to_surgery_days,timing_interpretation,immortal_time_risk
+age_at_diagnosis_years,Baseline / Pre-operative,0.0,Patient age at initial radical prostatectomy diagnosis,None (strictly baseline)
+pathologic_t,Peri-operative / Surgical Pathology,0.0,Pathologic T stage determined by surgical pathologist at resection,None (strictly baseline)
+pathologic_n,Peri-operative / Surgical Pathology,0.0,Lymph node staging determined at surgical lymphadenectomy,None (strictly baseline)
+gleason_score_numeric,Peri-operative / Surgical Pathology,0.0,Primary and secondary Gleason score on resected prostate specimen,None (strictly baseline)
+RNA expression panel (13 genes),Peri-operative / Resected Tissue,0.0,High-throughput RNA sequencing of resected primary tumor tissue,None (strictly baseline)
+psa_value_numeric,Post-operative Surveillance,511.0,"Follow-up surveillance PSA (median 511 days post-op, 271 of 276 values >0 days post-surgery)",High if treated as pre-operative baseline; evaluated separately in sensitivity analysis
