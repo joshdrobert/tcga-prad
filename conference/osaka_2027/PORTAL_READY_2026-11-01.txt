@@ -1,0 +1,107 @@
+================================================================================
+OSAKA TWC 2027 — PORTAL-READY ABSTRACT HANDOFF
+9th Theranostics World Congress (Osaka 2027)
+Official Submission Portal: https://www.theranostics-world-congress.org/abstracts
+Submission Deadline: November 1, 2026, 23:59 CET (TODAY — 16:59 CST)
+Draft Tracking Number: A-325
+================================================================================
+
+CRITICAL PORTAL CONSTRAINTS ENFORCED:
+1. Online Portal Rule: <= 3,000 characters WITH spaces (Abstract body only)
+   -> Measured: 2631 characters with spaces [PASS: 369 characters headroom]
+2. Public Website Rule: <= 2,500 characters WITHOUT spaces
+   -> Measured: 2297 characters without whitespace [PASS: 203 characters headroom]
+3. Total Words: 332 words
+4. Title: 15 words, 142 characters with spaces, 128 characters without spaces
+5. Disclosures/Emails/URLs: None included inside abstract text (0% policy violations)
+
+--------------------------------------------------------------------------------
+PORTAL TAB: BASIC / DETAILS
+--------------------------------------------------------------------------------
+TITLE:
+Auditing Clinical Provenance, Molecular Prognosis, and Endpoint Harmonization in Machine Learning Benchmarks for Post-Prostatectomy Recurrence
+
+PRIMARY TOPIC / TRACK RECOMMENDATION:
+Recommendation: Artificial Intelligence (AI)
+Secondary/Alternative: Prostate Cancer, including PSMA-Targeted Theranostics
+Reviewer-Fit Note: The study evaluates clinical risk stratification and machine learning recurrence methodology without primary PSMA-PET imaging or radioligand therapy. 'Artificial Intelligence (AI)' is the most methodologically accurate classification. If disease site is prioritized, 'Prostate Cancer, including PSMA-Targeted Theranostics' is acceptable provided the lack of PET/RLT data is clearly stated.
+
+PRESENTATION PREFERENCE:
+Poster Presentation (Select 'Oral or Poster' if available, with Poster target)
+
+--------------------------------------------------------------------------------
+PORTAL TAB: ADD AUTHORS
+--------------------------------------------------------------------------------
+[AUTHOR CONFIRMATION REQUIRED UPON LOGIN]
+First Name: Joshua
+Last Name: Robert
+Affiliation: Texas A&M School of Engineering Medicine
+City: Houston
+State: TX
+Country: United States
+Email: [AUTHOR CONFIRMATION REQUIRED — Enter verified institutional email]
+Presenting Author: Yes
+Corresponding Author: Yes
+
+--------------------------------------------------------------------------------
+PORTAL TAB: ABSTRACT TEXT — INDIVIDUAL SECTIONS (IF SPLIT BY FIELD)
+--------------------------------------------------------------------------------
+
+[FIELD: Aim]
+To evaluate endpoint integrity, molecular missingness, and prognostic discrimination in machine learning benchmarks for post-prostatectomy prostate cancer recurrence, establishing an audited clinicopathologic baseline to inform future risk stratification prior to potential salvage evaluation.
+
+[FIELD: Material & Methods]
+We conducted a provenance audit of the TCGA-PRAD radical prostatectomy cohort (n=314) linking multi-source clinical XML records with GDC RNA-sequencing profiles. Primary post-prostatectomy recurrence was defined using an audited provenance ledger (n=261; 70 events, 191 double-negatives), excluding indeterminate outcomes, non-primary events, and unconfirmed intervals. Predictor discrimination and calibration were evaluated for standard clinical staging (age, pT, pN, Gleason score) versus clinical plus a candidate 13-gene transcriptomic panel using stratified 5-fold cross-validation in a complete-case paired cohort (n=187; 44 events). Survival was modeled from initial pathologic diagnosis using Cox proportional hazards and Kaplan-Meier estimation (n=248; 57 dated events, 191 censored). Postoperative surveillance PSA (median 511.0 days post-diagnosis) was excluded to reduce temporal leakage; however, exact prostatectomy dates remain unavailable and post-resection pathology is modeled with diagnosis-indexed follow-up.
+
+[FIELD: Results]
+In the paired molecular cohort (n=187), the clinical staging model achieved an out-of-fold AUROC of 0.7104 (95% CI 0.6208–0.7913), Brier score of 0.1673, and calibration slope of 0.756. Adding the 13-gene transcriptomic panel yielded an AUROC of 0.7028 (95% CI 0.6046–0.7917), Brier score of 0.1672, and calibration slope of 0.511 (paired ΔAUROC -0.0076 [95% CI -0.0735 to +0.0559]; paired ΔBrier -0.0001 [95% CI -0.0198 to +0.0199]). Audit of recurrence provenance resolved 29 biochemical recurrence status/date discrepancies across registry supplements. In strict continuous survival analysis (n=248), 1-, 3-, and 5-year recurrence-free survival rates were 88.1%, 75.2%, and 65.3% (median not reached), with a cross-validated Harrell's C-index of 0.6716 (apparent C-index 0.7011).
+
+[FIELD: Conclusion]
+The evaluated 13-gene panel did not demonstrate an AUROC improvement over standard clinicopathologic staging in this matched dataset. While this retrospective study did not evaluate PSMA imaging, radioligand therapy, or treatment response, transparent endpoint harmonization, mitigation of temporal leakage, and complete-case reporting represent essential methodological prerequisites before recurrence benchmarks can inform future patient selection in prostate theranostics.
+
+--------------------------------------------------------------------------------
+PORTAL TAB: ABSTRACT TEXT — COMBINED SINGLE TEXT AREA (UTF-8 STANDARD)
+--------------------------------------------------------------------------------
+Aim:
+To evaluate endpoint integrity, molecular missingness, and prognostic discrimination in machine learning benchmarks for post-prostatectomy prostate cancer recurrence, establishing an audited clinicopathologic baseline to inform future risk stratification prior to potential salvage evaluation.
+
+Material & Methods:
+We conducted a provenance audit of the TCGA-PRAD radical prostatectomy cohort (n=314) linking multi-source clinical XML records with GDC RNA-sequencing profiles. Primary post-prostatectomy recurrence was defined using an audited provenance ledger (n=261; 70 events, 191 double-negatives), excluding indeterminate outcomes, non-primary events, and unconfirmed intervals. Predictor discrimination and calibration were evaluated for standard clinical staging (age, pT, pN, Gleason score) versus clinical plus a candidate 13-gene transcriptomic panel using stratified 5-fold cross-validation in a complete-case paired cohort (n=187; 44 events). Survival was modeled from initial pathologic diagnosis using Cox proportional hazards and Kaplan-Meier estimation (n=248; 57 dated events, 191 censored). Postoperative surveillance PSA (median 511.0 days post-diagnosis) was excluded to reduce temporal leakage; however, exact prostatectomy dates remain unavailable and post-resection pathology is modeled with diagnosis-indexed follow-up.
+
+Results:
+In the paired molecular cohort (n=187), the clinical staging model achieved an out-of-fold AUROC of 0.7104 (95% CI 0.6208–0.7913), Brier score of 0.1673, and calibration slope of 0.756. Adding the 13-gene transcriptomic panel yielded an AUROC of 0.7028 (95% CI 0.6046–0.7917), Brier score of 0.1672, and calibration slope of 0.511 (paired ΔAUROC -0.0076 [95% CI -0.0735 to +0.0559]; paired ΔBrier -0.0001 [95% CI -0.0198 to +0.0199]). Audit of recurrence provenance resolved 29 biochemical recurrence status/date discrepancies across registry supplements. In strict continuous survival analysis (n=248), 1-, 3-, and 5-year recurrence-free survival rates were 88.1%, 75.2%, and 65.3% (median not reached), with a cross-validated Harrell's C-index of 0.6716 (apparent C-index 0.7011).
+
+Conclusion:
+The evaluated 13-gene panel did not demonstrate an AUROC improvement over standard clinicopathologic staging in this matched dataset. While this retrospective study did not evaluate PSMA imaging, radioligand therapy, or treatment response, transparent endpoint harmonization, mitigation of temporal leakage, and complete-case reporting represent essential methodological prerequisites before recurrence benchmarks can inform future patient selection in prostate theranostics.
+
+--------------------------------------------------------------------------------
+ALTERNATIVE: COMBINED ASCII-SAFE TEXT (If portal rejects Greek Δ or en dash)
+--------------------------------------------------------------------------------
+Aim:
+To evaluate endpoint integrity, molecular missingness, and prognostic discrimination in machine learning benchmarks for post-prostatectomy prostate cancer recurrence, establishing an audited clinicopathologic baseline to inform future risk stratification prior to potential salvage evaluation.
+
+Material & Methods:
+We conducted a provenance audit of the TCGA-PRAD radical prostatectomy cohort (n=314) linking multi-source clinical XML records with GDC RNA-sequencing profiles. Primary post-prostatectomy recurrence was defined using an audited provenance ledger (n=261; 70 events, 191 double-negatives), excluding indeterminate outcomes, non-primary events, and unconfirmed intervals. Predictor discrimination and calibration were evaluated for standard clinical staging (age, pT, pN, Gleason score) versus clinical plus a candidate 13-gene transcriptomic panel using stratified 5-fold cross-validation in a complete-case paired cohort (n=187; 44 events). Survival was modeled from initial pathologic diagnosis using Cox proportional hazards and Kaplan-Meier estimation (n=248; 57 dated events, 191 censored). Postoperative surveillance PSA (median 511.0 days post-diagnosis) was excluded to reduce temporal leakage; however, exact prostatectomy dates remain unavailable and post-resection pathology is modeled with diagnosis-indexed follow-up.
+
+Results:
+In the paired molecular cohort (n=187), the clinical staging model achieved an out-of-fold AUROC of 0.7104 (95% CI 0.6208-0.7913), Brier score of 0.1673, and calibration slope of 0.756. Adding the 13-gene transcriptomic panel yielded an AUROC of 0.7028 (95% CI 0.6046-0.7917), Brier score of 0.1672, and calibration slope of 0.511 (paired Delta-AUROC -0.0076 [95% CI -0.0735 to +0.0559]; paired Delta-Brier -0.0001 [95% CI -0.0198 to +0.0199]). Audit of recurrence provenance resolved 29 biochemical recurrence status/date discrepancies across registry supplements. In strict continuous survival analysis (n=248), 1-, 3-, and 5-year recurrence-free survival rates were 88.1%, 75.2%, and 65.3% (median not reached), with a cross-validated Harrell's C-index of 0.6716 (apparent C-index 0.7011).
+
+Conclusion:
+The evaluated 13-gene panel did not demonstrate an AUROC improvement over standard clinicopathologic staging in this matched dataset. While this retrospective study did not evaluate PSMA imaging, radioligand therapy, or treatment response, transparent endpoint harmonization, mitigation of temporal leakage, and complete-case reporting represent essential methodological prerequisites before recurrence benchmarks can inform future patient selection in prostate theranostics.
+
+--------------------------------------------------------------------------------
+PORTAL TAB: SUMMARY & FINAL SUBMIT CHECKLIST (DRAFT A-325)
+--------------------------------------------------------------------------------
+[ ] 1. Log in to https://www.theranostics-world-congress.org/abstracts
+[ ] 2. Open Draft A-325.
+[ ] 3. Tab 'Basic': Confirm title matches above (15 words).
+[ ] 4. Tab 'Basic': Set Category to 'Artificial Intelligence (AI)' (or 'Prostate Cancer, including PSMA-Targeted Theranostics').
+[ ] 5. Tab 'Add Authors': Verify Joshua Robert, Texas A&M School of Engineering Medicine, and primary email.
+[ ] 6. Tab 'Abstract Text': Paste either individual section fields or combined text.
+[ ] 7. Tab 'Abstract Text': Verify character counter shows <= 3,000 with spaces and <= 2,500 without spaces.
+[ ] 8. Disclosures / COI: Check 'No conflict of interest' (or declare per personal status).
+[ ] 9. Funding: Check 'No external funding' (or declare per personal status).
+[ ] 10. Ethics / IRB: Declare secondary analysis of public de-identified GDC data; verify home institutional IRB determination per institution policy.
+[ ] 11. Tab 'Summary': Review all fields. Note: A saved draft does NOT constitute submission.
+[ ] 12. Click 'SUBMIT' button before 23:59 CET (16:59 CST).
+[ ] 13. Confirm receipt of submission confirmation email and formal abstract submission number.

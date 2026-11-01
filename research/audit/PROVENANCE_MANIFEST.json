@@ -1,0 +1,67 @@
+{
+  "study": "TCGA-PRAD Post-Prostatectomy Clinical & Transcriptomic Recurrence Benchmark",
+  "audit_version": "V3.2-Audited-Final",
+  "git_baseline_commit": "b2c0f74",
+  "audit_date": "2026-11-01T13:58:00-06:00",
+  "sources": [
+    {
+      "source_name": "NCI Genomic Data Commons (GDC) TCGA-PRAD",
+      "url": "https://portal.gdc.cancer.gov/projects/TCGA-PRAD",
+      "data_type": "Clinical XML Follow-Up Supplements & STAR Gene Expression Counts",
+      "access": "Public Tier (De-identified secondary research)",
+      "total_surgical_patients": 314
+    },
+    {
+      "source_name": "cBioPortal for Cancer Genomics (prad_tcga)",
+      "url": "https://www.cbioportal.org/study/summary?id=prad_tcga",
+      "data_type": "Curated clinical and recurrence indicators",
+      "access": "Public Tier"
+    }
+  ],
+  "authoritative_cohorts": {
+    "total_patients": 314,
+    "primary_definitive_cohort_n": 261,
+    "primary_definitive_events": 70,
+    "primary_definitive_non_events": 191,
+    "paired_molecular_cohort_n": 187,
+    "paired_molecular_events": 44,
+    "paired_molecular_non_events": 143,
+    "strict_survival_cohort_n": 248,
+    "strict_survival_events": 57,
+    "strict_survival_censored": 191,
+    "exploratory_survival_cohort_n": 294,
+    "permissive_survival_cohort_n": 255
+  },
+  "provenance_anchors": {
+    "bcr_conflicts_reconciled": 29,
+    "event_adjudication_changes": 27,
+    "second_primaries_excluded": 2,
+    "indeterminate_cases_excluded": 5,
+    "undated_recurrences_excluded_strict_survival": 13,
+    "surveillance_psa_median_days": 511.0,
+    "surveillance_psa_status": "EXCLUDED_FROM_BASELINE_COX"
+  },
+  "verified_metrics": {
+    "clinical_only_auroc": 0.7104,
+    "clinical_plus_rna_auroc": 0.7028,
+    "paired_delta_auroc": -0.0076,
+    "paired_delta_auroc_95ci": [-0.0735, 0.0559],
+    "clinical_brier": 0.1673,
+    "molecular_brier": 0.1672,
+    "paired_delta_brier": -0.0001,
+    "clinical_calibration_slope": 0.756,
+    "molecular_calibration_slope": 0.511,
+    "strict_rfs_1yr": 0.881,
+    "strict_rfs_3yr": 0.752,
+    "strict_rfs_5yr": 0.653,
+    "strict_cox_cv_c_index": 0.6716,
+    "strict_cox_apparent_c_index": 0.7011
+  },
+  "reproduction_pipeline": {
+    "step_1_data": "PYTHONPATH=. .venv/bin/python src/build_recurrence_endpoint.py",
+    "step_2_crosscheck": "PYTHONPATH=. .venv/bin/python src/cbioportal_endpoint_crosscheck.py",
+    "step_3_validate": "PYTHONPATH=. .venv/bin/python src/run_rigorous_validation.py",
+    "step_4_tests": "PYTHONPATH=. .venv/bin/pytest tests/ -v",
+    "step_5_audit": "PYTHONPATH=. .venv/bin/python scripts/audit_conference_claims.py"
+  }
+}
