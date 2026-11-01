@@ -34,6 +34,9 @@ def test_osaka_2027_abstract_character_and_structure_constraints():
     total_with_title_no_spaces = chars_no_spaces + len(title.replace(" ", ""))
     assert total_with_title_no_spaces <= 2500, f"Full abstract with title ({total_with_title_no_spaces}) exceeds 2,500 characters"
 
+    # Check author confirmation flags in metadata
+    assert "AUTHOR CONFIRMATION REQUIRED" in content
+
 def test_osaka_2027_scientific_integrity_and_data_anchors():
     abstract_path = Path(__file__).resolve().parent.parent / "conference" / "osaka_2027" / "READY_TO_PASTE_ABSTRACT.txt"
     body = abstract_path.read_text(encoding="utf-8")
@@ -53,7 +56,15 @@ def test_osaka_2027_scientific_integrity_and_data_anchors():
     assert "511.0" in body
     assert "29" in body
 
-    # Prohibited hallucinated phrases
+    # Required refined scientific statements
+    assert "prior to potential salvage evaluation" in body
+    assert "excluded to reduce temporal leakage" in body
+    assert "exact prostatectomy dates remain unavailable" in body
+    assert "did not demonstrate an AUROC improvement" in body
+    assert "While this retrospective study did not evaluate PSMA imaging, radioligand therapy, or treatment response" in body
+
+    # Prohibited claims / hallucinated phrases
     assert "Antigravity Biomedical Engineering Consortium" not in body
+    assert "prevent immortal time bias" not in body
     assert "TCIA" not in body
     assert "PSMA-PET segmentation" not in body
