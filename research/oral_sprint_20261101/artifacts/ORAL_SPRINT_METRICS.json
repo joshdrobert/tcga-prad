@@ -1,0 +1,102 @@
+{
+  "study_metadata": {
+    "title": "Consequential Impact of Longitudinal Recurrence Harmonization and Landmark Timing on Postoperative Prostate Cancer Prognostication",
+    "venue": "9th Theranostics World Congress (TWC 2027, Osaka)",
+    "track": "Artificial Intelligence (AI)",
+    "authoritative_timestamp": "2026-11-01T15:36:00-06:00",
+    "git_commit": "research/twc2027-oral-endpoint-impact-20261101"
+  },
+  "cohort_sizes": {
+    "total_screened_prostatectomy": 314,
+    "definitive_recurrence_cohort": 261,
+    "definitive_events": 70,
+    "definitive_non_events": 191,
+    "paired_complete_case_molecular": 187,
+    "paired_adjudicated_events": 44,
+    "paired_naive_events": 25,
+    "discordant_missed_recurrences": 19,
+    "strict_survival_cohort": 248,
+    "strict_survival_dated_events": 57,
+    "excluded_unsequenced_cohort": 74,
+    "excluded_unsequenced_events": 26
+  },
+  "endpoint_comparison_paired_187": {
+    "adjudicated_definitive": {
+      "clinical_auroc": 0.7104259376986649,
+      "clinical_auroc_95ci": [
+        0.6208467333875544,
+        0.7912883444992515
+      ],
+      "clinical_brier": 0.16732902106926492,
+      "clinical_cal_slope": 0.7564463684435189,
+      "molecular_auroc": 0.7027972027972028,
+      "molecular_auroc_95ci": [
+        0.6046039759268748,
+        0.7917209645638109
+      ],
+      "molecular_brier": 0.16720420806660186,
+      "molecular_cal_slope": 0.5109582489171486,
+      "delta_auroc": -0.0076287349014620975,
+      "delta_auroc_95ci": [
+        -0.07630395191342602,
+        0.05655968236296654
+      ]
+    },
+    "naive_unadjudicated": {
+      "clinical_auroc": 0.6367901234567901,
+      "clinical_auroc_95ci": [
+        0.5067277568922305,
+        0.7603036034725253
+      ],
+      "clinical_brier": 0.11785430067639896,
+      "clinical_cal_slope": 0.42389318143446936,
+      "molecular_auroc": 0.7535802469135803,
+      "molecular_auroc_95ci": [
+        0.6161847832113551,
+        0.8651268257185925
+      ],
+      "molecular_brier": 0.10195431511080152,
+      "molecular_cal_slope": 0.6009759827874362,
+      "delta_auroc": 0.11679012345679018,
+      "delta_auroc_95ci": [
+        0.022932046341834385,
+        0.22269127129209046
+      ]
+    },
+    "spurious_delta_auroc_inflation": 0.12441885835825228,
+    "rank_correlation_naive_vs_adjudicated": {
+      "spearman_rho": 0.8937373229570049,
+      "kendall_tau": 0.7104907325080908
+    },
+    "top_quintile_reclassification": {
+      "patients_shifting_quintiles": 18,
+      "pct_patients_shifting": 9.62566844919786
+    }
+  },
+  "discordant_patient_profile_n19": {
+    "count": 19,
+    "pct_advanced_stage_t3_t4": 89.47368421052632,
+    "pct_gleason_ge_8": 63.1578947368421,
+    "mean_gleason": 8.157894736842104
+  },
+  "selection_bias_molecular_cohort": {
+    "paired_with_rna": {
+      "n": 187,
+      "recurrence_rate": 0.23529411764705882,
+      "pct_t3_t4": 57.75401069518716,
+      "pct_gleason_ge_8": 39.57219251336899
+    },
+    "excluded_without_rna": {
+      "n": 74,
+      "recurrence_rate": 0.35135135135135137,
+      "pct_t3_t4": 72.97297297297297,
+      "pct_gleason_ge_8": 44.5945945945946
+    }
+  },
+  "landmark_timing_and_leakage": {
+    "surveillance_psa_median_days_post_dx": 511.0,
+    "pure_baseline_cox_apparent_c_index": 0.7011005775307835,
+    "surveillance_psa_cox_apparent_c_index": 0.7319961909296512,
+    "surveillance_psa_hazard_ratio": 1.0301234051831627
+  }
+}

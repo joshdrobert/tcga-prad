@@ -1,0 +1,16 @@
+claim_id,metric_name,value,source_file,status
+CLM-SPRINT-01,Definitive Recurrence Cohort Size,"261 patients (70 events, 191 censored)",data_processed/tcga_prad_recurrence_cohort.csv,VERIFIED
+CLM-SPRINT-02,Paired Molecular Subcohort Size,"187 patients (44 events, 143 non-events)",research/oral_sprint_20261101/artifacts/ORAL_SPRINT_METRICS.json,VERIFIED
+CLM-SPRINT-03,Naive Single-Source Recurrence Events,25 events (162 non-events),research/oral_sprint_20261101/artifacts/ORAL_SPRINT_METRICS.json,VERIFIED
+CLM-SPRINT-04,Unadjudicated False-Negative Recurrences,19 patients (43.2% of true recurrences),research/oral_sprint_20261101/artifacts/DISCORDANT_PATIENT_PROFILES.csv,VERIFIED
+CLM-SPRINT-05,Discordant Patients with pT3/pT4 Stage,89.5% (17 of 19 patients),research/oral_sprint_20261101/artifacts/DISCORDANT_PATIENT_PROFILES.csv,VERIFIED
+CLM-SPRINT-06,Discordant Patients with Gleason >= 8,63.2% (Mean Gleason 8.16),research/oral_sprint_20261101/artifacts/DISCORDANT_PATIENT_PROFILES.csv,VERIFIED
+CLM-SPRINT-07,Naive Clinical Staging AUROC,0.6368 (95% CI: 0.5067 to 0.7603),research/oral_sprint_20261101/artifacts/NAIVE_VS_ADJUDICATED_COMPARISON.csv,VERIFIED
+CLM-SPRINT-08,Naive Clinical + RNA AUROC,0.7536 (95% CI: 0.6162 to 0.8651),research/oral_sprint_20261101/artifacts/NAIVE_VS_ADJUDICATED_COMPARISON.csv,VERIFIED
+CLM-SPRINT-09,Spurious Naive Delta AUROC,+0.1168 (95% CI: +0.0231 to +0.2209),research/oral_sprint_20261101/artifacts/NAIVE_VS_ADJUDICATED_COMPARISON.csv,VERIFIED
+CLM-SPRINT-10,Harmonized Clinical Staging AUROC,0.7104 (95% CI: 0.6208 to 0.7913),research/oral_sprint_20261101/artifacts/NAIVE_VS_ADJUDICATED_COMPARISON.csv,VERIFIED
+CLM-SPRINT-11,Harmonized Clinical + RNA AUROC,0.7028 (95% CI: 0.6046 to 0.7917),research/oral_sprint_20261101/artifacts/NAIVE_VS_ADJUDICATED_COMPARISON.csv,VERIFIED
+CLM-SPRINT-12,True Harmonized Delta AUROC,-0.0076 (95% CI: -0.0735 to +0.0559),research/oral_sprint_20261101/artifacts/NAIVE_VS_ADJUDICATED_COMPARISON.csv,VERIFIED
+CLM-SPRINT-13,Top-Quintile Risk Reclassification,18 patients (9.6% discordance),research/oral_sprint_20261101/artifacts/ORAL_SPRINT_METRICS.json,VERIFIED
+CLM-SPRINT-14,Molecular Complete-Case Selection Bias,Excluded without RNA had 35.1% recurrence vs 23.5% with RNA (75.0% vs 58.4% pT3/T4),research/oral_sprint_20261101/artifacts/SELECTION_BIAS_TABLE.csv,VERIFIED
+CLM-SPRINT-15,Surveillance PSA Post-Treatment Timing,Median 511 days post-diagnosis (C-index artificially inflates from 0.7011 to 0.7320),research/oral_sprint_20261101/artifacts/ORAL_SPRINT_METRICS.json,VERIFIED

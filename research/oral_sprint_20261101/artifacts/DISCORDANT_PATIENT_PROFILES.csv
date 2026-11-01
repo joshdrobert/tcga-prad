@@ -1,0 +1,20 @@
+submitter_id,pathologic_t,pathologic_n,gleason_score_numeric,new_neoplasm_event_type,days_to_recurrence_exact,pred_risk_adj_clin,pred_risk_naive_clin
+TCGA-CH-5751,T4,N1,10.0,Distant Metastasis,365.0,0.3449946062980097,0.5348280450294712
+TCGA-EJ-5524,T3a,N0,9.0,Locoregional Recurrence,265.0,0.4729712828723879,0.2724494393302013
+TCGA-EJ-5526,T3a,N1,8.0,Locoregional Recurrence|Biochemical evidence of disease,537.0,0.4495526644206777,0.2609750250639928
+TCGA-G9-6362,T3a,N0,7.0,Biochemical evidence of disease,,0.19031258764663772,0.095957522800487
+TCGA-HC-7738,T2c,,7.0,Biochemical evidence of disease,420.0,0.08366772514951883,0.06429284719426363
+TCGA-HC-7742,T3a,N0,7.0,Biochemical evidence of disease,,0.18606964120387362,0.0971427858441161
+TCGA-J4-A67S,T3a,N0,7.0,Biochemical evidence of disease,708.0,0.1966879657195899,0.11042493607513007
+TCGA-J9-A52B,T3b,N0,9.0,Biochemical evidence of disease,57.0,0.3911704858287263,0.27210015300640605
+TCGA-J9-A52E,T3b,N0,9.0,Biochemical evidence of disease,,0.37151681910707124,0.26032259092934096
+TCGA-KK-A6E7,T3a,N1,9.0,Biochemical evidence of disease,925.0,0.6751907415945372,0.45679298517971806
+TCGA-KK-A7B3,T3b,N0,9.0,Biochemical evidence of disease,294.0,0.42021887346806525,0.2813154765217279
+TCGA-KK-A8I4,T3b,N1,7.0,Distant Metastasis|Biochemical evidence of disease,1162.0,0.24466872356550323,0.1542842530938071
+TCGA-KK-A8I9,T3a,N0,8.0,Biochemical evidence of disease,940.0,0.3126387926455937,0.15386604748247287
+TCGA-V1-A8WS,T3b,,6.0,Biochemical evidence of disease,,0.08638983747663623,0.08909974603123029
+TCGA-VP-A878,T2c,N1,9.0,Biochemical evidence of disease|Distant Metastasis,98.0,0.1666413492859901,0.2251798914863804
+TCGA-X4-A8KQ,T3b,N0,9.0,Biochemical evidence of disease,,0.413017308211874,0.25077545470312923
+TCGA-YL-A8HM,T3b,N0,9.0,Biochemical evidence of disease,1473.0,0.36505541217371607,0.19450666616361123
+TCGA-YL-A8HO,T3a,N0,7.0,Biochemical evidence of disease,1068.0,0.15113652531632527,0.10152307390811313
+TCGA-YL-A8SC,T3a,N0,9.0,Biochemical evidence of disease,152.0,0.4062546235943042,0.15356103413388714

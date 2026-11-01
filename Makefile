@@ -1,4 +1,4 @@
-.PHONY: all setup audit data validate figures test smoke reproduce clean
+.PHONY: all setup audit data validate figures test smoke reproduce oral-sprint clean
 
 VENV := .venv
 PYTHON := $(VENV)/bin/python
@@ -11,6 +11,12 @@ setup:
 
 audit:
 	$(PYTHON) scripts/audit_conference_claims.py
+
+oral-sprint:
+	PYTHONPATH=. $(PYTHON) src/run_oral_sprint_analysis.py
+	$(PYTHON) scripts/audit_oral_candidate_claims.py
+	PYTHONPATH=. $(PYTEST) tests/test_oral_candidate_abstract.py -v
+	@echo "Oral candidate sprint pipeline verified successfully."
 
 data:
 	PYTHONPATH=. $(PYTHON) src/build_recurrence_endpoint.py
