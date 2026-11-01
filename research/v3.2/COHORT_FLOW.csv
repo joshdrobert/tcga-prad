@@ -1,0 +1,25 @@
+step,count
+Total TCGA-PRAD Radical Prostatectomy Patients,314
+Primary Definitive Prostate-Specific Cohort (Positives + Double Negatives),261
+  - Documented Prostate Cancer Recurrence / Progression (Definitive Positive),70
+  - Documented Double-Negative (BCR=NO and NTE=NO),191
+"Second Non-Prostatic Primary Malignancy (TCGA-CH-5791, TCGA-HC-7080)",2
+Sensitivity All-Cancers Composite (Positives + Second Primaries + Double Neg),263
+Exploratory Composite Binary Cohort (Positives + Double Neg + Asymmetric Neg),307
+  - Asymmetric Negative (Excluded from primary definitive),46
+"    * Asymmetric: BCR=NO, NTE missing",9
+"    * Asymmetric: NTE=NO, BCR missing",37
+Fully Indeterminate Cases (Excluded from all primary/exploratory non-events),5
+Continuous-Time Survival: Strict Sensitivity Cohort (Dated events + Double Negatives),248
+  - Strict Dated Prostate Recurrence Events,57
+  - Strict Double-Negative Censored Non-Events,191
+Continuous-Time Survival: Exploratory Cohort (Admitting 46 asymmetric records),294
+  - Exploratory Censored Non-Events (191 double-neg + 46 asymmetric),237
+Excluded from Exact Continuous Survival (Total),20
+  - Undated Prostate Recurrence Events,13
+  - Second Non-Prostatic Primary Tumors,2
+  - Fully Indeterminate Records,5
+Continuous-Time Survival (Permissive Sensitivity): Total Evaluated Patients,301
+  - Permissive Sensitivity Cohort (Dated events + Double Negatives),255
+  - Permissive Dated Prostate Recurrence Events,64
+  - Permissive Undated Prostate Recurrence Events,6

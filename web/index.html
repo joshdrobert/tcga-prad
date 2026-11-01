@@ -49,9 +49,9 @@
           <div class="audit-row"><span>Double Negatives:</span><strong>191 (73.2%)</strong></div>
           <div class="audit-row"><span>Second Primaries:</span><strong class="text-alert">2 (Separated)</strong></div>
           <div class="audit-row"><span>Paired Molecular:</span><strong>187 Patients</strong></div>
-          <div class="audit-row"><span>Strict Survival:</span><strong>255 Patients</strong></div>
-          <div class="audit-row"><span>Exploratory Survival:</span><strong>301 Patients</strong></div>
-          <div class="audit-row"><span>Survival Excluded:</span><strong class="text-alert">13 (6 undated)</strong></div>
+          <div class="audit-row"><span>Strict Survival:</span><strong>248 Patients</strong></div>
+          <div class="audit-row"><span>Exploratory Survival:</span><strong>294 Patients</strong></div>
+          <div class="audit-row"><span>Survival Excluded:</span><strong class="text-alert">20 (13 undated)</strong></div>
         </div>
       </nav>
 
@@ -94,10 +94,10 @@
             
             <div class="callout callout-note">
               <h4>Key Scientific Findings</h4>
-              <p>1. <strong>Primary Paired Molecular Benchmark (n=187):</strong> On identical participants, pure baseline clinical staging achieved an AUROC of 0.710 (95% CI: 0.621–0.791) and Brier score of 0.1673 (95% CI: 0.1366–0.2018), whereas adding the 13-gene expression panel yielded 0.703 (95% CI: 0.605–0.792) and Brier score of 0.1672 (95% CI: 0.1329–0.2057; paired ΔAUROC: -0.008, 95% CI: [-0.073, +0.056]; paired ΔBrier: -0.0001, 95% CI: [-0.0198, +0.0199]). The molecular panel provided no statistically significant incremental discrimination or calibration improvement.</p>
-              <p>2. <strong>Predictor Chronology & Landmark Setting:</strong> Follow-up is indexed from initial diagnostic biopsy (Day 0 for 98.1% of patients), while surgical pathology and RNA sequencing are landmarked post-radical prostatectomy with an unmeasured biopsy-to-surgery interval. The XML <code>psa_value</code> was measured at a median of 511.0 days post-initial diagnosis (271 of 276 values post-baseline), representing post-treatment surveillance monitoring rather than pre-operative baseline PSA, and was strictly excluded from baseline Cox survival models.</p>
+              <p>1. <strong>Primary Paired Molecular Benchmark (n=187):</strong> On identical participants, pure baseline clinical staging achieved an AUROC of 0.710 (95% CI: 0.621–0.791), Brier score of 0.1673 (95% CI: 0.1366–0.2018), and calibration slope of 0.756, whereas adding the 13-gene expression panel yielded 0.703 (95% CI: 0.605–0.792), Brier score of 0.1672 (95% CI: 0.1329–0.2057), and calibration slope of 0.511 (paired ΔAUROC: -0.008, 95% CI: [-0.073, +0.056]; paired ΔBrier: -0.0001, 95% CI: [-0.0198, +0.0199]). The molecular panel provided no statistically significant incremental discrimination or Brier score improvement, while compressing the calibration slope from 0.756 to 0.511.</p>
+              <p>2. <strong>Predictor Chronology & Landmark Setting:</strong> Follow-up is indexed from initial diagnostic biopsy (Day 0 for 97.1% of patients [305/314; 98.1% of 311 patients with non-missing diagnostic method]), while surgical pathology and RNA sequencing are landmarked post-radical prostatectomy with an unmeasured biopsy-to-surgery interval. The XML <code>psa_value</code> was measured at a median of 511.0 days post-initial diagnosis (271 of 276 values post-baseline), representing post-treatment surveillance monitoring rather than pre-operative baseline PSA, and was strictly excluded from baseline Cox survival models.</p>
               <p>3. <strong>Endpoint Concordance & Second Primary Separation:</strong> Biochemical recurrence agreed 100.0% (269/269) with cBioPortal, while disease-free survival agreed in 92.3% (239/259), uncovering 20 patients with XML-documented recurrence labeled DiseaseFree in cBioPortal. Two patients with non-prostatic new primary tumors (TCGA-CH-5791, TCGA-HC-7080) were adjudicated and separated from prostate recurrence.</p>
-              <p>4. <strong>Survival Analysis from Initial Diagnosis:</strong> In continuous-time survival analysis from initial diagnosis, median recurrence-free survival was not reached in either cohort. Strict sensitivity analysis restricted to documented double-negatives (n=255, 64 dated events) showed an out-of-fold Cox concordance of 0.649 (apparent 0.686), compared with 0.646 when admitting 46 asymmetric records (n=301). Time origin is explicitly indexed to initial pathologic diagnosis.</p>
+              <p>4. <strong>Survival Analysis from Initial Diagnosis:</strong> In continuous-time survival analysis from initial diagnosis, median recurrence-free survival was not reached in any cohort. Strict primary sensitivity analysis withholding 7 unverified contradictory BCR dates (n=248, 57 dated events, 191 double-negatives) showed an out-of-fold Cox concordance of 0.672 (apparent 0.701; 1-yr RFS: 88.1%, 5-yr RFS: 65.3%), compared with 0.670 when admitting 46 asymmetric records (n=294). Permissive sensitivity benchmarking (admitting 7 unverified dates; n=255 and n=301, 64 dated events) achieved out-of-fold concordance of 0.649 and 0.646. Time origin is explicitly indexed to initial pathologic diagnosis.</p>
             </div>
           </div>
         </section>
@@ -141,8 +141,8 @@
               </div>
               <div class="flow-branch">
                 <span class="branch-label">Strict Continuous Survival Cohort</span>
-                <span class="branch-count">255 Patients</span>
-                <span class="branch-desc">64 Dated Events + 191 Double-Negative Censored</span>
+                <span class="branch-count">248 Patients</span>
+                <span class="branch-desc">57 Dated Events + 191 Double-Negative Censored (n=255 in Permissive)</span>
               </div>
             </div>
           </div>
@@ -155,8 +155,8 @@
                   <th>Cohort Definition</th>
                   <th>Primary Definitive (n=261)</th>
                   <th>Paired Molecular (n=187)</th>
-                  <th>Strict Survival (n=255)</th>
-                  <th>Exploratory Survival (n=301)</th>
+                  <th>Strict Survival (n=248)</th>
+                  <th>Exploratory Survival (n=294)</th>
                 </tr>
               </thead>
               <tbody>
@@ -164,9 +164,40 @@
                   <td><strong>Documented Recurrence Events</strong></td>
                   <td>70</td>
                   <td>44</td>
-                  <td>64 (dated)</td>
-                  <td>64 (dated)</td>
+                  <td>57 (dated)</td>
+                  <td>57 (dated)</td>
                 </tr>
+                <tr>
+                  <td><strong>Documented Double-Negatives</strong></td>
+                  <td>191</td>
+                  <td>143</td>
+                  <td>191</td>
+                  <td>191</td>
+                </tr>
+                <tr>
+                  <td><strong>Asymmetric Surveillance Cases</strong></td>
+                  <td>0 (excluded)</td>
+                  <td>0 (excluded)</td>
+                  <td>0 (excluded)</td>
+                  <td>46 (included as non-events)</td>
+                </tr>
+                <tr>
+                  <td><strong>Second Primary Malignancies</strong></td>
+                  <td>0 (excluded)</td>
+                  <td>0 (excluded)</td>
+                  <td>0 (excluded)</td>
+                  <td>0 (excluded)</td>
+                </tr>
+                <tr>
+                  <td><strong>Fully Indeterminate Cases</strong></td>
+                  <td>0 (excluded)</td>
+                  <td>0 (excluded)</td>
+                  <td>0 (excluded)</td>
+                  <td>0 (excluded)</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
                 <tr>
                   <td><strong>Documented Double-Negative Non-Events</strong></td>
                   <td>191</td>
@@ -436,14 +467,14 @@
               <h3>Kaplan-Meier Recurrence-Free Survival</h3>
               <img src="static/figures/prad_km_survival.png" alt="Kaplan Meier RFS" class="chart-img">
               <div class="stat-callout-row">
-                <div><span>Strict 1-Yr RFS</span><strong>87.2%</strong></div>
-                <div><span>Strict 3-Yr RFS</span><strong>73.4%</strong></div>
-                <div><span>Strict 5-Yr RFS</span><strong>62.7%</strong></div>
+                <div><span>Strict 1-Yr RFS</span><strong>88.1%</strong></div>
+                <div><span>Strict 3-Yr RFS</span><strong>75.2%</strong></div>
+                <div><span>Strict 5-Yr RFS</span><strong>65.3%</strong></div>
               </div>
             </div>
 
             <div class="card">
-              <h3>Strict Sensitivity (n=255) vs Exploratory (n=301)</h3>
+              <h3>Strict Primary vs Permissive Sensitivity</h3>
               <table class="data-table">
                 <thead>
                   <tr>
@@ -456,30 +487,44 @@
                 </thead>
                 <tbody>
                   <tr class="row-highlight">
-                    <td><strong>Strict Sensitivity (Double-Negatives Only)</strong></td>
+                    <td><strong>Strict Primary Sensitivity (Double-Negatives Only)</strong></td>
+                    <td>248</td>
+                    <td>57</td>
+                    <td>191</td>
+                    <td><strong>0.672</strong> (Apparent: 0.701)</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Strict Primary Exploratory (Admitting 46 Asymmetric)</strong></td>
+                    <td>294</td>
+                    <td>57</td>
+                    <td>237</td>
+                    <td><strong>0.670</strong> (Apparent: 0.703)</td>
+                  </tr>
+                  <tr>
+                    <td><em>Permissive Sensitivity (Double-Negatives Only)</em></td>
                     <td>255</td>
                     <td>64</td>
                     <td>191</td>
-                    <td><strong>0.649</strong> (Apparent: 0.686)</td>
+                    <td>0.649 (Apparent: 0.686)</td>
                   </tr>
                   <tr>
-                    <td><strong>Exploratory (Admitting 46 Asymmetric)</strong></td>
+                    <td><em>Permissive Exploratory (Admitting 46 Asymmetric)</em></td>
                     <td>301</td>
                     <td>64</td>
                     <td>237</td>
-                    <td><strong>0.646</strong> (Apparent: 0.688)</td>
+                    <td>0.646 (Apparent: 0.688)</td>
                   </tr>
                 </tbody>
               </table>
 
               <div class="concordance-badge" style="margin-top: 1.5rem;">
                 <span>Proportional Hazards Evaluation (Schoenfeld Rank Test):</span>
-                <strong>Strict: Age p=0.49, Gleason p=0.55 (No statistically significant violation detected, p > 0.05)</strong>
+                <strong>Strict: Age p=0.39, Gleason p=0.34 (No statistically significant violation detected, p > 0.05)</strong>
               </div>
 
               <div class="callout callout-note" style="margin-top: 1rem;">
-                <h4>Selection Bias Analysis (13 Excluded Patients)</h4>
-                <p>Six undated prostate recurrence events, two second non-prostatic primary cancers, and five fully indeterminate cases were excluded from exact-time survival analysis. These 13 patients exhibited 90.0% T3/T4 stage (vs 60.9% in included) and 46.2% documented recurrence. Excluding undated events slightly enriches the survival cohort with lower-risk cases.</p>
+                <h4>Selection Bias Analysis (20 Excluded Patients)</h4>
+                <p>Thirteen undated prostate recurrence events, two second non-prostatic primary cancers, and five fully indeterminate cases were excluded from strict exact-time survival analysis. These 20 patients exhibited 90.0% T3/T4 stage (vs 60.9% in included) and 65.0% documented recurrence (13/20). Excluding undated events slightly enriches the survival cohort with lower-risk cases, making the reported RFS conservative upper bounds.</p>
               </div>
             </div>
           </div>
@@ -517,7 +562,7 @@ pytest tests/</code></pre>
           <div class="metadata-grid">
             <div class="meta-item"><span>Primary Binary Endpoint:</span><code>outcome_definitive_recurrence (n=261)</code></div>
             <div class="meta-item"><span>Paired Molecular Cohort:</span><code>n=187 (44 events, 143 non-events)</code></div>
-            <div class="meta-item"><span>Strict Survival Cohort:</span><code>n=255 (64 dated events, 191 censored)</code></div>
+            <div class="meta-item"><span>Strict Survival Cohort:</span><code>n=248 (57 dated events, 191 censored; n=255 permissive)</code></div>
             <div class="meta-item"><span>Time Origin:</span><code>Days from Initial Pathologic Diagnosis</code></div>
           </div>
         </section>

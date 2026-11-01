@@ -175,3 +175,50 @@ def test_predictor_timing_audit_landmark():
     gleason_row = timing_df[timing_df["predictor"] == "gleason_score_numeric"].iloc[0]
     assert "post-resection" in gleason_row["immortal_time_and_landmark_risk"].lower()
     assert "unmeasured" in gleason_row["reference_origin_days"].lower()
+
+
+def test_no_bcr_negative_record_labeled_bcr_positive():
+    """Verify that no patient with negative or missing BCR status is falsely labeled BCR=YES in earliest event type."""
+    rec_file = REPO_ROOT / "data_processed" / "tcga_prad_recurrence_cohort.csv"
+    assert rec_file.exists()
+    rec_df = pd.read_csv(rec_file)
+
+    conflicting = rec_df[
+        (rec_df["bcr_status"] != "DOCUMENTED_POSITIVE")
+        & (rec_df["earliest_prostate_recurrence_type"] == "Biochemical Recurrence (BCR=YES)")
+    ]
+    assert len(conflicting) == 0, f"Found {len(conflicting)} records falsely labeled BCR=YES despite non-positive BCR status"
+
+
+def test_bcr_conflicts_ledger_exists_and_contains_29_cases():
+    """Verify that BCR_STATUS_DATE_CONFLICTS.csv exists in research/v3.2/ and catalogs all 29 cases."""
+    cfile = REPO_ROOT / "research" / "v3.2" / "BCR_STATUS_DATE_CONFLICTS.csv"
+    assert cfile.exists(), "BCR_STATUS_DATE_CONFLICTS.csv must exist in research/v3.2"
+    cdf = pd.read_csv(cfile)
+    assert len(cdf) == 29, f"Expected 29 conflict cases, got {len(cdf)}"
+    assert cdf["submitter_id"].is_unique, "Patient IDs must be unique in conflict ledger"
+    assert cdf["prostate_cancer_recurrence_confirmed"].all(), "All 29 cases must be confirmed cancer recurrence cases"
+
+
+def test_event_adjudication_changes_ledger_exists():
+    """Verify that EVENT_ADJUDICATION_CHANGES.csv exists in research/v3.2/ and documents the 27 patient corrections."""
+    chfile = REPO_ROOT / "research" / "v3.2" / "EVENT_ADJUDICATION_CHANGES.csv"
+    assert chfile.exists(), "EVENT_ADJUDICATION_CHANGES.csv must exist in research/v3.2"
+    chdf = pd.read_csv(chfile)
+    assert len(chdf) == 27, f"Expected 27 patient adjudication changes, got {len(chdf)}"
+    assert (chdf["change_type"] == "PROVENANCE_LABEL_CORRECTION").sum() == 19
+    assert (chdf["change_type"] == "STRICT_DATE_WITHDRAWAL_TO_UNDATED").sum() == 7
+    assert (chdf["change_type"] == "DATE_AND_LABEL_CORRECTION").sum() == 1
+
+
+def test_predictor_timing_audit_denominators():
+    """Verify that PREDICTOR_TIMING_AUDIT.csv correctly states 97.1% and 98.1% diagnostic biopsy denominators."""
+    tfile = REPO_ROOT / "research" / "v3.2" / "PREDICTOR_TIMING_AUDIT.csv"
+    assert tfile.exists()
+    tdf = pd.read_csv(tfile)
+    age_row = tdf[tdf["predictor"] == "age_at_diagnosis_years"].iloc[0]
+    ref = str(age_row["reference_origin_days"])
+    assert "305/314" in ref
+    assert "97.1%" in ref
+    assert "98.1%" in ref
+    assert "311" in ref

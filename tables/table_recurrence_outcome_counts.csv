@@ -1,9 +1,9 @@
 endpoint,events,total
 Prostate-Specific Recurrence (Definitive),70,314
-Dated Prostate Recurrence Events (Exact Timing),64,314
-Undated Prostate Recurrence Events (Excluded from exact time),6,314
+Dated Prostate Recurrence Events (Exact Timing),57,314
+Undated Prostate Recurrence Events (Excluded from exact time),13,314
 Second Non-Prostatic Primary Malignancies,2,314
 Biochemical Recurrence (BCR),38,314
 New Tumor Event (NTE),64,314
 Post-HT Progression,13,314
-"Evaluable RFS (with valid timing, excluding indeterminate)",64,301
+"Evaluable RFS (with valid timing, excluding indeterminate)",57,294

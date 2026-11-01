@@ -78,15 +78,28 @@ def test_processed_cohort_invariants():
     assert "duration_days_from_diagnosis" in df.columns
     assert "survival_event_indicator" in df.columns
     assert "undated_recurrence_flag" in df.columns
+    assert "survival_duration_days_permissive" in df.columns
+    assert "survival_event_indicator_permissive" in df.columns
+    assert "undated_recurrence_flag_permissive" in df.columns
 
-    # Verify exactly 6 undated events
-    undated_count = int(df["undated_recurrence_flag"].sum())
-    assert undated_count == 6, f"Expected exactly 6 undated recurrence cases, got {undated_count}"
+    # Verify Strict Adjudication: 13 undated events (7 status conflicts + 6 unrecorded dates)
+    undated_count_strict = int(df["undated_recurrence_flag"].sum())
+    assert undated_count_strict == 13, f"Expected exactly 13 strict undated recurrence cases, got {undated_count_strict}"
 
-    # Continuous-time evaluable cohort must be 301 (excluding 6 undated events, 2 second primaries, 5 indeterminate)
-    evaluable = df[df["survival_duration_days"].notna() & (df["survival_duration_days"] > 0)]
-    assert len(evaluable) == 301, f"Expected 301 evaluable survival cases, got {len(evaluable)}"
-    assert int(evaluable["survival_event_indicator"].sum()) == 64, "Expected 64 dated recurrence events"
+    # Verify Permissive Sensitivity: 6 undated events
+    undated_count_perm = int(df["undated_recurrence_flag_permissive"].sum())
+    assert undated_count_perm == 6, f"Expected exactly 6 permissive undated recurrence cases, got {undated_count_perm}"
+
+    # Continuous-time evaluable cohort: Strict (294 cases, 57 dated events)
+    evaluable_strict = df[df["survival_duration_days"].notna() & (df["survival_duration_days"] > 0)]
+    assert len(evaluable_strict) == 294, f"Expected 294 evaluable strict survival cases, got {len(evaluable_strict)}"
+    assert int(evaluable_strict["survival_event_indicator"].sum()) == 57, "Expected 57 strict dated recurrence events"
+
+    # Continuous-time evaluable cohort: Permissive (301 cases, 64 dated events)
+    evaluable_perm = df[df["survival_duration_days_permissive"].notna() & (df["survival_duration_days_permissive"] > 0)]
+    assert len(evaluable_perm) == 301, f"Expected 301 evaluable permissive survival cases, got {len(evaluable_perm)}"
+    assert int(evaluable_perm["survival_event_indicator_permissive"].sum()) == 64, "Expected 64 permissive dated recurrence events"
+
     assert (df["composite_status_detail"] == "INDETERMINATE_ALL_MISSING").sum() == 5, "Expected exactly 5 indeterminate cases"
     assert (df["composite_status_detail"] == "DOCUMENTED_NON_RECURRENCE").sum() == 191, "Expected exactly 191 double-negative cases"
 
@@ -113,11 +126,13 @@ def test_metrics_json_integrity():
         data = json.load(f)
     assert data["cohort"]["total_patients"] == 314
     assert data["cohort"]["composite_recurrence_events"] == 70
-    assert data["cohort"]["dated_recurrence_events"] == 64
-    assert data["cohort"]["undated_recurrence_events"] == 6
+    assert data["cohort"]["dated_recurrence_events"] == 57
+    assert data["cohort"]["undated_recurrence_events"] == 13
     assert data["cohort"]["rna_seq_profiles_available"] == 228
     assert data["cohort"]["rna_seq_missing_count"] == 86
     evaluable_n = data["survival"]["evaluable_cases"] if "evaluable_cases" in data["survival"] else data["cohort"]["evaluable_survival_cases"]
-    assert evaluable_n == 301, f"Expected 301 evaluable survival cases, got {evaluable_n}"
+    assert evaluable_n == 294, f"Expected 294 evaluable survival cases, got {evaluable_n}"
+    assert data["survival"]["strict_evaluable_cases"] == 248
     assert data["survival"]["cox_apparent_concordance_index"] > 0.65
     assert data["survival"]["cox_cv_concordance_index"] > 0.64
+    assert "survival_sensitivity" in data, "survival_sensitivity must be present in metrics JSON"

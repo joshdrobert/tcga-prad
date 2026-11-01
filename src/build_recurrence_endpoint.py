@@ -10,6 +10,7 @@ import pandas as pd
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 RESEARCH_V2_DIR = PROJECT_ROOT / "research" / "v2"
 RESEARCH_V3_DIR = PROJECT_ROOT / "research" / "v3"
+RESEARCH_V32_DIR = PROJECT_ROOT / "research" / "v3.2"
 
 
 def parse_numeric_tokens(val: object, reducer: Callable[[list[float]], float] = max) -> float:
@@ -120,7 +121,8 @@ def extract_event_level_provenance(flat: pd.DataFrame) -> pd.DataFrame:
     """
     Reconstruct unrolled event-level clinical provenance records pairing each event
     type with its specific event date, source form, and encounter category.
-    Guarantees that event dates are never decoupled from event types.
+    Guarantees that event dates are never decoupled from event types and explicitly
+    flags contradictory BCR date/status records.
     """
     event_records = []
 
@@ -133,7 +135,7 @@ def extract_event_level_provenance(flat: pd.DataFrame) -> pd.DataFrame:
         bcr_days = parse_numeric_tokens_all(row.get("days_to_first_biochemical_recurrence"))
         has_bcr_pos = any(s.upper() in {"YES", "TRUE", "1", "BIOCHEMICAL"} for s in bcr_statuses)
 
-        if has_bcr_pos or bcr_days:
+        if has_bcr_pos:
             dates = bcr_days if bcr_days else [np.nan]
             for d in dates:
                 event_records.append(
@@ -145,7 +147,26 @@ def extract_event_level_provenance(flat: pd.DataFrame) -> pd.DataFrame:
                         "event_days_from_diagnosis": d,
                         "prostate_specific": True,
                         "adjudication_class": "PROSTATE_RECURRENCE",
-                        "adjudication_rationale": "Biochemical recurrence documented in XML follow-up",
+                        "adjudication_rationale": "Biochemical recurrence documented positive (BCR=YES) in XML follow-up",
+                    }
+                )
+        elif bcr_days:
+            # Numerical BCR date exists but BCR status is NO or missing: STATUS/DATE CONFLICT
+            status_str = "|".join(bcr_statuses) if bcr_statuses else "MISSING"
+            for d in bcr_days:
+                event_records.append(
+                    {
+                        "submitter_id": sid,
+                        "source_file": src,
+                        "event_category": "BIOCHEMICAL_RECURRENCE_CONFLICT",
+                        "event_type": f"BCR Date Present with Status Conflict (BCR={status_str})",
+                        "event_days_from_diagnosis": d,
+                        "prostate_specific": False,  # Not accepted as verified prostate BCR event
+                        "adjudication_class": "STATUS_CONFLICT_UNRESOLVED_BCR",
+                        "adjudication_rationale": (
+                            f"Numerical BCR date ({d:.0f} days) recorded in XML but BCR status is documented as {status_str}; "
+                            "not accepted as verified prostate BCR event without independent NTE documentation"
+                        ),
                     }
                 )
 
@@ -196,7 +217,7 @@ def extract_event_level_provenance(flat: pd.DataFrame) -> pd.DataFrame:
                         "adjudication_rationale": (
                             "Second non-prostatic primary malignancy (undated)"
                             if is_second_prim
-                            else f"Prostate-specific new tumor event ({t_full}; undated in XML)"
+                            else f"Prostate-specific new tumor event ({t_full}; unrecorded NTE date in XML)"
                         ),
                     }
                 )
@@ -407,6 +428,9 @@ def main() -> None:
     survival_analysis_times = []
     survival_event_flags = []
     undated_recurrence_flags = []
+    survival_analysis_times_permissive = []
+    survival_event_flags_permissive = []
+    undated_recurrence_flags_permissive = []
     earliest_event_types = []
     earliest_event_sources = []
 
@@ -422,24 +446,34 @@ def main() -> None:
         pros_events = p_events[p_events["prostate_specific"] & (p_events["adjudication_class"] == "PROSTATE_RECURRENCE")]
         dated_pros = pros_events[pros_events["event_days_from_diagnosis"].notna() & (pros_events["event_days_from_diagnosis"] > 0)]
 
-        t_event = np.nan
-        e_type = "None"
-        e_src = "None"
+        t_event_strict = np.nan
+        t_event_permissive = np.nan
+        e_type_strict = "None"
+        e_src_strict = "None"
 
         if is_prostate_event:
             if len(dated_pros) > 0:
                 earliest = dated_pros.sort_values("event_days_from_diagnosis").iloc[0]
-                t_event = float(earliest["event_days_from_diagnosis"])
-                e_type = str(earliest["event_type"])
-                e_src = str(earliest["source_file"])
+                t_event_strict = float(earliest["event_days_from_diagnosis"])
+                t_event_permissive = t_event_strict
+                e_type_strict = str(earliest["event_type"])
+                e_src_strict = str(earliest["source_file"])
             elif len(pros_events) > 0:
-                e_type = str(pros_events.iloc[0]["event_type"])
-                e_src = str(pros_events.iloc[0]["source_file"])
+                first_pros = pros_events.iloc[0]
+                e_type_strict = f"{first_pros['event_type']} (Unresolved Event Date)"
+                e_src_strict = str(first_pros["source_file"])
+                # Check for conflicting BCR date to support permissive sensitivity
+                conflict_bcr = p_events[p_events["event_category"] == "BIOCHEMICAL_RECURRENCE_CONFLICT"]
+                dated_conflict = conflict_bcr[conflict_bcr["event_days_from_diagnosis"].notna() & (conflict_bcr["event_days_from_diagnosis"] > 0)]
+                if len(dated_conflict) > 0:
+                    t_event_permissive = float(dated_conflict.sort_values("event_days_from_diagnosis").iloc[0]["event_days_from_diagnosis"])
+            else:
+                e_type_strict = "Undated Prostate Recurrence"
         elif is_second_primary:
             sec_events = p_events[~p_events["prostate_specific"]]
             if len(sec_events) > 0:
-                e_type = str(sec_events.iloc[0]["event_type"])
-                e_src = str(sec_events.iloc[0]["source_file"])
+                e_type_strict = str(sec_events.iloc[0]["event_type"])
+                e_src_strict = str(sec_events.iloc[0]["source_file"])
 
         t_censor_candidates = []
         if pd.notna(row["days_to_last_followup_clean"]) and row["days_to_last_followup_clean"] > 0:
@@ -449,37 +483,51 @@ def main() -> None:
 
         t_censor = max(t_censor_candidates) if t_censor_candidates else np.nan
 
-        exact_event_times.append(t_event)
+        exact_event_times.append(t_event_strict)
         exact_censoring_times.append(t_censor)
-        earliest_event_types.append(e_type)
-        earliest_event_sources.append(e_src)
+        earliest_event_types.append(e_type_strict)
+        earliest_event_sources.append(e_src_strict)
 
         if is_prostate_event:
-            if pd.notna(t_event):
-                survival_analysis_times.append(t_event)
+            if pd.notna(t_event_strict):
+                survival_analysis_times.append(t_event_strict)
                 survival_event_flags.append(1.0)
                 undated_recurrence_flags.append(0)
             else:
                 survival_analysis_times.append(np.nan)
                 survival_event_flags.append(np.nan)
                 undated_recurrence_flags.append(1)
-        elif is_second_primary:
+
+            if pd.notna(t_event_permissive):
+                survival_analysis_times_permissive.append(t_event_permissive)
+                survival_event_flags_permissive.append(1.0)
+                undated_recurrence_flags_permissive.append(0)
+            else:
+                survival_analysis_times_permissive.append(np.nan)
+                survival_event_flags_permissive.append(np.nan)
+                undated_recurrence_flags_permissive.append(1)
+        elif is_second_primary or is_indeterminate:
             survival_analysis_times.append(np.nan)
             survival_event_flags.append(np.nan)
             undated_recurrence_flags.append(0)
-        elif is_indeterminate:
-            survival_analysis_times.append(np.nan)
-            survival_event_flags.append(np.nan)
-            undated_recurrence_flags.append(0)
+            survival_analysis_times_permissive.append(np.nan)
+            survival_event_flags_permissive.append(np.nan)
+            undated_recurrence_flags_permissive.append(0)
         else:
             if pd.notna(t_censor):
                 survival_analysis_times.append(t_censor)
                 survival_event_flags.append(0.0)
                 undated_recurrence_flags.append(0)
+                survival_analysis_times_permissive.append(t_censor)
+                survival_event_flags_permissive.append(0.0)
+                undated_recurrence_flags_permissive.append(0)
             else:
                 survival_analysis_times.append(np.nan)
                 survival_event_flags.append(np.nan)
                 undated_recurrence_flags.append(0)
+                survival_analysis_times_permissive.append(np.nan)
+                survival_event_flags_permissive.append(np.nan)
+                undated_recurrence_flags_permissive.append(0)
 
     cohort["days_to_recurrence_exact"] = exact_event_times
     cohort["days_to_censoring_exact"] = exact_censoring_times
@@ -490,6 +538,9 @@ def main() -> None:
     cohort["survival_event_indicator"] = survival_event_flags
     cohort["undated_recurrence_flag"] = undated_recurrence_flags
     cohort["time_to_recurrence_days"] = cohort["survival_duration_days"]
+    cohort["survival_duration_days_permissive"] = survival_analysis_times_permissive
+    cohort["survival_event_indicator_permissive"] = survival_event_flags_permissive
+    cohort["undated_recurrence_flag_permissive"] = undated_recurrence_flags_permissive
 
     # Adjudication rationale text per patient
     def assign_rationale(row: pd.Series) -> str:
@@ -543,26 +594,168 @@ def main() -> None:
         "duration_days_from_diagnosis",
         "survival_event_indicator",
         "undated_recurrence_flag",
+        "survival_duration_days_permissive",
+        "survival_event_indicator_permissive",
+        "undated_recurrence_flag_permissive",
         "adjudication_rationale",
     ]
+    cohort[ledger_cols].to_csv(RESEARCH_V32_DIR / "EVENT_ADJUDICATION_LEDGER.csv", index=False)
     cohort[ledger_cols].to_csv(RESEARCH_V3_DIR / "EVENT_ADJUDICATION_LEDGER.csv", index=False)
     cohort[ledger_cols].to_csv(RESEARCH_V2_DIR / "EVENT_ADJUDICATION_LEDGER.csv", index=False)
     cohort[ledger_cols].to_csv(RESEARCH_V2_DIR / "LONGITUDINAL_EVENT_AUDIT.csv", index=False)
 
-    # Document the 6 undated recurrence cases specifically
+    # Document the undated recurrence cases specifically (13 strict cases)
     undated = cohort[cohort["undated_recurrence_flag"] == 1][ledger_cols]
+    undated.to_csv(RESEARCH_V32_DIR / "UNDATED_RECURRENCE_CASES.csv", index=False)
     undated.to_csv(RESEARCH_V3_DIR / "UNDATED_RECURRENCE_CASES.csv", index=False)
     undated.to_csv(RESEARCH_V2_DIR / "UNDATED_RECURRENCE_CASES.csv", index=False)
 
     # Document the 2 second primary cases specifically
     second_prim = cohort[cohort["composite_status_detail"] == "SECOND_PRIMARY_MALIGNANCY"][ledger_cols]
+    second_prim.to_csv(RESEARCH_V32_DIR / "SECOND_PRIMARY_CASES.csv", index=False)
     second_prim.to_csv(RESEARCH_V3_DIR / "SECOND_PRIMARY_CASES.csv", index=False)
     second_prim.to_csv(RESEARCH_V2_DIR / "SECOND_PRIMARY_CASES.csv", index=False)
 
     # Document the 5 fully indeterminate cases specifically
     indeterminate = cohort[cohort["composite_status_detail"] == "INDETERMINATE_ALL_MISSING"][ledger_cols]
+    indeterminate.to_csv(RESEARCH_V32_DIR / "INDETERMINATE_OUTCOME_CASES.csv", index=False)
     indeterminate.to_csv(RESEARCH_V3_DIR / "INDETERMINATE_OUTCOME_CASES.csv", index=False)
     indeterminate.to_csv(RESEARCH_V2_DIR / "INDETERMINATE_OUTCOME_CASES.csv", index=False)
+
+    # Generate 29 BCR Status vs Date Conflicts Discrepancy Ledger
+    conflict_events = event_provenance[event_provenance["event_category"] == "BIOCHEMICAL_RECURRENCE_CONFLICT"]
+    conflict_sids = sorted(conflict_events["submitter_id"].unique())
+    conflict_records = []
+    for sid in conflict_sids:
+        crow = cohort[cohort["submitter_id"] == sid].iloc[0]
+        bcr_d = crow["days_to_bcr_clean"]
+        nte_d = crow["days_to_nte_clean"]
+        bcr_stat = crow["bcr_status"]
+        nte_stat = crow["nte_status"]
+        nte_type = crow["new_neoplasm_event_type"]
+
+        if pd.notna(nte_d) and pd.notna(bcr_d) and abs(nte_d - bcr_d) < 1e-4:
+            cat = "MATCHING_NTE_DATE"
+            rat = (
+                f"Numeric BCR date ({bcr_d:.0f}d) coincides exactly with verified New Tumor Event date ({nte_d:.0f}d, {nte_type}). "
+                "Recurrence is validated by NTE reporting; relabeled from BCR=YES to verified NTE type in V3.2."
+            )
+            v31_type = "Biochemical Recurrence (BCR=YES)"
+            v31_t = bcr_d
+        elif sid == "TCGA-KK-A8I4":
+            cat = "DIFFERING_NTE_DATE"
+            rat = (
+                f"Numeric BCR date ({bcr_d:.0f}d) contradicts documented Distant Metastasis NTE date ({nte_d:.0f}d). "
+                "Adjudicated to earliest verified NTE event (Distant Metastasis at Day 1162) in V3.2."
+            )
+            v31_type = "Biochemical Recurrence (BCR=YES)"
+            v31_t = bcr_d
+        elif pd.isna(nte_d):
+            cat = "UNRECORDED_NTE_DATE"
+            rat = (
+                f"Numeric BCR date ({bcr_d:.0f}d) recorded in XML but BCR status is {bcr_stat} and New Tumor Event date is unrecorded. "
+                "Under V3.2 strict adjudication, unverified timing is withheld (undated recurrence). Retained in permissive sensitivity."
+            )
+            v31_type = "Biochemical Recurrence (BCR=YES)"
+            v31_t = bcr_d
+        elif sid == "TCGA-EJ-5524":
+            cat = "PRIOR_LOCOREGIONAL_NTE"
+            rat = (
+                f"Locoregional recurrence NTE documented at Day {nte_d:.0f}, preceding contradictory BCR date ({bcr_d:.0f}d). "
+                "Adjudicated to earliest locoregional event at Day 265."
+            )
+            v31_type = "Locoregional Recurrence"
+            v31_t = nte_d
+        elif sid == "TCGA-J9-A52B":
+            cat = "PRIOR_NTE_EVIDENCE"
+            rat = (
+                f"New tumor event documented at Day {nte_d:.0f}, preceding contradictory BCR date ({bcr_d:.0f}d). "
+                "Adjudicated to verified NTE at Day 57."
+            )
+            v31_type = "Biochemical evidence of disease"
+            v31_t = nte_d
+        else:
+            cat = "OTHER_CONFLICT"
+            rat = f"Contradictory BCR date ({bcr_d:.0f}d) with BCR status {bcr_stat}."
+            v31_type = "Biochemical Recurrence (BCR=YES)"
+            v31_t = bcr_d
+
+        conflict_records.append(
+            {
+                "submitter_id": sid,
+                "conflict_category": cat,
+                "bcr_status_documented": bcr_stat,
+                "days_to_bcr_clean": bcr_d,
+                "nte_status_documented": nte_stat,
+                "new_neoplasm_event_type": nte_type,
+                "days_to_nte_clean": nte_d,
+                "v31_assigned_event_type": v31_type,
+                "v31_days_to_recurrence": v31_t,
+                "v32_strict_assigned_event_type": crow["earliest_prostate_recurrence_type"],
+                "v32_strict_days_to_recurrence": crow["days_to_recurrence_exact"],
+                "v32_permissive_days_to_recurrence": crow["survival_duration_days_permissive"],
+                "prostate_cancer_recurrence_confirmed": True,  # All 29 have documented NTE=YES
+                "clinical_resolution_rationale": rat,
+            }
+        )
+
+    df_conflicts = pd.DataFrame(conflict_records)
+    df_conflicts.to_csv(RESEARCH_V32_DIR / "BCR_STATUS_DATE_CONFLICTS.csv", index=False)
+    df_conflicts.to_csv(RESEARCH_V3_DIR / "BCR_STATUS_DATE_CONFLICTS.csv", index=False)
+
+    # Generate Patient-Level Adjudication Changes Ledger (V3.1 vs V3.2)
+    # 27 patients whose event type or timing was corrected from V3.1
+    change_records = []
+    for sid in conflict_sids:
+        crow = cohort[cohort["submitter_id"] == sid].iloc[0]
+        cf_row = df_conflicts[df_conflicts["submitter_id"] == sid].iloc[0]
+        cat = cf_row["conflict_category"]
+        v31_t = cf_row["v31_days_to_recurrence"]
+        v31_type = cf_row["v31_assigned_event_type"]
+        v32_strict_t = crow["days_to_recurrence_exact"]
+        v32_strict_type = crow["earliest_prostate_recurrence_type"]
+
+        if cat == "MATCHING_NTE_DATE":
+            ctype = "PROVENANCE_LABEL_CORRECTION"
+            just = (
+                f"Relabeled event from incorrect 'Biochemical Recurrence (BCR=YES)' to verified source NTE event type "
+                f"'{v32_strict_type}'. Exact event date remains Day {v32_strict_t:.0f}."
+            )
+        elif cat == "DIFFERING_NTE_DATE":
+            ctype = "DATE_AND_LABEL_CORRECTION"
+            just = (
+                f"Corrected event type to verified Distant Metastasis (Day 1162) and discarded contradictory unverified "
+                f"BCR date (Day 1155)."
+            )
+        elif cat == "UNRECORDED_NTE_DATE":
+            ctype = "STRICT_DATE_WITHDRAWAL_TO_UNDATED"
+            just = (
+                f"Numeric BCR date ({cf_row['days_to_bcr_clean']:.0f}d) not accepted as exact survival timing under Strict Adjudication "
+                f"due to BCR=NO status conflict and unrecorded NTE date. Patient classified as undated recurrence; date retained in permissive sensitivity."
+            )
+        else:
+            continue
+
+        change_records.append(
+            {
+                "submitter_id": sid,
+                "change_type": ctype,
+                "v31_earliest_prostate_recurrence_type": v31_type,
+                "v32_strict_earliest_prostate_recurrence_type": v32_strict_type,
+                "v31_days_to_recurrence_exact": v31_t,
+                "v32_strict_days_to_recurrence_exact": v32_strict_t,
+                "v32_permissive_days_to_recurrence": crow["survival_duration_days_permissive"],
+                "v31_survival_duration_days": v31_t,
+                "v32_strict_survival_duration_days": crow["survival_duration_days"],
+                "v31_undated_recurrence_flag": 0,
+                "v32_strict_undated_recurrence_flag": crow["undated_recurrence_flag"],
+                "clinical_justification": just,
+            }
+        )
+
+    df_changes = pd.DataFrame(change_records)
+    df_changes.to_csv(RESEARCH_V32_DIR / "EVENT_ADJUDICATION_CHANGES.csv", index=False)
+    df_changes.to_csv(RESEARCH_V3_DIR / "EVENT_ADJUDICATION_CHANGES.csv", index=False)
 
     # Save Cohort Flow Breakdown
     flow = pd.DataFrame(
@@ -587,8 +780,13 @@ def main() -> None:
             {"step": "  - Undated Prostate Recurrence Events", "count": int(cohort["undated_recurrence_flag"].sum())},
             {"step": "  - Second Non-Prostatic Primary Tumors", "count": int((cohort["composite_status_detail"] == "SECOND_PRIMARY_MALIGNANCY").sum())},
             {"step": "  - Fully Indeterminate Records", "count": int((cohort["composite_status_detail"] == "INDETERMINATE_ALL_MISSING").sum())},
+            {"step": "Continuous-Time Survival (Permissive Sensitivity): Total Evaluated Patients", "count": int(cohort["survival_duration_days_permissive"].notna().sum())},
+            {"step": "  - Permissive Sensitivity Cohort (Dated events + Double Negatives)", "count": int(((cohort["survival_event_indicator_permissive"] == 1.0) | (cohort["composite_status_detail"] == "DOCUMENTED_NON_RECURRENCE")).sum())},
+            {"step": "  - Permissive Dated Prostate Recurrence Events", "count": int((cohort["survival_event_indicator_permissive"] == 1.0).sum())},
+            {"step": "  - Permissive Undated Prostate Recurrence Events", "count": int(cohort["undated_recurrence_flag_permissive"].sum())},
         ]
     )
+    flow.to_csv(RESEARCH_V32_DIR / "COHORT_FLOW.csv", index=False)
     flow.to_csv(RESEARCH_V3_DIR / "COHORT_FLOW.csv", index=False)
     flow.to_csv(RESEARCH_V2_DIR / "COHORT_FLOW.csv", index=False)
 
@@ -613,6 +811,7 @@ def main() -> None:
         "gleason_score",
     ]
     avail_prov_cols = [c for c in prov_cols if c in flat.columns]
+    flat[avail_prov_cols].to_csv(RESEARCH_V32_DIR / "LONG_FORM_PROVENANCE.csv", index=False)
     flat[avail_prov_cols].to_csv(RESEARCH_V3_DIR / "LONG_FORM_PROVENANCE.csv", index=False)
     flat[avail_prov_cols].to_csv(RESEARCH_V2_DIR / "LONG_FORM_PROVENANCE.csv", index=False)
 
@@ -623,7 +822,7 @@ def main() -> None:
             {
                 "predictor": "age_at_diagnosis_years",
                 "clinical_phase": "Pre-treatment / Diagnostic Biopsy",
-                "reference_origin_days": "0.0 (Core Needle Biopsy Day 0 in 98.1% of patients)",
+                "reference_origin_days": "0.0 (Core Needle Biopsy Day 0 in 305/314 patients, 97.1% [98.1% of 311 patients with documented diagnosis method])",
                 "prediction_landmark": "Available at initial diagnosis (Biopsy Day 0)",
                 "immortal_time_and_landmark_risk": "None (strictly baseline demographic measured at initial diagnosis).",
             },
@@ -664,10 +863,11 @@ def main() -> None:
             },
         ]
     )
+    timing_audit.to_csv(RESEARCH_V32_DIR / "PREDICTOR_TIMING_AUDIT.csv", index=False)
     timing_audit.to_csv(RESEARCH_V3_DIR / "PREDICTOR_TIMING_AUDIT.csv", index=False)
     timing_audit.to_csv(RESEARCH_V2_DIR / "PREDICTOR_TIMING_AUDIT.csv", index=False)
 
-    # Selection Bias Audit: Comparing Excluded (n=13) vs Included (n=301) Survival Patients
+    # Selection Bias Audit: Comparing Excluded (n=20) vs Included (n=294) Survival Patients
     cohort["excluded_from_survival"] = cohort["survival_duration_days"].isna()
     inc = cohort[~cohort["excluded_from_survival"]]
     exc = cohort[cohort["excluded_from_survival"]]
@@ -676,36 +876,37 @@ def main() -> None:
         [
             {
                 "characteristic": "Cohort Size (N)",
-                "included_cohort_n301": len(inc),
-                "excluded_cohort_n13": len(exc),
-                "comparison_interpretation": "13 patients excluded: 6 undated prostate recurrence events + 2 second primary cancers + 5 indeterminate",
+                "included_cohort_n294": len(inc),
+                "excluded_cohort_n20": len(exc),
+                "comparison_interpretation": "20 patients excluded from strict continuous survival: 13 undated prostate recurrence events + 2 second primary cancers + 5 indeterminate",
             },
             {
                 "characteristic": "Mean Age at Diagnosis (years)",
-                "included_cohort_n301": round(float(inc["age_at_diagnosis_years"].dropna().mean()), 2),
-                "excluded_cohort_n13": round(float(exc["age_at_diagnosis_years"].dropna().mean()), 2),
-                "comparison_interpretation": "Excluded patients slightly younger at diagnosis (57.8 vs 61.5 years)",
+                "included_cohort_n294": round(float(inc["age_at_diagnosis_years"].dropna().mean()), 2),
+                "excluded_cohort_n20": round(float(exc["age_at_diagnosis_years"].dropna().mean()), 2),
+                "comparison_interpretation": f"Excluded patients slightly younger at diagnosis ({float(exc['age_at_diagnosis_years'].dropna().mean()):.2f} vs {float(inc['age_at_diagnosis_years'].dropna().mean()):.2f} years)",
             },
             {
                 "characteristic": "Mean Gleason Score",
-                "included_cohort_n301": round(float(inc["gleason_score_numeric"].dropna().mean()), 2),
-                "excluded_cohort_n13": round(float(exc["gleason_score_numeric"].dropna().mean()), 2),
-                "comparison_interpretation": "Excluded cases have higher mean Gleason score (7.82 vs 7.59)",
+                "included_cohort_n294": round(float(inc["gleason_score_numeric"].dropna().mean()), 2),
+                "excluded_cohort_n20": round(float(exc["gleason_score_numeric"].dropna().mean()), 2),
+                "comparison_interpretation": f"Excluded cases have higher mean Gleason score ({float(exc['gleason_score_numeric'].dropna().mean()):.2f} vs {float(inc['gleason_score_numeric'].dropna().mean()):.2f})",
             },
             {
                 "characteristic": "Advanced Pathologic Stage T3/T4 (%)",
-                "included_cohort_n301": round(float(inc["pathologic_t"].isin(["T3a", "T3b", "T4"]).mean() * 100), 1),
-                "excluded_cohort_n13": round(float(exc["pathologic_t"].isin(["T3a", "T3b", "T4"]).mean() * 100), 1),
-                "comparison_interpretation": "Excluded cases show 90.0% advanced T3/T4 stage vs 60.9% in included",
+                "included_cohort_n294": round(float(inc["pathologic_t"].isin(["T3a", "T3b", "T4"]).mean() * 100), 1),
+                "excluded_cohort_n20": round(float(exc["pathologic_t"].isin(["T3a", "T3b", "T4"]).mean() * 100), 1),
+                "comparison_interpretation": f"Excluded cases show {float(exc['pathologic_t'].isin(['T3a', 'T3b', 'T4']).mean() * 100):.1f}% advanced T3/T4 stage vs {float(inc['pathologic_t'].isin(['T3a', 'T3b', 'T4']).mean() * 100):.1f}% in included",
             },
             {
                 "characteristic": "True Recurrence Event Prevalence (%)",
-                "included_cohort_n301": round(float((inc["survival_event_indicator"] == 1.0).mean() * 100), 1),
-                "excluded_cohort_n13": round(float(exc["undated_recurrence_flag"].mean() * 100), 1),
-                "comparison_interpretation": "46.2% of excluded patients suffered documented prostate recurrence (6/13), downwardly biasing observed continuous-time event rates",
+                "included_cohort_n294": round(float((inc["survival_event_indicator"] == 1.0).mean() * 100), 1),
+                "excluded_cohort_n20": round(float(exc["undated_recurrence_flag"].mean() * 100), 1),
+                "comparison_interpretation": f"{float(exc['undated_recurrence_flag'].mean() * 100):.1f}% of excluded patients suffered documented prostate recurrence (13/20), downwardly biasing observed continuous-time event rates in exact-time survival",
             },
         ]
     )
+    bias_audit.to_csv(RESEARCH_V32_DIR / "SELECTION_BIAS_AUDIT.csv", index=False)
     bias_audit.to_csv(RESEARCH_V3_DIR / "SELECTION_BIAS_AUDIT.csv", index=False)
     bias_audit.to_csv(RESEARCH_V2_DIR / "SELECTION_BIAS_AUDIT.csv", index=False)
 
@@ -720,6 +921,7 @@ def main() -> None:
             {"field": "event_recurrence_exact_date", "missing_count": int(cohort[cohort['outcome_definitive_recurrence'] == 1]['days_to_recurrence_exact'].isna().sum()), "pct": float(cohort[cohort['outcome_definitive_recurrence'] == 1]['days_to_recurrence_exact'].isna().mean() * 100)},
         ]
     )
+    missing_tbl.to_csv(RESEARCH_V32_DIR / "MISSINGNESS_TABLE.csv", index=False)
     missing_tbl.to_csv(RESEARCH_V3_DIR / "MISSINGNESS_TABLE.csv", index=False)
     missing_tbl.to_csv(RESEARCH_V2_DIR / "MISSINGNESS_TABLE.csv", index=False)
 

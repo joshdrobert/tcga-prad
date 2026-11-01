@@ -10,12 +10,16 @@ Exploratory Composite Binary Cohort (Positives + Double Neg + Asymmetric Neg),30
 "    * Asymmetric: BCR=NO, NTE missing",9
 "    * Asymmetric: NTE=NO, BCR missing",37
 Fully Indeterminate Cases (Excluded from all primary/exploratory non-events),5
-Continuous-Time Survival: Strict Sensitivity Cohort (Dated events + Double Negatives),255
-  - Strict Dated Prostate Recurrence Events,64
+Continuous-Time Survival: Strict Sensitivity Cohort (Dated events + Double Negatives),248
+  - Strict Dated Prostate Recurrence Events,57
   - Strict Double-Negative Censored Non-Events,191
-Continuous-Time Survival: Exploratory Cohort (Admitting 46 asymmetric records),301
+Continuous-Time Survival: Exploratory Cohort (Admitting 46 asymmetric records),294
   - Exploratory Censored Non-Events (191 double-neg + 46 asymmetric),237
-Excluded from Exact Continuous Survival (Total),13
-  - Undated Prostate Recurrence Events,6
+Excluded from Exact Continuous Survival (Total),20
+  - Undated Prostate Recurrence Events,13
   - Second Non-Prostatic Primary Tumors,2
   - Fully Indeterminate Records,5
+Continuous-Time Survival (Permissive Sensitivity): Total Evaluated Patients,301
+  - Permissive Sensitivity Cohort (Dated events + Double Negatives),255
+  - Permissive Dated Prostate Recurrence Events,64
+  - Permissive Undated Prostate Recurrence Events,6

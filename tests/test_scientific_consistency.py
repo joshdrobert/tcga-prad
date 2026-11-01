@@ -38,21 +38,26 @@ def test_cohort_denominator_consistency():
     assert def_paired_row["non_events_n"] == 143
     assert metrics["primary_definitive_cohort"]["paired_molecular_n"] == 187
 
-    # 4. Survival Cohorts
+    # 4. Survival Cohorts (Strict Primary + Permissive Sensitivity)
     surv_tbl = pd.read_csv(REPO_ROOT / "tables" / "table_prad_survival_analysis.csv")
     strict_row = surv_tbl[surv_tbl["analysis_definition"].str.contains("Strict")].iloc[0]
     exp_row = surv_tbl[surv_tbl["analysis_definition"].str.contains("Exploratory")].iloc[0]
-    assert strict_row["evaluable_n"] == 255
-    assert strict_row["dated_events"] == 64
+    assert strict_row["evaluable_n"] == 248
+    assert strict_row["dated_events"] == 57
     assert strict_row["censored_non_events"] == 191
-    assert exp_row["evaluable_n"] == 301
-    assert exp_row["dated_events"] == 64
+    assert exp_row["evaluable_n"] == 294
+    assert exp_row["dated_events"] == 57
     assert exp_row["censored_non_events"] == 237
 
-    # 5. Excluded Cases (13 total: 6 undated prostate recurrence + 2 second primaries + 5 indeterminate)
-    bias_tbl = pd.read_csv(REPO_ROOT / "research" / "v3" / "SELECTION_BIAS_AUDIT.csv")
+    # Permissive sensitivity check
+    perm_strict = surv_tbl[surv_tbl["survival_tier"] == "PERMISSIVE_SENSITIVITY_DOUBLE_NEG"].iloc[0]
+    assert perm_strict["evaluable_n"] == 255
+    assert perm_strict["dated_events"] == 64
+
+    # 5. Excluded Cases (20 strict total: 13 undated prostate recurrence + 2 second primaries + 5 indeterminate)
+    bias_tbl = pd.read_csv(REPO_ROOT / "research" / "v3.2" / "SELECTION_BIAS_AUDIT.csv")
     size_row = bias_tbl[bias_tbl["characteristic"] == "Cohort Size (N)"].iloc[0]
-    assert size_row["excluded_cohort_n13"] == 13
+    assert size_row["excluded_cohort_n20"] == 20
 
 
 def test_auroc_and_discrimination_consistency():

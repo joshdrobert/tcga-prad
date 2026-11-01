@@ -1,0 +1,6 @@
+characteristic,included_cohort_n294,excluded_cohort_n20,comparison_interpretation
+Cohort Size (N),294.0,20.0,20 patients excluded from strict continuous survival: 13 undated prostate recurrence events + 2 second primary cancers + 5 indeterminate
+Mean Age at Diagnosis (years),61.45,59.8,Excluded patients slightly younger at diagnosis (59.80 vs 61.45 years)
+Mean Gleason Score,7.59,7.7,Excluded cases have higher mean Gleason score (7.70 vs 7.59)
+Advanced Pathologic Stage T3/T4 (%),59.2,85.0,Excluded cases show 85.0% advanced T3/T4 stage vs 59.2% in included
+True Recurrence Event Prevalence (%),19.4,65.0,"65.0% of excluded patients suffered documented prostate recurrence (13/20), downwardly biasing observed continuous-time event rates in exact-time survival"

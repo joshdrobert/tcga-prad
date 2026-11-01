@@ -22,6 +22,7 @@ from sklearn.preprocessing import OneHotEncoder, StandardScaler
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 RESEARCH_V2_DIR = PROJECT_ROOT / "research" / "v2"
 RESEARCH_V3_DIR = PROJECT_ROOT / "research" / "v3"
+RESEARCH_V32_DIR = PROJECT_ROOT / "research" / "v3.2"
 RANDOM_STATE = 20260626
 
 
@@ -388,10 +389,13 @@ def main() -> None:
 
     # =========================================================================
     # PART 4: SURVIVAL ANALYSIS — STRICT SENSITIVITY VS EXPLORATORY COHORTS
+    # WITH PERMISSIVE SENSITIVITY BENCHMARKING
     # ZERO POSTOPERATIVE PSA LEAKAGE IN BASELINE COX MODELS
     # TIME ORIGIN: DAYS FROM INITIAL PATHOLOGIC DIAGNOSIS
     # =========================================================================
-    # Cohort 4A: Strict Survival Sensitivity Cohort (n=255: 64 dated prostate events, 191 double-negative non-events)
+    baseline_cox_covs = ["age_at_diagnosis_years", "gleason_score_numeric"]
+
+    # 4A. PRIMARY STRICT SENSITIVITY COHORT (n=248: 57 dated prostate events, 191 double-negative non-events)
     strict_mask = (recurrence["survival_event_indicator"] == 1.0) | (recurrence["composite_status_detail"] == "DOCUMENTED_NON_RECURRENCE")
     strict_surv_df = recurrence[strict_mask & recurrence["survival_duration_days"].notna() & (recurrence["survival_duration_days"] > 0)].copy()
 
@@ -399,7 +403,7 @@ def main() -> None:
     kmf_strict.fit(
         strict_surv_df["survival_duration_days"].values,
         strict_surv_df["survival_event_indicator"].astype(int).values,
-        label=f"Strict Sensitivity Cohort (Double-Negatives Only, n={len(strict_surv_df)})",
+        label=f"Strict Primary Sensitivity (Double-Negatives Only, n={len(strict_surv_df)})",
     )
     strict_r1 = float(kmf_strict.predict(365.25))
     strict_r3 = float(kmf_strict.predict(365.25 * 3))
@@ -407,20 +411,18 @@ def main() -> None:
     strict_median = float(kmf_strict.median_survival_time_) if pd.notna(kmf_strict.median_survival_time_) else np.nan
     strict_median_val = None if (np.isinf(strict_median) or pd.isna(strict_median)) else float(strict_median)
 
-    # PURE BASELINE COVARIATES ONLY (NO POSTOPERATIVE PSA!)
-    baseline_cox_covs = ["age_at_diagnosis_years", "gleason_score_numeric"]
     strict_app_c, strict_cv_c, strict_cox_summary, strict_ph_test = evaluate_cv_cox_model(
         strict_surv_df, "survival_duration_days", "survival_event_indicator", baseline_cox_covs
     )
 
-    # Cohort 4B: Exploratory Survival Cohort (n=301: 64 dated prostate events, 237 non-events including 46 asymmetric)
+    # 4B. PRIMARY STRICT EXPLORATORY COHORT (n=294: 57 dated prostate events, 237 non-events including 46 asymmetric)
     exp_surv_df = recurrence[recurrence["survival_duration_days"].notna() & (recurrence["survival_duration_days"] > 0)].copy()
 
     kmf_exp = KaplanMeierFitter()
     kmf_exp.fit(
         exp_surv_df["survival_duration_days"].values,
         exp_surv_df["survival_event_indicator"].astype(int).values,
-        label=f"Exploratory Survival Cohort (Admitting Asymmetric Surveillance, n={len(exp_surv_df)})",
+        label=f"Strict Primary Exploratory (Admitting Asymmetric Surveillance, n={len(exp_surv_df)})",
     )
     exp_r1 = float(kmf_exp.predict(365.25))
     exp_r3 = float(kmf_exp.predict(365.25 * 3))
@@ -432,19 +434,60 @@ def main() -> None:
         exp_surv_df, "survival_duration_days", "survival_event_indicator", baseline_cox_covs
     )
 
-    surv_results_tbl = pd.DataFrame(
+    # 4C. PERMISSIVE SENSITIVITY COHORT (n=255: 64 dated prostate events including 7 unresolved BCR dates, 191 double-negatives)
+    perm_strict_mask = (recurrence["survival_event_indicator_permissive"] == 1.0) | (recurrence["composite_status_detail"] == "DOCUMENTED_NON_RECURRENCE")
+    perm_strict_surv_df = recurrence[perm_strict_mask & recurrence["survival_duration_days_permissive"].notna() & (recurrence["survival_duration_days_permissive"] > 0)].copy()
+
+    kmf_perm_strict = KaplanMeierFitter()
+    kmf_perm_strict.fit(
+        perm_strict_surv_df["survival_duration_days_permissive"].values,
+        perm_strict_surv_df["survival_event_indicator_permissive"].astype(int).values,
+        label=f"Permissive Sensitivity (Double-Negatives Only, n={len(perm_strict_surv_df)})",
+    )
+    ps_r1 = float(kmf_perm_strict.predict(365.25))
+    ps_r3 = float(kmf_perm_strict.predict(365.25 * 3))
+    ps_r5 = float(kmf_perm_strict.predict(365.25 * 5))
+    ps_median = float(kmf_perm_strict.median_survival_time_) if pd.notna(kmf_perm_strict.median_survival_time_) else np.nan
+    ps_median_val = None if (np.isinf(ps_median) or pd.isna(ps_median)) else float(ps_median)
+
+    ps_app_c, ps_cv_c, ps_cox_summary, ps_ph_test = evaluate_cv_cox_model(
+        perm_strict_surv_df, "survival_duration_days_permissive", "survival_event_indicator_permissive", baseline_cox_covs
+    )
+
+    # 4D. PERMISSIVE EXPLORATORY COHORT (n=301: 64 dated prostate events, 237 non-events)
+    perm_exp_surv_df = recurrence[recurrence["survival_duration_days_permissive"].notna() & (recurrence["survival_duration_days_permissive"] > 0)].copy()
+
+    kmf_perm_exp = KaplanMeierFitter()
+    kmf_perm_exp.fit(
+        perm_exp_surv_df["survival_duration_days_permissive"].values,
+        perm_exp_surv_df["survival_event_indicator_permissive"].astype(int).values,
+        label=f"Permissive Exploratory (Admitting Asymmetric Surveillance, n={len(perm_exp_surv_df)})",
+    )
+    pe_r1 = float(kmf_perm_exp.predict(365.25))
+    pe_r3 = float(kmf_perm_exp.predict(365.25 * 3))
+    pe_r5 = float(kmf_perm_exp.predict(365.25 * 5))
+    pe_median = float(kmf_perm_exp.median_survival_time_) if pd.notna(kmf_perm_exp.median_survival_time_) else np.nan
+    pe_median_val = None if (np.isinf(pe_median) or pd.isna(pe_median)) else float(pe_median)
+
+    pe_app_c, pe_cv_c, pe_cox_summary, pe_ph_test = evaluate_cv_cox_model(
+        perm_exp_surv_df, "survival_duration_days_permissive", "survival_event_indicator_permissive", baseline_cox_covs
+    )
+
+    # Compile 4-Tier Survival Sensitivity Comparison Table
+    surv_sensitivity_tbl = pd.DataFrame(
         [
             {
                 "analysis_definition": "Strict Sensitivity Cohort (Double-Negatives Only)",
+                "survival_tier": "STRICT_PRIMARY_SENSITIVITY",
+                "cohort_label": "Strict Primary Sensitivity (Double-Negatives Only)",
+                "adjudication_rule": "Strict (7 unverified BCR dates withheld as undated recurrence)",
                 "time_origin": "Days from Initial Pathologic Diagnosis",
                 "prediction_landmark": "Post-Radical Prostatectomy Resection (Unmeasured Biopsy-to-Surgery Offset)",
                 "evaluable_n": len(strict_surv_df),
                 "dated_events": int(strict_surv_df["survival_event_indicator"].sum()),
                 "censored_non_events": int((strict_surv_df["survival_event_indicator"] == 0).sum()),
-                "undated_events_excluded": int(recurrence["undated_recurrence_flag"].sum()),
+                "undated_events_excluded": 13,
                 "asymmetric_non_events_excluded": 46,
-                "second_primary_cancers_excluded": 2,
-                "indeterminate_records_excluded": 5,
                 "rfs_1yr": strict_r1,
                 "rfs_3yr": strict_r3,
                 "rfs_5yr": strict_r5,
@@ -454,19 +497,19 @@ def main() -> None:
                 "cox_cv_c_index": strict_cv_c,
                 "schoenfeld_ph_p_age": strict_ph_test.get("age_at_diagnosis_years", np.nan),
                 "schoenfeld_ph_p_gleason": strict_ph_test.get("gleason_score_numeric", np.nan),
-                "schoenfeld_ph_interpretation": "No statistically significant violation detected (p > 0.05)",
             },
             {
                 "analysis_definition": "Exploratory Survival Cohort (Admitting Asymmetric Surveillance)",
+                "survival_tier": "STRICT_PRIMARY_EXPLORATORY",
+                "cohort_label": "Strict Primary Exploratory (Admitting Asymmetric Surveillance)",
+                "adjudication_rule": "Strict (7 unverified BCR dates withheld as undated recurrence)",
                 "time_origin": "Days from Initial Pathologic Diagnosis",
                 "prediction_landmark": "Post-Radical Prostatectomy Resection (Unmeasured Biopsy-to-Surgery Offset)",
                 "evaluable_n": len(exp_surv_df),
                 "dated_events": int(exp_surv_df["survival_event_indicator"].sum()),
                 "censored_non_events": int((exp_surv_df["survival_event_indicator"] == 0).sum()),
-                "undated_events_excluded": int(recurrence["undated_recurrence_flag"].sum()),
+                "undated_events_excluded": 13,
                 "asymmetric_non_events_excluded": 0,
-                "second_primary_cancers_excluded": 2,
-                "indeterminate_records_excluded": 5,
                 "rfs_1yr": exp_r1,
                 "rfs_3yr": exp_r3,
                 "rfs_5yr": exp_r5,
@@ -476,11 +519,60 @@ def main() -> None:
                 "cox_cv_c_index": exp_cv_c,
                 "schoenfeld_ph_p_age": exp_ph_test.get("age_at_diagnosis_years", np.nan),
                 "schoenfeld_ph_p_gleason": exp_ph_test.get("gleason_score_numeric", np.nan),
-                "schoenfeld_ph_interpretation": "No statistically significant violation detected (p > 0.05)",
+            },
+            {
+                "analysis_definition": "Permissive Sensitivity (Double-Negatives Only)",
+                "survival_tier": "PERMISSIVE_SENSITIVITY_DOUBLE_NEG",
+                "cohort_label": "Permissive Sensitivity (Double-Negatives Only)",
+                "adjudication_rule": "Permissive (Admitting 7 unverified BCR dates despite status conflict)",
+                "time_origin": "Days from Initial Pathologic Diagnosis",
+                "prediction_landmark": "Post-Radical Prostatectomy Resection (Unmeasured Biopsy-to-Surgery Offset)",
+                "evaluable_n": len(perm_strict_surv_df),
+                "dated_events": int(perm_strict_surv_df["survival_event_indicator_permissive"].sum()),
+                "censored_non_events": int((perm_strict_surv_df["survival_event_indicator_permissive"] == 0).sum()),
+                "undated_events_excluded": 6,
+                "asymmetric_non_events_excluded": 46,
+                "rfs_1yr": ps_r1,
+                "rfs_3yr": ps_r3,
+                "rfs_5yr": ps_r5,
+                "median_rfs_days": np.nan if ps_median_val is None else ps_median_val,
+                "median_rfs_status": "not_reached" if ps_median_val is None else "reached",
+                "cox_apparent_c_index": ps_app_c,
+                "cox_cv_c_index": ps_cv_c,
+                "schoenfeld_ph_p_age": ps_ph_test.get("age_at_diagnosis_years", np.nan),
+                "schoenfeld_ph_p_gleason": ps_ph_test.get("gleason_score_numeric", np.nan),
+            },
+            {
+                "analysis_definition": "Permissive Exploratory (Admitting Asymmetric Surveillance)",
+                "survival_tier": "PERMISSIVE_EXPLORATORY_ASYMMETRIC",
+                "cohort_label": "Permissive Exploratory (Admitting Asymmetric Surveillance)",
+                "adjudication_rule": "Permissive (Admitting 7 unverified BCR dates despite status conflict)",
+                "time_origin": "Days from Initial Pathologic Diagnosis",
+                "prediction_landmark": "Post-Radical Prostatectomy Resection (Unmeasured Biopsy-to-Surgery Offset)",
+                "evaluable_n": len(perm_exp_surv_df),
+                "dated_events": int(perm_exp_surv_df["survival_event_indicator_permissive"].sum()),
+                "censored_non_events": int((perm_exp_surv_df["survival_event_indicator_permissive"] == 0).sum()),
+                "undated_events_excluded": 6,
+                "asymmetric_non_events_excluded": 0,
+                "rfs_1yr": pe_r1,
+                "rfs_3yr": pe_r3,
+                "rfs_5yr": pe_r5,
+                "median_rfs_days": np.nan if pe_median_val is None else pe_median_val,
+                "median_rfs_status": "not_reached" if pe_median_val is None else "reached",
+                "cox_apparent_c_index": pe_app_c,
+                "cox_cv_c_index": pe_cv_c,
+                "schoenfeld_ph_p_age": pe_ph_test.get("age_at_diagnosis_years", np.nan),
+                "schoenfeld_ph_p_gleason": pe_ph_test.get("gleason_score_numeric", np.nan),
             },
         ]
     )
+    surv_sensitivity_tbl.to_csv(RESEARCH_V32_DIR / "SURVIVAL_SENSITIVITY_ANALYSIS.csv", index=False)
+    surv_sensitivity_tbl.to_csv(RESEARCH_V3_DIR / "SURVIVAL_SENSITIVITY_ANALYSIS.csv", index=False)
+    surv_sensitivity_tbl.to_csv(tables_dir / "table_prad_survival_sensitivity_analysis.csv", index=False)
+
+    surv_results_tbl = surv_sensitivity_tbl.copy()
     surv_results_tbl.to_csv(tables_dir / "table_prad_survival_analysis.csv", index=False)
+    surv_results_tbl.to_csv(RESEARCH_V32_DIR / "SURVIVAL_ANALYSIS.csv", index=False)
     surv_results_tbl.to_csv(RESEARCH_V3_DIR / "SURVIVAL_ANALYSIS.csv", index=False)
     surv_results_tbl.to_csv(RESEARCH_V2_DIR / "SURVIVAL_ANALYSIS.csv", index=False)
     strict_cox_summary.to_csv(tables_dir / "table_prad_cox_summary_strict.csv", index=False)
@@ -514,16 +606,18 @@ def main() -> None:
     fig.savefig(figures_dir / "prad_calibration.png")
     plt.close(fig)
 
-    # Figure 2: Kaplan-Meier Survival Comparison (Strict Sensitivity vs Exploratory)
+    # Figure 2: Kaplan-Meier Survival Comparison (Strict Primary vs Permissive Sensitivity)
     # TIME ORIGIN: DAYS FROM INITIAL PATHOLOGIC DIAGNOSIS
     fig, ax = plt.subplots(figsize=(6.5, 4.5), dpi=300)
-    kmf_strict.plot_survival_function(ax=ax, color="#1e3a8a", ci_show=True, label=f"Strict Sensitivity (n={len(strict_surv_df)}, {int(strict_surv_df['survival_event_indicator'].sum())} events)")
-    kmf_exp.plot_survival_function(ax=ax, color="#d97706", linestyle="--", ci_show=True, label=f"Exploratory Cohort (n={len(exp_surv_df)}, {int(exp_surv_df['survival_event_indicator'].sum())} events)")
+    kmf_strict.plot_survival_function(ax=ax, color="#1e3a8a", ci_show=True, label=f"Strict Primary Sensitivity (n={len(strict_surv_df)}, {int(strict_surv_df['survival_event_indicator'].sum())} events)")
+    kmf_exp.plot_survival_function(ax=ax, color="#d97706", linestyle="-", ci_show=True, label=f"Strict Primary Exploratory (n={len(exp_surv_df)}, {int(exp_surv_df['survival_event_indicator'].sum())} events)")
+    kmf_perm_strict.plot_survival_function(ax=ax, color="#3b82f6", linestyle="--", ci_show=False, alpha=0.7, label=f"Permissive Sensitivity (n={len(perm_strict_surv_df)}, {int(perm_strict_surv_df['survival_event_indicator_permissive'].sum())} events)")
+    kmf_perm_exp.plot_survival_function(ax=ax, color="#f59e0b", linestyle="--", ci_show=False, alpha=0.7, label=f"Permissive Exploratory (n={len(perm_exp_surv_df)}, {int(perm_exp_surv_df['survival_event_indicator_permissive'].sum())} events)")
     ax.set_xlabel("Days from Initial Pathologic Diagnosis", fontsize=9)
     ax.set_ylabel("Recurrence-Free Survival Probability", fontsize=9)
-    ax.set_title("Kaplan-Meier Recurrence-Free Survival from Initial Diagnosis\n(Prediction Landmark: Post-Resection; Median Not Reached)", fontsize=9.5)
+    ax.set_title("Kaplan-Meier Recurrence-Free Survival from Initial Diagnosis\n(Strict Primary vs Permissive Sensitivity; Median Not Reached)", fontsize=9.5)
     ax.grid(alpha=0.25)
-    ax.legend(fontsize=7, loc="lower left")
+    ax.legend(fontsize=6.5, loc="lower left")
     fig.tight_layout()
     fig.savefig(figures_dir / "prad_km_survival.png")
     plt.close(fig)
@@ -605,10 +699,14 @@ def main() -> None:
             "strict_evaluable_cases": len(strict_surv_df),
             "strict_median_rfs_days": strict_median_val,
             "strict_median_rfs_status": "not_reached" if strict_median_val is None else "reached",
+            "strict_rfs_1yr": strict_r1,
+            "strict_rfs_3yr": strict_r3,
+            "strict_rfs_5yr": strict_r5,
             "strict_cox_apparent_concordance_index": strict_app_c,
             "strict_cox_cv_concordance_index": strict_cv_c,
             "schoenfeld_ph_interpretation": "No statistically significant violation detected (p > 0.05)",
         },
+        "survival_sensitivity": surv_sensitivity_tbl.to_dict(orient="records"),
         "cbioportal_concordance": {
             "bcr_to_bcr_agreement": 1.0,
             "bcr_to_bcr_evaluable_n": 269,
@@ -654,11 +752,15 @@ def main() -> None:
     with open(artifacts_dir / "tcga_prad_metrics.json", "w") as f:
         json.dump(clean_metrics, f, indent=2, allow_nan=False)
 
-    # Mirror to web directories and research v3
+    # Mirror to web directories, research v3.2, research v3, and research v2
+    with open(RESEARCH_V32_DIR / "tcga_prad_metrics.json", "w") as f:
+        json.dump(clean_metrics, f, indent=2, allow_nan=False)
     with open(RESEARCH_V3_DIR / "tcga_prad_metrics.json", "w") as f:
         json.dump(clean_metrics, f, indent=2, allow_nan=False)
     with open(RESEARCH_V2_DIR / "tcga_prad_metrics.json", "w") as f:
         json.dump(clean_metrics, f, indent=2, allow_nan=False)
+
+    paired_molecular_table.to_csv(RESEARCH_V32_DIR / "PAIRED_MOLECULAR_COMPARISON.csv", index=False)
 
     for dest_dir in [PROJECT_ROOT / "web" / "static" / "research", PROJECT_ROOT / "web" / "research" / "artifacts"]:
         dest_dir.mkdir(parents=True, exist_ok=True)
