@@ -5,11 +5,10 @@
 **Auditor**: Lead Biomedical Research Engineer & Scientific Reproducibility Auditor  
 **Repositories**: `joshdrobert/tcga-prad` (Branch: `research/tcga-prad-v3.2-provenance-reconciliation`)  
 **Scope**: TCGA-PRAD Radical Prostatectomy Cohort ($N=314$)  
-**Target Submission**: AUA / AMIA 2027 (Oncology Informatics & Clinical Registry Methodology)  
+**Target Submission**: Osaka TWC 2027 (Prostate Cancer / Artificial Intelligence Track)  
 **Conference Status**: 
-- **Tokyo ISDC 2027 (SleepStager)**: **GO (Oral Target)** — Preserved unchanged (`e3a1f0a`).
-- **Osaka TWC 2027**: **NO-GO** — Rejection of premature clinical decision support deployment.
-- **AUA / AMIA 2027 (TCGA-PRAD)**: **RECOMMENDED FOR SUBMISSION** — Strict methodological harmonization and negative transcriptomic panel findings.
+- **Tokyo ISDC 2027 (SleepStager)**: **GO (Oral Target)** — Preserved frozen baseline (`e3a1f0a`).
+- **Osaka TWC 2027 (TCGA-PRAD)**: **READY WITH VENUE-FIT RISK** — Methodological benchmarking and clinical endpoint integrity for pre-salvage risk stratification. Author to submit before Nov 1, 2026 23:59 CET.
 
 ---
 
@@ -145,7 +144,7 @@ Previous manuscript iterations erroneously equated similar Brier scores with equ
 ## 7. Formal Release Decision & Author Sign-Off
 
 1. **SleepStager**: Remains locked on `main` (`e3a1f0a`). Tokyo ISDC 2027 submission is recommended for oral target upon author sign-off.
-2. **TCGA-PRAD V3.2**: Fully resolved, scientifically reproducible, and locked on branch `research/tcga-prad-v3.2-provenance-reconciliation`. Recommended for presentation at AUA / AMIA 2027.
+2. **TCGA-PRAD V3.2**: Fully resolved, scientifically reproducible, and locked on `main`. Submission package prepared for Osaka TWC 2027 (classified: READY WITH VENUE-FIT RISK). Author submission deadline: Nov 1, 2026, 23:59 CET.
 3. **Artifacts Exported**:
    - `research/v3.2/BCR_STATUS_DATE_CONFLICTS.csv` (29 patients discrepancy ledger)
    - `research/v3.2/EVENT_ADJUDICATION_CHANGES.csv` (27 patients corrected provenance)
