@@ -22,55 +22,62 @@
   },
   "endpoint_comparison_paired_187": {
     "adjudicated_definitive": {
-      "clinical_auroc": 0.7104259376986649,
+      "clinical_auroc": 0.7069294342021615,
       "clinical_auroc_95ci": [
-        0.6208467333875544,
-        0.7912883444992515
+        0.6196711056065073,
+        0.7856141396482305
       ],
-      "clinical_brier": 0.16732902106926492,
-      "clinical_cal_slope": 0.7564463684435189,
-      "molecular_auroc": 0.7027972027972028,
+      "clinical_brier": 0.1672908112423705,
+      "clinical_cal_slope": 0.7183474689732205,
+      "molecular_auroc": 0.6916719643992371,
       "molecular_auroc_95ci": [
-        0.6046039759268748,
-        0.7917209645638109
+        0.5898019542409207,
+        0.7865390764206643
       ],
-      "molecular_brier": 0.16720420806660186,
-      "molecular_cal_slope": 0.5109582489171486,
-      "delta_auroc": -0.0076287349014620975,
+      "molecular_brier": 0.16882925761264153,
+      "molecular_cal_slope": 0.4871482950874713,
+      "delta_auroc": -0.015257469802924417,
       "delta_auroc_95ci": [
-        -0.07630395191342602,
-        0.05655968236296654
+        -0.08607604261525917,
+        0.05094030923909523
       ]
     },
     "naive_unadjudicated": {
-      "clinical_auroc": 0.6367901234567901,
+      "clinical_auroc": 0.6539506172839507,
       "clinical_auroc_95ci": [
-        0.5067277568922305,
-        0.7603036034725253
+        0.5265585952518262,
+        0.7720541579315163
       ],
-      "clinical_brier": 0.11785430067639896,
-      "clinical_cal_slope": 0.42389318143446936,
-      "molecular_auroc": 0.7535802469135803,
+      "clinical_brier": 0.11629321537243717,
+      "clinical_cal_slope": 0.5464980446075138,
+      "molecular_auroc": 0.745679012345679,
       "molecular_auroc_95ci": [
-        0.6161847832113551,
-        0.8651268257185925
+        0.6197429885723196,
+        0.8536493579106846
       ],
-      "molecular_brier": 0.10195431511080152,
-      "molecular_cal_slope": 0.6009759827874362,
-      "delta_auroc": 0.11679012345679018,
+      "molecular_brier": 0.10524209544893764,
+      "molecular_cal_slope": 0.6122588966325974,
+      "delta_auroc": 0.09172839506172836,
       "delta_auroc_95ci": [
-        0.022932046341834385,
-        0.22269127129209046
+        5.183326058491604e-05,
+        0.19242398734822955
       ]
     },
-    "spurious_delta_auroc_inflation": 0.12441885835825228,
+    "spurious_delta_auroc_inflation": 0.10698586486465278,
+    "difference_in_differences": {
+      "did_auroc": 0.10698586486465278,
+      "did_auroc_95ci": [
+        0.011106246433397929,
+        0.20126657629545278
+      ]
+    },
     "rank_correlation_naive_vs_adjudicated": {
-      "spearman_rho": 0.8937373229570049,
-      "kendall_tau": 0.7104907325080908
+      "spearman_rho": 0.9494041174074059,
+      "kendall_tau": 0.8157743235463444
     },
     "top_quintile_reclassification": {
-      "patients_shifting_quintiles": 18,
-      "pct_patients_shifting": 9.62566844919786
+      "patients_shifting_quintiles": 14,
+      "pct_patients_shifting": 7.4866310160427805
     }
   },
   "discordant_patient_profile_n19": {

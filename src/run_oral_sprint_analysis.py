@@ -29,6 +29,8 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import average_precision_score, brier_score_loss, roc_auc_score
 from sklearn.model_selection import StratifiedKFold, cross_val_predict
 
+from src.run_rigorous_validation import build_pipeline
+
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 DATA_PROCESSED = PROJECT_ROOT / "data_processed"
 SPRINT_DIR = PROJECT_ROOT / "research" / "oral_sprint_20261101"
@@ -126,22 +128,133 @@ def main():
     pure_all = pure_clinical + expr_cols
 
     # Prepare Design Matrices
-    from src.run_rigorous_validation import evaluate_feature_set
-
-    # Define targets
+    # 3. Construct Frozen Common Folds for All 4 Models
+    # Stratified on joint 3-class status (Both=0: 143, Both=1: 25, Adj=1 & Naive=0: 19)
+    # This guarantees identical patient training and test folds for all 4 models,
+    # with balanced event distributions across both outcome definitions simultaneously.
+    y_adj = paired_df["outcome_definitive_recurrence"].values.astype(int)
     paired_df["outcome_naive_bcr"] = (paired_df["bcr_status"] == "DOCUMENTED_POSITIVE").astype(int)
+    y_naive = paired_df["outcome_naive_bcr"].values.astype(int)
+    joint_class = 2 * y_adj + y_naive
 
-    # 3. Model Evaluation: Adjudicated Definitive
-    print("\n>>> Evaluating Adjudicated Definitive Models (N=187)...")
-    res_adj_clin, p_adj_clin, y_adj = evaluate_feature_set(paired_df, pure_clinical, "outcome_definitive_recurrence")
-    res_adj_mol, p_adj_mol, _ = evaluate_feature_set(paired_df, pure_all, "outcome_definitive_recurrence")
-    diff_adj = compute_paired_diff_ci(y_adj, p_adj_clin, p_adj_mol)
+    cv = StratifiedKFold(n_splits=5, shuffle=True, random_state=RANDOM_STATE)
+    common_folds = list(cv.split(paired_df, joint_class))
 
-    # 4. Model Evaluation: Naive BCR Status
-    print(">>> Evaluating Naive Raw BCR Models (N=187)...")
-    res_naive_clin, p_naive_clin, y_naive = evaluate_feature_set(paired_df, pure_clinical, "outcome_naive_bcr")
-    res_naive_mol, p_naive_mol, _ = evaluate_feature_set(paired_df, pure_all, "outcome_naive_bcr")
-    diff_naive = compute_paired_diff_ci(y_naive, p_naive_clin, p_naive_mol)
+    def fit_oof_predictions(features: list[str], y_target: np.ndarray) -> np.ndarray:
+        X = paired_df[features].copy()
+        num_cols = X.select_dtypes(include=["number", "bool"]).columns.tolist()
+        cat_cols = [c for c in X.columns if c not in num_cols]
+        oof_probs = np.zeros(len(y_target))
+
+        for train_idx, val_idx in common_folds:
+            pipe = build_pipeline(num_cols, cat_cols)
+            pipe.fit(X.iloc[train_idx], y_target[train_idx])
+            oof_probs[val_idx] = pipe.predict_proba(X.iloc[val_idx])[:, 1]
+        return oof_probs
+
+    print("\n>>> Fitting 4 Models Across Frozen Common Folds (N=187)...")
+    p_naive_clin = fit_oof_predictions(pure_clinical, y_naive)
+    p_naive_mol = fit_oof_predictions(pure_all, y_naive)
+    p_adj_clin = fit_oof_predictions(pure_clinical, y_adj)
+    p_adj_mol = fit_oof_predictions(pure_all, y_adj)
+
+    # 4. Consistent Paired Patient Bootstrap Resampling (B=1500)
+    print(">>> Running Paired Patient Bootstrap (B=1500) for Within- and Between-Endpoint Metrics...")
+    rng = np.random.RandomState(RANDOM_STATE)
+    N = len(y_adj)
+    B = 1500
+
+    b_anc, b_anm, b_aac, b_aam = [], [], [], []
+    b_bnc, b_bnm, b_bac, b_bam = [], [], [], []
+    b_dnaive, b_dadj, b_did = [], [], []
+
+    for _ in range(B):
+        idx = rng.randint(0, N, N)
+        if len(np.unique(y_naive[idx])) < 2 or len(np.unique(y_adj[idx])) < 2:
+            continue
+        anc = roc_auc_score(y_naive[idx], p_naive_clin[idx])
+        anm = roc_auc_score(y_naive[idx], p_naive_mol[idx])
+        aac = roc_auc_score(y_adj[idx], p_adj_clin[idx])
+        aam = roc_auc_score(y_adj[idx], p_adj_mol[idx])
+
+        bnc = brier_score_loss(y_naive[idx], p_naive_clin[idx])
+        bnm = brier_score_loss(y_naive[idx], p_naive_mol[idx])
+        bac = brier_score_loss(y_adj[idx], p_adj_clin[idx])
+        bam = brier_score_loss(y_adj[idx], p_adj_mol[idx])
+
+        dn = anm - anc
+        da = aam - aac
+        did = dn - da
+
+        b_anc.append(anc)
+        b_anm.append(anm)
+        b_aac.append(aac)
+        b_aam.append(aam)
+        b_bnc.append(bnc)
+        b_bnm.append(bnm)
+        b_bac.append(bac)
+        b_bam.append(bam)
+        b_dnaive.append(dn)
+        b_dadj.append(da)
+        b_did.append(did)
+
+    def get_ci(arr: list[float]) -> tuple[float, float]:
+        return float(np.percentile(arr, 2.5)), float(np.percentile(arr, 97.5))
+
+    res_naive_clin = {
+        "auroc": float(roc_auc_score(y_naive, p_naive_clin)),
+        "auroc_ci_low": get_ci(b_anc)[0],
+        "auroc_ci_high": get_ci(b_anc)[1],
+        "brier": float(brier_score_loss(y_naive, p_naive_clin)),
+        "brier_ci_low": get_ci(b_bnc)[0],
+        "brier_ci_high": get_ci(b_bnc)[1],
+        "calibration_slope": compute_calibration_slope(y_naive, p_naive_clin)[1],
+    }
+    res_naive_mol = {
+        "auroc": float(roc_auc_score(y_naive, p_naive_mol)),
+        "auroc_ci_low": get_ci(b_anm)[0],
+        "auroc_ci_high": get_ci(b_anm)[1],
+        "brier": float(brier_score_loss(y_naive, p_naive_mol)),
+        "brier_ci_low": get_ci(b_bnm)[0],
+        "brier_ci_high": get_ci(b_bnm)[1],
+        "calibration_slope": compute_calibration_slope(y_naive, p_naive_mol)[1],
+    }
+    diff_naive = {
+        "delta_auroc": res_naive_mol["auroc"] - res_naive_clin["auroc"],
+        "delta_auroc_ci_low": get_ci(b_dnaive)[0],
+        "delta_auroc_ci_high": get_ci(b_dnaive)[1],
+        "delta_brier": res_naive_mol["brier"] - res_naive_clin["brier"],
+    }
+
+    res_adj_clin = {
+        "auroc": float(roc_auc_score(y_adj, p_adj_clin)),
+        "auroc_ci_low": get_ci(b_aac)[0],
+        "auroc_ci_high": get_ci(b_aac)[1],
+        "brier": float(brier_score_loss(y_adj, p_adj_clin)),
+        "brier_ci_low": get_ci(b_bac)[0],
+        "brier_ci_high": get_ci(b_bac)[1],
+        "calibration_slope": compute_calibration_slope(y_adj, p_adj_clin)[1],
+    }
+    res_adj_mol = {
+        "auroc": float(roc_auc_score(y_adj, p_adj_mol)),
+        "auroc_ci_low": get_ci(b_aam)[0],
+        "auroc_ci_high": get_ci(b_aam)[1],
+        "brier": float(brier_score_loss(y_adj, p_adj_mol)),
+        "brier_ci_low": get_ci(b_bam)[0],
+        "brier_ci_high": get_ci(b_bam)[1],
+        "calibration_slope": compute_calibration_slope(y_adj, p_adj_mol)[1],
+    }
+    diff_adj = {
+        "delta_auroc": res_adj_mol["auroc"] - res_adj_clin["auroc"],
+        "delta_auroc_ci_low": get_ci(b_dadj)[0],
+        "delta_auroc_ci_high": get_ci(b_dadj)[1],
+        "delta_brier": res_adj_mol["brier"] - res_adj_clin["brier"],
+    }
+    did_res = {
+        "did_auroc": diff_naive["delta_auroc"] - diff_adj["delta_auroc"],
+        "did_auroc_ci_low": get_ci(b_did)[0],
+        "did_auroc_ci_high": get_ci(b_did)[1],
+    }
 
     # 5. Profile the 19 Discordant Patients
     paired_df["adjudicated_event"] = y_adj
@@ -338,6 +451,10 @@ def main():
                 "delta_auroc_95ci": [diff_naive["delta_auroc_ci_low"], diff_naive["delta_auroc_ci_high"]],
             },
             "spurious_delta_auroc_inflation": diff_naive["delta_auroc"] - diff_adj["delta_auroc"],
+            "difference_in_differences": {
+                "did_auroc": did_res["did_auroc"],
+                "did_auroc_95ci": [did_res["did_auroc_ci_low"], did_res["did_auroc_ci_high"]],
+            },
             "rank_correlation_naive_vs_adjudicated": {
                 "spearman_rho": float(rho_clin),
                 "kendall_tau": float(tau_clin),
@@ -396,11 +513,11 @@ def main():
                 ],
                 fmt="none", ecolor="black", capsize=5, lw=1.5)
     ax.set_xticks([1.0, 2.2])
-    ax.set_xticklabels(["Naive Raw BCR (n=187, 25 events)\nSpurious Delta AUROC: +0.1168",
-                        "Harmonized Adjudicated (n=187, 44 events)\nTrue Delta AUROC: -0.0076"], fontsize=11, fontweight="bold")
-    ax.set_ylabel("Cross-Validated AUROC (5-Fold CV)", fontsize=12)
+    ax.set_xticklabels([f"Naive BCR-Status-Only (n=187, 25 events)\nDelta AUROC: {diff_naive['delta_auroc']:+.4f}",
+                        f"Harmonized Adjudicated (n=187, 44 events)\nDelta AUROC: {diff_adj['delta_auroc']:+.4f}"], fontsize=11, fontweight="bold")
+    ax.set_ylabel("Cross-Validated AUROC (Frozen 5-Fold CV)", fontsize=12)
     ax.set_ylim(0.45, 0.95)
-    ax.set_title("Endpoint Distortion Induces Spurious Genomic Gain in TCGA-PRAD\n(19 Missed Recurrences Suppress Naive Clinical Staging)", fontsize=13, fontweight="bold")
+    ax.set_title(f"Recurrence Endpoint Reverses Apparent Genomic Gain in TCGA-PRAD\nDifference-in-Differences: {did_res['did_auroc']:+.4f} (95% CI: {did_res['did_auroc_ci_low']:+.4f} to {did_res['did_auroc_ci_high']:+.4f})", fontsize=12, fontweight="bold")
     ax.legend([bars[0], bars[1]], ["Clinical Staging Only", "Clinical + 13-Gene RNA Panel"], loc="upper left", frameon=True)
     plt.tight_layout()
     fig.savefig(FIGURES_DIR / "fig1_endpoint_distortion_auroc.png")
@@ -410,13 +527,13 @@ def main():
     fig, ax = plt.subplots(figsize=(8, 6), dpi=300)
     ax.plot(dca_df["threshold_probability"], dca_df["net_benefit_treat_none"], label="Treat None (Net Benefit = 0)", color="black", linestyle="--")
     ax.plot(dca_df["threshold_probability"], dca_df["net_benefit_treat_all"], label="Treat All", color="gray", linestyle=":")
-    ax.plot(dca_df["threshold_probability"], dca_df["net_benefit_clinical"], label="Pure Clinical Staging (5-Fold CV)", color="#1F77B4", lw=2.5)
-    ax.plot(dca_df["threshold_probability"], dca_df["net_benefit_molecular"], label="Clinical + 13-Gene RNA Panel (5-Fold CV)", color="#D62728", lw=2.5, linestyle="-.")
+    ax.plot(dca_df["threshold_probability"], dca_df["net_benefit_clinical"], label="Pure Clinical Staging (Frozen 5-Fold CV)", color="#1F77B4", lw=2.5)
+    ax.plot(dca_df["threshold_probability"], dca_df["net_benefit_molecular"], label="Clinical + 13-Gene RNA Panel (Frozen 5-Fold CV)", color="#D62728", lw=2.5, linestyle="-.")
     ax.set_xlabel("Threshold Recurrence Probability", fontsize=12)
     ax.set_ylabel("Net Benefit", fontsize=12)
     ax.set_ylim(-0.05, 0.20)
     ax.set_xlim(0.05, 0.45)
-    ax.set_title("Decision Curve Analysis in Paired Molecular Cohort (n=187)\nClinical Staging Demonstrates Non-Inferior Clinical Net Benefit", fontsize=13, fontweight="bold")
+    ax.set_title("Decision Curve Analysis in Paired Molecular Cohort (n=187)\nClinical Staging vs Clinical + 13-Gene RNA Across Decision Thresholds", fontsize=12, fontweight="bold")
     ax.legend(loc="upper right", frameon=True)
     plt.tight_layout()
     fig.savefig(FIGURES_DIR / "fig2_decision_curve_analysis.png")
@@ -428,18 +545,20 @@ def main():
         {"claim_id": "CLM-SPRINT-02", "metric_name": "Paired Molecular Subcohort Size", "value": "187 patients (44 events, 143 non-events)", "source_file": "research/oral_sprint_20261101/artifacts/ORAL_SPRINT_METRICS.json", "status": "VERIFIED"},
         {"claim_id": "CLM-SPRINT-03", "metric_name": "Naive Single-Source Recurrence Events", "value": "25 events (162 non-events)", "source_file": "research/oral_sprint_20261101/artifacts/ORAL_SPRINT_METRICS.json", "status": "VERIFIED"},
         {"claim_id": "CLM-SPRINT-04", "metric_name": "Unadjudicated False-Negative Recurrences", "value": "19 patients (43.2% of true recurrences)", "source_file": "research/oral_sprint_20261101/artifacts/DISCORDANT_PATIENT_PROFILES.csv", "status": "VERIFIED"},
-        {"claim_id": "CLM-SPRINT-05", "metric_name": "Discordant Patients with pT3/pT4 Stage", "value": "89.5% (17 of 19 patients)", "source_file": "research/oral_sprint_20261101/artifacts/DISCORDANT_PATIENT_PROFILES.csv", "status": "VERIFIED"},
-        {"claim_id": "CLM-SPRINT-06", "metric_name": "Discordant Patients with Gleason >= 8", "value": "63.2% (Mean Gleason 8.16)", "source_file": "research/oral_sprint_20261101/artifacts/DISCORDANT_PATIENT_PROFILES.csv", "status": "VERIFIED"},
-        {"claim_id": "CLM-SPRINT-07", "metric_name": "Naive Clinical Staging AUROC", "value": "0.6368 (95% CI: 0.5067 to 0.7603)", "source_file": "research/oral_sprint_20261101/artifacts/NAIVE_VS_ADJUDICATED_COMPARISON.csv", "status": "VERIFIED"},
-        {"claim_id": "CLM-SPRINT-08", "metric_name": "Naive Clinical + RNA AUROC", "value": "0.7536 (95% CI: 0.6162 to 0.8651)", "source_file": "research/oral_sprint_20261101/artifacts/NAIVE_VS_ADJUDICATED_COMPARISON.csv", "status": "VERIFIED"},
-        {"claim_id": "CLM-SPRINT-09", "metric_name": "Spurious Naive Delta AUROC", "value": "+0.1168 (95% CI: +0.0231 to +0.2209)", "source_file": "research/oral_sprint_20261101/artifacts/NAIVE_VS_ADJUDICATED_COMPARISON.csv", "status": "VERIFIED"},
-        {"claim_id": "CLM-SPRINT-10", "metric_name": "Harmonized Clinical Staging AUROC", "value": "0.7104 (95% CI: 0.6208 to 0.7913)", "source_file": "research/oral_sprint_20261101/artifacts/NAIVE_VS_ADJUDICATED_COMPARISON.csv", "status": "VERIFIED"},
-        {"claim_id": "CLM-SPRINT-11", "metric_name": "Harmonized Clinical + RNA AUROC", "value": "0.7028 (95% CI: 0.6046 to 0.7917)", "source_file": "research/oral_sprint_20261101/artifacts/NAIVE_VS_ADJUDICATED_COMPARISON.csv", "status": "VERIFIED"},
-        {"claim_id": "CLM-SPRINT-12", "metric_name": "True Harmonized Delta AUROC", "value": "-0.0076 (95% CI: -0.0735 to +0.0559)", "source_file": "research/oral_sprint_20261101/artifacts/NAIVE_VS_ADJUDICATED_COMPARISON.csv", "status": "VERIFIED"},
-        {"claim_id": "CLM-SPRINT-13", "metric_name": "Top-Quintile Risk Reclassification", "value": "18 patients (9.6% discordance)", "source_file": "research/oral_sprint_20261101/artifacts/ORAL_SPRINT_METRICS.json", "status": "VERIFIED"},
-        {"claim_id": "CLM-SPRINT-14", "metric_name": "Molecular Complete-Case Selection Bias", "value": "Excluded without RNA had 35.1% recurrence vs 23.5% with RNA (75.0% vs 58.4% pT3/T4)", "source_file": "research/oral_sprint_20261101/artifacts/SELECTION_BIAS_TABLE.csv", "status": "VERIFIED"},
-        {"claim_id": "CLM-SPRINT-15", "metric_name": "Surveillance PSA Post-Treatment Timing", "value": "Median 511 days post-diagnosis (C-index artificially inflates from 0.7011 to 0.7320)", "source_file": "research/oral_sprint_20261101/artifacts/ORAL_SPRINT_METRICS.json", "status": "VERIFIED"},
+        {"claim_id": "CLM-SPRINT-05", "metric_name": "Discordant Patients with pT3/pT4 Stage", "value": f"{np.mean(discordant_df['pathologic_t'].isin(['T3a', 'T3b', 'T4'])) * 100:.1f}% (17 of 19 patients)", "source_file": "research/oral_sprint_20261101/artifacts/DISCORDANT_PATIENT_PROFILES.csv", "status": "VERIFIED"},
+        {"claim_id": "CLM-SPRINT-06", "metric_name": "Discordant Patients with Gleason >= 8", "value": f"{np.mean(discordant_df['gleason_score_numeric'] >= 8) * 100:.1f}% (Mean Gleason {discordant_df['gleason_score_numeric'].mean():.2f})", "source_file": "research/oral_sprint_20261101/artifacts/DISCORDANT_PATIENT_PROFILES.csv", "status": "VERIFIED"},
+        {"claim_id": "CLM-SPRINT-07", "metric_name": "Naive Clinical Staging AUROC", "value": f"{res_naive_clin['auroc']:.4f} (95% CI: {res_naive_clin['auroc_ci_low']:.4f} to {res_naive_clin['auroc_ci_high']:.4f})", "source_file": "research/oral_sprint_20261101/artifacts/NAIVE_VS_ADJUDICATED_COMPARISON.csv", "status": "VERIFIED"},
+        {"claim_id": "CLM-SPRINT-08", "metric_name": "Naive Clinical + RNA AUROC", "value": f"{res_naive_mol['auroc']:.4f} (95% CI: {res_naive_mol['auroc_ci_low']:.4f} to {res_naive_mol['auroc_ci_high']:.4f})", "source_file": "research/oral_sprint_20261101/artifacts/NAIVE_VS_ADJUDICATED_COMPARISON.csv", "status": "VERIFIED"},
+        {"claim_id": "CLM-SPRINT-09", "metric_name": "Naive Delta AUROC", "value": f"{diff_naive['delta_auroc']:+.4f} (95% CI: {diff_naive['delta_auroc_ci_low']:+.4f} to {diff_naive['delta_auroc_ci_high']:+.4f})", "source_file": "research/oral_sprint_20261101/artifacts/NAIVE_VS_ADJUDICATED_COMPARISON.csv", "status": "VERIFIED"},
+        {"claim_id": "CLM-SPRINT-10", "metric_name": "Harmonized Clinical Staging AUROC", "value": f"{res_adj_clin['auroc']:.4f} (95% CI: {res_adj_clin['auroc_ci_low']:.4f} to {res_adj_clin['auroc_ci_high']:.4f})", "source_file": "research/oral_sprint_20261101/artifacts/NAIVE_VS_ADJUDICATED_COMPARISON.csv", "status": "VERIFIED"},
+        {"claim_id": "CLM-SPRINT-11", "metric_name": "Harmonized Clinical + RNA AUROC", "value": f"{res_adj_mol['auroc']:.4f} (95% CI: {res_adj_mol['auroc_ci_low']:.4f} to {res_adj_mol['auroc_ci_high']:.4f})", "source_file": "research/oral_sprint_20261101/artifacts/NAIVE_VS_ADJUDICATED_COMPARISON.csv", "status": "VERIFIED"},
+        {"claim_id": "CLM-SPRINT-12", "metric_name": "Harmonized Delta AUROC", "value": f"{diff_adj['delta_auroc']:+.4f} (95% CI: {diff_adj['delta_auroc_ci_low']:+.4f} to {diff_adj['delta_auroc_ci_high']:+.4f})", "source_file": "research/oral_sprint_20261101/artifacts/NAIVE_VS_ADJUDICATED_COMPARISON.csv", "status": "VERIFIED"},
+        {"claim_id": "CLM-SPRINT-13", "metric_name": "Difference-in-Differences AUROC", "value": f"{did_res['did_auroc']:+.4f} (95% CI: {did_res['did_auroc_ci_low']:+.4f} to {did_res['did_auroc_ci_high']:+.4f})", "source_file": "research/oral_sprint_20261101/artifacts/ORAL_SPRINT_METRICS.json", "status": "VERIFIED"},
+        {"claim_id": "CLM-SPRINT-14", "metric_name": "Top-Quintile Risk Reclassification", "value": f"{discordant_quintile} patients ({discordant_quintile / 187 * 100:.1f}% discordance)", "source_file": "research/oral_sprint_20261101/artifacts/ORAL_SPRINT_METRICS.json", "status": "VERIFIED"},
+        {"claim_id": "CLM-SPRINT-15", "metric_name": "Molecular Complete-Case Selection Bias", "value": "Excluded without RNA had 35.1% recurrence vs 23.5% with RNA (73.0% vs 57.8% pT3/T4)", "source_file": "research/oral_sprint_20261101/artifacts/SELECTION_BIAS_TABLE.csv", "status": "VERIFIED"},
+        {"claim_id": "CLM-SPRINT-16", "metric_name": "Surveillance PSA Post-Treatment Timing", "value": "Median 511 days post-diagnosis (C-index artificially inflates from 0.7011 to 0.7320)", "source_file": "research/oral_sprint_20261101/artifacts/ORAL_SPRINT_METRICS.json", "status": "VERIFIED"},
     ]
+    pd.DataFrame(claim_rows).to_csv(SPRINT_DIR / "CLAIM_LEDGER.csv", index=False)
     pd.DataFrame(claim_rows).to_csv(SPRINT_DIR / "CLAIM_LEDGER.csv", index=False)
 
     print("\nSUCCESS: All analyses, figures, artifacts, and claim ledger generated cleanly!")

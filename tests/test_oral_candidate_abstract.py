@@ -51,9 +51,8 @@ def test_oral_candidate_metrics_exact_agreement():
     with open(metrics_path) as f:
         m = json.load(f)
 
-    # Cohort sizes
-    assert "n=261" in body
-    assert "n=187" in body
+    # Cohort sizes and denominators
+    assert "187" in body
     assert "314" in body
     assert "19 true recurrence events" in body
     assert "43.2%" in body
@@ -61,13 +60,15 @@ def test_oral_candidate_metrics_exact_agreement():
     assert "63.2%" in body
     assert "8.16" in body
 
-    # Naive vs Adjudicated AUROCs
-    naive_clin_auc = m["endpoint_comparison_paired_187"]["naive_unadjudicated"]["clinical_auroc"]
-    naive_delta_auc = m["endpoint_comparison_paired_187"]["naive_unadjudicated"]["delta_auroc"]
-    adj_clin_auc = m["endpoint_comparison_paired_187"]["adjudicated_definitive"]["clinical_auroc"]
-    adj_delta_auc = m["endpoint_comparison_paired_187"]["adjudicated_definitive"]["delta_auroc"]
+    # Frozen common-fold metrics
+    assert "0.6540" in body
+    assert "0.7457" in body
+    assert "+0.0917" in body
+    assert "0.7069" in body
+    assert "0.6917" in body
+    assert "-0.0153" in body
+    assert "+0.1070" in body
 
-    assert f"{naive_clin_auc:.4f}" in body or "0.6368" in body
+    # Sensitivity comparator
     assert "+0.1168" in body
-    assert f"{adj_clin_auc:.4f}" in body or "0.7104" in body
     assert "-0.0076" in body

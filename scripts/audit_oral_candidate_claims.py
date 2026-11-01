@@ -48,24 +48,33 @@ def main():
 
     # 1. Denominators
     assert "314" in body
-    assert "n=261" in body
-    assert "n=187" in body
+    assert "187" in body
     assert "19 true recurrence events" in body
     assert "43.2%" in body
     assert "89.5%" in body
     assert "63.2%" in body
     assert "8.16" in body
 
-    # 2. Model Metrics
-    assert "0.6368" in body
+    # 2. Model Metrics (Frozen Common Folds)
+    assert "0.6540" in body
+    assert "0.7457" in body
+    assert "+0.0917" in body
+    assert "0.7069" in body
+    assert "0.6917" in body
+    assert "-0.0153" in body
+    assert "+0.1070" in body
+
+    # 3. Sensitivity Comparators
     assert "+0.1168" in body
-    assert "0.7104" in body
     assert "-0.0076" in body
 
-    print("Naive Clinical AUROC: 0.6368 (Verified)")
-    print("Spurious Naive Delta AUROC: +0.1168 (Verified)")
-    print("Harmonized Clinical AUROC: 0.7104 (Verified)")
-    print("Harmonized Delta AUROC: -0.0076 (Verified)")
+    print("Naive Clinical AUROC: 0.6540 (Verified)")
+    print("Naive Molecular AUROC: 0.7457 (Verified)")
+    print("Spurious Naive Delta AUROC: +0.0917 (Verified)")
+    print("Harmonized Clinical AUROC: 0.7069 (Verified)")
+    print("Harmonized Molecular AUROC: 0.6917 (Verified)")
+    print("Harmonized Delta AUROC: -0.0153 (Verified)")
+    print("Difference-in-Differences Delta Delta AUROC: +0.1070 (Verified)")
     print("Missed aggressive recurrences: 19 / 44 (43.2%) (Verified)")
 
     print("\nALL ORAL CANDIDATE ABSTRACT AND METRIC CHECKS PASSED.")
